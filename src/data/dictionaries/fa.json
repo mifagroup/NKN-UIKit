@@ -1,0 +1,18 @@
+{
+  "keywords": {
+    "home": "خانه",
+    "care_and_cure": "مراقبت و درمان",
+    "nikan_structure": "ساختار نیکان",
+    "health_and_life": "سلامت و زندگی",
+    "education": "آموزش",
+    "about_nikan": "درباره نیکان",
+    "eng": "Eng",
+    "fa": "فارسی",
+    "login_and_register": "ورود/ثبت نام",
+    "online_reserve": "پذیرش آنلاین"
+  },
+  "home_hero": {
+    "title": "در ستایش زندگی...",
+    "subtitle": "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت"
+  }
+}

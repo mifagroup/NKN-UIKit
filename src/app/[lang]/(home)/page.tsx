@@ -4,6 +4,7 @@ import {
   BranchesAddresses,
   Hero,
   Nikan365Intro,
+  SearchDoctors,
   WhyNikan,
 } from "./_components";
 import { getDictionary } from "@/utils/getServerDictionary";
@@ -24,6 +25,7 @@ const Page = async (props: PageProps) => {
       <Nikan365Intro />
       <Branches />
       <WhyNikan dictionary={dictionary} />
+      <SearchDoctors dictionary={dictionary} />
       <BranchesAddresses dictionary={dictionary} />
     </div>
   );

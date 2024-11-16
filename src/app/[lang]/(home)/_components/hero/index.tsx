@@ -17,7 +17,7 @@ const Hero = ({
       <Image
         src={"/images/hero-image.png"}
         alt="hero-image"
-        width={1920}
+        width={2000}
         height={580}
         quality={100}
         className="object-cover max-h-[580px] object-top"

@@ -22,18 +22,21 @@ const Hero = ({
         quality={100}
         className="object-cover max-h-[580px] object-top"
       />
-      <div className="absolute top-[184px] pr-[112px] flex flex-col gap-y-[26px]">
-        <div className="flex flex-col">
-          <Typography className="!font-extrabold !text-[32px] !text-white">
-            {homeHeroTranslate.title}
-          </Typography>
-          <Typography className="!font-light !text-white !text-[20px]">
-            {homeHeroTranslate.subtitle}
-          </Typography>
+
+      <div className="container max-w-[1216px]">
+        <div className="absolute top-[184px] flex flex-col gap-y-[26px]">
+          <div className="flex flex-col">
+            <Typography className="!font-extrabold !text-[32px] !text-white">
+              {homeHeroTranslate.title}
+            </Typography>
+            <Typography className="!font-light !text-white !text-[20px]">
+              {homeHeroTranslate.subtitle}
+            </Typography>
+          </div>
+          <Button className="!bg-primary-main !text-white !w-[346px] !h-[57px] !rounded-[15px] !text-[24px] !font-medium">
+            {keywordsTranslate.online_reserve}
+          </Button>
         </div>
-        <Button className="!bg-primary-main !text-white !w-[346px] !h-[57px] !rounded-[15px] !text-[24px] !font-medium">
-          {keywordsTranslate.online_reserve}
-        </Button>
       </div>
     </div>
   );

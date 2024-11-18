@@ -7,7 +7,7 @@ const Branches = () => {
       <Image
         src={"/images/aghdasieh-branch.png"}
         alt="aghdasieh-branch"
-        width={2000}
+        width={600}
         height={630}
         quality={100}
         className="object-cover"
@@ -15,7 +15,7 @@ const Branches = () => {
       <Image
         src={"/images/hakimieh-branch.png"}
         alt="aghdasieh-branch"
-        width={2000}
+        width={600}
         height={630}
         quality={100}
         className="object-cover"
@@ -23,7 +23,7 @@ const Branches = () => {
       <Image
         src={"/images/second-branch.png"}
         alt="aghdasieh-branch"
-        width={2000}
+        width={600}
         height={630}
         quality={100}
         className="object-cover"
@@ -31,7 +31,7 @@ const Branches = () => {
       <Image
         src={"/images/aghdasieh-west-branch.png"}
         alt="aghdasieh-branch"
-        width={2000}
+        width={600}
         height={630}
         quality={100}
         className="object-cover"

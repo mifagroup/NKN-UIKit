@@ -2,6 +2,7 @@ export const theme = {
   primary: {
     main: "#31D1B0",
     300: "#C3F5EB",
+    900: "#0F232E",
   },
   secondary: {
     900: "#B8B8B8",

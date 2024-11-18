@@ -3,6 +3,109 @@ import { Button, Divider, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
+export const categories = [
+  {
+    id: 1,
+    title: "طب اورژانس",
+  },
+  {
+    id: 2,
+    title: "کلینیک خواب",
+  },
+  {
+    id: 3,
+    title: "دندان پزشکی",
+  },
+  {
+    id: 4,
+    title: "سرطان روده",
+  },
+  {
+    id: 5,
+    title: "تعویض مفصل زانو",
+  },
+  {
+    id: 6,
+    title: "زخم پای دیابتی",
+  },
+  {
+    id: 7,
+    title: "فیزیوتراپی در منزل",
+  },
+  {
+    id: 8,
+    title: "پوکی استخوان",
+  },
+  {
+    id: 9,
+    title: "آرتریت روماتوئید",
+  },
+  {
+    id: 10,
+    title: "آنژیوگرافی",
+  },
+  {
+    id: 11,
+    title: "کرونا و کویید 19",
+  },
+  {
+    id: 12,
+    title: "طب اورژانس",
+  },
+  {
+    id: 13,
+    title: "کلینیک خواب",
+  },
+  {
+    id: 14,
+    title: "دندان پزشکی",
+  },
+  {
+    id: 15,
+    title: "سرطان روده",
+  },
+  {
+    id: 16,
+    title: "دندان پزشکی",
+  },
+  {
+    id: 17,
+    title: "سرطان روده",
+  },
+  {
+    id: 18,
+    title: "تعویض مفصل زانو",
+  },
+  {
+    id: 19,
+    title: "زخم پای دیابتی",
+  },
+  {
+    id: 20,
+    title: "فیزیوتراپی در منزل",
+  },
+  {
+    id: 21,
+    title: "انکولوژی و مراقبت ها",
+  },
+  {
+    id: 22,
+    title: "کرونا و کویید 19",
+  },
+  {
+    id: 23,
+    title: "طب اورژانس",
+  },
+  {
+    id: 24,
+    title: "کلینیک خواب",
+  },
+  {
+    id: 25,
+    title: "دندان پزشکی",
+  },
+];
+
 const SearchDoctors = ({
   dictionary,
 }: {
@@ -10,112 +113,9 @@ const SearchDoctors = ({
 }) => {
   const searchTranslate = dictionary.home_search;
 
-  const categories = [
-    {
-      id: 1,
-      title: "طب اورژانس",
-    },
-    {
-      id: 2,
-      title: "کلینیک خواب",
-    },
-    {
-      id: 3,
-      title: "دندان پزشکی",
-    },
-    {
-      id: 4,
-      title: "سرطان روده",
-    },
-    {
-      id: 5,
-      title: "تعویض مفصل زانو",
-    },
-    {
-      id: 6,
-      title: "زخم پای دیابتی",
-    },
-    {
-      id: 7,
-      title: "فیزیوتراپی در منزل",
-    },
-    {
-      id: 8,
-      title: "پوکی استخوان",
-    },
-    {
-      id: 9,
-      title: "آرتریت روماتوئید",
-    },
-    {
-      id: 10,
-      title: "آنژیوگرافی",
-    },
-    {
-      id: 11,
-      title: "کرونا و کویید 19",
-    },
-    {
-      id: 12,
-      title: "طب اورژانس",
-    },
-    {
-      id: 13,
-      title: "کلینیک خواب",
-    },
-    {
-      id: 14,
-      title: "دندان پزشکی",
-    },
-    {
-      id: 15,
-      title: "سرطان روده",
-    },
-    {
-      id: 16,
-      title: "دندان پزشکی",
-    },
-    {
-      id: 17,
-      title: "سرطان روده",
-    },
-    {
-      id: 18,
-      title: "تعویض مفصل زانو",
-    },
-    {
-      id: 19,
-      title: "زخم پای دیابتی",
-    },
-    {
-      id: 20,
-      title: "فیزیوتراپی در منزل",
-    },
-    {
-      id: 21,
-      title: "انکولوژی و مراقبت ها",
-    },
-    {
-      id: 22,
-      title: "کرونا و کویید 19",
-    },
-    {
-      id: 23,
-      title: "طب اورژانس",
-    },
-    {
-      id: 24,
-      title: "کلینیک خواب",
-    },
-    {
-      id: 25,
-      title: "دندان پزشکی",
-    },
-  ];
-
   return (
-    <div className="pr-[195px] pl-[140px] bg-secondary-50 max-h-[416px]">
-      <div className="relative flex justify-between">
+    <div className="bg-secondary-50 max-h-[416px]">
+      <div className="relative flex justify-between container max-w-[1108px]">
         <div className="max-w-[790px] flex flex-col gap-y-[30px] flex-1 mt-[-100px]">
           <Typography className="!text-grey-800 !text-[20px] !font-extrabold">
             {searchTranslate.title}

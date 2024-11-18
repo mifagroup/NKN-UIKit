@@ -1,5 +1,6 @@
 import { Locale } from "@/configs/i18n";
 import {
+  Blogs,
   Branches,
   BranchesAddresses,
   Hero,
@@ -26,6 +27,7 @@ const Page = async (props: PageProps) => {
       <Branches />
       <WhyNikan dictionary={dictionary} />
       <SearchDoctors dictionary={dictionary} />
+      <Blogs dictionary={dictionary} />
       <BranchesAddresses dictionary={dictionary} />
     </div>
   );

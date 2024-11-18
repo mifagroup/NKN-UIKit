@@ -3,6 +3,7 @@ import Header from "./_components/header";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MuiProvider from "@/providers/mui.provider";
 import "../globals.css";
+import Footer from "./_components/footer";
 
 const nikan = localFont({
   src: [
@@ -66,6 +67,7 @@ export default function RootLayout({
           <MuiProvider>
             <Header />
             {children}
+            <Footer />
           </MuiProvider>
         </AppRouterCacheProvider>
       </body>

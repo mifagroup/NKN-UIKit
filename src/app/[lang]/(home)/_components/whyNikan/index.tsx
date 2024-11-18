@@ -44,13 +44,13 @@ const WhyNikan = ({
   ];
 
   return (
-    <div className="pt-20 pb-[140px] flex flex-col gap-y-[70px]">
+    <div className="pt-20 pb-[240px] flex flex-col gap-y-[70px] container">
       <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px]">
         {whyNikanTranslate.title}
       </Typography>
-      <div className="pr-[54px] pl-[141px] flex gap-x-[54px] items-center justify-center">
+      <div className="relative">
         <Button
-          className="!min-w-fit !p-0"
+          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <Image
@@ -60,51 +60,53 @@ const WhyNikan = ({
             height={63.5}
           />
         </Button>
-        <Swiper
-          onBeforeInit={(swiper) => {
-            swiperRef.current = swiper;
-          }}
-          slidesPerView={1}
-          modules={[Navigation]}
-          navigation={{
-            nextEl: nextEl.current,
-            prevEl: prevEl.current,
-          }}
-        >
-          {[...Array(3)]?.map((_, index) => (
-            <SwiperSlide key={index}>
-              <div className="flex items-center gap-x-[48px] w-fit mx-auto">
-                <Image
-                  src={"/images/why-nikan-image.png"}
-                  alt="why-nikan"
-                  width={758}
-                  height={661}
-                  quality={100}
-                />
-                <div className="flex flex-col gap-y-[40px]">
-                  {items?.map((item) => (
-                    <div className="flex flex-col gap-y-3" key={item.id}>
-                      <Image
-                        src={item.image}
-                        alt={item.title}
-                        width={83}
-                        height={89}
-                      />
-                      <div className="flex flex-col gap-y-2">
-                        <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
-                          {item.title}
-                        </Typography>
-                        <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
-                          {item.desc}
-                        </Typography>
+        <div className="flex gap-x-[54px] items-center justify-center max-w-[1168px] mx-auto">
+          <Swiper
+            onBeforeInit={(swiper) => {
+              swiperRef.current = swiper;
+            }}
+            slidesPerView={1}
+            modules={[Navigation]}
+            navigation={{
+              nextEl: nextEl.current,
+              prevEl: prevEl.current,
+            }}
+          >
+            {[...Array(3)]?.map((_, index) => (
+              <SwiperSlide key={index}>
+                <div className="flex items-center gap-x-[48px] w-fit mx-auto">
+                  <Image
+                    src={"/images/why-nikan-image.png"}
+                    alt="why-nikan"
+                    width={758}
+                    height={661}
+                    quality={100}
+                  />
+                  <div className="flex flex-col gap-y-[40px]">
+                    {items?.map((item) => (
+                      <div className="flex flex-col gap-y-3" key={item.id}>
+                        <Image
+                          src={item.image}
+                          alt={item.title}
+                          width={83}
+                          height={89}
+                        />
+                        <div className="flex flex-col gap-y-2">
+                          <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
+                            {item.title}
+                          </Typography>
+                          <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
+                            {item.desc}
+                          </Typography>
+                        </div>
                       </div>
-                    </div>
-                  ))}
+                    ))}
+                  </div>
                 </div>
-              </div>
-            </SwiperSlide>
-          ))}
-        </Swiper>
+              </SwiperSlide>
+            ))}
+          </Swiper>
+        </div>
       </div>
     </div>
   );

@@ -4,3 +4,4 @@ export { default as Branches } from "./branches";
 export { default as BranchesAddresses } from "./branchesAddresses";
 export { default as WhyNikan } from "./whyNikan";
 export { default as SearchDoctors } from "./searchDoctors";
+export { default as Blogs } from "./blogs";

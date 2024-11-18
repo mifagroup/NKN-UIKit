@@ -43,47 +43,49 @@ const BranchesAddresses = ({
 
   return (
     <div className="flex flex-col bg-secondary-100">
-      <div className="pr-[175px] pl-[170px] grid grid-cols-2 border-b border-secondary-500">
-        <div className="pt-[71px] pb-[74px] border-l border-secondary-500 flex items-center gap-x-[23px]">
-          <Image
-            src={branches[0].image}
-            alt={branches[0].title}
-            width={107}
-            height={90}
-          />
-          <div className="flex flex-col">
-            <Typography className="!text-base !font-extrabold !leading-[27px] !text-secondary-700">
-              {branches[0]?.title}
-            </Typography>
-            <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700">
-              {branches[0]?.address}
-            </Typography>
-            <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700">
-              {branches[0]?.phone_number}
-            </Typography>
+      <div className="border-b border-secondary-500">
+        <div className="container grid grid-cols-2 max-w-[1092px]">
+          <div className="pt-[71px] pb-[74px] border-l border-secondary-500 flex items-center gap-x-[23px]">
+            <Image
+              src={branches[0].image}
+              alt={branches[0].title}
+              width={107}
+              height={90}
+            />
+            <div className="flex flex-col">
+              <Typography className="!text-base !font-extrabold !leading-[27px] !text-secondary-700">
+                {branches[0]?.title}
+              </Typography>
+              <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700">
+                {branches[0]?.address}
+              </Typography>
+              <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700">
+                {branches[0]?.phone_number}
+              </Typography>
+            </div>
           </div>
-        </div>
-        <div className="pt-[66px] pb-[74px] flex items-center gap-x-[26px] pr-[70px]">
-          <Image
-            src={branches[1].image}
-            alt={branches[1].title}
-            width={91}
-            height={105}
-          />
-          <div className="flex flex-col">
-            <Typography className="!text-base !font-extrabold !leading-[27px] !text-secondary-700">
-              {branches[1]?.title}
-            </Typography>
-            <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700">
-              {branches[1]?.address}
-            </Typography>
-            <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700">
-              {branches[1]?.phone_number}
-            </Typography>
+          <div className="pt-[66px] pb-[74px] flex items-center gap-x-[26px] pr-[70px]">
+            <Image
+              src={branches[1].image}
+              alt={branches[1].title}
+              width={91}
+              height={105}
+            />
+            <div className="flex flex-col">
+              <Typography className="!text-base !font-extrabold !leading-[27px] !text-secondary-700">
+                {branches[1]?.title}
+              </Typography>
+              <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700">
+                {branches[1]?.address}
+              </Typography>
+              <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700">
+                {branches[1]?.phone_number}
+              </Typography>
+            </div>
           </div>
         </div>
       </div>
-      <div className="pr-[175px] pl-[170px] grid grid-cols-2">
+      <div className="container grid grid-cols-2 max-w-[1092px]">
         <div className="pt-[50px] pb-[69px] border-l border-secondary-500 flex items-center gap-x-[23px]">
           <Image
             src={branches[2].image}

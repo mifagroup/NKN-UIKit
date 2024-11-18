@@ -10,7 +10,15 @@
     "fa": "فارسی",
     "login_and_register": "ورود/ثبت نام",
     "online_reserve": "پذیرش آنلاین",
-    "phone_number": "تلفن تماس"
+    "phone_number": "تلفن تماس",
+    "get_token": "تعیین نوبت",
+    "search_doctors": "جستجو پزشکان",
+    "participate_in_nikan_blog": "عضویت در نشریه نیکان",
+    "chart": "چارت سازمانی",
+    "news": "اخبار",
+    "faq": "سوالات متداول",
+    "public_relations": "روابط عمومی",
+    "rules": "ضوابط و قوانین"
   },
   "home_hero": {
     "title": "در ستایش زندگی...",
@@ -65,5 +73,8 @@
     "title": "جستجوی خدمات بر اساس شرایط و بیماری، مشخصات پزشک و...",
     "search_placeholder": "زخم پای دیابتی....",
     "button_title": "تعیین نوبت"
+  },
+  "footer": {
+    "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است"
   }
 }

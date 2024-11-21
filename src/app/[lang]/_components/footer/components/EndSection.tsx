@@ -10,7 +10,7 @@ const EndSection = () => {
 
   const keywordsTranslate = dictionary?.keywords;
   return (
-    <div className="pt-[66px] pb-[83px] border-t border-primary-main flex justify-between items-start">
+    <div className="lg:pt-[66px] lg:pb-[83px] pb-[40px] lg:border-t border-primary-main flex lg:flex-row flex-col gap-y-5 justify-between lg:items-start items-center">
       <div className="flex gap-x-3">
         <Image
           src={"/images/nikan365-footer-icon.png"}
@@ -35,7 +35,8 @@ const EndSection = () => {
           </div>
         </div>
       </div>
-      <div className="flex flex-col gap-y-[25px] items-end">
+      <Divider className="lg:!hidden block !h-[1px] !w-full !bg-[#204052]" />
+      <div className="flex flex-col gap-y-[25px] lg:items-end items-center">
         <div className="flex">
           <div className="flex flex-col items-center px-3">
             <span className="text-[20px] text-white font-semibold">
@@ -64,28 +65,46 @@ const EndSection = () => {
             className="mr-5"
           />
         </div>
-        <div className="flex flex-col gap-y-4 items-end">
-          <div className="flex items-center gap-x-9">
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+        <div className="flex flex-col gap-y-4 lg:items-end items-center">
+          <div className="flex items-center lg:gap-x-9 gap-x-2">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.chart}
             </Link>
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.news}
             </Link>
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.faq}
             </Link>
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.about_nikan}
             </Link>
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.public_relations}
             </Link>
-            <Link href={""} className="text-[14px] font-light text-[#81929B]">
+            <Link
+              href={""}
+              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+            >
               {keywordsTranslate?.rules}
             </Link>
           </div>
-          <span className="text-[14px] font-medium text-[#28546D]">
+          <span className="lg:text-[14px] text-[11px] font-medium text-[#28546D]">
             {dictionary?.footer.policy}
           </span>
         </div>

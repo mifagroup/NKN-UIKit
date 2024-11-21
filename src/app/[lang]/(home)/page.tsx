@@ -27,7 +27,7 @@ const Page = async (props: PageProps) => {
       <Branches />
       <WhyNikan dictionary={dictionary} />
       <SearchDoctors dictionary={dictionary} />
-      <Blogs dictionary={dictionary} />
+      <Blogs />
       <BranchesAddresses dictionary={dictionary} />
     </div>
   );

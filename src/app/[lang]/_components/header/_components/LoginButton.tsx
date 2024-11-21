@@ -8,7 +8,7 @@ const LoginButton = () => {
 
   const keywordsTranslate = dictionary?.keywords;
   return (
-    <Button className="!bg-secondary-300 !text-secondary-600 !w-[146px] !h-[43px] !rounded-[8px] !text-[20px] !font-semibold">
+    <Button className="!bg-secondary-300 !text-secondary-600 lg:!w-[146px] !w-[85px] lg:!h-[43px] !h-[25] lg:!rounded-[8px] !rounded-[5px] lg:!text-[20px] !text-[10px] !font-semibold">
       {keywordsTranslate?.login_and_register}
     </Button>
   );

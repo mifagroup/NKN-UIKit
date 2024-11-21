@@ -44,13 +44,13 @@ const WhyNikan = ({
   ];
 
   return (
-    <div className="pt-20 pb-[240px] flex flex-col gap-y-[70px] container">
-      <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px]">
+    <div className="lg:pt-20 pt-[65px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
+      <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] lg:!block !hidden">
         {whyNikanTranslate.title}
       </Typography>
       <div className="relative">
         <Button
-          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
+          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10 lg:!block !hidden"
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <Image
@@ -74,13 +74,14 @@ const WhyNikan = ({
           >
             {[...Array(3)]?.map((_, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center gap-x-[48px] w-fit mx-auto">
+                <div className="flex items-center gap-x-[48px] lg:w-fit w-full mx-auto">
                   <Image
                     src={"/images/why-nikan-image.png"}
                     alt="why-nikan"
                     width={758}
                     height={661}
                     quality={100}
+                    className="lg:block hidden"
                   />
                   <div className="flex flex-col gap-y-[40px]">
                     {items?.map((item) => (

@@ -10,7 +10,7 @@ const Links = () => {
   const keywordsTranslate = dictionary?.keywords;
 
   return (
-    <div className="flex flex-col gap-y-6 flex-1">
+    <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
       <div className="flex items-center gap-x-6 pb-[18px] border-b border-[#626262]">
         <Link href={""} className="text-[#F0F0F0] font-semibold">
           {keywordsTranslate?.home}

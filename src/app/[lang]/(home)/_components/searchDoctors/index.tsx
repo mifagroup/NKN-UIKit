@@ -114,16 +114,16 @@ const SearchDoctors = ({
   const searchTranslate = dictionary.home_search;
 
   return (
-    <div className="bg-secondary-50 max-h-[416px]">
-      <div className="relative flex justify-between container max-w-[1108px]">
-        <div className="max-w-[790px] flex flex-col gap-y-[30px] flex-1 mt-[-100px]">
-          <Typography className="!text-grey-800 !text-[20px] !font-extrabold">
+    <div className="bg-secondary-50 md:max-h-[416px] max-h-[333px]  lg:pt-0 pt-[30px] lg:px-0 px-5">
+      <div className="relative flex lg:flex-row flex-col justify-between container max-w-[1108px] lg:items-start items-end">
+        <div className="lg:max-w-[790px] max-w-full flex flex-col gap-y-[30px] flex-1 lg:mt-[-100px] lg:w-auto w-full">
+          <Typography className="!text-grey-800 !text-[20px] !font-extrabold lg:!block !hidden">
             {searchTranslate.title}
           </Typography>
-          <div className="border border-primary-main flex gap-x-5 justify-between items-center rounded-[60px] bg-white pr-[36px] pl-[14px] py-2.5">
+          <div className="border border-primary-main flex gap-x-5 justify-between items-center lg:rounded-[60px] rounded-[18px] bg-white pr-[36px] pl-[14px] py-2.5">
             <input
               type="text"
-              className="w-full !text-[32px] placeholder:!text-[32px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
+              className="w-full lg:!text-[32px] !text-[14px] lg:placeholder:!text-[32px] placeholder:!text-[14px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
               placeholder={searchTranslate.search_placeholder}
             />
             <Image
@@ -131,9 +131,10 @@ const SearchDoctors = ({
               alt="search-icon"
               width={74}
               height={74}
+              className="lg:w-[74px] lg:h-[74px] w-[36px] h-[36px]"
             />
           </div>
-          <div className="flex gap-x-7">
+          <div className="gap-x-7 lg:flex hidden">
             <div className="flex flex-col gap-y-5">
               {categories?.slice(0, 5).map((cat) => (
                 <Typography
@@ -189,7 +190,7 @@ const SearchDoctors = ({
               ))}
             </div>
           </div>
-          <Button className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px]">
+          <Button className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!block !hidden">
             {searchTranslate.button_title}
           </Button>
         </div>
@@ -198,7 +199,7 @@ const SearchDoctors = ({
           alt="search-nikan-mobile-image"
           width={355}
           height={594}
-          className="mt-[-100px] !h-[594px] !w-[355px]"
+          className="lg:mt-[-100px] lg:!h-[594px] lg:!w-[355px] !h-[335px] !w-[200px]"
         />
       </div>
     </div>

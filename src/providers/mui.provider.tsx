@@ -5,6 +5,15 @@ const theme = createTheme({
   typography: {
     fontFamily: "nikan, nikan Fallback",
   },
+  breakpoints: {
+    values: {
+      xs: 576,
+      sm: 640,
+      md: 768,
+      lg: 1024,
+      xl: 1280,
+    },
+  },
   components: {
     MuiButton: {
       defaultProps: {

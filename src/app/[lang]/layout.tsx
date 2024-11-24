@@ -48,7 +48,7 @@ const nikan = localFont({
       style: "normal",
     },
     {
-      path: "../fonts/woff2/Dana-Heavy.woff2",
+      path: "../fonts/woff2/DanaFaNum-Black.woff2",
       weight: "900",
       style: "normal",
     },

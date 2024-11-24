@@ -76,5 +76,16 @@
   },
   "footer": {
     "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است"
+  },
+  "contact_us": {
+    "contact_section": {
+      "title": "Always answer you",
+      "subtitle": "seven days a week and twenty-four hours a day",
+      "name": "Name",
+      "lastname": "Lastname",
+      "content": "Message content",
+      "title_category": "Title category",
+      "submit": "Submit"
+    }
   }
 }

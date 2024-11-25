@@ -12,7 +12,7 @@ const Links = () => {
   return (
     <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
       <div className="flex items-center gap-x-6 pb-[18px] border-b border-[#626262]">
-        <Link href={""} className="text-[#F0F0F0] font-semibold">
+        <Link href={"/"} className="text-[#F0F0F0] font-semibold">
           {keywordsTranslate?.home}
         </Link>
         <Link href={""} className="text-[#F0F0F0] font-semibold">
@@ -27,7 +27,7 @@ const Links = () => {
         <Link href={""} className="text-[#F0F0F0] font-semibold">
           {keywordsTranslate?.education}
         </Link>
-        <Link href={""} className="text-[#F0F0F0] font-semibold">
+        <Link href={"/about-us"} className="text-[#F0F0F0] font-semibold">
           {keywordsTranslate?.about_nikan}
         </Link>
       </div>

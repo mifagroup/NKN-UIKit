@@ -1,11 +1,20 @@
 import React from "react";
-import { HistorySlider, NikanIntroduction } from "./components";
-
+import {
+  CTOSpeech,
+  Directors,
+  HistorySlider,
+  NikanIntroduction,
+  Trophies,
+} from "./components";
+import "./styles.css";
 const page = () => {
   return (
     <div>
       <NikanIntroduction />
       <HistorySlider />
+      <CTOSpeech />
+      <Trophies />
+      <Directors />
     </div>
   );
 };

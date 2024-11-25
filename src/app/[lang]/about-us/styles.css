@@ -1,0 +1,27 @@
+.about-us-history-swiper .swiper-pagination {
+  @apply bottom-5;
+}
+
+.about-us-history-swiper .swiper-pagination .swiper-pagination-bullet {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-[#cccccc];
+}
+
+.about-us-history-swiper
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-primary-main;
+}
+
+.about-us-trophies-swiper .swiper-pagination {
+  @apply bottom-[-5px];
+}
+
+.about-us-trophies-swiper .swiper-pagination .swiper-pagination-bullet {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-[#cccccc];
+}
+
+.about-us-trophies-swiper
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-primary-main;
+}

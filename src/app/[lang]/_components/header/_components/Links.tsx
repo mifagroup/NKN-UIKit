@@ -12,7 +12,7 @@ const Links = () => {
     {
       id: "home",
       label: keywordsTranslate?.home,
-      href: "",
+      href: "/",
     },
     {
       id: "care_and_cure",
@@ -37,7 +37,7 @@ const Links = () => {
     {
       id: "about_nikan",
       label: keywordsTranslate?.about_nikan,
-      href: "",
+      href: "/about-us",
     },
   ];
   return (

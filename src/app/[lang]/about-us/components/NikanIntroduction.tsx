@@ -4,7 +4,7 @@ import React from "react";
 
 const NikanIntroduction = () => {
   return (
-    <div className="max-w-[1086px] container">
+    <div className="max-w-[1086px] container pt-[50px]">
       <div className="flex gap-x-[70px] justify-between items-center">
         <div className="flex flex-col gap-y-[85px] pr-[60px] pl-[42px]">
           <div className="flex flex-col gap-y-3">

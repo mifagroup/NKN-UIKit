@@ -4,6 +4,7 @@ import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MuiProvider from "@/providers/mui.provider";
 import "../globals.css";
 import Footer from "./_components/footer";
+import NextTopLoader from "nextjs-toploader";
 
 const nikan = localFont({
   src: [
@@ -63,6 +64,7 @@ export default function RootLayout({
   return (
     <html lang="en" className={nikan.className}>
       <body dir="rtl">
+        <NextTopLoader color="#31D1B0" />
         <AppRouterCacheProvider>
           <MuiProvider>
             <Header />

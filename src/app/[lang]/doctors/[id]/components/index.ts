@@ -6,3 +6,4 @@ export { default as Areas } from "./Areas";
 export { default as Patients } from "./Patients";
 export { default as Prices } from "./Prices";
 export { default as Blogs } from "./Blogs";
+export { default as Booking } from "./Booking";

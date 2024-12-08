@@ -31,11 +31,11 @@ const WebsiteSlider = () => {
   ];
 
   return (
-    <div className="h-[795px] relative">
+    <div className="h-[795px] relative lg:block hidden">
       <div className="2xl:w-[20%] w-[17%] bg-[#E9E9E9] h-full absolute bottom-0 left-0" />
       <div className="flex relative justify-center">
         <Button
-          className="!absolute top-1/2 translate-y-[-50%] 2xl:left-[10%] left-[4%] z-10"
+          className="!absolute top-1/2 translate-y-[-50%] 2xl:left-[10%] xl:left-[4%] left-0 z-10"
           onClick={() => swiperRef.current?.slideNext()}
         >
           <Image
@@ -45,7 +45,7 @@ const WebsiteSlider = () => {
             height={63.5}
           />
         </Button>
-        <div className="h-[795px] flex items-center w-[1113px]">
+        <div className="h-[795px] flex items-center xl:w-[1113px] w-full">
           <Swiper
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
@@ -59,8 +59,8 @@ const WebsiteSlider = () => {
           >
             {[...Array(3)]?.map((_, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center gap-x-[70px] lg:w-fit w-full mx-auto">
-                  <div className="flex gap-x-[66px]">
+                <div className="flex items-center xl:gap-x-[70px] gap-x-2 lg:w-fit w-full mx-auto">
+                  <div className="flex xl:gap-x-[66px]">
                     <div className="flex flex-col gap-y-[20px]">
                       {items?.map((item) => (
                         <div className="flex flex-col gap-y-3" key={item.id}>
@@ -71,10 +71,10 @@ const WebsiteSlider = () => {
                             height={89}
                           />
                           <div className="flex flex-col gap-y-2">
-                            <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
+                            <Typography className="!text-[20px] !font-extrabold !text-secondary-600 xl:max-w-[350px] max-w-[300px]">
                               {item.title}
                             </Typography>
-                            <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
+                            <Typography className="!text-[15px] !font-light !text-secondary-400 xl:max-w-[350px] max-w-[300px] !text-justify">
                               {item.desc}
                             </Typography>
                           </div>
@@ -87,7 +87,7 @@ const WebsiteSlider = () => {
                       width={689}
                       height={446}
                       quality={100}
-                      className="lg:block hidden"
+                      className="lg:block hidden xl:w-[689px] xl:h-[446px] w-[600px] h-[356px]"
                     />
                   </div>
                 </div>

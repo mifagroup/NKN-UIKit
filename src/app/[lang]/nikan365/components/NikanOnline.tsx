@@ -4,33 +4,41 @@ import React from "react";
 
 const NikanOnline = () => {
   return (
-    <div className="h-[368px] bg-[#EEEEEE] mt-[150px] mb-[133px]">
-      <div className="container max-w-[1125px] flex gap-x-[23px]">
-        <div className="mt-[-50px]">
+    <div className="lg:h-[368px] xl:pb-0 pb-5 lg:bg-[#EEEEEE] mt-[150px] mb-[133px]">
+      <div className="container max-w-[1125px] flex lg:flex-row flex-col lg:items-start items-center gap-x-[23px]">
+        <div className="xl:mt-[-50px]">
           <Image
             src={"/images/nikan365-online.png"}
             alt="online"
             width={566}
             height={440}
+            className="md:block hidden"
+          />
+          <Image
+            src={"/images/nikan365-online-res.png"}
+            alt="online"
+            width={395}
+            height={331}
+            className="md:hidden block"
           />
         </div>
-        <div className="mt-[35px] flex flex-col">
-          <span className="text-[32px] font-black text-[#575757]">
+        <div className="lg:mt-[35px] flex flex-col xl:pl-0 md:pl-10 md:pr-0 px-5">
+          <span className="lg:text-[32px] text-[20px] font-black text-[#575757]">
             آنلاین تر از همیشه
           </span>
-          <span className="max-w-[530px] text-[15px] font-light text-[#7D7D7D]">
+          <span className="max-w-[530px] lg:text-[15px] text-[14px] font-light text-[#7D7D7D]">
             لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با
             استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و لورم
             ایپسوم متن ساختگی با تولید سادگی{" "}
           </span>
           <Link
             href={""}
-            className="w-[267px] h-[44px] rounded-[15px] bg-primary-main text-white text-[15px] font-medium flex justify-center items-center mt-5"
+            className="md:w-[267px] w-full h-[44px] rounded-[15px] bg-primary-main text-white text-[15px] font-medium flex justify-center items-center mt-5"
           >
             عضویت در نیکان 365
           </Link>
-          <div className="flex items-center gap-x-4 mt-10">
-            <span className="text-[11px] text-[#909090]">
+          <div className="items-center gap-x-4 lg:mt-10 mt-4 lg:flex hidden">
+            <span className="text-[11px] text-[#909090] lg:block hidden">
               دانلود مستقیم نیکان 365
             </span>
             <Image
@@ -39,6 +47,21 @@ const NikanOnline = () => {
               width={167}
               height={39}
             />
+          </div>
+          <div className="flex items-center gap-x-4 mt-4 lg:hidden">
+            <Image
+              src={"/images/nikan365-download.png"}
+              alt="download"
+              width={330}
+              height={63}
+              className="sm:w-[330px] sm:h-[63px] w-[234px] h-[45px]"
+            />
+            <Link
+              href={""}
+              className="text-[14px] font-light text-[#6B6B6B] sm:hidden block"
+            >
+              دانلود مستقیم
+            </Link>
           </div>
         </div>
       </div>

@@ -31,11 +31,11 @@ const AppSlider = () => {
   ];
 
   return (
-    <div className="h-[795px] relative">
-      <div className="w-[39%] bg-primary-main h-full absolute bottom-0" />
+    <div className="lg:h-[795px] relative lg:mb-0 mb-[60px]">
+      <div className="lg:w-[39%] w-full bg-primary-main lg:h-full h-[27%] absolute top-0" />
       <div className="flex relative justify-center">
         <Button
-          className="!absolute top-1/2 translate-y-[-50%] right-[15%] z-10"
+          className="!absolute top-1/2 translate-y-[-50%] lg:right-[15%] right-0 z-10 lg:!block !hidden"
           onClick={() => swiperRef.current?.slidePrev()}
         >
           <Image
@@ -45,7 +45,7 @@ const AppSlider = () => {
             height={63.5}
           />
         </Button>
-        <div className="h-[795px] flex items-center w-[700px]">
+        <div className="lg:h-[795px] flex items-center lg:w-[700px] w-full lg:mt-0 mt-[70px]">
           <Swiper
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
@@ -59,16 +59,16 @@ const AppSlider = () => {
           >
             {[...Array(3)]?.map((_, index) => (
               <SwiperSlide key={index}>
-                <div className="flex items-center gap-x-[70px] lg:w-fit w-full mx-auto">
+                <div className="flex lg:flex-row flex-col items-center gap-x-[70px] gap-y-[50px] lg:w-fit w-full mx-auto">
                   <Image
                     src={"/images/nikan365-app.png"}
                     alt="why-nikan"
                     width={260}
                     height={502}
                     quality={100}
-                    className="lg:block hidden"
+                    className=""
                   />
-                  <div className="flex flex-col gap-y-[20px]">
+                  <div className="flex flex-col gap-y-[20px] lg:px-0 px-[50px]">
                     {items?.map((item) => (
                       <div className="flex flex-col gap-y-3" key={item.id}>
                         <Image

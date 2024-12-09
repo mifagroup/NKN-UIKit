@@ -1,5 +1,5 @@
 .about-us-history-swiper .swiper-pagination {
-  @apply bottom-5;
+  @apply lg:bottom-5 bottom-0;
 }
 
 .about-us-history-swiper .swiper-pagination .swiper-pagination-bullet {
@@ -12,8 +12,12 @@
   @apply !w-[13.5px] !h-[13.5px] rounded-full bg-primary-main;
 }
 
+.about-us-trophies-swiper {
+  @apply lg:h-auto h-[490px];
+}
+
 .about-us-trophies-swiper .swiper-pagination {
-  @apply bottom-[-5px];
+  @apply lg:bottom-[-5px] bottom-0;
 }
 
 .about-us-trophies-swiper .swiper-pagination .swiper-pagination-bullet {

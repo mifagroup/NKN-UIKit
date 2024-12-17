@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 2153",
+    "dev": "next dev --turbopack --port 9630",
     "build": "next build",
-    "start": "next start --port 2153",
+    "start": "next start --port 9630",
     "lint": "next lint"
   },
   "dependencies": {

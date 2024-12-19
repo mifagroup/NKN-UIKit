@@ -32,8 +32,9 @@ const NikanOnline = () => {
             ایپسوم متن ساختگی با تولید سادگی{" "}
           </span>
           <Link
-            href={""}
+            href={"https://pa.nikan365.ir/auth/login"}
             className="md:w-[267px] w-full h-[44px] rounded-[15px] bg-primary-main text-white text-[15px] font-medium flex justify-center items-center mt-5"
+            target="_blank"
           >
             عضویت در نیکان 365
           </Link>

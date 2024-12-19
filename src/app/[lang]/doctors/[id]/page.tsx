@@ -14,7 +14,7 @@ import {
 const page = () => {
   return (
     <div>
-      <div className="container max-w-[990px] pt-[83px] pb-[109px]">
+      <div className="container max-w-[990px] lg:pt-[83px] pt-[50px] lg:pb-[109px] pb-[30px]">
         <Search />
         <DoctorIntro />
         <Bio />

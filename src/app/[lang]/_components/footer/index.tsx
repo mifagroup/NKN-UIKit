@@ -6,8 +6,17 @@ import {
   Links,
   LoginButton,
 } from "./components";
+import { components } from "@/lib/api/v1";
 
-const Footer = () => {
+const Footer = async () => {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home`, {
+    cache: "no-cache",
+  }).then((res) => res.json());
+
+  const homeResponse: components["schemas"]["HomeResource"] = data?.data;
+
+  const footerTerms = homeResponse.footer_terms;
+
   return (
     <div className="">
       <div className="w-full h-[12px] bg-primary-main" />
@@ -21,7 +30,7 @@ const Footer = () => {
               </div>
               <ExtraButtons />
             </div>
-            <Links />
+            {footerTerms && <Links footerTerms={footerTerms} />}
           </div>
           <EndSection />
         </div>

@@ -1,5 +1,6 @@
+import { components } from "@/lib/api/v1";
 import { getDictionary } from "@/utils/getServerDictionary";
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Typography } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 
@@ -108,8 +109,10 @@ export const categories = [
 
 const SearchDoctors = ({
   dictionary,
+  terms,
 }: {
   dictionary: Awaited<ReturnType<typeof getDictionary>>;
+  terms: components["schemas"]["TermResource"][];
 }) => {
   const searchTranslate = dictionary.home_search;
 
@@ -134,61 +137,14 @@ const SearchDoctors = ({
               className="lg:w-[74px] lg:h-[74px] w-[36px] h-[36px]"
             />
           </div>
-          <div className="gap-x-7 lg:flex hidden">
-            <div className="flex flex-col gap-y-5">
-              {categories?.slice(0, 5).map((cat) => (
-                <Typography
-                  key={cat.id}
-                  className="!text-base !text-secondary-800 !font-light whitespace-nowrap"
-                >
+          <div className="gap-x-7 lg:grid hidden w-[790px] gap-y-5 grid-cols-5">
+            {terms.map((cat) => (
+              <div className="flex flex-col gap-y-5" key={cat.id}>
+                <Typography className="!text-base !text-secondary-800 !font-light whitespace-nowrap">
                   {cat.title}
                 </Typography>
-              ))}
-            </div>
-            <Divider orientation="vertical" className="!bg-secondary-900" />
-            <div className="flex flex-col gap-y-5">
-              {categories?.slice(5, 10).map((cat) => (
-                <Typography
-                  key={cat.id}
-                  className="!text-base !text-secondary-800 !font-light whitespace-nowrap"
-                >
-                  {cat.title}
-                </Typography>
-              ))}
-            </div>
-            <Divider orientation="vertical" className="!bg-secondary-900" />
-            <div className="flex flex-col gap-y-5">
-              {categories?.slice(10, 15).map((cat) => (
-                <Typography
-                  key={cat.id}
-                  className="!text-base !text-secondary-800 !font-light whitespace-nowrap"
-                >
-                  {cat.title}
-                </Typography>
-              ))}
-            </div>
-            <Divider orientation="vertical" className="!bg-secondary-900" />
-            <div className="flex flex-col gap-y-5">
-              {categories?.slice(15, 20).map((cat) => (
-                <Typography
-                  key={cat.id}
-                  className="!text-base !text-secondary-800 !font-light whitespace-nowrap"
-                >
-                  {cat.title}
-                </Typography>
-              ))}
-            </div>
-            <Divider orientation="vertical" className="!bg-secondary-900" />
-            <div className="flex flex-col gap-y-5">
-              {categories?.slice(20, 25).map((cat) => (
-                <Typography
-                  key={cat.id}
-                  className="!text-base !text-secondary-800 !font-light whitespace-nowrap"
-                >
-                  {cat.title}
-                </Typography>
-              ))}
-            </div>
+              </div>
+            ))}
           </div>
           <Button className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!block !hidden">
             {searchTranslate.button_title}

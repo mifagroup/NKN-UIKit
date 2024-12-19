@@ -7,8 +7,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
+import { components } from "@/lib/api/v1";
 
-const Nikan365IntroSlider = () => {
+const Nikan365IntroSlider = ({
+  data,
+}: {
+  data: components["schemas"]["SlideResource"][];
+}) => {
   const nextEl = useRef(null);
   const prevEl = useRef(null);
 
@@ -112,12 +117,12 @@ const Nikan365IntroSlider = () => {
           }}
           className="xl:max-w-[560px] lg:max-w-[400px] lg:!mx-0"
         >
-          {sliderItems?.map((item) => (
+          {data?.map((item) => (
             <SwiperSlide key={item.id}>
               <div className="flex flex-col gap-y-[18px]">
                 <Image
-                  src={item.image}
-                  alt={item.image}
+                  src={item.image.original_url ?? ""}
+                  alt={item.title}
                   width={greaterThanLg ? 70 : 60}
                   height={greaterThanLg ? 79 : 65}
                   className="mx-auto xl:h-[79px] h-[65px] object-contain"
@@ -130,7 +135,7 @@ const Nikan365IntroSlider = () => {
           ))}
         </Swiper>
       </div>
-      {sliderItems?.length > 4 ? (
+      {data?.length > 4 ? (
         <Button ref={nextEl} className="!min-w-fit !p-0 lg:!block !hidden">
           <Image
             src={"/images/arrow-left.png"}

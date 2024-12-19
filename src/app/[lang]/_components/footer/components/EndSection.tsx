@@ -86,7 +86,7 @@ const EndSection = () => {
               {keywordsTranslate?.faq}
             </Link>
             <Link
-              href={""}
+              href={"/about-us"}
               className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
             >
               {keywordsTranslate?.about_nikan}

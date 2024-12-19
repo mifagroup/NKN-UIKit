@@ -11,28 +11,23 @@ const Links = () => {
   const links = [
     {
       id: "home",
-      label: keywordsTranslate?.home,
+      label: "خانه",
       href: "/",
     },
     {
       id: "care_and_cure",
-      label: keywordsTranslate?.care_and_cure,
-      href: "",
+      label: "پزشکان",
+      href: "/doctors",
+    },
+    {
+      id: "nikan365",
+      label: "نیکان 365",
+      href: "/nikan365",
     },
     {
       id: "nikan_structure",
-      label: keywordsTranslate?.nikan_structure,
-      href: "",
-    },
-    {
-      id: "health_and_life",
-      label: keywordsTranslate?.health_and_life,
-      href: "",
-    },
-    {
-      id: "education",
-      label: keywordsTranslate?.education,
-      href: "",
+      label: "ساختار نیکان",
+      href: "/contact-us",
     },
     {
       id: "about_nikan",

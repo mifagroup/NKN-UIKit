@@ -4,7 +4,7 @@ import React from "react";
 
 const Booking = () => {
   return (
-    <div className="mb-[109px] bg-[#19B796] flex justify-between">
+    <div className="mb-[109px] bg-[#19B796] justify-between lg:flex hidden">
       <div className="pr-[140px] pl-[102px] pt-[56px] pb-[68px] flex flex-col gap-y-10">
         <div className="flex flex-col gap-y-1.5">
           <span className="text-[20px] text-white font-black">

@@ -14,8 +14,9 @@ const Hero = () => {
             لورم ایپسوم متن ساختگی با تولید سادگی از صنعت{" "}
           </span>
           <Link
-            href={""}
+            href={"https://pa.nikan365.ir/auth/login"}
             className="w-[346px] h-[57px] sm:bg-white bg-primary-main rounded-[15px] text-[24px] font-medium sm:text-[#626262] text-white flex items-center justify-center mt-5"
+            target="_blank"
           >
             عضویت در نیکان 365
           </Link>

@@ -10,8 +10,8 @@ const Contact = () => {
   const contactTranslate = dictionary?.contact_us;
 
   return (
-    <div className="w-full bg-[#A433A6] mb-[175px] flex justify-between">
-      <div className="max-w-[430px] mx-auto pb-[100px] pt-[90px] flex-1 flex flex-col gap-y-[15px]">
+    <div className="w-full bg-[#A433A6] lg:mb-[175px] mb-[42px] flex lg:flex-row flex-col justify-between">
+      <div className="lg:max-w-[430px] w-full xl:px-0 px-5 mx-auto xl:pb-[100px] pb-[46px] xl:pt-[90px] lg:pt-[50px] pt-5 flex-1 flex flex-col gap-y-[15px] lg:order-1 order-2">
         <div className="flex flex-col">
           <span className="text-[24px] font-black text-white tracking-tight">
             {contactTranslate?.contact_section.title}
@@ -56,15 +56,16 @@ const Contact = () => {
           </div>
         </div>
       </div>
-      <div className="relative">
+      <div className="relative lg:order-2 order-1">
         <Image
           src={"/images/contact.png"}
           alt="contact-us-image"
           width={727}
           height={534}
+          className="xl:w-[727px] lg:w-[600px] w-full lg:h-auto h-[534px] lg:object-contain object-cover object-[63%_0px]"
         />
-        <div className="absolute top-[50%] translate-y-[-50%] w-full text-center">
-          <span className="text-[96px] text-white font-black">
+        <div className="absolute lg:top-[50%] top-[65%] translate-y-[-50%] w-full text-center">
+          <span className="lg:text-[96px] text-[50px] text-white font-black">
             Get in touch
           </span>
         </div>

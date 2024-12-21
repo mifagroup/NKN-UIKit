@@ -17,8 +17,6 @@ const WhyNikan = ({
 
   const swiperRef2 = useRef<SwiperType>();
 
-  console.log(data);
-
   return (
     <div className="lg:pt-20 pt-[65px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
       <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] lg:!block !hidden">

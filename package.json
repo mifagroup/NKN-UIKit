@@ -15,16 +15,20 @@
     "@mui/icons-material": "^6.2.1",
     "@mui/material": "^6.1.7",
     "@mui/material-nextjs": "^6.1.7",
+    "@tanstack/react-query": "^5.62.8",
     "next": "15.0.3",
     "nextjs-toploader": "^3.7.15",
     "openapi-fetch": "^0.13.3",
     "openapi-react-query": "^0.2.8",
+    "qs": "^6.13.1",
     "react": "19.0.0-rc-66855b96-20241106",
     "react-dom": "19.0.0-rc-66855b96-20241106",
-    "swiper": "^11.1.14"
+    "swiper": "^11.1.14",
+    "use-debounce": "^10.0.4"
   },
   "devDependencies": {
     "@types/node": "^20",
+    "@types/qs": "^6.9.17",
     "@types/react": "^18",
     "@types/react-dom": "^18",
     "eslint": "^8",

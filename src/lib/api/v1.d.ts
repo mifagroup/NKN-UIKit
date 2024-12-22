@@ -984,13 +984,15 @@ export interface operations {
         };
         requestBody?: never;
         responses: {
-            /** @description categories items in retrieved successfully */
+            /** @description Categories items retrieved successfully */
             200: {
                 headers: {
                     [name: string]: unknown;
                 };
                 content: {
-                    "application/json": components["schemas"]["TermResource"];
+                    "application/json": {
+                        data?: components["schemas"]["TermResource"][];
+                    };
                 };
             };
             /** @description Unauthenticated */

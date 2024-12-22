@@ -29,6 +29,46 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/doctors": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get list of doctors
+         * @description Retrieve filtered data for doctors
+         */
+        get: operations["cd066ac893c261ef13773c81ebc8c53e"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/doctors/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get doctor information
+         * @description Returns doctor data
+         */
+        get: operations["e1197502d654b6b4b5f3d7894ee43e80"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/home": {
         parameters: {
             query?: never;
@@ -299,6 +339,37 @@ export interface components {
             is_footer?: boolean;
         };
         /**
+         * DoctorResource
+         * @description Doctor resource
+         */
+        DoctorResource: {
+            /** @description id of the doctor */
+            id: number;
+            /** @description first name of the doctor */
+            first_name: string;
+            /** @description code number of the doctor */
+            code: string;
+            /** @description last name of the doctor */
+            last_name: string;
+            /** @description full name of the doctor */
+            full_name: string;
+            /** @description sub title of the doctor */
+            sub_title: string;
+            /** @description short description url of the doctor */
+            short_description: string;
+            /** @description redirect link of the doctor */
+            redirect: string;
+            /** @description gender of doctor */
+            gender: string;
+            /** @description description of doctor */
+            description?: string;
+            image: components["schemas"]["FileResource"];
+            /** @description portfolio of doctor */
+            portfolio?: components["schemas"]["FileResource"][];
+            /** @description categories item of doctor */
+            terms: components["schemas"]["TermResource"][];
+        };
+        /**
          * FileResource
          * @description File resource
          */
@@ -521,6 +592,54 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    cd066ac893c261ef13773c81ebc8c53e: {
+        parameters: {
+            query?: {
+                /** @description search in data of doctors */
+                "filter[search]"?: string;
+                /** @description filter doctrs by gender (male or female) example:male */
+                "filter[gender]"?: string;
+                /** @description get id of terms and explode by , example:26,25 */
+                "filter[terms]"?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    e1197502d654b6b4b5f3d7894ee43e80: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description doctor id */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["DoctorResource"];
+                };
             };
         };
     };

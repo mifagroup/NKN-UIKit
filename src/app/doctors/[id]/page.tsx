@@ -22,7 +22,7 @@ const page = async (props: { params: Promise<{ id: string }> }) => {
         <Bio doctor={doctor} />
         {/* <Certifications /> */}
         {/* <Areas /> */}
-        <Patients />
+        <Patients doctor={doctor} />
         {/* <Prices /> */}
         <Blogs />
       </div>

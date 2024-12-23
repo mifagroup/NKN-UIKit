@@ -1,0 +1,13 @@
+.optic-slider-swiper .swiper-pagination {
+  @apply lg:bottom-5 bottom-0;
+}
+
+.optic-slider-swiper .swiper-pagination .swiper-pagination-bullet {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-[#ffffff] opacity-100;
+}
+
+.optic-slider-swiper
+  .swiper-pagination
+  .swiper-pagination-bullet.swiper-pagination-bullet-active {
+  @apply !w-[13.5px] !h-[13.5px] rounded-full bg-primary-main;
+}

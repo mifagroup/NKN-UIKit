@@ -1,10 +1,11 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const Branches = () => {
   return (
     <div className="lg:max-h-[630px] grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
-      <div className="relative">
+      <Link className="relative" href={"/branches/1"}>
         <Image
           src={"/images/aghdasieh-branch.png"}
           alt="aghdasieh-branch"
@@ -25,8 +26,8 @@ const Branches = () => {
             نیکان اقدسیه
           </span>
         </div>
-      </div>
-      <div className="relative">
+      </Link>
+      <Link className="relative" href={"/branches/1"}>
         <Image
           src={"/images/hakimieh-branch.png"}
           alt="aghdasieh-branch"
@@ -47,8 +48,8 @@ const Branches = () => {
             نیکان حکیمیه
           </span>
         </div>
-      </div>
-      <div className="relative">
+      </Link>
+      <Link href={"/branches/1"} className="relative">
         <Image
           src={"/images/second-branch.png"}
           alt="aghdasieh-branch"
@@ -69,8 +70,8 @@ const Branches = () => {
             نیکان ساختمان شماره دو
           </span>
         </div>
-      </div>
-      <div className="relative">
+      </Link>
+      <Link href={"/branches/1"} className="relative">
         <Image
           src={"/images/aghdasieh-west-branch.png"}
           alt="aghdasieh-branch"
@@ -91,7 +92,7 @@ const Branches = () => {
             نیکان ساختمان شماره دو
           </span>
         </div>
-      </div>
+      </Link>
     </div>
   );
 };

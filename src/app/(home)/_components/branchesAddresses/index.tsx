@@ -1,5 +1,6 @@
 import { Typography } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const BranchesAddresses = () => {
@@ -42,7 +43,10 @@ const BranchesAddresses = () => {
     <div className="flex flex-col bg-secondary-100">
       <div className="border-b border-secondary-500">
         <div className="container grid grid-cols-2 max-w-[1092px]">
-          <div className="lg:pt-[71px] lg:pb-[74px] pt-[60px] pb-[30px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]">
+          <Link
+            href={"/branches/1"}
+            className="lg:pt-[71px] lg:pb-[74px] pt-[60px] pb-[30px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]"
+          >
             <Image
               src={branches[0].image}
               alt={branches[0].title}
@@ -60,8 +64,11 @@ const BranchesAddresses = () => {
                 {branches[0]?.phone_number}
               </Typography>
             </div>
-          </div>
-          <div className="lg:pt-[66px] lg:pb-[74px] pt-[38px] flex lg:flex-row flex-col lg:gap-y-2 items-center gap-x-[26px] lg:pr-[70px]">
+          </Link>
+          <Link
+            href={"/branches/1"}
+            className="lg:pt-[66px] lg:pb-[74px] pt-[38px] flex lg:flex-row flex-col lg:gap-y-2 items-center gap-x-[26px] lg:pr-[70px]"
+          >
             <Image
               src={branches[1].image}
               alt={branches[1].title}
@@ -80,11 +87,14 @@ const BranchesAddresses = () => {
                 {branches[1]?.phone_number}
               </Typography>
             </div>
-          </div>
+          </Link>
         </div>
       </div>
       <div className="container grid grid-cols-2 max-w-[1092px]">
-        <div className="lg:pt-[50px] pt-[48px] lg:pb-[69px] pb-[46px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]">
+        <Link
+          href={"/branches/1"}
+          className="lg:pt-[50px] pt-[48px] lg:pb-[69px] pb-[46px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]"
+        >
           <Image
             src={branches[2].image}
             alt={branches[2].title}
@@ -103,8 +113,11 @@ const BranchesAddresses = () => {
               {branches[2]?.phone_number}
             </Typography>
           </div>
-        </div>
-        <div className="lg:pt-[64px] pt-[55px] lg:pb-[74px] pb-[46px] lg:pr-[55px] flex lg:flex-row flex-col lg:gap-y-2 gap-y-3.5 items-center gap-x-[16px]">
+        </Link>
+        <Link
+          href={"/branches/1"}
+          className="lg:pt-[64px] pt-[55px] lg:pb-[74px] pb-[46px] lg:pr-[55px] flex lg:flex-row flex-col lg:gap-y-2 gap-y-3.5 items-center gap-x-[16px]"
+        >
           <Image
             src={branches[3].image}
             alt={branches[3].title}
@@ -123,7 +136,7 @@ const BranchesAddresses = () => {
               {branches[3]?.phone_number}
             </Typography>
           </div>
-        </div>
+        </Link>
       </div>
     </div>
   );

@@ -1,14 +1,20 @@
+import { components } from "@/lib/api/v1";
 import { Divider } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
-const Booking = () => {
+const Booking = ({
+  doctor,
+}: {
+  doctor: components["schemas"]["DoctorResource"];
+}) => {
   return (
     <div className="mb-[109px] bg-[#19B796] justify-between lg:flex hidden">
       <div className="pr-[140px] pl-[102px] pt-[56px] pb-[68px] flex flex-col gap-y-10">
         <div className="flex flex-col gap-y-1.5">
           <span className="text-[20px] text-white font-black">
-            نوبت حضوری دکتر پایور در بیمارستان نیکان
+            نوبت حضوری {doctor.full_name} در بیمارستان نیکان
           </span>
           <span className="text-[15px] font-light text-white">
             تهران، اقدسیه ، ابتدای بلوار ارتش، ورودی اراج ، خیابان ۲۲ بهمن ،روبه
@@ -33,9 +39,13 @@ const Booking = () => {
               روزها و ساعات پذیرش: همه روزه از ساعت 08:00 الی 24:00
             </span>
           </div>
-          <button className="bg-white w-full h-[56px] rounded-[14px] text-[20px] text-[#657975] font-semibold shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)]">
-            تعیین وقت و نوبت از دکتر اصلان پایور
-          </button>
+          <Link
+            href={doctor.redirect}
+            target="_blank"
+            className="bg-white w-full h-[56px] rounded-[14px] text-[20px] text-[#657975] font-semibold shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"
+          >
+            تعیین وقت و نوبت از {doctor.full_name}
+          </Link>
         </div>
       </div>
       <div className="relative">

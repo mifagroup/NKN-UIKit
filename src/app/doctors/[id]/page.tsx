@@ -26,7 +26,7 @@ const page = async (props: { params: Promise<{ id: string }> }) => {
         {/* <Prices /> */}
         <Blogs />
       </div>
-      <Booking />
+      <Booking doctor={doctor} />
     </div>
   );
 };

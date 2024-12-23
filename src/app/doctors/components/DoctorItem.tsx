@@ -12,17 +12,22 @@ const DoctorItem = ({
   return (
     <div className="flex justify-between items-stretch py-5">
       <div className="flex items-center gap-x-3.5">
-        <Image
-          src={doctor.image.original_url ?? ""}
-          alt="doc"
-          width={144}
-          height={188}
-          className="h-[188px] w-[144px]"
-        />
+        <Link href={`/doctors/${doctor.id}`}>
+          <Image
+            src={doctor.image.original_url ?? ""}
+            alt="doc"
+            width={144}
+            height={188}
+            className="h-[188px] w-[144px]"
+          />
+        </Link>
         <div className="flex flex-col">
-          <span className="text-base font-bold text-black">
+          <Link
+            href={`/doctors/${doctor.id}`}
+            className="text-base font-bold text-black"
+          >
             {doctor.full_name}
-          </span>
+          </Link>
           <span className="text-base font-medium text-black">
             {doctor.sub_title}
           </span>
@@ -56,7 +61,10 @@ const DoctorItem = ({
           ویزیت و مشاوره آنلاین پزشک
         </button>
         <div className="pt-2.5 flex items-center gap-x-[15px] justify-center">
-          <Link href={""} className="text-[12px] font-extralight text-black">
+          <Link
+            href={`/doctors/${doctor.id}`}
+            className="text-[12px] font-extralight text-black"
+          >
             بازدید صفحه پزشک
           </Link>
           <Divider orientation="vertical" className="!bg-[#D9D9D9]" />

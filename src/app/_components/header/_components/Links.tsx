@@ -28,6 +28,11 @@ export const links = [
     label: "درباره نیکان",
     href: "/about-us",
   },
+  {
+    id: "blogs",
+    label: "مقالات",
+    href: "/blogs",
+  },
 ];
 
 const Links = () => {

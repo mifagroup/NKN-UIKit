@@ -1,5 +1,7 @@
+import { components } from "@/lib/api/v1";
 import { Button, Divider } from "@mui/material";
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const branches = [
@@ -37,11 +39,20 @@ const branches = [
   },
 ];
 
-const Branches = () => {
+const Branches = async () => {
+  const hospitals: components["schemas"]["HospitalResource"][] = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/hospitals`,
+    {
+      cache: "no-cache",
+    }
+  )
+    .then((res) => res.json())
+    .then((res) => res.data);
+
   return (
     <div className="max-w-[1049px] container lg:pt-5 lg:pb-[115px] pb-[84px]">
       <div className="grid lg:grid-cols-1 md:grid-cols-2">
-        {branches?.map((branch, index) => (
+        {hospitals?.map((branch, index) => (
           <div
             key={branch.id}
             className={`lg:pb-[33px] lg:pt-[60px] pt-[50px] ${
@@ -50,7 +61,10 @@ const Branches = () => {
           >
             <div className="flex lg:flex-row flex-col lg:items-end gap-x-[15px] gap-y-2.5">
               <Image
-                src={branch.icon}
+                src={
+                  branch.thumbnail?.original_url ??
+                  "/images/nikan-aghdasieh-icon.png"
+                }
                 alt="icon"
                 width={116}
                 height={97}
@@ -59,7 +73,7 @@ const Branches = () => {
               />
               <div className="flex lg:gap-y-5 gap-y-1 flex-col">
                 <span className="text-[20px] text-[#696969] font-extrabold">
-                  {branch.title}
+                  بیمارستان {branch.name}
                 </span>
                 <span className="lg:text-[16px] text-[12px] font-extralight text-[#696969]">
                   {branch.address}
@@ -68,11 +82,19 @@ const Branches = () => {
             </div>
             <div className="flex flex-col gap-y-7 max-w-[375px]">
               <div className="flex gap-x-3">
-                <Button className="lg:!w-[200px] !w-[172px] lg:!h-[39px] !h-[33px] !bg-[#EBEBEB] !text-black !rounded-lg lg:!font-normal !font-light">
+                <Button
+                  LinkComponent={Link}
+                  href={`/doctors?hospital=${branch.id}`}
+                  className="lg:!w-[200px] !w-[172px] lg:!h-[39px] !h-[33px] !bg-[#EBEBEB] !text-black !rounded-lg lg:!font-normal !font-light"
+                >
                   نوبت دهی آنلاین
                 </Button>
-                <Button className="lg:!w-[162px] !w-[139px] lg:!h-[39px] !h-[33px] !bg-[#31D1B0] !text-white !rounded-lg !flex !items-center !gap-x-2 !pr-[20px] !pl-0 lg:!font-normal !font-light">
-                  {branch.number}
+                <Button
+                  LinkComponent={Link}
+                  href={`tel:${branch.fax}`}
+                  className="lg:!w-[162px] !w-[139px] lg:!h-[39px] !h-[33px] !bg-[#31D1B0] !text-white !rounded-lg !flex !items-center !gap-x-2 !pr-[20px] !pl-0 lg:!font-normal !font-light"
+                >
+                  {branch.fax}
                   <Image
                     src={"/images/phone-icon.png"}
                     alt="phone-icon"
@@ -82,9 +104,12 @@ const Branches = () => {
                 </Button>
               </div>
               <div className="flex items-center justify-between">
-                <span className="text-[12px] text-black font-extralight">
+                <Link
+                  href={branch.address_link ?? ""}
+                  className="text-[12px] text-black font-extralight"
+                >
                   مسیریابی
-                </span>
+                </Link>
                 <Divider
                   orientation="vertical"
                   className="!w-[1px] !h-[18px] !bg-primary-main"
@@ -96,16 +121,22 @@ const Branches = () => {
                   orientation="vertical"
                   className="!w-[1px] !h-[18px] !bg-primary-main"
                 />
-                <span className="text-[12px] text-black font-extralight">
+                <Link
+                  href={`tel:${branch.fax}`}
+                  className="text-[12px] text-black font-extralight"
+                >
                   فکس
-                </span>
+                </Link>
                 <Divider
                   orientation="vertical"
                   className="!w-[1px] !h-[18px] !bg-primary-main"
                 />
-                <span className="text-[12px] text-black font-extralight">
+                <Link
+                  href={`mailto:${branch.email}`}
+                  className="text-[12px] text-black font-extralight"
+                >
                   ایمیل
-                </span>
+                </Link>
               </div>
             </div>
           </div>

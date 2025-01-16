@@ -1,116 +1,17 @@
+"use client";
 import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
-import React from "react";
-
-export const categories = [
-  {
-    id: 1,
-    title: "طب اورژانس",
-  },
-  {
-    id: 2,
-    title: "کلینیک خواب",
-  },
-  {
-    id: 3,
-    title: "دندان پزشکی",
-  },
-  {
-    id: 4,
-    title: "سرطان روده",
-  },
-  {
-    id: 5,
-    title: "تعویض مفصل زانو",
-  },
-  {
-    id: 6,
-    title: "زخم پای دیابتی",
-  },
-  {
-    id: 7,
-    title: "فیزیوتراپی در منزل",
-  },
-  {
-    id: 8,
-    title: "پوکی استخوان",
-  },
-  {
-    id: 9,
-    title: "آرتریت روماتوئید",
-  },
-  {
-    id: 10,
-    title: "آنژیوگرافی",
-  },
-  {
-    id: 11,
-    title: "کرونا و کویید 19",
-  },
-  {
-    id: 12,
-    title: "طب اورژانس",
-  },
-  {
-    id: 13,
-    title: "کلینیک خواب",
-  },
-  {
-    id: 14,
-    title: "دندان پزشکی",
-  },
-  {
-    id: 15,
-    title: "سرطان روده",
-  },
-  {
-    id: 16,
-    title: "دندان پزشکی",
-  },
-  {
-    id: 17,
-    title: "سرطان روده",
-  },
-  {
-    id: 18,
-    title: "تعویض مفصل زانو",
-  },
-  {
-    id: 19,
-    title: "زخم پای دیابتی",
-  },
-  {
-    id: 20,
-    title: "فیزیوتراپی در منزل",
-  },
-  {
-    id: 21,
-    title: "انکولوژی و مراقبت ها",
-  },
-  {
-    id: 22,
-    title: "کرونا و کویید 19",
-  },
-  {
-    id: 23,
-    title: "طب اورژانس",
-  },
-  {
-    id: 24,
-    title: "کلینیک خواب",
-  },
-  {
-    id: 25,
-    title: "دندان پزشکی",
-  },
-];
+import Link from "next/link";
+import React, { useState } from "react";
 
 const SearchDoctors = ({
   terms,
 }: {
   terms: components["schemas"]["TermResource"][];
 }) => {
+  const [search, setSearch] = useState("");
+
   return (
     <div className="bg-secondary-50 md:max-h-[416px] max-h-[333px]  lg:pt-0 pt-[30px] lg:px-0 px-5">
       <div className="relative flex lg:flex-row flex-col justify-between container max-w-[1108px] lg:items-start items-end">
@@ -123,6 +24,7 @@ const SearchDoctors = ({
               type="text"
               className="w-full lg:!text-[32px] !text-[14px] lg:placeholder:!text-[32px] placeholder:!text-[14px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
               placeholder={"زخم پای دیابتی...."}
+              onChange={(e) => setSearch(e.target.value)}
             />
             <Image
               src={"/images/search-icon.png"}
@@ -133,15 +35,26 @@ const SearchDoctors = ({
             />
           </div>
           <div className="gap-x-7 lg:grid hidden w-[790px] gap-y-5 grid-cols-5">
-            {terms.map((cat) => (
-              <div className="flex flex-col gap-y-5" key={cat.id}>
-                <Typography className="!text-base !text-secondary-800 !font-light whitespace-nowrap">
-                  {cat.title}
-                </Typography>
-              </div>
-            ))}
+            {terms
+              .filter((cat) => cat.title?.includes(search))
+              .map((cat) => (
+                <Link
+                  href={`/doctors?terms=${cat.id}`}
+                  className="flex flex-col gap-y-5"
+                  key={cat.id}
+                >
+                  <Typography className="!text-base !text-secondary-800 !font-light whitespace-nowrap">
+                    {cat.title}
+                  </Typography>
+                </Link>
+              ))}
           </div>
-          <Button className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!block !hidden">
+          <Button
+            LinkComponent={Link}
+            href="https://pa.nikan365.ir/online-turning?selectedTab=0&turnTypeId=1"
+            className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!flex !hidden justify-center items-center"
+            target="_blank"
+          >
             تعیین نوبت
           </Button>
         </div>

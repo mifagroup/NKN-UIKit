@@ -30,15 +30,17 @@ const Page = async () => {
 
   const terms = homeResponse?.main_terms;
 
+  const hospitals = homeResponse?.hospitals;
+
   return (
     <div className="">
       {mainSlider && <Hero data={mainSlider} />}
       {nikan365Slider && <Nikan365Intro data={nikan365Slider} />}
-      <Branches />
+      <Branches hospitals={hospitals} />
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}
       <Blogs />
-      <BranchesAddresses />
+      <BranchesAddresses hospitals={hospitals} />
     </div>
   );
 };

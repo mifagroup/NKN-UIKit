@@ -5,20 +5,26 @@ import { components } from "@/lib/api/v1";
 
 const DoctorsList = async ({
   doctors,
+  hospitals,
 }: {
   doctors: components["schemas"]["DoctorResource"][];
+  hospitals: { id: number; name: string }[];
 }) => {
   return (
     <div className="bg-white flex-1 rounded-[16px] h-fit">
-      <Search />
-      {doctors?.map((doctor, index) => (
-        <div key={doctor.id} className="px-[26px]">
-          <DoctorItem doctor={doctor} />
-          {index !== doctors.length - 1 && (
-            <Divider className="!bg-[#E9E9E9]" />
-          )}
-        </div>
-      ))}
+      <Search hospitals={hospitals} />
+      {doctors?.length ? (
+        doctors?.map((doctor, index) => (
+          <div key={doctor.id} className="px-[26px]">
+            <DoctorItem doctor={doctor} />
+            {index !== doctors.length - 1 && (
+              <Divider className="!bg-[#E9E9E9]" />
+            )}
+          </div>
+        ))
+      ) : (
+        <div className="p-10 text-center">دکتری یافت نشد...</div>
+      )}
     </div>
   );
 };

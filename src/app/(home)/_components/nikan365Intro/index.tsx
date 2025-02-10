@@ -20,7 +20,7 @@ const Nikan365Intro = ({
           quality={100}
         />
         <div className="flex flex-col gap-y-0.5">
-          <Typography className="xl:!text-[36px] !text-[26px] !font-extrabold !text-secondary-600">
+          <Typography component={"h1"} className="xl:!text-[36px] !text-[26px] !font-extrabold !text-secondary-600">
             {data?.name}
           </Typography>
           <Typography className="!font-light !text-secondary-200">

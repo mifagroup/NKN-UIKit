@@ -13,7 +13,7 @@ const OpticServices = () => {
   const swiperRef = useRef<SwiperType>();
 
   return (
-    <div className="items-center justify-between flex pt-[106px]">
+    <div className="items-center  justify-between flex pt-[106px]">
       <div className="flex flex-col justify-center items-center flex-grow">
         <div className="max-w-[430px] w-[430px] flex flex-col gap-y-2">
           <Image

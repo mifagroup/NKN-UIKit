@@ -28,7 +28,7 @@ const NikanStatement = () => {
         height={452}
         className="mt-10 lg:mb-24 mb-10 object-cover"
       />
-      <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 grid-cols-3 lg:gap-8 gap-4 lg:px-0 px-5">
+      <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 lg:px-0 px-5">
         <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
           <Image src={"/images/calendar.png"} alt="" width={97} height={99} />
           <span className="text-base font-bold text-[#616161] text-center">

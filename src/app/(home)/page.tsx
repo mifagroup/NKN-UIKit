@@ -4,6 +4,7 @@ import {
   BranchesAddresses,
   Hero,
   Nikan365Intro,
+  NikanStatement,
   SearchDoctors,
   WhyNikan,
 } from "./_components";
@@ -36,11 +37,12 @@ const Page = async () => {
     <div className="">
       {mainSlider && <Hero data={mainSlider} />}
       {nikan365Slider && <Nikan365Intro data={nikan365Slider} />}
-      <Branches hospitals={hospitals} />
+      <Branches hospitals={hospitals ?? []} />
+      <NikanStatement />
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}
       <Blogs />
-      <BranchesAddresses hospitals={hospitals} />
+      <BranchesAddresses />
     </div>
   );
 };

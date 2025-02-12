@@ -1,0 +1,88 @@
+import Image from "next/image";
+import React from "react";
+
+const NikanStatement = () => {
+  return (
+    <div className="max-w-[1236px] container mt-[35px] lg:mb-[70px] mb-5">
+      <div className="flex flex-col gap-y-[15px] lg:px-0 px-5">
+        <h2 className="text-[25px] font-bold text-[#5b5b5b] text-center">
+          بیانیه خانواده درمانی نیکان
+        </h2>
+        <p className="max-w-[805px] mx-auto leading-[32.5px] font-light lg:text-center text-justify">
+          نیکان در کلام و صفات جمع خوبی‌هاست و &quot;خوب بودن&quot; روح نیکان
+          است.
+          <br /> تجربه ما در مجموعه بیمارستا‌ن‌های نیکان همواره به ما این جمله
+          را یادآور می‌شود که &quot;زندگی هنوز زیباست و زیبایی انتها ندارد&quot;
+          و تلاش همیشگی و باور قلبی ما اشاعه همین زیبایی‌هاست. ما در مجموعه
+          نیکان با هم عهد بسته‌ایم که با تعهد و تخصصِ آمیخته با عشق میزبان خوبی
+          برای مهمانان عزیزمان باشیم.بیمارستان نیکان در راستای التیام آلام
+          بیماران، خدمات بهداشتی درمانی ایمن و اثر بخش را در حوزه‌های تخصصی و
+          فوق تخصصی ارائه می‌دهد. این خدمات، با کیفیت، در حداقل زمان و فارغ از
+          سن، جنس، نژاد، رنگ، مذهب و یا موقعیت اجتماعی افراد ارائه می‌شود.
+        </p>
+      </div>
+      <Image
+        src={"/images/statement-image.png"}
+        alt=""
+        width={1236}
+        height={452}
+        className="mt-10 lg:mb-24 mb-10 object-cover"
+      />
+      <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 grid-cols-3 lg:gap-8 gap-4 lg:px-0 px-5">
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image src={"/images/calendar.png"} alt="" width={97} height={99} />
+          <span className="text-base font-bold text-[#616161] text-center">
+            برنامه کلینیک‌های تخصصی
+          </span>
+        </div>
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image
+            src={"/images/appointment.png"}
+            alt=""
+            width={136}
+            height={130}
+          />
+          <span className="text-base font-bold text-[#616161] text-center">
+            نوبت دهی
+          </span>
+        </div>
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image src={"/images/checkup.png"} alt="" width={84} height={81} />
+          <span className="text-base font-bold text-[#616161] text-center">
+            پایش سلامت (چکاپ)
+          </span>
+        </div>
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image
+            src={"/images/answer-online.png"}
+            alt=""
+            width={92}
+            height={78}
+          />
+          <span className="text-base font-bold text-[#616161] text-center">
+            جواب دهی انلاین
+          </span>
+        </div>
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image
+            src={"/images/pishpaziresh.png"}
+            alt=""
+            width={85}
+            height={82}
+          />
+          <span className="text-base font-bold text-[#616161] text-center">
+            سامانه پیش پذیرش
+          </span>
+        </div>
+        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+          <Image src={"/images/homecare.png"} alt="" width={76} height={81} />
+          <span className="text-base font-bold text-[#616161] text-center">
+            خدمات درمانی در منزل
+          </span>
+        </div>
+      </div>
+    </div>
+  );
+};
+
+export default NikanStatement;

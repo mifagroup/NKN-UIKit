@@ -6,7 +6,8 @@
     "dev": "next dev --turbopack --port 9630",
     "build": "next build",
     "start": "next start --port 9630",
-    "lint": "next lint"
+    "lint": "next lint",
+    "generate-openapi": "npx openapi-typescript https://api.mifadev.ir/docs/api-docs.json -o ./src/lib/api/v1.d.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",

@@ -1,23 +1,53 @@
+import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import React from "react";
+import { BlogsSlider } from "./components";
+import qs from "qs";
 
-const page = () => {
+const page = async (props: { params: Promise<{ slug: string }> }) => {
+  const params = await props.params;
+
+  const data = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs/${params.slug}`,
+    {
+      cache: "no-cache",
+    }
+  ).then((res) => res.json());
+
+  const blog: components["schemas"]["BlogResource"] = data?.data;
+
+  const formattedParams = qs.stringify({
+    filter: {
+      user_id: blog.user?.id,
+    },
+    sort: "created_at",
+  });
+
+  const blogs = await fetch(
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}`,
+    {
+      cache: "no-cache",
+    }
+  ).then((res) => res.json());
+
+  const blogsList: components["schemas"]["BlogResource"][] = blogs?.data ?? [];
+
   return (
     <div className="max-w-[1106px] container mt-[88px]">
       <div className="flex flex-col gap-y-[15px]">
         <Image
-          src={"/images/single-blog.png"}
-          alt=""
+          src={blog?.main_image?.[0]?.original_url ?? ""}
+          alt={blog?.title ?? ""}
           width={1106}
           height={489}
         />
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-y-1">
             <span className="text-[25px] text-[#3F3F3F] font-bold">
-              بیش از بیست و پنج درصد بیماران مرد هستند
+              {blog?.title}
             </span>
             <span className="text-[20px] text-[#3F3F3F]">
-              گفتگو با دکتر محرابی در خصوص پراکندگی زن و مرد
+              {blog?.sub_title}
             </span>
           </div>
           <div className="flex items-center lg:gap-x-3 lg:justify-start justify-between gap-x-7">
@@ -30,7 +60,14 @@ const page = () => {
                 className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
               />
               <span className="font-extralight lg:text-[15px] text-[11px]">
-                20 شهریور 1403
+                {new Date(blog?.published_at ?? Date.now()).toLocaleDateString(
+                  "fa-IR",
+                  {
+                    day: "2-digit",
+                    month: "long",
+                    year: "numeric",
+                  }
+                )}
               </span>
             </div>
             <div className="flex gap-x-2 items-center">
@@ -42,21 +79,25 @@ const page = () => {
                 className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
               />
               <span className="font-extralight lg:text-[15px] text-[11px]">
-                هشت دقیقه
+                {blog?.duration} دقیقه
               </span>
             </div>
-            <Image
+            {/* <Image
               src={"/images/share-icon.png"}
               alt="share"
               width={21}
               height={18}
               className="lg:h-[21px] h-[13px] lg:w-[21px] w-[14px]"
-            />
+            /> */}
           </div>
         </div>
       </div>
       <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]" />
-      <div className="text-[18px] text-[#272727]">
+      <div
+        className="text-[18px] text-[#272727]"
+        dangerouslySetInnerHTML={{ __html: blog?.description ?? "" }}
+      />
+      {/* <div className="text-[18px] text-[#272727]">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
         از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
         سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
@@ -158,7 +199,7 @@ const page = () => {
         می‌باشد. برای دریافت خدمات پزشکی، پرستاری، چکاپ، آزمایشگاهی، فالو آپ،
         تصویر برداری، اجاره و فروش تجهیزات پزشکی، فیزیوتراپی و خدمات گردشگری
         سلامت و کسب اطلاعات بیشتر با شماره ۰۹۹۲۱۵۸۲۲۳۸ تماس بگیرید.
-      </div>
+      </div> */}
 
       <div className="w-full mt-10 mb-[91px] flex gap-x-9 pr-[47px] border-t-[6px] border-t-[#F56F95] bg-[#F1F1F1] max-h-[131px]">
         <Image
@@ -208,32 +249,7 @@ const page = () => {
           />
         </div>
       </div>
-      <div className="mt-[70px] mb-[100px] grid grid-cols-3 gap-6">
-        {[...Array(3)].map((_, index) => (
-          <div
-            key={index}
-            className="flex flex-col gap-y-[5px] border border-[#31D1B0]"
-          >
-            <Image
-              src={"/images/single-blog-2.png"}
-              alt=""
-              width={353}
-              height={263}
-            />
-            <div className="flex flex-col gap-y-2 pr-2.5 pb-10">
-              <span className="text-[12px] font-bold text-[#3f3f3f]">
-                بیش از بیست و پنج درصد بیماران مرد هستند
-              </span>
-              <span className="text-[11px] text-[#3f3f3f]">
-                گفتگو با دکتر محرابی در خصوص پراکندگی زن و مرد
-              </span>
-              <span className="text-[12px] font-extralight text-[#272727]">
-                لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ....
-              </span>
-            </div>
-          </div>
-        ))}
-      </div>
+      <BlogsSlider blogs={blogsList} />
     </div>
   );
 };

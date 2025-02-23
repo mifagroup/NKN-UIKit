@@ -1,39 +1,36 @@
+"use client";
 import { components } from "@/lib/api/v1";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
+import React, { useEffect } from "react";
 import Blogs from "./Blogs";
-
-const terms = [
-  {
-    id: 1,
-    title: "طب اورژانس",
-  },
-  {
-    id: 2,
-    title: "کلینیک خواب",
-  },
-  {
-    id: 3,
-    title: "دندان پزشکی",
-  },
-  {
-    id: 4,
-    title: "سرطان روده",
-  },
-  {
-    id: 5,
-    title: "تعویض مفصل زانو",
-  },
-];
+import { useFetch } from "@/utils/clientRequest";
+import { useDebounce } from "use-debounce";
 
 type BlogsListProps = {
   blogs: components["schemas"]["BlogResource"][];
 };
 
 const BlogsList = (props: BlogsListProps) => {
+  const [searchValue, setSearchValue] = React.useState("");
+
+  const [value] = useDebounce(searchValue, 500);
+
   const { blogs } = props;
+
+  const { data } = useFetch().useQuery("get", "/terms", {
+    params: {
+      query: {
+        per_page: 10,
+        "filter[search]": value,
+      },
+    },
+  });
+
+  const terms = data?.data;
+
+  console.log(terms);
 
   return (
     <div className="flex lg:flex-row flex-col gap-x-[60px] lg:pt-[88px] pt-10 gap-y-20 lg:px-0 px-5">
@@ -110,6 +107,7 @@ const BlogsList = (props: BlogsListProps) => {
               type="text"
               placeholder="زخم پای دیابتی...."
               className="text-[20px] text-primary-main placeholder:text-primary-main focus-visible:outline-none"
+              onChange={(e) => setSearchValue(e.target.value)}
             />
             <Image
               src={"/images/search-icon.png"}
@@ -118,30 +116,16 @@ const BlogsList = (props: BlogsListProps) => {
               height={47}
             />
           </div>
-          <div className="flex justify-between">
-            <div className="flex flex-col gap-y-2">
-              {terms?.map((term) => (
-                <Link
-                  href={""}
-                  key={term.id}
-                  className="text-[#5b5b5b] font-light"
-                >
-                  {term.title}
-                </Link>
-              ))}
-            </div>
-            <Divider orientation="vertical" />
-            <div className="flex flex-col gap-y-2">
-              {terms?.map((term) => (
-                <Link
-                  href={""}
-                  key={term.id}
-                  className="text-[#5b5b5b] font-light"
-                >
-                  {term.title}
-                </Link>
-              ))}
-            </div>
+          <div className="grid grid-cols-2 gap-y-2">
+            {terms?.map((term) => (
+              <Link
+                href={""}
+                key={term.id}
+                className="text-[#5b5b5b] font-light"
+              >
+                {term.title}
+              </Link>
+            ))}
           </div>
         </div>
       </div>

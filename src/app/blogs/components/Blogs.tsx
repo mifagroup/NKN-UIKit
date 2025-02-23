@@ -44,7 +44,7 @@ const Blogs = ({
           className="flex lg:flex-row flex-col items-center gap-x-7"
         >
           <Image
-            src={blog?.main_image?.[0]?.original_url ?? ""}
+            src={blog?.main_image?.original_url ?? ""}
             alt={blog.title ?? ""}
             width={214}
             height={160}

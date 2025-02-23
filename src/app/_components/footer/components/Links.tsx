@@ -16,7 +16,7 @@ const Links = ({
           <Link
             href={link.href}
             key={link.id}
-            className="text-[#F0F0F0] font-semibold"
+            className="text-[#F0F0F0] font-semibold xl:text-sm text-xs"
           >
             {link.label}
           </Link>

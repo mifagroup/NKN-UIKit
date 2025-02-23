@@ -61,10 +61,10 @@ const MenuDrawer = () => {
                 {greaterThanLg && <Links />}
               </div>
               <div className="flex items-center gap-x-[22px]">
-                <div className="flex items-center gap-x-1.5">
+                {/* <div className="flex items-center gap-x-1.5">
                   <LangSwicher />
                   <LoginButton />
-                </div>
+                </div> */}
                 <CloseIcon onClick={toggleDrawer(false)} />
               </div>
             </div>
@@ -104,7 +104,7 @@ const MenuDrawer = () => {
               </span>
             </Link>
           </div>
-          <div className="flex-grow flex flex-col">
+          <div className="flex-grow flex flex-col gap-y-5 pb-5">
             <div className="flex flex-col">
               {links?.map((link) => (
                 <Link

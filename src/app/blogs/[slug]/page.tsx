@@ -36,10 +36,11 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
     <div className="max-w-[1106px] container mt-[88px]">
       <div className="flex flex-col gap-y-[15px]">
         <Image
-          src={blog?.main_image?.[0]?.original_url ?? ""}
+          src={blog?.main_image?.original_url ?? ""}
           alt={blog?.title ?? ""}
           width={1106}
           height={489}
+          className="lg:!h-[489px] lg:!w-[1106px] object-cover"
         />
         <div className="flex justify-between items-center">
           <div className="flex flex-col gap-y-1">

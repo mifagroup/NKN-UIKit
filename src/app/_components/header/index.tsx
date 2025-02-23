@@ -31,10 +31,10 @@ const Header = () => {
             {greaterThanLg && <Links />}
           </div>
           <div className="flex items-center gap-x-[22px]">
-            <div className="flex items-center gap-x-1.5">
+            {/* <div className="flex items-center gap-x-1.5">
               <LangSwicher />
               <LoginButton />
-            </div>
+            </div> */}
             <MenuDrawer />
           </div>
         </div>

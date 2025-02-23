@@ -16,6 +16,8 @@ type TopBlogProps = {
 const TopBlog = (props: TopBlogProps) => {
   const { slider } = props;
 
+  console.log(slider);
+
   return (
     <Swiper
       modules={[Autoplay]}
@@ -28,7 +30,7 @@ const TopBlog = (props: TopBlogProps) => {
         <SwiperSlide key={blog.id}>
           <div className="lg:border border-primary-main flex lg:flex-row flex-col">
             <Image
-              src={blog?.main_image?.[0]?.original_url ?? ""}
+              src={blog?.main_image?.original_url ?? ""}
               alt={blog.title ?? ""}
               width={553}
               height={489}

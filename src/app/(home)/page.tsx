@@ -33,6 +33,8 @@ const Page = async () => {
 
   const hospitals = homeResponse?.hospitals;
 
+  const blogs = homeResponse?.blogs ?? [];
+
   return (
     <div className="">
       {mainSlider && <Hero data={mainSlider} />}
@@ -41,7 +43,7 @@ const Page = async () => {
       <NikanStatement />
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}
-      <Blogs />
+      <Blogs blogs={blogs} />
       <BranchesAddresses />
     </div>
   );

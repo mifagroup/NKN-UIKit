@@ -33,6 +33,26 @@ export const links = [
     label: "مقالات",
     href: "/blogs",
   },
+  {
+    id: "cooperation",
+    label: "درخواست همکاری",
+    href: "/cooperation",
+  },
+  {
+    id: "insurances",
+    label: "بیمه‌ها",
+    href: "/insurances",
+  },
+  {
+    id: "international",
+    label: "واحد بین‌الملل",
+    href: "/nikan-international",
+  },
+  {
+    id: "social-responsibility",
+    label: "مسئولیت اجتماعی",
+    href: "/social-responsibility",
+  },
 ];
 
 const Links = () => {
@@ -42,7 +62,7 @@ const Links = () => {
         <Link
           href={link.href}
           key={link.id}
-          className="text-base text-text-600 font-semibold"
+          className="text-sm text-text-600 font-semibold"
         >
           {link.label}
         </Link>

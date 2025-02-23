@@ -24,10 +24,10 @@ const Footer = async () => {
         <div className="container max-w-[1231px] lg:px-0 px-5">
           <div className="flex gap-x-[66px] py-[60px] items-start lg:justify-between justify-center">
             <div className="flex flex-col gap-y-[22px]">
-              <div className="flex gap-x-1.5">
+              {/* <div className="flex gap-x-1.5">
                 <LangSwicher />
                 <LoginButton />
-              </div>
+              </div> */}
               <ExtraButtons />
             </div>
             {footerTerms && <Links footerTerms={footerTerms} />}

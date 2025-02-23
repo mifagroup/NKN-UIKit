@@ -1,12 +1,19 @@
 "use client";
 
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const ExtraButtons = () => {
   return (
     <div className="flex flex-col gap-y-3">
-      <button className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]">
+      <Link
+        href={
+          "https://pa.nikan365.ir/online-turning?selectedTab=0&turnTypeId=1"
+        }
+        target="_blank"
+        className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]"
+      >
         <Image
           src={"/images/nobat-icon.png"}
           alt="nobat"
@@ -16,8 +23,11 @@ const ExtraButtons = () => {
         <span className="text-[15px] font-extralight text-white">
           تعیین نوبت
         </span>
-      </button>
-      <button className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]">
+      </Link>
+      <Link
+        href={"/doctors"}
+        className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]"
+      >
         <Image
           src={"/images/search-doctor.png"}
           alt="search"
@@ -27,7 +37,7 @@ const ExtraButtons = () => {
         <span className="text-[15px] font-extralight text-white">
           جستجو پزشکان
         </span>
-      </button>
+      </Link>
       <button className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]">
         <Image
           src={"/images/nikan-blog-icon.png"}

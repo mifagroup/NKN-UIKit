@@ -4,9 +4,12 @@ import { Button, Typography } from "@mui/material";
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
-import "swiper/css";
 import Image from "next/image";
 import { components } from "@/lib/api/v1";
+import { Autoplay } from "swiper/modules";
+
+import "swiper/css";
+import "swiper/css/autoplay";
 
 const WhyNikan = ({
   data,
@@ -14,8 +17,18 @@ const WhyNikan = ({
   data: components["schemas"]["SliderResource"];
 }) => {
   const swiperRef = useRef<SwiperType>();
-
   const swiperRef2 = useRef<SwiperType>();
+
+  // Function to chunk the slides array into groups of 3
+  const chunkArray = (array: any[], size: number) => {
+    const result = [];
+    for (let i = 0; i < array.length; i += size) {
+      result.push(array.slice(i, i + size));
+    }
+    return result;
+  };
+
+  const chunkedSlides = chunkArray(data?.slides ?? [], 3);
 
   return (
     <div className="lg:pt-20 pt-[65px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
@@ -64,32 +77,42 @@ const WhyNikan = ({
               swiperRef.current = swiper;
             }}
             loop
-            slidesPerView={3}
+            slidesPerView={1}
             direction="vertical"
             spaceBetween={30}
             className="max-h-[680px]"
+            modules={[Autoplay]}
+            autoplay={{
+              delay: 5000,
+            }}
+            allowTouchMove={false}
           >
-            {data?.slides?.concat(data?.slides)?.map((item, index) => (
+            {chunkedSlides.map((chunk, index) => (
               <SwiperSlide key={index}>
-                <div className="flex gap-x-[48px] lg:w-fit w-full lg:mx-0 mx-auto h-[206px]">
-                  <div className="flex flex-col gap-y-[40px]">
-                    <div className="flex flex-col gap-y-3" key={item.id}>
-                      <Image
-                        src={item.image.original_url ?? ""}
-                        alt={item.title}
-                        width={83}
-                        height={89}
-                      />
-                      <div className="flex flex-col gap-y-2">
-                        <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
-                          {item.title}
-                        </Typography>
-                        <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
-                          {item.description}
-                        </Typography>
+                <div className="flex flex-col">
+                  {chunk.map((item) => (
+                    <div
+                      className="flex gap-x-[48px] lg:w-fit w-full lg:mx-0 mx-auto h-[206px]"
+                      key={item.id}
+                    >
+                      <div className="flex flex-col gap-y-3">
+                        <Image
+                          src={item.image.original_url ?? ""}
+                          alt={item.title}
+                          width={83}
+                          height={89}
+                        />
+                        <div className="flex flex-col gap-y-2">
+                          <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
+                            {item.title}
+                          </Typography>
+                          <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
+                            {item.description}
+                          </Typography>
+                        </div>
                       </div>
                     </div>
-                  </div>
+                  ))}
                 </div>
               </SwiperSlide>
             ))}

@@ -22,10 +22,10 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
               <Image
                 src={slide?.image.original_url ?? ""}
                 alt="hero-image"
-                width={2000}
+                width={1920}
                 height={580}
                 quality={100}
-                className="object-cover lg:!h-[580px] !h-[660px] lg:max-h-[580px] lg:object-top object-[20%]"
+                className="object-cover lg:h-[580px] h-[230px]"
               />
             )}
             <div className="bg-[#00000060] absolute w-full h-full top-0"></div>
@@ -39,13 +39,15 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                     {slide.description}
                   </Typography>
                 </div>
-                <Link
-                  className="!bg-primary-main !text-white lg:!w-[346px] !w-full !h-[57px] !rounded-[15px] !text-[24px] !font-medium flex items-center justify-center"
-                  href={slide?.button?.link ?? ""}
-                  target="_blank"
-                >
-                  {slide?.button?.title}
-                </Link>
+                {slide?.button && (
+                  <Link
+                    className="!bg-primary-main !text-white lg:!w-[346px] !w-full !h-[57px] !rounded-[15px] !text-[24px] !font-medium flex items-center justify-center"
+                    href={slide?.button?.link ?? ""}
+                    target="_blank"
+                  >
+                    {slide?.button?.title}
+                  </Link>
+                )}
               </div>
             </div>
           </div>

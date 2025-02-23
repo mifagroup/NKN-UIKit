@@ -1,9 +1,8 @@
 "use client";
 import { components } from "@/lib/api/v1";
-import { Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useEffect } from "react";
+import React from "react";
 import Blogs from "./Blogs";
 import { useFetch } from "@/utils/clientRequest";
 import { useDebounce } from "use-debounce";

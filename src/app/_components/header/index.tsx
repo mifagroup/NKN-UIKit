@@ -1,7 +1,7 @@
 "use client";
 import Image from "next/image";
 import React from "react";
-import { LangSwicher, Links, LoginButton, MenuDrawer } from "./_components";
+import { Links, MenuDrawer } from "./_components";
 import { useMediaQuery, useTheme } from "@mui/material";
 import Link from "next/link";
 

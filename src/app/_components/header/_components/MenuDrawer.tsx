@@ -3,8 +3,6 @@ import { Drawer, useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import React from "react";
 import Link from "next/link";
-import LangSwicher from "./LangSwicher";
-import LoginButton from "./LoginButton";
 import Links, { links } from "./Links";
 import CloseIcon from "@mui/icons-material/Close";
 

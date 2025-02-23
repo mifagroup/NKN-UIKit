@@ -1,11 +1,5 @@
 import React from "react";
-import {
-  EndSection,
-  ExtraButtons,
-  LangSwicher,
-  Links,
-  LoginButton,
-} from "./components";
+import { EndSection, ExtraButtons, Links } from "./components";
 import { components } from "@/lib/api/v1";
 
 const Footer = async () => {

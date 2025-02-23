@@ -9,8 +9,13 @@ import "swiper/css";
 import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
+import { components } from "@/lib/api/v1";
 
-const Blogs = ({ blogs }: { blogs: never }) => {
+const Blogs = ({
+  blogs,
+}: {
+  blogs: components["schemas"]["BlogResource"][];
+}) => {
   const swiperRef = useRef<SwiperType>();
 
   const prevEl = useRef(null);

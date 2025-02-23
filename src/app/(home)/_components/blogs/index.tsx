@@ -1,6 +1,6 @@
 "use client";
 
-import { Button, Divider, Typography } from "@mui/material";
+import { Button, Divider } from "@mui/material";
 import React, { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";

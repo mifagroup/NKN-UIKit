@@ -8,6 +8,7 @@ import "swiper/css/navigation";
 import Image from "next/image";
 import { Button, Typography, useMediaQuery, useTheme } from "@mui/material";
 import { components } from "@/lib/api/v1";
+import Link from "next/link";
 
 const Nikan365IntroSlider = ({
   data,
@@ -115,18 +116,37 @@ const Nikan365IntroSlider = ({
         >
           {data?.map((item) => (
             <SwiperSlide key={item.id}>
-              <div className="flex flex-col gap-y-[18px]">
-                <Image
-                  src={item.image.original_url ?? ""}
-                  alt={item.title}
-                  width={greaterThanLg ? 70 : 60}
-                  height={greaterThanLg ? 79 : 65}
-                  className="mx-auto xl:h-[79px] h-[65px] object-contain"
-                />
-                <Typography className="!font-medium !text-secondary-400 !text-center whitespace-nowrap lg:!text-base !text-[10px]">
-                  {item.title}
-                </Typography>
-              </div>
+              {!!item?.link ? (
+                <Link
+                  className="flex flex-col gap-y-[18px]"
+                  href={item.link}
+                  target="_blank"
+                >
+                  <Image
+                    src={item.image.original_url ?? ""}
+                    alt={item.title}
+                    width={greaterThanLg ? 70 : 60}
+                    height={greaterThanLg ? 79 : 65}
+                    className="mx-auto xl:h-[79px] h-[65px] object-contain"
+                  />
+                  <Typography className="!font-medium !text-secondary-400 !text-center whitespace-nowrap lg:!text-base !text-[10px]">
+                    {item.title}
+                  </Typography>
+                </Link>
+              ) : (
+                <div className="flex flex-col gap-y-[18px]">
+                  <Image
+                    src={item.image.original_url ?? ""}
+                    alt={item.title}
+                    width={greaterThanLg ? 70 : 60}
+                    height={greaterThanLg ? 79 : 65}
+                    className="mx-auto xl:h-[79px] h-[65px] object-contain"
+                  />
+                  <Typography className="!font-medium !text-secondary-400 !text-center whitespace-nowrap lg:!text-base !text-[10px]">
+                    {item.title}
+                  </Typography>
+                </div>
+              )}
             </SwiperSlide>
           ))}
         </Swiper>

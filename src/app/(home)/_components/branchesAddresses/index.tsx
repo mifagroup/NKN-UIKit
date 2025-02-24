@@ -1,51 +1,34 @@
+import { components } from "@/lib/api/v1";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
 
-const BranchesAddresses = () => {
-  const branches = [
-    {
-      id: 1,
-      title: "بیمارستان نیکان اقدسیه",
-      address:
-        "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-      phone_number: "۲۹۱۲۰۰۰۰-۰۲۱",
-      image: "/images/nikan-aghdasieh-icon.png",
-    },
-    {
-      id: 2,
-      title: "بیمارستان نیکان غرب",
-      address:
-        "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦",
-      phone_number: "۲۹۱۲۰۰۰۰-۰۲۱",
-      image: "/images/nikan-west-icon.png",
-    },
-    {
-      id: 3,
-      title: "بیمارستان نیکان حکیمیه",
-      address:
-        "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-      phone_number: "۲۹۱۲۰۰۰۰-۰۲۱",
-      image: "/images/nikan-hakimieh.png",
-    },
-    {
-      id: 4,
-      title: "بیمارستان نیکان شماره 2",
-      address:
-        "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-      phone_number: "۲۹۱۲۰۰۰۰-۰۲۱",
-      image: "/images/nikan-second-branch.png",
-    },
-  ];
+const BranchesAddresses = async () => {
+  const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hospitals`, {
+    cache: "no-cache",
+  }).then((res) => res.json());
+
+  const hospitals: components["schemas"]["HospitalResource"][] = data?.data;
+
+  const branches = hospitals?.map((hospital) => ({
+    image: hospital?.thumbnail?.original_url ?? "",
+    title: hospital.name,
+    address: hospital.address,
+    phone_number: hospital.fax,
+    link: hospital?.website_link ?? "",
+  }));
+
+  if (!hospitals?.length) return null;
 
   return (
     <div className="flex flex-col bg-secondary-100">
       <div className="border-b border-secondary-500">
         <div className="container grid grid-cols-2 max-w-[1092px]">
           <Link
-            href={"/branches/1"}
+            href={branches[0].link}
             className="lg:pt-[71px] lg:pb-[74px] pt-[60px] pb-[30px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]"
+            target="_blank"
           >
             <Image
               src={branches[0].image}
@@ -66,8 +49,9 @@ const BranchesAddresses = () => {
             </div>
           </Link>
           <Link
-            href={"/branches/1"}
+            href={branches[1].link}
             className="lg:pt-[66px] lg:pb-[74px] pt-[38px] flex lg:flex-row flex-col lg:gap-y-2 items-center gap-x-[26px] lg:pr-[70px]"
+            target="_blank"
           >
             <Image
               src={branches[1].image}
@@ -92,8 +76,9 @@ const BranchesAddresses = () => {
       </div>
       <div className="container grid grid-cols-2 max-w-[1092px]">
         <Link
-          href={"/branches/1"}
+          href={branches[2].link}
           className="lg:pt-[50px] pt-[48px] lg:pb-[69px] pb-[46px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]"
+          target="_blank"
         >
           <Image
             src={branches[2].image}
@@ -115,8 +100,9 @@ const BranchesAddresses = () => {
           </div>
         </Link>
         <Link
-          href={"/branches/1"}
+          href={branches[3].link}
           className="lg:pt-[64px] pt-[55px] lg:pb-[74px] pb-[46px] lg:pr-[55px] flex lg:flex-row flex-col lg:gap-y-2 gap-y-3.5 items-center gap-x-[16px]"
+          target="_blank"
         >
           <Image
             src={branches[3].image}

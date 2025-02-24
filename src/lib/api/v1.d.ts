@@ -499,7 +499,7 @@ export interface components {
             /** @description A description of the slide */
             description?: string;
             /** @description The ordering number for the slide */
-            ordering: number;
+            ordering?: number;
             /**
              * Format: uri
              * @description The link related to the slide
@@ -611,7 +611,7 @@ export interface components {
             /** @description A description of the slide */
             description?: string;
             /** @description The ordering number for the slide */
-            ordering: number;
+            ordering?: number;
             /**
              * Format: uri
              * @description The link related to the slide
@@ -750,6 +750,8 @@ export interface components {
             footer_terms?: components["schemas"]["TermResource"][];
             /** @description hospital list of home page */
             hospitals?: components["schemas"]["HospitalResource"][];
+            /** @description Blog list of home page */
+            blogs?: components["schemas"]["BlogResource"][];
         };
         HospitalResource: {
             id: number;
@@ -758,6 +760,7 @@ export interface components {
             fax: string;
             address?: string;
             address_link?: string;
+            website_link?: string;
             /** Format: uri */
             email: string;
             image: components["schemas"]["FileResource"];

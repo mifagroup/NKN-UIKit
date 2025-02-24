@@ -1,4 +1,5 @@
 import Image from "next/image";
+import Link from "next/link";
 import React from "react";
 
 const NikanStatement = () => {
@@ -29,13 +30,19 @@ const NikanStatement = () => {
         className="mt-10 lg:mb-24 mb-10 object-cover"
       />
       <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 lg:px-0 px-5">
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image src={"/images/calendar.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             برنامه کلینیک‌های تخصصی
           </span>
-        </div>
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        </Link>
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image
             src={"/images/appointment.png"}
             alt=""
@@ -45,14 +52,20 @@ const NikanStatement = () => {
           <span className="text-base font-bold text-[#616161] text-center">
             نوبت دهی
           </span>
-        </div>
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        </Link>
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image src={"/images/checkup.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             پایش سلامت (چکاپ)
           </span>
-        </div>
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        </Link>
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image
             src={"/images/answer-online.png"}
             alt=""
@@ -62,8 +75,11 @@ const NikanStatement = () => {
           <span className="text-base font-bold text-[#616161] text-center">
             جواب دهی انلاین
           </span>
-        </div>
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        </Link>
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image
             src={"/images/pishpaziresh.png"}
             alt=""
@@ -73,13 +89,16 @@ const NikanStatement = () => {
           <span className="text-base font-bold text-[#616161] text-center">
             سامانه پیش پذیرش
           </span>
-        </div>
-        <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
+        </Link>
+        <Link
+          href={"https://pa.nikan365.ir"}
+          className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
+        >
           <Image src={"/images/homecare.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             خدمات درمانی در منزل
           </span>
-        </div>
+        </Link>
       </div>
     </div>
   );

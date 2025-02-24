@@ -16,18 +16,34 @@ const AppSlider = () => {
   const nextEl = useRef(null);
 
   const items = [
-    {
-      id: 1,
-      image: "/images/why-nikan-1.png",
-      title: "پیشگیری و مراقبت متمایز",
-      desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و لورم ایپسوم متن ساختگی با تولید سادگی ",
-    },
-    {
-      id: 2,
-      image: "/images/why-nikan-2.png",
-      title: "پیشگیری و مراقبت متمایز",
-      desc: "لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و لورم ایپسوم متن ساختگی با تولید سادگی ",
-    },
+    [
+      {
+        id: 1,
+        image: "/images/why-nikan-1.png",
+        title: "خدمات در منزل",
+        desc: "انجام امور درمانی در منزل",
+      },
+      {
+        id: 2,
+        image: "/images/why-nikan-2.png",
+        title: "جواب آزمایش",
+        desc: "دریافت اینترنتی گزارشات",
+      },
+    ],
+    [
+      {
+        id: 1,
+        image: "/images/why-nikan-1.png",
+        title: "ویزیت مجازی",
+        desc: "مشاوره با متخصص در هرجا",
+      },
+      {
+        id: 2,
+        image: "/images/why-nikan-2.png",
+        title: "خدمات در منزل",
+        desc: "انجام امور درمانی در منزل",
+      },
+    ],
   ];
 
   return (
@@ -57,7 +73,7 @@ const AppSlider = () => {
               prevEl: prevEl.current,
             }}
           >
-            {[...Array(3)]?.map((_, index) => (
+            {[...Array(2)]?.map((_, index) => (
               <SwiperSlide key={index}>
                 <div className="flex lg:flex-row flex-col items-center gap-x-[70px] gap-y-[50px] lg:w-fit w-full mx-auto">
                   <Image
@@ -69,7 +85,7 @@ const AppSlider = () => {
                     className=""
                   />
                   <div className="flex flex-col gap-y-[20px] lg:px-0 px-[50px]">
-                    {items?.map((item) => (
+                    {items[index]?.map((item) => (
                       <div className="flex flex-col gap-y-3" key={item.id}>
                         <Image
                           src={item.image}

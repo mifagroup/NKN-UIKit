@@ -11,7 +11,12 @@ const Branches = ({
   return (
     <div className="lg:max-h-[630px] grid lg:grid-cols-4 md:grid-cols-2 grid-cols-1">
       {hospitals?.map((hospital) => (
-        <Link className="relative" href={""} key={hospital.id}>
+        <Link
+          className="relative"
+          href={hospital.website_link ?? ""}
+          key={hospital.id}
+          target="_blank"
+        >
           <div
             className="absolute w-full h-full opacity-50"
             style={{

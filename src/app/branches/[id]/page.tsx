@@ -11,7 +11,7 @@ import {
 } from "./components";
 import "./styles.css";
 import { BranchesAddresses } from "@/app/(home)/_components";
-const page = () => {
+const page = async () => {
   return (
     <div>
       <Hero />

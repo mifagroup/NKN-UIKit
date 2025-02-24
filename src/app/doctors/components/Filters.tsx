@@ -177,7 +177,7 @@ const Filters = (props: FilterProps) => {
         </>
       )}
       <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
-        <span className="text-[14px] font-semibold text-black">جنسیت پزشک</span>
+        <span className="text-[14px] font-semibold text-black">جنسیت</span>
         <div className="flex items-center">
           {genders?.map((gen) => (
             <FormControlLabel

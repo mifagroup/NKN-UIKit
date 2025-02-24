@@ -11,7 +11,7 @@ const Hero = () => {
             آنلاین تر از همیشه
           </span>
           <span className="lg:text-[20px] sm:text-[15px] text-[14px] font-light text-[#6B6B6B] whitespace-nowrap">
-            لورم ایپسوم متن ساختگی با تولید سادگی از صنعت{" "}
+            نیکان خانه است و شما عضوی از خانوده ما...
           </span>
           <Link
             href={"https://pa.nikan365.ir/auth/login"}

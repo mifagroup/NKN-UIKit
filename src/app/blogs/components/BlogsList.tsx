@@ -116,7 +116,7 @@ const BlogsList = (props: BlogsListProps) => {
           <div className="grid grid-cols-2 gap-y-2">
             {terms?.map((term) => (
               <Link
-                href={""}
+                href={`/doctors?terms=${term.id}`}
                 key={term.id}
                 className="text-[#5b5b5b] font-light"
               >

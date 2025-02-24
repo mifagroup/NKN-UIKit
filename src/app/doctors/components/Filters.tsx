@@ -4,7 +4,9 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import qs from "qs";
 import { components } from "@/lib/api/v1";
-
+import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
+import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
+import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 const genders = [
   {
     id: 1,
@@ -47,6 +49,8 @@ const Filters = (props: FilterProps) => {
   const [selectedTerms, setSelectedTerms] = React.useState<number[]>([]);
 
   const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>([]);
+
+  const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
 
   useEffect(() => {
     // Create a copy of the previous params and remove 'gender' if it exists
@@ -114,10 +118,22 @@ const Filters = (props: FilterProps) => {
     <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">
       {expertises?.terms?.length && (
         <>
-          <span className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px]">
+          <span
+            className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px] cursor-pointer lg:cursor-default flex justify-between items-center"
+            onClick={() => setIsExpertisesOpen(!isExpertisesOpen)}
+          >
             تخصص ها
+            {isExpertisesOpen ? (
+              <ArrowBackIosNewIcon className="lg:!hidden rotate-90 !text-sm" />
+            ) : (
+              <ArrowBackIosNewIcon className="lg:!hidden rotate-[270deg] !text-sm" />
+            )}
           </span>
-          <div className="py-[30px]">
+          <div
+            className={`py-[30px] ${
+              isExpertisesOpen ? "block" : "hidden"
+            } lg:block`}
+          >
             <div className="px-2 max-h-[345px] overflow-y-scroll flex flex-col gap-y-[1.5px]">
               {expertises?.terms?.map((term) => (
                 <FormControlLabel
@@ -161,7 +177,7 @@ const Filters = (props: FilterProps) => {
         </>
       )}
       <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
-        <span className="text-[14px] font-semibold text-black">جنس پزشک</span>
+        <span className="text-[14px] font-semibold text-black">جنسیت پزشک</span>
         <div className="flex items-center">
           {genders?.map((gen) => (
             <FormControlLabel

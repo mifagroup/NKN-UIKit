@@ -70,8 +70,8 @@ const Search = ({
 
   return (
     <div className="flex flex-col">
-      <div className="flex justify-between items-center px-[26px] pt-5">
-        <span className="text-base font-semibold text-black">
+      <div className="flex lg:flex-row flex-col gap-y-5 justify-between items-center px-[26px] pt-5">
+        <span className="lg:text-base text-sm font-semibold text-black">
           فهرست پزشکان و متخصصان مجموعه درمانی نیکان
         </span>
         <div className="flex items-center gap-x-2.5">

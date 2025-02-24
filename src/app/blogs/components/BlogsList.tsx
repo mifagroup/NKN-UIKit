@@ -29,8 +29,6 @@ const BlogsList = (props: BlogsListProps) => {
 
   const terms = data?.data;
 
-  console.log(terms);
-
   return (
     <div className="flex lg:flex-row flex-col gap-x-[60px] lg:pt-[88px] pt-10 gap-y-20 lg:px-0 px-5">
       <div className="flex flex-col gap-y-10 lg:w-[336px] w-full lg:order-1 order-2">

@@ -11,16 +11,24 @@ const Links = ({
 }) => {
   return (
     <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
-      <div className="flex items-center gap-x-6 pb-[18px] border-b border-[#626262]">
-        {links?.map((link) => (
-          <Link
-            href={link.href}
-            key={link.id}
-            className="text-[#F0F0F0] font-semibold xl:text-sm text-xs"
-          >
-            {link.label}
-          </Link>
-        ))}
+      <div className="flex items-center gap-x-6 pb-[18px] border-b border-[#626262] justify-between">
+        <div className="flex items-center gap-x-6">
+          {links?.map((link) => (
+            <Link
+              href={link.href}
+              key={link.id}
+              className="text-[#F0F0F0] font-semibold text-[10px]"
+            >
+              {link.label}
+            </Link>
+          ))}
+        </div>
+        <Link
+          href={"/insurances"}
+          className="w-[180px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] text-white font-medium flex justify-center items-center"
+        >
+          لیست بیمه های طرف قرارداد
+        </Link>
       </div>
       <div className="grid grid-cols-5 gap-x-5 gap-y-4">
         {footerTerms.map((term) => (

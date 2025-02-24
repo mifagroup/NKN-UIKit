@@ -9,12 +9,18 @@ import { Swiper, SwiperSlide } from "swiper/react";
 import "swiper/css";
 import Link from "next/link";
 import { components } from "@/lib/api/v1";
+import { Autoplay } from "swiper/modules";
 
 const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
   const slides = data?.slides ?? [];
 
   return (
-    <Swiper className="w-full" loop>
+    <Swiper
+      className="w-full"
+      loop
+      modules={[Autoplay]}
+      autoplay={{ delay: 5000 }}
+    >
       {slides?.map((slide, index) => (
         <SwiperSlide key={index}>
           <div className="relative">

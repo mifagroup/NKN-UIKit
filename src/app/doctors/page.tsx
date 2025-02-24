@@ -15,6 +15,8 @@ const Page = async (props: {
       terms: searchParams?.terms,
       hospital: searchParams?.hospital,
     },
+    page: searchParams?.page,
+    per_page: 6,
   });
 
   const data = await fetch(
@@ -42,11 +44,15 @@ const Page = async (props: {
 
   return (
     <div className="bg-[#F3F3F3]">
-      <div className="pt-[64px] pb-[80px] container max-w-[1138px]">
-        <div className="flex gap-x-[18px]">
+      <div className="lg:pt-[64px] pb-[80px] container max-w-[1138px]">
+        <div className="flex gap-x-[18px] lg:flex-row flex-col">
           <Filters degrees={degrees} expertises={expertises} />
 
-          <DoctorsList doctors={doctors} hospitals={hospitals} />
+          <DoctorsList
+            doctors={doctors}
+            hospitals={hospitals}
+            meta={data?.meta}
+          />
         </div>
       </div>
     </div>

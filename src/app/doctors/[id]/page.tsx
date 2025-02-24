@@ -19,12 +19,12 @@ const page = async (props: { params: Promise<{ id: string }> }) => {
       <div className="container max-w-[990px] lg:pt-[83px] pt-[50px] lg:pb-[109px] pb-[30px]">
         {/* <Search /> */}
         <DoctorIntro doctor={doctor} />
-        <Bio doctor={doctor} />
+        {doctor?.description ? <Bio doctor={doctor} /> : null}
         {/* <Certifications /> */}
         {/* <Areas /> */}
-        <Patients doctor={doctor} />
+        {doctor?.portfolio?.length ? <Patients doctor={doctor} /> : null}
         {/* <Prices /> */}
-        <Blogs />
+        {/* <Blogs /> */}
       </div>
       <Booking doctor={doctor} />
     </div>

@@ -10,7 +10,7 @@ const DoctorItem = ({
   doctor: components["schemas"]["DoctorResource"];
 }) => {
   return (
-    <div className="flex justify-between items-stretch py-5">
+    <div className="flex md:flex-row flex-col gap-y-4 justify-between items-stretch py-5">
       <div className="flex items-center gap-x-3.5">
         <Link href={`/doctors/${doctor.id}`}>
           <Image
@@ -18,7 +18,7 @@ const DoctorItem = ({
             alt="doc"
             width={144}
             height={188}
-            className="h-[188px] w-[144px]"
+            className="h-[188px] w-[144px] rounded-[17px]"
           />
         </Link>
         <div className="flex flex-col">
@@ -52,12 +52,12 @@ const DoctorItem = ({
       <div className="flex flex-col justify-center gap-y-[13px] items-center">
         <Link
           href={doctor.redirect}
-          className="text-[12px] font-extralight text-black w-[200px] h-[40px] rounded-[8px] bg-[#B9F4E8] flex items-center justify-center"
+          className="text-[12px] font-extralight text-black lg:w-[200px] w-full h-[40px] rounded-[8px] bg-[#B9F4E8] flex items-center justify-center"
           target="_blank"
         >
           تعیین نوبت پزشک
         </Link>
-        <button className="text-[12px] font-extralight text-black w-[200px] h-[40px] rounded-[8px] bg-[#ECECEC]">
+        <button className="text-[12px] font-extralight text-black lg:w-[200px] w-full h-[40px] rounded-[8px] bg-[#ECECEC]">
           ویزیت و مشاوره آنلاین پزشک
         </button>
         <div className="pt-2.5 flex items-center gap-x-[15px] justify-center">
@@ -67,7 +67,7 @@ const DoctorItem = ({
           >
             بازدید صفحه پزشک
           </Link>
-          <Divider orientation="vertical" className="!bg-[#D9D9D9]" />
+          <Divider orientation="vertical" className="!bg-[#D9D9D9] !w-[1px]" />
           <Link href={""} className="text-[12px] font-extralight text-black">
             اشتراک گذاری
           </Link>

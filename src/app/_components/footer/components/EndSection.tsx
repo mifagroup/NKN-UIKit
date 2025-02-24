@@ -62,7 +62,7 @@ const EndSection = () => {
             className="mr-5"
           />
         </div>
-        <div className="flex flex-col gap-y-4 lg:items-end items-center">
+        {/* <div className="flex flex-col gap-y-4 lg:items-end items-center">
           <div className="flex items-center lg:gap-x-9 gap-x-2">
             <Link
               href={""}
@@ -104,7 +104,7 @@ const EndSection = () => {
           <span className="lg:text-[14px] text-[11px] font-medium text-[#28546D]">
             تمامی حقوق برای بیمارستان نیکان محفوظ است
           </span>
-        </div>
+        </div> */}
       </div>
     </div>
   );

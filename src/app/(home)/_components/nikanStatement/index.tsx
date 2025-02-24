@@ -30,7 +30,7 @@ const NikanStatement = () => {
       />
       <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 lg:px-0 px-5">
         <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
-          <Image src={"/images/calendar.png"} alt="" width={97} height={99} />
+          <Image src={"/images/calendar.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             برنامه کلینیک‌های تخصصی
           </span>
@@ -39,15 +39,15 @@ const NikanStatement = () => {
           <Image
             src={"/images/appointment.png"}
             alt=""
-            width={136}
-            height={130}
+            width={88}
+            height={100}
           />
           <span className="text-base font-bold text-[#616161] text-center">
             نوبت دهی
           </span>
         </div>
         <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
-          <Image src={"/images/checkup.png"} alt="" width={84} height={81} />
+          <Image src={"/images/checkup.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             پایش سلامت (چکاپ)
           </span>
@@ -56,8 +56,8 @@ const NikanStatement = () => {
           <Image
             src={"/images/answer-online.png"}
             alt=""
-            width={92}
-            height={78}
+            width={88}
+            height={100}
           />
           <span className="text-base font-bold text-[#616161] text-center">
             جواب دهی انلاین
@@ -67,7 +67,7 @@ const NikanStatement = () => {
           <Image
             src={"/images/pishpaziresh.png"}
             alt=""
-            width={85}
+            width={88}
             height={82}
           />
           <span className="text-base font-bold text-[#616161] text-center">
@@ -75,7 +75,7 @@ const NikanStatement = () => {
           </span>
         </div>
         <div className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center">
-          <Image src={"/images/homecare.png"} alt="" width={76} height={81} />
+          <Image src={"/images/homecare.png"} alt="" width={88} height={100} />
           <span className="text-base font-bold text-[#616161] text-center">
             خدمات درمانی در منزل
           </span>

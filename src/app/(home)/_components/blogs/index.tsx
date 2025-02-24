@@ -137,6 +137,18 @@ const Blogs = ({
             ))}
           </Swiper>
         </div>
+        <Button
+          className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] left-[-30px] z-10"
+          onClick={() => swiperRef.current?.slideNext()}
+        >
+          <Image
+            src={"/images/arrow-right.png"}
+            alt="arrow-right"
+            width={23}
+            height={63.5}
+            className="lg:!h-[63.5px] lg:!w-[23px] !h-[32px] !w-[11px] rotate-180"
+          />
+        </Button>
       </div>
     </div>
   );

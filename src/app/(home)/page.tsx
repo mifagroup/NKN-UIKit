@@ -2,6 +2,7 @@ import {
   Blogs,
   Branches,
   BranchesAddresses,
+  FAQ,
   Hero,
   Nikan365Intro,
   NikanStatement,
@@ -44,6 +45,7 @@ const Page = async () => {
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}
       <Blogs blogs={blogs} />
+      <FAQ />
       <BranchesAddresses />
     </div>
   );

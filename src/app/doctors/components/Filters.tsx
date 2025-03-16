@@ -4,8 +4,6 @@ import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import qs from "qs";
 import { components } from "@/lib/api/v1";
-import ArrowDropDownIcon from "@mui/icons-material/ArrowDropDown";
-import ArrowDropUpIcon from "@mui/icons-material/ArrowDropUp";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 const genders = [
   {

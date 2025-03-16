@@ -7,6 +7,7 @@ import Footer from "./_components/footer";
 import NextTopLoader from "nextjs-toploader";
 import ReactQueryProvider from "@/providers/reactquery.provider";
 import Script from "next/script";
+import Intro from "./_components/intro";
 const nikan = localFont({
   src: [
     {
@@ -77,6 +78,7 @@ export default function RootLayout({
           <AppRouterCacheProvider>
             <MuiProvider>
               <Header />
+              <Intro />
               {children}
               <Footer />
             </MuiProvider>

@@ -1,5 +1,5 @@
 import React from "react";
-import { Bio, Blogs, Booking, DoctorIntro, Patients } from "./components";
+import { Bio, Booking, DoctorIntro, Patients } from "./components";
 import { components } from "@/lib/api/v1";
 
 const page = async (props: { params: Promise<{ id: string }> }) => {

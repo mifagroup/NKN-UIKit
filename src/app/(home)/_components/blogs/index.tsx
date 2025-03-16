@@ -22,7 +22,7 @@ const Blogs = ({
   const nextEl = useRef(null);
 
   return (
-    <div className="pt-[150px] pb-[170px] container lg:px-0 px-12">
+    <div className="pt-[150px] lg:pb-[170px] pb-10 container lg:px-0 px-12">
       <div className="relative">
         <Button
           className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] right-[-30px] z-10"

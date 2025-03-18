@@ -26,12 +26,10 @@ const Intro = () => {
 
   return (
     <motion.div
-      initial={{ opacity: 0, y: -100 }}
-      animate={{ opacity: show ? 1 : 0, y: show ? 0 : -100 }}
-      transition={{ type: "spring", stiffness: 100, damping: 10 }}
-      className={`fixed z-[9999] top-0 left-0 w-full ${
-        show ? "h-[100vh]" : "h-0"
-      }`}
+      initial={{ y: -2000 }}
+      animate={{ y: show ? 0 : -2000 }}
+      transition={{ type: "spring", stiffness: 50, damping: 20, duration: 2 }}
+      className={`fixed z-[9999] top-0 left-0 w-full h-[100vh]`}
     >
       <Image
         alt="intro"

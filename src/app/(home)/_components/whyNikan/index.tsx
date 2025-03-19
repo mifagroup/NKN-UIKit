@@ -73,52 +73,55 @@ const WhyNikan = ({
               </SwiperSlide>
             ))}
           </Swiper>
-          <Swiper
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
-            loop
-            slidesPerView={1}
-            direction="vertical"
-            spaceBetween={30}
-            className="max-h-[680px]"
-            modules={[Autoplay]}
-            autoplay={{
-              delay: 5000,
-            }}
-            allowTouchMove={false}
-          >
-            {chunkedSlides.map((chunk, index) => (
-              <SwiperSlide key={index}>
-                <div className="flex flex-col">
-                  {/* @ts-expect-error - TS is not recognizing the chunkArray function */}
-                  {chunk.map((item) => (
-                    <div
-                      className="flex gap-x-[48px] lg:w-fit w-full lg:mx-0 mx-auto h-[206px]"
-                      key={item.id}
-                    >
-                      <div className="flex flex-col gap-y-3">
-                        <Image
-                          src={item.image.original_url ?? ""}
-                          alt={item.title}
-                          width={83}
-                          height={89}
-                        />
-                        <div className="flex flex-col gap-y-2">
-                          <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
-                            {item.title}
-                          </Typography>
-                          <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
-                            {item.description}
-                          </Typography>
+          <div className="relative">
+            <div className="h-full w-full z-50 absolute" />
+            <Swiper
+              onBeforeInit={(swiper) => {
+                swiperRef.current = swiper;
+              }}
+              loop
+              slidesPerView={1}
+              direction="vertical"
+              spaceBetween={30}
+              className="max-h-[680px]"
+              modules={[Autoplay]}
+              autoplay={{
+                delay: 5000,
+              }}
+              allowTouchMove={false}
+            >
+              {chunkedSlides.map((chunk, index) => (
+                <SwiperSlide key={index}>
+                  <div className="flex flex-col">
+                    {/* @ts-expect-error - TS is not recognizing the chunkArray function */}
+                    {chunk.map((item) => (
+                      <div
+                        className="flex gap-x-[48px] lg:w-fit w-full lg:mx-0 mx-auto h-[206px]"
+                        key={item.id}
+                      >
+                        <div className="flex flex-col gap-y-3">
+                          <Image
+                            src={item.image.original_url ?? ""}
+                            alt={item.title}
+                            width={83}
+                            height={89}
+                          />
+                          <div className="flex flex-col gap-y-2">
+                            <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
+                              {item.title}
+                            </Typography>
+                            <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
+                              {item.description}
+                            </Typography>
+                          </div>
                         </div>
                       </div>
-                    </div>
-                  ))}
-                </div>
-              </SwiperSlide>
-            ))}
-          </Swiper>
+                    ))}
+                  </div>
+                </SwiperSlide>
+              ))}
+            </Swiper>
+          </div>
         </div>
       </div>
     </div>

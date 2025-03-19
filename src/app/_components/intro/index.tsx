@@ -38,7 +38,7 @@ const Intro = () => {
         }
         width={1920}
         height={1080}
-        className="h-full w-full object-cover cursor-pointer"
+        className="h-full w-full object-fill cursor-pointer"
         onClick={handleClick}
       />
     </motion.div>

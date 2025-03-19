@@ -32,7 +32,7 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                   width={1920}
                   height={580}
                   quality={100}
-                  className="object-cover lg:h-[580px] h-[230px]"
+                  className="object-cover lg:h-[580px] h-[460px]"
                 />
               )}
               <div className="bg-[#00000060] absolute w-full h-full top-0"></div>
@@ -67,7 +67,7 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                   width={1920}
                   height={580}
                   quality={100}
-                  className="object-cover lg:h-[580px] h-[230px]"
+                  className="object-cover lg:h-[580px] h-[460px]"
                 />
               )}
               <div className="bg-[#00000060] absolute w-full h-full top-0"></div>

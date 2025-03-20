@@ -125,13 +125,14 @@ const Services = () => {
           دیگری گردیده است.
         </li>
       </ul>
-      <Image
-        src={"/images/inter-services-2.png"}
-        alt=""
-        width={1100}
-        height={415}
-        className="pt-10"
-      />
+      <video
+        src="/images/video.mp4"
+        width="100%"
+        height="auto"
+        playsInline
+        preload="auto"
+        controls
+      ></video>
       <button className="text-[15px] text-[#696969] sm:w-[361px] w-full h-[52px] flex justify-center items-center bg-[#F2F2F2] rounded-[11px] mt-10 mx-auto">
         دانلود کاتالوگ واحد بین الملل
       </button>

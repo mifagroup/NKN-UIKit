@@ -3,9 +3,9 @@ import React from "react";
 
 const ServiceInHome = () => {
   return (
-    <div className="py-[150px] flex items-center justify-between gap-x-[68px]">
+    <div className="lg:pt-[150px] pt-10 pb-0 lg:flex-row flex-col flex items-center justify-between gap-x-[68px] gap-y-10">
       <div className="flex flex-col">
-        <span className="font-black text-[#595959] text-[32px]">
+        <span className="font-black text-[#595959] text-[32px] lg:text-right text-center">
           بیمارستان مجازی نیکان
         </span>
         <p className="text-base font-light text-[#7d7d7d] mt-6 text-justify">
@@ -17,7 +17,7 @@ const ServiceInHome = () => {
           اطفال، فوق‌تخصص داخلی، روانپزشکی، کلینیک تخصصی زنان و زایمان ، تخصصی
           قلب و عروق، گوش و حلق و بینی و چکاپ کامل بدن است.
         </p>
-        <button className="text-base font-medium text-[#323232] w-[346px] h-[57px] bg-[#dfdfdf] rounded-[15px] flex justify-center items-center mt-[40px] mx-auto">
+        <button className="text-base md:flex hidden font-medium text-[#323232] w-[346px] h-[57px] bg-[#dfdfdf] rounded-[15px] justify-center items-center mt-[40px] mx-auto">
           درخواست خدمات در منزل
         </button>
       </div>

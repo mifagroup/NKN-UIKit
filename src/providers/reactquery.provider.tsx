@@ -1,11 +1,13 @@
 // In Next.js, this file would be called: app/providers.jsx
 "use client";
 
+import Intro from "@/app/_components/intro";
 import {
   isServer,
   QueryClient,
   QueryClientProvider,
 } from "@tanstack/react-query";
+import { useState } from "react";
 
 function makeQueryClient() {
   return new QueryClient({
@@ -41,12 +43,15 @@ function getQueryClient() {
 const ReactQueryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [show, setShow] = useState(false);
+
   const queryClient = getQueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      {children}
+      <Intro setShow={setShow} />
+      {show && children}
     </QueryClientProvider>
   );
 };

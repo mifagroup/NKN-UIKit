@@ -53,6 +53,11 @@ export const links = [
     label: "مسئولیت اجتماعی",
     href: "/social-responsibility",
   },
+  {
+    id: "virtual-hospital",
+    label: "بیمارستان مجازی",
+    href: "/virtual-hospital",
+  },
 ];
 
 const Links = () => {

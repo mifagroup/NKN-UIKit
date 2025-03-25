@@ -4,7 +4,11 @@ import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
 
-const Intro = () => {
+const Intro = ({
+  setShow: setPageShow,
+}: {
+  setShow: (show: boolean) => void;
+}) => {
   const [show, setShow] = useState(true);
   const isMobile = useMediaQuery("(max-width: 768px)"); // lg breakpoint in Tailwind CSS
 
@@ -22,6 +26,7 @@ const Intro = () => {
 
   const handleClick = () => {
     setShow(false);
+    setPageShow(true);
   };
 
   return (
@@ -29,7 +34,7 @@ const Intro = () => {
       initial={{ y: -2000 }}
       animate={{ y: show ? 0 : -2000 }}
       transition={{ type: "spring", stiffness: 50, damping: 20, duration: 2 }}
-      className={`fixed z-[9999] top-0 left-0 w-full h-[100vh]`}
+      className={`fixed z-[9999] top-0 left-0 w-full h-[100vh] visible`}
     >
       <Image
         alt="intro"

@@ -13,7 +13,7 @@ const Header = () => {
   return (
     <div className="border-b border-b-[#D6D6D6]">
       <div className="xl:max-w-[1315px] container lg:px-0 px-5">
-        <div className="flex items-center justify-between lg:py-[38px] pt-[20px] pb-[14px]">
+        <div className="flex items-center justify-between lg:h-[17vh] h-[10vh]">
           <div className="flex items-center gap-x-10">
             <Link href={"/"}>
               <Image

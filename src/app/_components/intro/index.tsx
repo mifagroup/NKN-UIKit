@@ -3,13 +3,17 @@ import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
+import { usePathname } from "next/navigation";
 
 const Intro = ({
   setShow: setPageShow,
 }: {
   setShow: (show: boolean) => void;
 }) => {
-  const [show, setShow] = useState(true);
+  const pathname = usePathname();
+
+  const [show, setShow] = useState(pathname === "/");
+
   const isMobile = useMediaQuery("(max-width: 768px)"); // lg breakpoint in Tailwind CSS
 
   useEffect(() => {
@@ -23,6 +27,12 @@ const Intro = ({
       document.body.classList.remove("overflow-hidden");
     };
   }, [show]);
+
+  useEffect(() => {
+    if (pathname !== "/") {
+      setPageShow(true);
+    }
+  }, [pathname]);
 
   const handleClick = () => {
     setShow(false);

@@ -6,6 +6,7 @@ import React from "react";
 import Blogs from "./Blogs";
 import { useFetch } from "@/utils/clientRequest";
 import { useDebounce } from "use-debounce";
+import MagazineForm from "./MagazineForm";
 
 type BlogsListProps = {
   blogs: components["schemas"]["BlogResource"][];
@@ -53,16 +54,7 @@ const BlogsList = (props: BlogsListProps) => {
                   خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
                 </span>
               </div>
-              <div className="flex flex-col gap-y-1.5">
-                <input
-                  type="text"
-                  placeholder="ایمیل خود را وارد کنید"
-                  className="bg-[#e1e1e1] w-full py-2 text-center rounded-[7px] text-[14px] placeholder:text-[14px] focus-visible:outline-none focus-visible:border-[#F56F95] border border-transparent"
-                />
-                <button className="text-white bg-[#F56F95] w-full py-2.5 rounded-[7px] text-[14px]">
-                  عضویت در خبرنامه
-                </button>
-              </div>
+              <MagazineForm />
             </div>
           </div>
         </div>

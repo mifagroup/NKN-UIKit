@@ -14,8 +14,6 @@ import { Autoplay } from "swiper/modules";
 const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
   const slides = data?.slides ?? [];
 
-  console.log(slides);
-
   return (
     <Swiper
       className="w-full"

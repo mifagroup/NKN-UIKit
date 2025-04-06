@@ -1,7 +1,7 @@
 import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import React from "react";
-import { BlogsSlider } from "./components";
+import { BlogsSlider, MagazineForm } from "./components";
 import qs from "qs";
 
 const page = async (props: { params: Promise<{ slug: string }> }) => {
@@ -219,16 +219,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
               هرهفته دوشنبه ها صبح خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
             </span>
           </div>
-          <div className="flex gap-x-2.5">
-            <input
-              type="text"
-              placeholder="ایمیل خود را وارد کنید"
-              className="text-center w-[280px] text-[#AAAAAA] bg-[#E1E1E1] text-[14px] h-[33px] rounded-[7px] focus-visible:outline-none"
-            />
-            <button className="text-center text-[14px] text-white rounded-[7px] h-[33px] bg-[#F56F95] w-[215px]">
-              عضویت در خبرنامه
-            </button>
-          </div>
+          <MagazineForm />
         </div>
       </div>
       <div className="border-t-[6px] border-t-[#31D1B0] pt-10 pb-8 bg-[#F1F1F1] flex justify-between max-h-[142px]">

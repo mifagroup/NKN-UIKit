@@ -146,13 +146,18 @@ const Filters = (props: FilterProps) => {
                         },
                       }}
                       onChange={() => {
-                        if (selectedTerms?.includes(term.id)) {
-                          setSelectedTerms(
-                            selectedTerms.filter((item) => item !== term.id)
-                          );
-                        } else {
-                          setSelectedTerms([...selectedTerms, term.id]);
-                        }
+                        // if (selectedTerms?.includes(term.id)) {
+                        //   setSelectedTerms(
+                        //     selectedTerms.filter((item) => item !== term.id)
+                        //   );
+                        // } else {
+                        // setSelectedTerms([term.id]);
+                        // }
+                        router.push(
+                          `/doctors/${term.slug}?${qs.stringify(
+                            prevSearchParams
+                          )}`
+                        );
                       }}
                       checked={selectedTerms.includes(term.id)}
                     />
@@ -231,13 +236,13 @@ const Filters = (props: FilterProps) => {
                       },
                     }}
                     onChange={() => {
-                      if (selectedDegrees?.includes(degree.id)) {
-                        setSelectedDegrees(
-                          selectedDegrees.filter((item) => item !== degree.id)
-                        );
-                      } else {
-                        setSelectedDegrees([...selectedDegrees, degree.id]);
-                      }
+                      // if (selectedDegrees?.includes(degree.id)) {
+                      //   setSelectedDegrees(
+                      //     selectedDegrees.filter((item) => item !== degree.id)
+                      //   );
+                      // } else {
+                      setSelectedDegrees([degree.id]);
+                      // }
                     }}
                     checked={selectedDegrees.includes(degree.id)}
                   />

@@ -7,6 +7,7 @@ import Footer from "./_components/footer";
 import NextTopLoader from "nextjs-toploader";
 import ReactQueryProvider from "@/providers/reactquery.provider";
 import Script from "next/script";
+import ToasterProvider from "@/providers/toaster.provider";
 const nikan = localFont({
   src: [
     {
@@ -76,9 +77,11 @@ export default function RootLayout({
           <NextTopLoader color="#31D1B0" />
           <AppRouterCacheProvider>
             <MuiProvider>
-              <Header />
+              <ToasterProvider>
+                <Header />
 
-              {children}
+                {children}
+              </ToasterProvider>
               <Footer />
             </MuiProvider>
           </AppRouterCacheProvider>

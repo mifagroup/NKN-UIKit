@@ -1,11 +1,12 @@
 "use client";
 import Image from "next/image";
-import React, { useRef } from "react";
+import React, { useRef, useState } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import "swiper/css";
 import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
+import toast from "react-hot-toast";
 
 const data = [
   {
@@ -73,6 +74,44 @@ const data = [
 const RequestService = () => {
   const swiperRef = useRef<SwiperType>();
 
+  const [form, setForm] = useState<{
+    name: string;
+    gender: string;
+    age: string;
+    number: string;
+    phone: string;
+    email: string;
+    expertises: number[];
+  }>({
+    name: "",
+    gender: "",
+    age: "",
+    number: "",
+    phone: "",
+    email: "",
+    expertises: [],
+  });
+
+  console.log(form);
+
+  const handleSubmit = () => {
+    if (Object.values(form).some((value) => value === "")) {
+      toast.error("لطفا تمامی فیلد ها را پر کنید.");
+      return;
+    }
+
+    toast.success("درخواست شما با موفقیت ثبت شد.");
+    setForm({
+      name: "",
+      gender: "",
+      age: "",
+      number: "",
+      email: "",
+      phone: "",
+      expertises: [],
+    });
+  };
+
   return (
     <div className="py-[60px] bg-[#EDEDED]">
       <div className="max-w-[1000px] flex flex-col gap-y-10 mx-auto lg:px-0 px-5">
@@ -93,34 +132,63 @@ const RequestService = () => {
             type="text"
             placeholder="نام و نام خانوادگی"
             className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm"
+            value={form.name}
+            onChange={(e) => setForm({ ...form, name: e.target.value })}
           />
           <input
-            type="text"
+            type="number"
             placeholder="شماره تماس"
             className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm"
+            value={form.number}
+            onChange={(e) => setForm({ ...form, number: e.target.value })}
           />
           <div className="col-span-1 grid grid-cols-4 gap-3">
-            <div className="col-span-1 h-[45px] bg-white rounded-[12px] text-black text-sm flex items-center justify-center">
+            <div
+              className={`lg:col-span-1 lg:h-auto h-[44px] col-span-6 rounded-[12px] flex items-center justify-center cursor-pointer ${
+                form.gender === "male"
+                  ? "bg-primary-main text-white"
+                  : "bg-white"
+              }`}
+              onClick={() => setForm({ ...form, gender: "male" })}
+            >
               مرد
             </div>
-            <div className="col-span-1 h-[45px] bg-white rounded-[12px] text-black text-sm flex items-center justify-center">
+            <div
+              className={`lg:col-span-1 lg:h-auto h-[44px] col-span-6 rounded-[12px] flex items-center justify-center cursor-pointer ${
+                form.gender === "female"
+                  ? "bg-primary-main text-white"
+                  : "bg-white"
+              }`}
+              onClick={() => setForm({ ...form, gender: "female" })}
+            >
               زن
             </div>
-            <div className="col-span-2 h-[45px] bg-white rounded-[12px] text-black text-sm flex items-center justify-center">
-              سن
-            </div>
+            <input
+              type="number"
+              className="lg:col-span-2 col-span-6 h-[45px] px-4 bg-white rounded-[12px] text-black text-sm flex items-center justify-center placeholder:!text-black"
+              placeholder="سن"
+              value={form.age}
+              onChange={(e) => setForm({ ...form, age: e.target.value })}
+            />
           </div>
           <input
             type="text"
             placeholder="ایمیل"
-            className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm lg:block hidden"
+            className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm"
+            value={form.email}
+            onChange={(e) => setForm({ ...form, email: e.target.value })}
           />
           <input
-            type="text"
+            type="number"
             placeholder="شماره تماس ثابت"
-            className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm lg:block hidden"
+            className="col-span-1 h-[45px] bg-white text-black px-4 py-3 rounded-[12px] focus-visible:outline-none placeholder:text-black text-sm"
+            onChange={(e) => setForm({ ...form, phone: e.target.value })}
+            value={form.phone}
           />
-          <div className="flex justify-between font-light items-center col-span-1 p-3 rounded-[12px] bg-[#D9D9D9]">
+          <label
+            className="flex justify-between font-light items-center col-span-1 p-3 rounded-[12px] bg-[#D9D9D9]"
+            htmlFor="image"
+          >
             بارگذاری تصویر
             <Image
               src={"/images/upload-icon.png"}
@@ -128,7 +196,9 @@ const RequestService = () => {
               height={22}
               width={22}
             />
-          </div>
+          </label>
+
+          <input type="file" id="image" className="hidden" />
         </div>
         <div className="flex flex-col gap-y-10">
           <span className="text-xl font-light text-black">
@@ -158,7 +228,27 @@ const RequestService = () => {
             >
               {data?.map((item, index) => (
                 <SwiperSlide key={index}>
-                  <div className="flex flex-col bg-white items-center justify-center h-[182px] rounded-[12px] gap-y-3">
+                  <div
+                    className={`flex flex-col bg-white items-center justify-center h-[182px] rounded-[12px] gap-y-3 ${
+                      form.expertises.includes(item.id) &&
+                      "border-2 border-primary-main"
+                    }`}
+                    onClick={() => {
+                      if (form.expertises.includes(item.id)) {
+                        setForm({
+                          ...form,
+                          expertises: form.expertises.filter(
+                            (id) => id !== item.id
+                          ),
+                        });
+                      } else {
+                        setForm({
+                          ...form,
+                          expertises: [...form.expertises, item.id],
+                        });
+                      }
+                    }}
+                  >
                     <div className="border-b border-b-[#8B8B8B] w-full flex justify-center">
                       <Image
                         src={item.image}
@@ -182,7 +272,10 @@ const RequestService = () => {
             />
           </div>
         </div>
-        <button className="md:w-[420px] w-[250px] md:h-[62px] h-[50px] bg-primary-main text-white rounded-[12px] md:mr-auto mx-auto">
+        <button
+          className="md:w-[420px] w-[250px] md:h-[62px] h-[50px] bg-primary-main text-white rounded-[12px] md:mr-auto mx-auto"
+          onClick={handleSubmit}
+        >
           ثبت و ارسال درخواست
         </button>
       </div>

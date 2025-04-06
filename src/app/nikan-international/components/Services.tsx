@@ -1,5 +1,10 @@
+"use client";
 import Image from "next/image";
 import React from "react";
+import { Swiper, SwiperSlide } from "swiper/react";
+import "swiper/css";
+import "swiper/css/autoplay";
+import { Autoplay } from "swiper/modules";
 
 const Services = () => {
   return (
@@ -61,13 +66,51 @@ const Services = () => {
           دیگری گردیده است.
         </li>
       </ul>
-      <Image
-        src={"/images/inter-services.png"}
-        alt=""
-        width={1100}
-        height={415}
-        className="pt-10"
-      />
+      <Swiper
+        slidesPerView={1}
+        spaceBetween={10}
+        className="w-full"
+        autoplay={{
+          delay: 2500,
+          disableOnInteraction: false,
+        }}
+        loop
+        modules={[Autoplay]}
+      >
+        <SwiperSlide>
+          <div className="pt-10">
+            <Image
+              src={"/images/inter-services.png"}
+              alt=""
+              width={1100}
+              height={415}
+              className="md:h-[455px] h-[175px] object-cover"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="pt-10">
+            <Image
+              src={"/images/inter-service-1.png"}
+              alt=""
+              width={1100}
+              height={415}
+              className="md:h-[455px] h-[175px] object-cover"
+            />
+          </div>
+        </SwiperSlide>
+        <SwiperSlide>
+          <div className="pt-10">
+            <Image
+              src={"/images/inter-service-2.png"}
+              alt=""
+              width={1100}
+              height={415}
+              className="md:h-[455px] h-[175px] object-cover"
+            />
+          </div>
+        </SwiperSlide>
+      </Swiper>
       <span className="text-sm font-bold pt-10">خدمات IPD :</span>
       <p className="text-sm font-light">
         دپارتمان بیماران بین المللی ( IPD ) بیمارستان از کارشناسان متخصص و

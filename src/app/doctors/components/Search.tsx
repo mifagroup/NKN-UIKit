@@ -24,7 +24,9 @@ const Search = ({
     searchParams.get("search") ?? ""
   );
 
-  const [selectedHospital, setSelectedHospital] = useState<string>();
+  const [selectedHospital, setSelectedHospital] = useState<string>(
+    searchParams.get("hospital") ?? ""
+  );
 
   const [enableSearch, setEnableSearch] = useState<boolean>(false);
 

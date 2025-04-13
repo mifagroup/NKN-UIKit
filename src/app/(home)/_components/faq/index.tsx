@@ -1,6 +1,6 @@
 "use client";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useState } from "react";
 
 const data = [
   {
@@ -31,8 +31,6 @@ const data = [
 
 const FAQ = () => {
   const [active, setActive] = useState<number | null>(null);
-
-  console.log(active);
 
   return (
     <div className="max-w-[1060px] mx-auto pb-[100px] lg:px-0 px-5">

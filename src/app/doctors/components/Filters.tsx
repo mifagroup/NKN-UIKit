@@ -1,10 +1,10 @@
 "use client";
-import { Checkbox, FormControlLabel } from "@mui/material";
-import { useRouter, useSearchParams } from "next/navigation";
-import React, { useEffect, useState } from "react";
-import qs from "qs";
 import { components } from "@/lib/api/v1";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
+import { Checkbox, FormControlLabel } from "@mui/material";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
+import qs from "qs";
+import React, { useEffect, useState } from "react";
 const genders = [
   {
     id: 1,
@@ -32,6 +32,9 @@ const Filters = (props: FilterProps) => {
   const { degrees, expertises } = props;
 
   const router = useRouter();
+  const pathname = usePathname();
+  const encodedSlug = pathname.split("/")[2];
+  const currentSlug = encodedSlug ? decodeURIComponent(encodedSlug) : "";
 
   const searchParams = useSearchParams();
 
@@ -39,7 +42,6 @@ const Filters = (props: FilterProps) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     [...searchParams.entries()].filter(([key, value]) => value)
   );
-
   const [gender, setGender] = useState<string>(
     searchParams.get("gender") ?? ""
   );
@@ -49,7 +51,6 @@ const Filters = (props: FilterProps) => {
   const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>([]);
 
   const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
-
   useEffect(() => {
     // Create a copy of the previous params and remove 'gender' if it exists
     const updatedParams = { ...prevSearchParams };
@@ -98,7 +99,6 @@ const Filters = (props: FilterProps) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDegrees]);
-
   useEffect(() => {
     if (prevSearchParams.degrees) {
       setSelectedDegrees(
@@ -111,7 +111,6 @@ const Filters = (props: FilterProps) => {
       );
     }
   }, []);
-
   return (
     <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">
       {expertises?.terms?.length && (
@@ -159,7 +158,7 @@ const Filters = (props: FilterProps) => {
                           )}`
                         );
                       }}
-                      checked={selectedTerms.includes(term.id)}
+                      checked={term.slug === currentSlug}
                     />
                   }
                   slotProps={{

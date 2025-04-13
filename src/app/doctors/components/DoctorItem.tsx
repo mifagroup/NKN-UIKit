@@ -2,7 +2,6 @@ import { components } from "@/lib/api/v1";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const DoctorItem = ({
   doctor,
@@ -12,7 +11,7 @@ const DoctorItem = ({
   return (
     <div className="flex md:flex-row flex-col gap-y-4 justify-between items-stretch py-5">
       <div className="flex items-center gap-x-3.5">
-        <Link href={`/doctors/${doctor.id}`}>
+        <Link href={`/doctor/${doctor.id}`}>
           <Image
             src={doctor.image.original_url ?? ""}
             alt="doc"
@@ -23,7 +22,7 @@ const DoctorItem = ({
         </Link>
         <div className="flex flex-col">
           <Link
-            href={`/doctors/${doctor.id}`}
+            href={`/doctor/${doctor.id}`}
             className="text-base font-bold text-black"
           >
             {doctor.full_name}
@@ -62,7 +61,7 @@ const DoctorItem = ({
         </button>
         <div className="pt-2.5 flex items-center gap-x-[15px] justify-center">
           <Link
-            href={`/doctors/${doctor.id}`}
+            href={`/doctor/${doctor.id}`}
             className="text-[12px] font-extralight text-black"
           >
             بازدید صفحه پزشک

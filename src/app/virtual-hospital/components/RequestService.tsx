@@ -1,12 +1,12 @@
 "use client";
+import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
+import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
 import Image from "next/image";
-import React, { useRef, useState } from "react";
+import { useRef, useState } from "react";
+import toast from "react-hot-toast";
+import "swiper/css";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
-import "swiper/css";
-import ArrowForwardIosOutlinedIcon from "@mui/icons-material/ArrowForwardIosOutlined";
-import ArrowBackIosOutlinedIcon from "@mui/icons-material/ArrowBackIosOutlined";
-import toast from "react-hot-toast";
 
 const data = [
   {
@@ -91,8 +91,6 @@ const RequestService = () => {
     email: "",
     expertises: [],
   });
-
-  console.log(form);
 
   const handleSubmit = () => {
     if (Object.values(form).some((value) => value === "")) {

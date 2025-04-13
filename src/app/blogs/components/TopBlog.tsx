@@ -2,12 +2,11 @@
 import { components } from "@/lib/api/v1";
 import { Divider } from "@mui/material";
 import Image from "next/image";
-import React from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
+import Link from "next/link";
 import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
-import Link from "next/link";
+import { Swiper, SwiperSlide } from "swiper/react";
 
 type TopBlogProps = {
   slider: components["schemas"]["BlogResource"][];
@@ -15,8 +14,6 @@ type TopBlogProps = {
 
 const TopBlog = (props: TopBlogProps) => {
   const { slider } = props;
-
-  console.log(slider);
 
   return (
     <Swiper

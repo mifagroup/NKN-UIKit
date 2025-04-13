@@ -1,24 +1,31 @@
-import React from "react";
-import { DoctorsList, Filters } from "./components";
 import { components } from "@/lib/api/v1";
 import qs from "qs";
+import { DoctorsList, Filters } from "./components";
 
 const Page = async (props: {
   searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
+  slug?: string | undefined;
 }) => {
   const searchParams = await props.searchParams;
-
+  const slug = props.slug;
   const formattedParams = qs.stringify({
-    filter: {
-      search: searchParams?.search,
-      gender: searchParams?.gender,
-      terms: searchParams?.terms,
-      hospital: searchParams?.hospital,
-    },
+    filter: slug
+      ? {
+          search: searchParams?.search,
+          gender: searchParams?.gender,
+          terms: searchParams?.terms,
+          hospital: searchParams?.hospital,
+          slug: slug,
+        }
+      : {
+          search: searchParams?.search,
+          gender: searchParams?.gender,
+          terms: searchParams?.terms,
+          hospital: searchParams?.hospital,
+        },
     page: searchParams?.page,
     per_page: 6,
   });
-
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/doctors?${formattedParams}`,
     {

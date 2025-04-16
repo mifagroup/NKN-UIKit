@@ -1,15 +1,17 @@
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const NikanStatement = () => {
   return (
     <div className="max-w-[1236px] container mt-[35px] lg:mb-[70px] mb-5">
-      <div className="flex flex-col gap-y-[15px] lg:px-0 px-5">
-        <h2 className="text-[25px] font-bold text-[#5b5b5b] text-center">
-          بیانیه خانواده درمانی نیکان
-        </h2>
-        <p className="max-w-[805px] mx-auto leading-[32.5px] font-light lg:text-center text-justify">
+      <div className="flex flex-col md:flex-row md:items-center  gap-y-[15px] lg:px-0 px-5">
+        <div className="md:px-10 h-full">
+          <h2 className="text-[25px] font-bold text-[#5b5b5b] text-center">
+            بیانیه خانواده درمانی نیکان
+          </h2>
+        </div>
+
+        <p className="max-w-[805px] md:border-r md:pr-20 md:border-[#31D1B0] text-[#5B5B5B] mx-auto leading-[32.5px] font-light  text-justify">
           نیکان در کلام و صفات جمع خوبی‌هاست و &quot;خوب بودن&quot; روح نیکان
           است.
           <br /> تجربه ما در مجموعه بیمارستا‌ن‌های نیکان همواره به ما این جمله

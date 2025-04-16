@@ -1,3 +1,4 @@
+import { components } from "@/lib/api/v1";
 import {
   Blogs,
   Branches,
@@ -9,7 +10,7 @@ import {
   SearchDoctors,
   WhyNikan,
 } from "./_components";
-import { components } from "@/lib/api/v1";
+import News from "./_components/news";
 
 const Page = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/home`, {
@@ -35,6 +36,7 @@ const Page = async () => {
   const hospitals = homeResponse?.hospitals;
 
   const blogs = homeResponse?.blogs ?? [];
+  const news = homeResponse?.news ?? [];
 
   return (
     <div className="">
@@ -45,6 +47,7 @@ const Page = async () => {
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}
       <Blogs blogs={blogs} />
+      <News news={news} />
       <FAQ />
       <BranchesAddresses />
     </div>

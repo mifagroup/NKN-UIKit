@@ -430,6 +430,10 @@ export interface components {
             description: string;
             /** @description Duration of the blog */
             duration?: number | null;
+            /** @description type of blog. values: blog,news,social_responsibilty . default: blog */
+            type?: string | null;
+            /** @description publish status of the blog  */
+            published?: boolean | null;
             /**
              * Format: binary
              * @description Main image of the blog
@@ -499,7 +503,7 @@ export interface components {
             /** @description A description of the slide */
             description?: string;
             /** @description The ordering number for the slide */
-            ordering?: number;
+            ordering: number;
             /**
              * Format: uri
              * @description The link related to the slide
@@ -543,7 +547,7 @@ export interface components {
             /** @description Duration of the blog */
             duration?: number | null;
             /** @description publish status of the blog default is false */
-            publish?: boolean | null;
+            published?: boolean | null;
             /**
              * Format: binary
              * @description Main image of the blog
@@ -748,6 +752,7 @@ export interface components {
             main_terms?: components["schemas"]["TermResource"][];
             /** @description terms list of home page */
             footer_terms?: components["schemas"]["TermResource"][];
+            news?: components["schemas"]["BlogResource"][];
             /** @description hospital list of home page */
             hospitals?: components["schemas"]["HospitalResource"][];
             /** @description Blog list of home page */
@@ -1174,6 +1179,8 @@ export interface operations {
                 "filter[gender]"?: string;
                 /** @description filter doctrs by terms and explode by , example:26,25 */
                 "filter[terms]"?: string;
+                /** @description filter doctrs by terms slug */
+                "filter[slug]"?: string;
                 /** @description filter doctrs by hospital_id */
                 "filter[hospital]"?: number;
             };

@@ -1,15 +1,15 @@
 "use client";
 
+import { components } from "@/lib/api/v1";
 import { Button, Divider } from "@mui/material";
-import React, { useRef } from "react";
-import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types";
-import { Navigation } from "swiper/modules";
-import "swiper/css";
-import "swiper/css/navigation";
 import Image from "next/image";
 import Link from "next/link";
-import { components } from "@/lib/api/v1";
+import { useRef } from "react";
+import "swiper/css";
+import "swiper/css/navigation";
+import { Navigation } from "swiper/modules";
+import { Swiper, SwiperSlide } from "swiper/react";
+import { Swiper as SwiperType } from "swiper/types";
 
 const Blogs = ({
   blogs,
@@ -22,7 +22,7 @@ const Blogs = ({
   const nextEl = useRef(null);
 
   return (
-    <div className="pt-[150px] lg:pb-[170px] pb-10 container lg:px-0 px-12">
+    <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">
       <div className="relative">
         <Button
           className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] right-[-30px] z-10"

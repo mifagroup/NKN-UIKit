@@ -1,13 +1,13 @@
-import localFont from "next/font/local";
-import Header from "./_components/header";
-import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import MuiProvider from "@/providers/mui.provider";
-import "./globals.css";
-import Footer from "./_components/footer";
-import NextTopLoader from "nextjs-toploader";
 import ReactQueryProvider from "@/providers/reactquery.provider";
-import Script from "next/script";
 import ToasterProvider from "@/providers/toaster.provider";
+import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
+import localFont from "next/font/local";
+import Script from "next/script";
+import NextTopLoader from "nextjs-toploader";
+import Footer from "./_components/footer";
+import Header from "./_components/header";
+import "./globals.css";
 const nikan = localFont({
   src: [
     {
@@ -72,9 +72,12 @@ export default function RootLayout({
           __html: `!function(){var i="TNsgAN",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);} "complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();`,
         }}
       />
+      <title>یبمارستان نیکان</title>
+      <link rel="icon" href={"/images/logo.svg"} />
       <body dir="rtl">
+        {" "}
+        <NextTopLoader showSpinner={false} color="#31D1B0" height={7} />
         <ReactQueryProvider>
-          <NextTopLoader color="#31D1B0" />
           <AppRouterCacheProvider>
             <MuiProvider>
               <ToasterProvider>

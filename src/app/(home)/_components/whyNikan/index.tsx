@@ -1,12 +1,11 @@
 "use client";
 
+import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
-import React, { useRef } from "react";
+import Image from "next/image";
+import { useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
-import Image from "next/image";
-import { components } from "@/lib/api/v1";
-import { Autoplay } from "swiper/modules";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -51,6 +50,21 @@ const WhyNikan = ({
             height={63.5}
           />
         </Button>
+        <Button
+          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10 lg:!block !hidden"
+          onClick={() => {
+            swiperRef.current?.slideNext();
+            swiperRef2.current?.slideNext();
+          }}
+        >
+          <Image
+            src={"/images/arrow-right.png"}
+            alt="arrow-left"
+            width={23}
+            height={63.5}
+            className="rotate-180"
+          />
+        </Button>
         <div className="flex gap-x-[54px] items-center justify-center max-w-[1168px] mx-auto">
           <Swiper
             onBeforeInit={(swiper) => {
@@ -84,10 +98,10 @@ const WhyNikan = ({
               direction="vertical"
               spaceBetween={30}
               className="max-h-[680px]"
-              modules={[Autoplay]}
-              autoplay={{
+              /*        modules={[Autoplay]} */
+              /*         autoplay={{
                 delay: 5000,
-              }}
+              }} */
               allowTouchMove={false}
             >
               {chunkedSlides.map((chunk, index) => (

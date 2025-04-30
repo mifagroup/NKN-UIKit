@@ -46,7 +46,7 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
             className="w-full"
             breakpoints={{
               768: {
-                slidesPerView: news.length > 4 ? 3 : 4,
+                slidesPerView: 3,
               },
             }}
           >
@@ -93,14 +93,13 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
           )}
 
           {/* "See more news" link - hidden on mobile */}
-          {news.length > 4 && (
-            <Link
-              href={"/news"}
-              className="bg-gray-100 cursor-pointer hidden md:flex items-center justify-center md:w-1/4 md:h-[274px] text-center font-bold text-gray-700 rounded-md"
-            >
-              اخبار بیشتر نیکان
-            </Link>
-          )}
+
+          <Link
+            href={"/news"}
+            className="bg-gray-100 cursor-pointer hidden md:flex items-center justify-center md:w-1/4 md:h-[274px] text-center font-bold text-gray-700 rounded-md"
+          >
+            اخبار بیشتر نیکان
+          </Link>
         </div>
       </section>
     </>

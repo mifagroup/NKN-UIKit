@@ -1,9 +1,8 @@
 "use client";
-import Image from "next/image";
-import React from "react";
-import { Links, MenuDrawer } from "./_components";
 import { useMediaQuery, useTheme } from "@mui/material";
+import Image from "next/image";
 import Link from "next/link";
+import { Links, MenuDrawer } from "./_components";
 
 const Header = () => {
   const theme = useTheme();
@@ -13,7 +12,7 @@ const Header = () => {
   return (
     <div className="border-b border-b-[#D6D6D6]">
       <div className="xl:max-w-[1315px] container lg:px-0 px-5">
-        <div className="flex items-center justify-between lg:h-[17vh] h-[10vh]">
+        <div className="flex items-center justify-between lg:h-[12vh] h-[10vh]">
           <div className="flex items-center gap-x-10">
             <Link href={"/"}>
               <Image
@@ -36,6 +35,11 @@ const Header = () => {
               <LoginButton />
             </div> */}
             <MenuDrawer />
+            <div className="lg:block hidden border-r pr-4 mr-4">
+              <a href="tel:02112129">
+                <img src="/images/ourTell.svg" alt="ourTell" />
+              </a>
+            </div>
           </div>
         </div>
       </div>

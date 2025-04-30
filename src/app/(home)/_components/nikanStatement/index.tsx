@@ -1,9 +1,8 @@
 import Image from "next/image";
-import Link from "next/link";
 
 const NikanStatement = () => {
   return (
-    <div className="max-w-[1236px] container mt-[35px] lg:mb-[70px] mb-5">
+    <div className="max-w-[1236px] container mt-[100px] lg:mb-[80px] mb-5">
       <div className="flex flex-col md:flex-row md:items-center  gap-y-[15px] lg:px-0 px-5">
         <div className="md:px-10 h-full">
           <h2 className="text-[25px] font-bold text-[#5b5b5b] text-center">
@@ -14,24 +13,28 @@ const NikanStatement = () => {
         <p className="max-w-[805px] md:border-r md:pr-20 md:border-[#31D1B0] text-[#5B5B5B] mx-auto leading-[32.5px] font-light  text-justify">
           نیکان در کلام و صفات جمع خوبی‌هاست و &quot;خوب بودن&quot; روح نیکان
           است.
-          <br/> تجربه ما در مجموعه بیمارستا‌ن‌های نیکان همواره به ما این جمله
+          <br /> تجربه ما در مجموعه بیمارستا‌ن‌های نیکان همواره به ما این جمله
           را یادآور می‌شود که &quot;زندگی هنوز زیباست و زیبایی انتها ندارد&quot;
           و تلاش همیشگی و باور قلبی ما اشاعه همین زیبایی‌هاست. ما در مجموعه
           نیکان با هم عهد بسته‌ایم که با تعهد و تخصصِ آمیخته با عشق میزبان خوبی
           برای مهمانان عزیزمان باشیم.بیمارستان نیکان در راستای التیام آلام
-          بیماران، خدمات بهداشتی درمانی <b className="font-bold">ایمن</b> و <b className="font-bold">اثر بخش</b> را در حوزه‌های تخصصی و
-          فوق تخصصی ارائه می‌دهد. این خدمات، با کیفیت، در حداقل زمان و فارغ از
-          <b className="font-bold">سن</b>، <b className="font-bold">جنس</b>، <b className="font-bold">نژاد</b>، <b className="font-bold">رنگ</b>، <b className="font-bold">مذهب</b> و یا <b className="font-bold">موقعیت اجتماعی</b> افراد ارائه می‌شود.
+          بیماران، خدمات بهداشتی درمانی <b className="font-bold">ایمن</b> و{" "}
+          <b className="font-bold">اثر بخش</b> را در حوزه‌های تخصصی و فوق تخصصی
+          ارائه می‌دهد. این خدمات، با کیفیت، در حداقل زمان و فارغ از
+          <b className="font-bold">سن</b>، <b className="font-bold">جنس</b>،{" "}
+          <b className="font-bold">نژاد</b>، <b className="font-bold">رنگ</b>،{" "}
+          <b className="font-bold">مذهب</b> و یا{" "}
+          <b className="font-bold">موقعیت اجتماعی</b> افراد ارائه می‌شود.
         </p>
       </div>
       <Image
-        src={"/images/statement-image.png"}
+        src={"/images/statement-image.svg"}
         alt=""
         width={1236}
         height={452}
-        className="mt-10 lg:mb-24 mb-10 object-cover"
+        className="mt-20 lg:mb-24 mb-10 object-cover"
       />
-      <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 lg:px-0 px-5">
+      {/*   <div className="max-w-[1036px] mx-auto grid lg:grid-cols-6 sm:grid-cols-3 grid-cols-2 lg:gap-8 gap-4 lg:px-0 px-5">
         <Link
           href={"https://pa.nikan365.ir"}
           className="lg:pt-[27px] pt-4 px-2 lg:pb-10 pb-5 bg-[#f4f4f4] rounded-[16px] flex flex-col lg:gap-y-[27px] gap-y-4 justify-center items-center"
@@ -101,7 +104,7 @@ const NikanStatement = () => {
             خدمات درمانی در منزل
           </span>
         </Link>
-      </div>
+      </div> */}
     </div>
   );
 };

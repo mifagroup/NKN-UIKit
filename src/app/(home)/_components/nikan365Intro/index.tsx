@@ -1,7 +1,3 @@
-import { Typography } from "@mui/material";
-import Image from "next/image";
-import React from "react";
-import Nikan365IntroSlider from "../nikan365IntroSlider";
 import { components } from "@/lib/api/v1";
 
 const Nikan365Intro = ({
@@ -10,8 +6,8 @@ const Nikan365Intro = ({
   data: components["schemas"]["SliderResource"];
 }) => {
   return (
-    <div className="lg:pr-[56px] pr-[30px] lg:pl-[168px] pt-[44px] lg:pb-[27px] pb-[46px] flex justify-between items-center">
-      <div className="items-center gap-x-1.5 lg:flex hidden">
+    <div className="max-w-[1236px] container pt-[44px] lg:pb-[27px] w-full pb-[46px] flex lg:justify-between lg:items-center lg:flex-row flex-col">
+      {/*  <div className="items-center gap-x-1.5 lg:flex hidden">
         <Image
           src={data?.thumbnails?.[0].original_url ?? ""}
           alt="nikan-365-logo"
@@ -28,7 +24,48 @@ const Nikan365Intro = ({
           </Typography>
         </div>
       </div>
-      <Nikan365IntroSlider data={data.slides ?? []} />
+      <Nikan365IntroSlider data={data.slides ?? []} /> */}
+      <img src="/images/slogen.svg" alt="slogen" />
+      <div className="grid lg:grid-cols-4 grid-cols-2">
+        <div className="flex flex-col items-center justify-center gap-3 lg:border-l lg:pl-4 lg:ml-4 border-l  lg:pb-0 lg:border-b-0 border-b pl-4 pb-4">
+          <img
+            className="w-full max-w-[66px]"
+            src="/images/calendar.png"
+            alt="slogen"
+          />
+          <span className="text-base font-light text-[#616161]">
+            برنامه کلینیک‌های تخصصی
+          </span>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-3 lg:border-l lg:pl-4 lg:ml-4  lg:pb-0 lg:border-b-0 border-b pl-4 pb-4">
+          <img
+            className="w-full max-w-[66px]"
+            src="/images/appointment.png"
+            alt="slogen"
+          />
+          <span className="text-base font-light text-[#616161]">نوبت دهی</span>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-3 lg:border-l lg:pl-4  lg:pb-0 lg:pt-0 lg:border-b-0 lg:ml-4 border-l  pt-4 pb-4">
+          <img
+            className="w-full max-w-[66px]"
+            src="/images/checkup.png"
+            alt="slogen"
+          />
+          <span className="text-base font-light text-[#616161]">
+            پایش سلامت(چکاپ)
+          </span>
+        </div>
+        <div className="flex flex-col items-center justify-center gap-3  lg:pl-0 lg:pt-0 lg:pb-0 pt-4 lg:border-b-0 pb-4">
+          <img
+            className="w-full max-w-[66px]"
+            src="/images/javab.png"
+            alt="slogen"
+          />
+          <span className="text-base font-light text-[#616161]">
+            جواب دهی انلاین
+          </span>
+        </div>
+      </div>
     </div>
   );
 };

@@ -13,9 +13,9 @@ const Hero = ({ slider = [] }: HeroProps) => {
         <h1 className="text-xl leading-[33px] font-semibold text-center">
           نیکان و مسئولیت اجتماعی
         </h1>
-        <h2 className="text-sm font-light text-center">
+        {/*<h2 className="text-sm font-light text-center">
           محتوای مورد نیاز برای ساب تایتل محتوای مورد نیاز برای ساب تایتل
-        </h2>
+        </h2>*/}
       </div>
       <div className="grid lg:grid-cols-7 grid-cols-1 lg:gap-3">
         {slider[0] && (

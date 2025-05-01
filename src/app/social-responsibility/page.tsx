@@ -4,10 +4,13 @@ import { Content, Hero } from "./components";
 const page = async () => {
   const formattedParams = qs.stringify({
     with_slider: true,
+    filter: {
+      type: "social_responsibility",
+    },
   });
 
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}?filter[type]=social_responsibility`,
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}`,
     {
       cache: "no-cache",
     }

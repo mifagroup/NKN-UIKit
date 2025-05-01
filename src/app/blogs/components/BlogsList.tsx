@@ -94,7 +94,7 @@ const BlogsList = (props: BlogsListProps) => {
           <div className="w-full flex items-center justify-between border rounded-[61px] border-primary-main pr-[30px] pl-3 py-1.5">
             <input
               type="text"
-              placeholder="زخم پای دیابتی...."
+              placeholder="جستجو...."
               className="text-[20px] text-primary-main placeholder:text-primary-main focus-visible:outline-none"
               onChange={(e) => setSearchValue(e.target.value)}
             />

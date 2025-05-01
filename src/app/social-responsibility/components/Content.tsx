@@ -23,15 +23,20 @@ const Content = ({ data = [] }: ContentProps) => {
             alt={item.title || ""}
             width={1103}
             height={310}
+            className="h-[310px] !important"
           />
           <div className="flex justify-between items-center lg:px-0 px-4">
             <div className="flex flex-col ggap-y-2">
               <span className="text-xl font-semibold">{item.title}</span>
-              <span className="text-sm font-light">{item.sub_title}</span>
+              <span className="text-sm font-light mt-5">
+                  {item.sub_title.length > 100
+                      ? `${item.sub_title.slice(0, 100).replace(/\s+\S*$/, "")}...`
+                      : item.sub_title}
+              </span>
             </div>
             <div className="items-center gap-x-2 lg:flex hidden">
               <Image
-                src={"/images/share-icon.png"}
+                  src={"/images/share-icon.png"}
                 alt=""
                 width={20}
                 height={18}

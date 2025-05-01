@@ -17,13 +17,13 @@ const SearchDoctors = ({
       <div className="relative flex lg:flex-row flex-col justify-between container max-w-[1108px] lg:items-start items-end">
         <div className="lg:max-w-[790px] max-w-full flex flex-col gap-y-[30px] flex-1 lg:mt-[-100px] lg:w-auto w-full">
           <Typography className="!text-grey-800 !text-[20px] !font-extrabold lg:!block !hidden">
-            جستجوی خدمات بر اساس شرایط و بیماری، مشخصات پزشک و...
+            جستجوی خدمات بر اساس تخصص، مشخصات پزشک و...
           </Typography>
           <div className="border border-primary-main flex gap-x-5 justify-between items-center lg:rounded-[60px] rounded-[18px] bg-white pr-[36px] pl-[14px] py-2.5">
             <input
               type="text"
               className="w-full lg:!text-[32px] !text-[14px] lg:placeholder:!text-[32px] placeholder:!text-[14px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
-              placeholder={"زخم پای دیابتی...."}
+              placeholder={"جستجو..."}
               onChange={(e) => setSearch(e.target.value)}
             />
             <Image

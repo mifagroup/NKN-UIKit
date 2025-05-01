@@ -24,7 +24,7 @@ const Nikan365Intro = ({}: {
         </div>
       </div>
       <Nikan365IntroSlider data={data.slides ?? []} /> */}
-      <Image src="/images/slogen.svg" fill className="!relative" alt="slogen" />
+      <Image src="/images/slogen.svg" fill className="!relative max-w-[400px]" alt="slogen" />
       <div className="grid lg:grid-cols-4 grid-cols-2 lg:mt-0 mt-10">
         <div className="flex flex-col items-center justify-center gap-3 lg:border-l lg:pl-4 lg:ml-4 border-l  lg:pb-0 lg:border-b-0 border-b pl-4 pb-4">
           <Image

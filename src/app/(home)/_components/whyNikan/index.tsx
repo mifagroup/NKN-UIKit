@@ -145,14 +145,7 @@ const WhyNikan = ({
             <>
               {data.thumbnails.map((thumbnail, index) => (
                 <Fragment key={index}>
-                  <Image
-                    src={thumbnail?.original_url ?? ""}
-                    alt={thumbnail?.file_name ?? ""}
-                    width={758}
-                    height={400}
-                    quality={100}
-                    className="w-full h-auto object-cover "
-                  />
+
 
                   <div className="flex flex-col gap-y-6 px-5">
                     {data.slides
@@ -182,6 +175,14 @@ const WhyNikan = ({
                         </div>
                       ))}
                   </div>
+                    <Image
+                        src={thumbnail?.original_url ?? ""}
+                        alt={thumbnail?.file_name ?? ""}
+                        width={758}
+                        height={400}
+                        quality={100}
+                        className="w-full h-auto object-cover "
+                    />
                 </Fragment>
               ))}
             </>

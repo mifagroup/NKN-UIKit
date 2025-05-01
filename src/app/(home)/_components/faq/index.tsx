@@ -1,6 +1,7 @@
 "use client";
 import Link from "next/link";
 import { useState } from "react";
+import Image from "next/image";
 
 const data = [
   {
@@ -103,7 +104,7 @@ const FAQ = () => {
                   }
                 }}
               >
-                <img
+                <Image
                   src="/images/arrow-left.png"
                   alt="arrow"
                   className={` h-[15px] w-[5px] ${

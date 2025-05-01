@@ -2,7 +2,6 @@ import { components } from "@/lib/api/v1";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import ShareButton from "./ShareButton";
 const BranchesAddresses = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hospitals`, {
     cache: "no-cache",

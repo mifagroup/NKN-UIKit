@@ -2,7 +2,7 @@ import { components } from "@/lib/api/v1";
 import Image from "next/image";
 
 const Nikan365Intro = ({
-  data,
+
 }: {
   data: components["schemas"]["SliderResource"];
 }) => {

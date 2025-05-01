@@ -31,8 +31,8 @@ const WhyNikan = ({
   const chunkedSlides = chunkArray(data?.slides ?? [], 3);
 
   return (
-    <div className="lg:pt-20 pt-[65px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
-      <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] lg:!block !hidden">
+    <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
+      <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] !text-xl lg:!block ">
         {data.name}
       </Typography>
       <div className="relative">

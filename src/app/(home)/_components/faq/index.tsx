@@ -33,7 +33,7 @@ const FAQ = () => {
   const [active, setActive] = useState<number | null>(null);
 
   return (
-    <div className="max-w-[1060px] mx-auto pb-[100px] lg:px-0 px-5">
+    <div className="max-w-[1060px] mx-auto pb-[100px] mt-20 lg:px-0 px-5">
       <div className="grid lg:grid-cols-2 grid-cols-1 gap-x-[80px] gap-y-10">
         <div className="flex flex-col gap-y-5 lg:pr-10 lg:border-r-[4px] border-r-primary-main pt-1 pb-3">
           <span className="text-[15px] lg:text-right text-center font-bold text-black">
@@ -85,14 +85,14 @@ const FAQ = () => {
             </span>
           </div>
         </div>
-        <div>
+        <div className="lg:pr-10 lg:border-r-[4px] border-r-primary-main ">
           <span className="text-[15px] font-bold text-black">
             سوالات متداول
           </span>
           {data.map((item) => (
             <div key={item.id}>
               <div
-                className={`flex cursor-pointer gap-x-2 pt-3 ${
+                className={`flex items-center  cursor-pointer gap-x-2 pt-3 ${
                   item.id !== active ? "border-b border-b-[#EAEAEA] pb-3" : ""
                 } text-[13px] font-light`}
                 onClick={() => {
@@ -103,6 +103,13 @@ const FAQ = () => {
                   }
                 }}
               >
+                <img
+                  src="/images/arrow-left.png"
+                  alt="arrow"
+                  className={` h-[15px] w-[5px] ${
+                    item.id !== active ? "rotate-0" : "rotate-[-90deg]"
+                  } transition-all duration-300 `}
+                />
                 {item.title}
               </div>
               {item.id === active && (

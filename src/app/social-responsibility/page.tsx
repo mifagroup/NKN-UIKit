@@ -7,7 +7,7 @@ const page = async () => {
   });
 
   const data = await fetch(
-    `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}`,
+    `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}?filter[type]=social_responsibility`,
     {
       cache: "no-cache",
     }

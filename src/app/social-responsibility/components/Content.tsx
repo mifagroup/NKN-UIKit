@@ -18,7 +18,6 @@ const Content = ({ data = [] }: ContentProps) => {
           }`}
           key={item.id || index}
         >
-          {index}
           <Image
             src={item.main_image?.original_url}
             alt={item.title || ""}

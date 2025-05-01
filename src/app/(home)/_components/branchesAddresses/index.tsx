@@ -2,7 +2,6 @@ import { components } from "@/lib/api/v1";
 import { Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React from "react";
 
 const BranchesAddresses = async () => {
   const data = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/hospitals`, {
@@ -43,9 +42,15 @@ const BranchesAddresses = async () => {
               <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700 lg:block hidden">
                 {branches[0]?.address}
               </Typography>
-              <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700 lg:block hidden">
-                {branches[0]?.phone_number}
-              </Typography>
+              <div className="lg:flex hidden items-center mt-4">
+                <div className="text-xs font-extralight ">مسیریابی</div>
+                <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
+                  اشتراک گذاری
+                </div>
+                <div className="text-xs font-extralight ">
+                  بیمه های طرف قرارداد
+                </div>
+              </div>
             </div>
           </Link>
           <Link
@@ -67,9 +72,18 @@ const BranchesAddresses = async () => {
               <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700 lg:block hidden">
                 {branches[1]?.address}
               </Typography>
-              <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700 lg:block hidden">
+              {/*     <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700 lg:block hidden">
                 {branches[1]?.phone_number}
-              </Typography>
+              </Typography> */}
+              <div className="lg:flex hidden items-center mt-4">
+                <div className="text-xs font-extralight ">مسیریابی</div>
+                <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
+                  اشتراک گذاری
+                </div>
+                <div className="text-xs font-extralight ">
+                  بیمه های طرف قرارداد
+                </div>
+              </div>
             </div>
           </Link>
         </div>
@@ -94,9 +108,15 @@ const BranchesAddresses = async () => {
             <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700 lg:block hidden">
               {branches[2]?.address}
             </Typography>
-            <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700 lg:block hidden">
-              {branches[2]?.phone_number}
-            </Typography>
+            <div className="lg:flex hidden items-center mt-4">
+              <div className="text-xs font-extralight ">مسیریابی</div>
+              <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
+                اشتراک گذاری
+              </div>
+              <div className="text-xs font-extralight ">
+                بیمه های طرف قرارداد
+              </div>
+            </div>
           </div>
         </Link>
         <Link
@@ -118,9 +138,15 @@ const BranchesAddresses = async () => {
             <Typography className="!text-[12px] !font-extralight !leading-[27px] !text-secondary-700 lg:block hidden">
               {branches[3]?.address}
             </Typography>
-            <Typography className="!text-base !font-semibold !leading-[27px] !text-secondary-700 lg:block hidden">
-              {branches[3]?.phone_number}
-            </Typography>
+            <div className="lg:flex hidden items-center mt-4">
+              <div className="text-xs font-extralight ">مسیریابی</div>
+              <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
+                اشتراک گذاری
+              </div>
+              <div className="text-xs font-extralight ">
+                بیمه های طرف قرارداد
+              </div>
+            </div>
           </div>
         </Link>
       </div>

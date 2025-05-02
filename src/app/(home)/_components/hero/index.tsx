@@ -1,6 +1,5 @@
 "use client";
 import { Typography } from "@mui/material";
-import Image from "next/image";
 // Import Swiper React components
 import { Swiper, SwiperSlide } from "swiper/react";
 

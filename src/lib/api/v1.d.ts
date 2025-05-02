@@ -762,6 +762,7 @@ export interface components {
             id: number;
             /** @description The name of the hospital */
             name: string;
+            full_name: string;
             fax: string;
             address?: string;
             address_link?: string;

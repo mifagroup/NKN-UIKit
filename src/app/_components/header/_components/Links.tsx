@@ -9,54 +9,24 @@ export const links = [
     href: "/",
   },
   {
-    id: "care_and_cure",
-    label: "پزشکان",
-    href: "/doctors",
-  },
-  {
-    id: "nikan365",
-    label: "نیکان 365",
-    href: "/nikan365",
-  },
-  {
     id: "nikan_structure",
-    label: "ساختار نیکان",
+    label: "بیمارستان‌ها و مراکز درمانی",
     href: "/contact-us",
   },
   {
-    id: "about_nikan",
-    label: "درباره نیکان",
-    href: "/about-us",
-  },
-  {
-    id: "blogs",
-    label: "مقالات",
-    href: "/blogs",
-  },
-  {
-    id: "cooperation",
-    label: "درخواست همکاری",
-    href: "/cooperation",
-  },
-  {
-    id: "insurances",
-    label: "بیمه‌ها",
-    href: "/insurances",
-  },
-  {
     id: "international",
-    label: "واحد بین‌الملل",
+    label: "واحد بین‌الملل (IPD)",
     href: "/nikan-international",
   },
   {
-    id: "social-responsibility",
-    label: "مسئولیت اجتماعی",
-    href: "/social-responsibility",
+    id: "blogs",
+    label: "اخبار و مقالات",
+    href: "/blogs",
   },
   {
-    id: "virtual-hospital",
-    label: "بیمارستان مجازی",
-    href: "/virtual-hospital",
+    id: "nikan_structure",
+    label: "تماس با ما",
+    href: "/contact-us",
   },
 ];
 

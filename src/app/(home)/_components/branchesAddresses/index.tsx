@@ -16,7 +16,7 @@ const BranchesAddresses = async () => {
 
   const branches = hospitals.map((hospital) => ({
     image: hospital?.thumbnail?.original_url ?? "",
-    title: hospital.name,
+    title: hospital.full_name,
     address: hospital.address,
     phone_number: hospital.fax,
     link: hospital?.website_link ?? "#",

@@ -5,6 +5,43 @@ import Image from "next/image";
 import Link from "next/link";
 
 const EndSection = () => {
+  const items = [
+    {
+      id: "cooperation",
+      label: "درخواست همکاری",
+      href: "/cooperation",
+    },
+    {
+      id: "cooperation",
+      label: "پزشکان",
+      href: "/doctors",
+    },
+    {
+      id: "insurances",
+      label: "بیمه‌ها",
+      href: "/insurances",
+    },
+    {
+      id: "social-responsibility",
+      label: "مسئولیت اجتماعی",
+      href: "/social-responsibility",
+    },
+    {
+      id: "virtual-hospital",
+      label: "بیمارستان مجازی",
+      href: "/virtual-hospital",
+    },
+    {
+      id: "nikan365",
+      label: "نیکان 365",
+      href: "/nikan365",
+    },
+    {
+      id: "news",
+      label: "اخبار",
+      href: "/news",
+    },
+  ];
   return (
     <div className="lg:pt-[66px] lg:pb-[83px] pb-[40px] lg:border-t border-primary-main flex lg:flex-row flex-col gap-y-5 justify-between lg:items-start items-center">
       <div className="flex gap-x-3">
@@ -62,43 +99,17 @@ const EndSection = () => {
           />
         </div>
         <div className="flex flex-col gap-y-4 lg:items-end items-center">
-          <div className="flex items-center lg:gap-x-9 gap-x-2">
-            <Link
-              href={""}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              چارت سازمانی
-            </Link>
-            <Link
-              href={""}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              اخبار
-            </Link>
-            <Link
-              href={""}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              سوالات متداول
-            </Link>
-            <Link
-              href={"/about-us"}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              درباره نیکان
-            </Link>
-            <Link
-              href={""}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              روابط عمومی
-            </Link>
-            <Link
-              href={""}
-              className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
-            >
-              ضوابط و قوانین
-            </Link>
+          <div
+              className="flex items-center lg:gap-x-9 gap-x-2">
+            {items.map((item, idx) => (
+                <Link
+                    key={idx}
+                    href={item.href}
+                    className="lg:text-[14px] text-[10px] font-light text-[#81929B]"
+                >
+                  {item.label}
+                </Link>
+            ))}
           </div>
           <span className="lg:text-[14px] text-[11px] font-medium text-[#28546D]">
             تمامی حقوق برای بیمارستان نیکان محفوظ است

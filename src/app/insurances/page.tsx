@@ -5,22 +5,22 @@ const page = () => {
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان غرب",
       image: "/images/h1.png",
-      href: "/images/insurances/asia.png",
+      href: "/insurances/aghdasieh-insurance.xlsx",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان سپید",
       image: "/images/h2.png",
-      href: "/images/insurances/asia.png",
+      href: "/insurances/sepid-insurance.jpg",
     },
     {
       title: "بیمه های طرف قرارداد با مرکز جراحی محدود نیکان",
       image: "/images/h3.png",
-      href: "/images/insurances/asia.png",
+      href: "/insurances/jarahi-mahdod-insurance.xlsx",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان اقدسیه",
       image: "/images/h4.png",
-      href: "/images/insurances/asia.png",
+      href: "/insurances/aghdasieh-insurance.xlsx",
     },
   ];
   return (

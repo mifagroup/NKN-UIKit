@@ -108,7 +108,7 @@ const WhyNikan = ({
                     {/* @ts-expect-error - TS is not recognizing the chunkArray function */}
                     {chunk.map((item) => (
                       <div
-                        className="flex gap-x-[48px] w-fit mx-0 h-[206px]"
+                        className="flex gap-x-[48px] w-fit mx-0 h-[226px]"
                         key={item.id}
                       >
                         <div className="flex flex-col gap-y-3">

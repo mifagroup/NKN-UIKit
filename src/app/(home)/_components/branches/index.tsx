@@ -42,7 +42,7 @@ const Branches = ({
                   className="w-full !h-[287px] !relative rounded-[14px]"
                 />
                 <>
-                  {" "}
+
                   <Image
                     src={
                       hospital?.thumbnail?.original_url ??
@@ -108,14 +108,14 @@ const Branches = ({
           ))}
           <Link
             className="relative flex-shrink-0 w-[280px] lg:w-auto flex flex-col items-center gap-4 bg-white p-4 rounded-[14px]"
-            href={""}
+            href={"https://niayesh.nikan.hospital/fa/"}
             target="_blank"
           >
             <Image
               src={"/images/niayesh.jpg"}
               layout="fill"
               alt={"niayesh"}
-              className="w-full !h-[287px] !relative rounded-[14px]"
+              className="w-full !h-[287px] !relative rounded-[14px] object-cover"
             />
             <>
               {" "}

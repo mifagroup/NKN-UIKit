@@ -5,22 +5,22 @@ const page = () => {
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان غرب",
       image: "/images/h1.png",
-      href: "",
+      href: "/images/insurances/asia.png",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان سپید",
       image: "/images/h2.png",
-      href: "",
+      href: "/images/insurances/asia.png",
     },
     {
       title: "بیمه های طرف قرارداد با مرکز جراحی محدود نیکان",
       image: "/images/h3.png",
-      href: "",
+      href: "/images/insurances/asia.png",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان اقدسیه",
       image: "/images/h4.png",
-      href: "",
+      href: "/images/insurances/asia.png",
     },
   ];
   return (
@@ -51,6 +51,7 @@ const page = () => {
               </h3>
               <a
                 href={card.href}
+                download
                 target="_blank"
                 className="text-sm text-black font-light bg-[#F3F3F3] px-4 py-1 mt-6 rounded  transition"
               >

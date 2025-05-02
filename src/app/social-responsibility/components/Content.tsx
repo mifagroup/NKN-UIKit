@@ -4,17 +4,21 @@ import Link from "next/link";
 
 interface ContentProps {
   data: components["schemas"]["BlogResource"][];
+  hasNextPage: boolean;
+  handleLoadMore: any;
 }
 
-const Content = ({ data = [] }: ContentProps) => {
-  const displayData = data.slice(0, 3);
-
+const Content = ({
+  data = [],
+  hasNextPage = false,
+  handleLoadMore,
+}: ContentProps) => {
   return (
     <>
-      {displayData.map((item, index) => (
+      {data.map((item, index) => (
         <div
           className={`lg:mt-16 flex flex-col lg:gap-y-7 gap-y-3 pb-[34px] ${
-            index !== displayData.length - 1 && "lg:border-b border-[#ACACAC]"
+            index !== data.length - 1 && "lg:border-b border-[#ACACAC]"
           }`}
           key={item.id || index}
         >
@@ -29,14 +33,14 @@ const Content = ({ data = [] }: ContentProps) => {
             <div className="flex flex-col ggap-y-2">
               <span className="text-xl font-semibold">{item.title}</span>
               <span className="text-sm font-light mt-5">
-                  {item.sub_title.length > 100
-                      ? `${item.sub_title.slice(0, 100).replace(/\s+\S*$/, "")}...`
-                      : item.sub_title}
+                {item.sub_title?.length > 100
+                  ? `${item.sub_title.slice(0, 100).replace(/\s+\S*$/, "")}...`
+                  : item.sub_title}
               </span>
             </div>
             <div className="items-center gap-x-2 lg:flex hidden">
               <Image
-                  src={"/images/share-icon.png"}
+                src={"/images/share-icon.png"}
                 alt=""
                 width={20}
                 height={18}
@@ -70,14 +74,15 @@ const Content = ({ data = [] }: ContentProps) => {
           </div>
         </div>
       ))}
-      {data.length > 3 && (
+
+      {hasNextPage && (
         <div className="flex justify-center mt-9 mb-16 lg:mx-0 mx-4">
-          <Link
-            href="/social-responsibility?category=social-responsibility"
+          <button
+            onClick={handleLoadMore}
             className="text-sm text-[#696969] bg-[#f2f2f2] sm:w-[360px] w-full rounded-[11px] h-[52px] flex items-center justify-center"
           >
             موارد بیشتر
-          </Link>
+          </button>
         </div>
       )}
     </>

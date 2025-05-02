@@ -2,21 +2,21 @@
 
 import { Divider } from "@mui/material";
 import Image from "next/image";
-import React from "react";
+import Link from "next/link";
 
 const EndSection = () => {
   return (
     <div className="lg:pt-[66px] lg:pb-[83px] pb-[40px] lg:border-t border-primary-main flex lg:flex-row flex-col gap-y-5 justify-between lg:items-start items-center">
       <div className="flex gap-x-3">
         <Image
-          src={"/images/nikan365-footer-icon.png"}
+          src={"/images/footer_link.png"}
           alt="nikan365"
-          width={57}
-          height={67}
+          width={309}
+          height={125}
           quality={100}
           className="object-contain"
         />
-        <div className="flex flex-col">
+        {/*   <div className="flex flex-col">
           <span className="font-semibold text-white text-[15px]">
             سامانه جامع سلامت نیکان 365
           </span>
@@ -29,7 +29,7 @@ const EndSection = () => {
               quality={100}
             />
           </div>
-        </div>
+        </div> */}
       </div>
       <Divider className="lg:!hidden block !h-[1px] !w-full !bg-[#204052]" />
       <div className="flex flex-col gap-y-[25px] lg:items-end items-center">
@@ -61,7 +61,7 @@ const EndSection = () => {
             className="mr-5"
           />
         </div>
-        {/* <div className="flex flex-col gap-y-4 lg:items-end items-center">
+        <div className="flex flex-col gap-y-4 lg:items-end items-center">
           <div className="flex items-center lg:gap-x-9 gap-x-2">
             <Link
               href={""}
@@ -103,7 +103,7 @@ const EndSection = () => {
           <span className="lg:text-[14px] text-[11px] font-medium text-[#28546D]">
             تمامی حقوق برای بیمارستان نیکان محفوظ است
           </span>
-        </div> */}
+        </div>
       </div>
     </div>
   );

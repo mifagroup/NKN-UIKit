@@ -1,7 +1,7 @@
 "use client";
+import Image from "next/image";
 import Link from "next/link";
 import { useState } from "react";
-import Image from "next/image";
 
 const data = [
   {
@@ -107,7 +107,8 @@ const FAQ = () => {
                 <Image
                   src="/images/arrow-left.png"
                   alt="arrow"
-                  className={` h-[15px] w-[5px] ${
+                  fill
+                  className={`!relative !h-[15px] !w-[5px] ${
                     item.id !== active ? "rotate-0" : "rotate-[-90deg]"
                   } transition-all duration-300 `}
                 />

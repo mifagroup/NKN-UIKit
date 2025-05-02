@@ -3,7 +3,7 @@
 import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRef } from "react";
+import { Fragment, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 
@@ -31,13 +31,15 @@ const WhyNikan = ({
   const chunkedSlides = chunkArray(data?.slides ?? [], 3);
 
   return (
-    <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 px-5">
+    <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 ">
       <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] !text-xl lg:!block ">
         {data.name}
       </Typography>
-      <div className="relative">
+
+      {/* Desktop version - unchanged */}
+      <div className="relative lg:block hidden">
         <Button
-          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10 lg:!block !hidden"
+          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
           onClick={() => {
             swiperRef.current?.slidePrev();
             swiperRef2.current?.slidePrev();
@@ -51,7 +53,7 @@ const WhyNikan = ({
           />
         </Button>
         <Button
-          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10 lg:!block !hidden"
+          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10"
           onClick={() => {
             swiperRef.current?.slideNext();
             swiperRef2.current?.slideNext();
@@ -72,7 +74,7 @@ const WhyNikan = ({
             }}
             slidesPerView={1}
             loop
-            className="lg:!block !hidden !max-w-[758px]"
+            className="!max-w-[758px]"
           >
             {data?.thumbnails?.concat(data?.thumbnails)?.map((image, index) => (
               <SwiperSlide key={index}>
@@ -98,10 +100,6 @@ const WhyNikan = ({
               direction="vertical"
               spaceBetween={30}
               className="max-h-[680px]"
-              /*        modules={[Autoplay]} */
-              /*         autoplay={{
-                delay: 5000,
-              }} */
               allowTouchMove={false}
             >
               {chunkedSlides.map((chunk, index) => (
@@ -110,7 +108,7 @@ const WhyNikan = ({
                     {/* @ts-expect-error - TS is not recognizing the chunkArray function */}
                     {chunk.map((item) => (
                       <div
-                        className="flex gap-x-[48px] lg:w-fit w-full lg:mx-0 mx-auto h-[206px]"
+                        className="flex gap-x-[48px] w-fit mx-0 h-[206px]"
                         key={item.id}
                       >
                         <div className="flex flex-col gap-y-3">
@@ -137,6 +135,57 @@ const WhyNikan = ({
             </Swiper>
           </div>
         </div>
+      </div>
+
+      <div className="lg:hidden flex flex-col gap-y-8">
+        {data?.thumbnails &&
+          data?.slides &&
+          data?.thumbnails.length > 0 &&
+          data?.slides.length > 0 && (
+            <>
+              {data.thumbnails.map((thumbnail, index) => (
+                <Fragment key={index}>
+                  <Image
+                    src={thumbnail?.original_url ?? ""}
+                    alt={thumbnail?.file_name ?? ""}
+                    width={758}
+                    height={400}
+                    quality={100}
+                    className="w-full h-auto object-cover "
+                  />
+
+                  <div className="flex flex-col gap-y-6 px-5">
+                    {data.slides
+                      ?.slice(index, index + 3)
+                      .map((slide, index) => (
+                        <div
+                          key={index}
+                          className="flex gap-x-4 w-full mx-auto"
+                        >
+                          <div className="flex flex-col gap-y-3">
+                            <Image
+                              src={slide.image.original_url ?? ""}
+                              alt={slide.title}
+                              width={60}
+                              height={65}
+                              className="w-[60px] h-[65px]"
+                            />
+                            <div className="flex flex-col gap-y-2">
+                              <Typography className="!text-[18px] !font-extrabold !text-secondary-600">
+                                {slide.title}
+                              </Typography>
+                              <Typography className="!text-[14px] !font-light !text-secondary-400 !text-justify">
+                                {slide.description}
+                              </Typography>
+                            </div>
+                          </div>
+                        </div>
+                      ))}
+                  </div>
+                </Fragment>
+              ))}
+            </>
+          )}
       </div>
     </div>
   );

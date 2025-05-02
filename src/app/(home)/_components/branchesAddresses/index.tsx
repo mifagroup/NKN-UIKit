@@ -118,9 +118,15 @@ const BranchesAddresses = async () => {
                 >
                   مسیریابی
                 </a>
-                <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
-                  اشتراک گذاری
-                </div>
+                <ShareLink
+                    url={branches[0].link}
+                    title={branches[0]?.title}
+                    label={
+                      <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
+                        اشتراک گذاری
+                      </div>
+                    }
+                />
                 <a
                   href="/insurances"
                   className="text-xs font-extralight cursor-pointer"

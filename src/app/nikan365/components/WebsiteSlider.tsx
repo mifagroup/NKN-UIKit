@@ -68,6 +68,7 @@ const WebsiteSlider = () => {
             }}
             slidesPerView={1}
             modules={[Navigation]}
+            loop
             navigation={{
               nextEl: nextEl.current,
               prevEl: prevEl.current,
@@ -111,6 +112,17 @@ const WebsiteSlider = () => {
             ))}
           </Swiper>
         </div>
+        <Button
+            className="!absolute top-1/2 translate-y-[-50%] 2xl:right-[10%] xl:right-[4%] right-0 z-10"
+            onClick={() => swiperRef.current?.slideNext()}
+        >
+          <Image
+              src={"/images/arrow-right.png"}
+              alt="arrow-right"
+              width={23}
+              height={63.5}
+          />
+        </Button>
       </div>
     </div>
   );

@@ -38,7 +38,7 @@ const NikanOnline = () => {
           >
             عضویت در نیکان 365
           </Link>
-          <div className="items-center gap-x-4 lg:mt-10 mt-4 lg:flex hidden">
+        {/*  <div className="items-center gap-x-4 lg:mt-10 mt-4 lg:flex hidden">
             <span className="text-[11px] text-[#909090] lg:block hidden">
               دانلود مستقیم نیکان 365
             </span>
@@ -63,7 +63,7 @@ const NikanOnline = () => {
             >
               دانلود مستقیم
             </Link>
-          </div>
+          </div>*/}
         </div>
       </div>
     </div>

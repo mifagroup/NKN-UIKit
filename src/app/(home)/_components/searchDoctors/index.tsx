@@ -23,7 +23,7 @@ const SearchDoctors = ({
             <input
               type="text"
               className="w-full lg:!text-[32px] !text-[14px] lg:placeholder:!text-[32px] placeholder:!text-[14px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
-              placeholder={"جستجو پزشک ..."}
+              placeholder={"اسامی پزشکان ..."}
               onChange={(e) => setSearch(e.target.value)}
             />
             <Image

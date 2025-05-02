@@ -3,41 +3,8 @@ import { Button, Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import ShareLink from "@/app/(home)/_components/branchesAddresses/share";
 
-const branches = [
-  {
-    id: 1,
-    title: "بیمارستان نیکان اقدسیه",
-    address:
-      "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-    number: "۰۲۱-۲۹۱۲۰۰۰۰",
-    icon: "/images/nikan-aghdasieh-icon.png",
-  },
-  {
-    id: 2,
-    title: "بیمارستان نیکان اقدسیه",
-    address:
-      "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-    number: "۰۲۱-۲۹۱۲۰۰۰۰",
-    icon: "/images/nikan-west-icon.png",
-  },
-  {
-    id: 3,
-    title: "بیمارستان نیکان اقدسیه",
-    address:
-      "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-    number: "۰۲۱-۲۹۱۲۰۰۰۰",
-    icon: "/images/nikan-hakimieh.png",
-  },
-  {
-    id: 4,
-    title: "بیمارستان نیکان اقدسیه",
-    address:
-      "اقدسیه – ابتدای بلوار ارتش – ورودی اراج – خیابان ٢٢ بهمن – شماره ٦ ",
-    number: "۰۲۱-۲۹۱۲۰۰۰۰",
-    icon: "/images/nikan-second-branch.png",
-  },
-];
 
 const Branches = async () => {
   const hospitals: components["schemas"]["HospitalResource"][] = await fetch(
@@ -56,7 +23,7 @@ const Branches = async () => {
           <div
             key={branch.id}
             className={`lg:pb-[33px] lg:pt-[60px] pt-[50px] ${
-              branches.length - 1 !== index ? "lg:border-b" : ""
+                hospitals.length - 1 !== index ? "lg:border-b" : ""
             } border-[#A9A9A9] flex lg:flex-row flex-col justify-between lg:items-start items-center gap-y-5 md:col-span-1 sm:px-0 px-5`}
           >
             <div className="flex lg:flex-row flex-col lg:items-end gap-x-[15px] gap-y-2.5">
@@ -94,7 +61,7 @@ const Branches = async () => {
                   href={`tel:${branch.fax}`}
                   className="lg:!w-[162px] !w-[139px] lg:!h-[39px] !h-[33px] !bg-[#31D1B0] !text-white !rounded-lg !flex !items-center !gap-x-2 !pr-[20px] !pl-0 lg:!font-normal !font-light"
                 >
-                  {branch.fax}
+                  <span>{branch.fax}</span>
                   <Image
                     src={"/images/phone-icon.png"}
                     alt="phone-icon"
@@ -112,30 +79,26 @@ const Branches = async () => {
                 </Link>
                 <Divider
                   orientation="vertical"
-                  className="!w-[1px] !h-[18px] !bg-primary-main"
+                  className="!w-[2px] !h-[18px] !bg-primary-main"
                 />
-                <span className="text-[12px] text-black font-extralight">
-                  اشتراک گذاری
-                </span>
+                <ShareLink
+                    url={branch?.website_link ?? "#"}
+                    title={branch.name}
+                    label={
+                      <div className="text-[12px] text-black font-extralight">
+                        اشتراک گذاری
+                      </div>
+                    }
+                />
                 <Divider
                   orientation="vertical"
-                  className="!w-[1px] !h-[18px] !bg-primary-main"
-                />
-                <Link
-                  href={`tel:${branch.fax}`}
-                  className="text-[12px] text-black font-extralight"
-                >
-                  فکس
-                </Link>
-                <Divider
-                  orientation="vertical"
-                  className="!w-[1px] !h-[18px] !bg-primary-main"
+                  className="!w-[2px] !h-[18px] !bg-primary-main"
                 />
                 <Link
                   href={`mailto:${branch.email}`}
                   className="text-[12px] text-black font-extralight"
                 >
-                  ایمیل
+                  بیمه های طرف قرارداد
                 </Link>
               </div>
             </div>

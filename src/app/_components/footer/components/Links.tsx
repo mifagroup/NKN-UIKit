@@ -12,7 +12,7 @@ const Links = ({
   return (
     <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
       <div className="flex items-center gap-x-3 pb-[18px] border-b border-[#626262] justify-between">
-        <div className="flex items-center gap-x-8 ">
+        <div className="flex items-center gap-x-6">
           {links?.map((link) => (
             <Link
               href={link.href}

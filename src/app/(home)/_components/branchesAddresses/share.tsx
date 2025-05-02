@@ -120,7 +120,7 @@ const ShareLink = ({ url, title, label }: any) => {
             transition={{ duration: 0.3 }}
             className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg z-50"
           >
-            لینک بلاگ مورد نظر کپی شد
+            لینک  مورد نظر کپی شد
           </motion.div>
         )}
       </AnimatePresence>

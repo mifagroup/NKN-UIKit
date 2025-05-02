@@ -1,10 +1,72 @@
-import { Divider } from "@mui/material";
 import Image from "next/image";
-import React from "react";
 
 const page = () => {
+  const cards = [
+    {
+      title: "بیمه های طرف قرارداد با بیمارستان نیکان غرب",
+      image: "/images/h1.png",
+      href: "",
+    },
+    {
+      title: "بیمه های طرف قرارداد با بیمارستان نیکان سپید",
+      image: "/images/h2.png",
+      href: "",
+    },
+    {
+      title: "بیمه های طرف قرارداد با مرکز جراحی محدود نیکان",
+      image: "/images/h3.png",
+      href: "",
+    },
+    {
+      title: "بیمه های طرف قرارداد با بیمارستان نیکان اقدسیه",
+      image: "/images/h4.png",
+      href: "",
+    },
+  ];
   return (
-    <div className="pt-[50px] pb-[120px] max-w-[1168px] mx-auto lg:px-0 px-5 flex flex-col gap-y-16">
+    <>
+      <div className="container">
+        <div className="grid grid-cols-1 sm:grid-cols-2 py-20 max-w-5xl mx-auto">
+          {cards.map((card, idx) => (
+            <div
+              key={idx}
+              className={`flex flex-col items-center text-center  border-gray-200 p-6  transition ${
+                idx === 0
+                  ? "lg:border-l border-b"
+                  : idx === 1
+                  ? "border-b"
+                  : idx === 2
+                  ? "border-b lg:border-b-0 lg:border-l"
+                  : ""
+              }  `}
+            >
+              <Image
+                src={card.image}
+                alt="icon"
+                className="!w-[91px] !h-[105px] mb-4 !relative"
+                fill
+              />
+              <h3 className="text-xl font-semibold text-black mb-2">
+                {card.title}
+              </h3>
+              <a
+                href={card.href}
+                target="_blank"
+                className="text-sm text-black font-light bg-[#F3F3F3] px-4 py-1 mt-6 rounded  transition"
+              >
+                دانلود لیست بیمه این مرکز
+              </a>
+            </div>
+          ))}
+        </div>
+      </div>
+    </>
+  );
+};
+
+export default page;
+/* 
+  <div className="pt-[50px] pb-[120px] max-w-[1168px] mx-auto lg:px-0 px-5 flex flex-col gap-y-16">
       <div className="flex flex-col gap-y-[30px]">
         <h2 className="text-xl font-semibold lg:text-right text-center">
           بیمه های مکمل طرف قرارداد با بیمارستان نیکان
@@ -480,8 +542,4 @@ const page = () => {
           </div>
         </div>
       </div>
-    </div>
-  );
-};
-
-export default page;
+    </div> */

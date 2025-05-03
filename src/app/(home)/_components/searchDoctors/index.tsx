@@ -3,7 +3,14 @@ import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import React, { useState } from "react";
+import { useEffect, useState } from "react";
+
+interface SearchResult {
+  id: number;
+  name: string;
+  type: string;
+  url: string;
+}
 
 const SearchDoctors = ({
   terms,
@@ -11,6 +18,34 @@ const SearchDoctors = ({
   terms: components["schemas"]["TermResource"][];
 }) => {
   const [search, setSearch] = useState("");
+  const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
+  const [isSearching, setIsSearching] = useState(false);
+
+  useEffect(() => {
+    const timer = setTimeout(() => {
+      if (search.trim().length > 0) {
+        setIsSearching(true);
+        fetch(
+          `${
+            process.env.NEXT_PUBLIC_API_URL
+          }/search?search=${encodeURIComponent(search)}`
+        )
+          .then((response) => response.json())
+          .then((data) => {
+            setSearchResults(data.results || []);
+            setIsSearching(false);
+          })
+          .catch((error) => {
+            console.error("Error fetching search results:", error);
+            setIsSearching(false);
+          });
+      } else {
+        setSearchResults([]);
+      }
+    }, 200);
+
+    return () => clearTimeout(timer);
+  }, [search]);
 
   return (
     <div className="bg-secondary-50 md:max-h-[416px] max-h-[333px]  lg:pt-0 pt-[30px] lg:px-0 px-5">
@@ -35,9 +70,30 @@ const SearchDoctors = ({
             />
           </div>
           <div className="gap-x-7 lg:grid hidden w-[790px] gap-y-5 grid-cols-5">
-            {terms
-              .filter((cat) => cat.title?.includes(search))
-              .map((cat) => (
+            {search.trim().length > 0 ? (
+              isSearching ? (
+                <Typography className="!text-base !text-secondary-800 !font-light">
+                  در حال جستجو...
+                </Typography>
+              ) : searchResults.length > 0 ? (
+                searchResults.slice(0, 30).map((result) => (
+                  <Link
+                    href={result.url}
+                    className="flex flex-col gap-y-5"
+                    key={result.id}
+                  >
+                    <Typography className="!text-base !text-secondary-800 !font-light whitespace-nowrap">
+                      {result.name}
+                    </Typography>
+                  </Link>
+                ))
+              ) : (
+                <Typography className="!text-base !text-secondary-800 !font-light">
+                  نتیجه‌ای یافت نشد
+                </Typography>
+              )
+            ) : (
+              terms.map((cat) => (
                 <Link
                   href={`/doctors?terms=${cat.id}`}
                   className="flex flex-col gap-y-5"
@@ -47,7 +103,8 @@ const SearchDoctors = ({
                     {cat.title}
                   </Typography>
                 </Link>
-              ))}
+              ))
+            )}
           </div>
           <Button
             LinkComponent={Link}

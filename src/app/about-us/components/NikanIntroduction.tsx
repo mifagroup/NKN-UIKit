@@ -22,8 +22,8 @@ const NikanIntroduction = () => {
           </div>
           <a
             className="!text-[#626262] !p-0 lg:!text-[15px] flex items-center justify-center !text-[14px] !font-medium !bg-transparent !border !border-primary-main !rounded-[7px] !w-[258px] !h-[35px] !self-end"
-            href="#"
-            download={true}
+            href="/images/B_Nikan_Hospital_Catalogue.pdf"
+            download
           >
             دانلود کاتالوگ معرفی گروه درمانی نیکان
           </a>

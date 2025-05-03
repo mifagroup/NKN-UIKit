@@ -17,18 +17,28 @@ const Links = ({
             <Link
               href={link.href}
               key={link.id}
-              className="text-[#F0F0F0] font-semibold text-[16px]"
+              className="text-[#F0F0F0] font-semibold text-[15px]"
             >
               {link.label}
             </Link>
           ))}
         </div>
-        <Link
-          href={"/insurances"}
-          className="w-[180px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] text-white font-medium flex justify-center items-center"
-        >
-          لیست بیمه های طرف قرارداد
-        </Link>
+          <div>
+
+              <Link
+                  href={"/insurances"}
+                  className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] text-white font-medium flex justify-center items-center"
+              >
+                  لیست بیمه های طرف قرارداد
+              </Link>
+              <Link
+                  href={"/cooperation"}
+                  className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] mt-3 text-white font-medium flex justify-center items-center"
+              >
+
+                  درخواست همکاری
+              </Link>
+          </div>
       </div>
       <div className="grid grid-cols-5 gap-x-5 gap-y-4">
         {footerTerms.map((term) => (

@@ -24,7 +24,7 @@ export const links = [
     href: "/blogs",
   },
   {
-    id: "nikan_structure",
+    id: "contact-us",
     label: "تماس با ما",
     href: "/contact-us",
   },

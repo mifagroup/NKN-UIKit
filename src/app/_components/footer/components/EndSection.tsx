@@ -8,11 +8,6 @@ const EndSection = () => {
   const items = [
     {
       id: "cooperation",
-      label: "درخواست همکاری",
-      href: "/cooperation",
-    },
-    {
-      id: "cooperation",
       label: "پزشکان",
       href: "/doctors",
     },

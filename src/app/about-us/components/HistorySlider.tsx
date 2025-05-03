@@ -110,12 +110,14 @@ const HistorySlider = () => {
                 ref={(el) => (yearRefs.current[index] = el)}
               >
                 <div
-                  className={`w-[20px] h-[20px] rounded-full ${
+                  className={`w-[24px] h-[24px] rounded-full ${
                     activeIndex === index ? "bg-primary-main" : "bg-gray-300"
                   } z-10 lg:translate-y-[34px] translate-y-[34px]`}
-                ></div>
-                <div className="text-sm font-medium h-10 mt-4 flex items-end">
-                  سال {item.year}
+                >
+
+                </div>
+                <div className="text-sm h-10 mt-4 flex items-end text-[16px] !font-bold ">
+                  {index + historyData.length == historyData.length ? 'امروز' : 'سال ' +  item.year}
                 </div>
               </div>
             ))}
@@ -171,7 +173,10 @@ const HistorySlider = () => {
                 <SwiperSlide key={index}>
                   <div className="flex lg:justify-end justify-center items-center">
                     <div className="lg:max-w-[496px] max-w-[413px] flex flex-col lg:pr-[27px] lg:gap-y-6 gap-y-3 lg:px-0 px-5">
-                      <span className="text-[#626262] lg:text-[36px] text-[30px] font-black">
+                      <span className="text-end lg:text-[36px] text-[30px] text-[#D8D8D8]">
+                        تاریخچه نیکان
+                      </span>
+                      <span className="text-end text-[#626262] lg:text-[36px] text-[30px] font-black">
                         {item.title}
                       </span>
                       <div className="flex flex-col">

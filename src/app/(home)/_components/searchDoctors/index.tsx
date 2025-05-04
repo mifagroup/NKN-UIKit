@@ -120,7 +120,7 @@ const SearchDoctors = ({
           alt="search-nikan-mobile-image"
           width={355}
           height={594}
-          className="lg:mt-[-100px] lg:!h-[594px] lg:!w-[355px] !h-[335px] !w-[200px]"
+          className="lg:mt-[-100px] lg:!h-[594px] lg:!w-[355px] !h-[335px] !w-[200px] mx-auto"
         />
       </div>
     </div>

@@ -68,7 +68,7 @@ const AppSlider = () => {
             width={260}
             height={502}
             quality={100}
-            className=""
+            className="place-self-center"
           />
           <Swiper
             onBeforeInit={(swiper) => {

@@ -81,9 +81,7 @@ const FAQ = () => {
           </div>
         </div>
         <div className="lg:pr-10 lg:border-r-[4px] border-r-primary-main ">
-          <span className="text-[15px] font-bold text-black">
-            سوالات متداول
-          </span>
+
           {data.map((item) => (
             <div key={item.id}>
               <div

@@ -137,57 +137,56 @@ const WhyNikan = ({
         </div>
       </div>
 
-      <div className="lg:hidden flex flex-col gap-y-8">
-        {data?.thumbnails &&
-          data?.slides &&
-          data?.thumbnails.length > 0 &&
-          data?.slides.length > 0 && (
-            <>
-              {data.thumbnails.map((thumbnail, index) => (
-                <Fragment key={index}>
-
-
-                  <div className="flex flex-col gap-y-6 px-5">
-                    {data.slides
-                      ?.slice(index, index + 3)
-                      .map((slide, index) => (
-                        <div
-                          key={index}
-                          className="flex gap-x-4 w-full mx-auto"
-                        >
-                          <div className="flex flex-col gap-y-3">
-                            <Image
-                              src={slide.image.original_url ?? ""}
-                              alt={slide.title}
-                              width={60}
-                              height={65}
-                              className="w-[60px] h-[65px]"
-                            />
-                            <div className="flex flex-col gap-y-2">
-                              <Typography className="!text-[18px] !font-extrabold !text-secondary-600">
-                                {slide.title}
-                              </Typography>
-                              <Typography className="!text-[14px] !font-light !text-secondary-400 !text-justify">
-                                {slide.description}
-                              </Typography>
-                            </div>
-                          </div>
-                        </div>
-                      ))}
-                  </div>
-                    <Image
-                        src={thumbnail?.original_url ?? ""}
-                        alt={thumbnail?.file_name ?? ""}
-                        width={758}
-                        height={400}
-                        quality={100}
-                        className="w-full h-auto object-cover "
-                    />
-                </Fragment>
-              ))}
-            </>
-          )}
-      </div>
+        <div className="lg:hidden flex flex-col gap-y-8">
+            {data?.thumbnails &&
+                data?.slides &&
+                data?.thumbnails.length > 0 &&
+                data?.slides.length > 0 && (
+                    <>
+                        {chunkArray(data.slides, 3).map((chunk, chunkIndex) => (
+                            <Fragment key={chunkIndex}>
+                                <div className="flex flex-col gap-y-6 px-5">
+                                    {chunk.map((slide : components["schemas"]["SlideResource"], index : number) => (
+                                        <div key={index} className="flex gap-x-4 w-full mx-auto">
+                                            <div className="flex flex-col gap-y-3">
+                                                <Image
+                                                    src={slide.image.original_url ?? ""}
+                                                    alt={slide.title}
+                                                    width={60}
+                                                    height={65}
+                                                    className="w-[60px] h-[65px]"
+                                                />
+                                                <div className="flex flex-col gap-y-2">
+                                                    <Typography className="!text-[18px] !font-extrabold !text-secondary-600">
+                                                        {slide.title}
+                                                    </Typography>
+                                                    <Typography className="!text-[14px] !font-light !text-secondary-400 !text-justify">
+                                                        {slide.description}
+                                                    </Typography>
+                                                </div>
+                                            </div>
+                                        </div>
+                                    ))}
+                                </div>
+                               <Image
+                                   src={
+                                       data.thumbnails?.[chunkIndex]?.original_url ??
+                                       ""
+                                   }
+                                   alt={
+                                       data.thumbnails?.[chunkIndex]?.file_name ??
+                                       ""
+                                   }
+                                    width={758}
+                                    height={400}
+                                    quality={100}
+                                    className="w-full h-auto object-cover"
+                                />
+                            </Fragment>
+                        ))}
+                    </>
+                )}
+        </div>
     </div>
   );
 };

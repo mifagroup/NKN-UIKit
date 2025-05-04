@@ -1,6 +1,4 @@
-import { Button } from "@mui/material";
 import Image from "next/image";
-import React from "react";
 
 const NikanIntroduction = () => {
   return (
@@ -22,15 +20,16 @@ const NikanIntroduction = () => {
               توسعه و اشاعه فرهنگ مشتری نوازی در بیمارستان ها سوق داد.
             </span>
           </div>
-          <Button
-            className="!text-[#626262] !p-0 lg:!text-[15px] !text-[14px] !font-medium !bg-transparent !border !border-primary-main !rounded-[7px] !w-[258px] !h-[35px] !self-end"
-            variant="outlined"
+          <a
+            className="!text-[#626262] !p-0 lg:!text-[15px] flex items-center justify-center !text-[14px] !font-medium !bg-transparent !border !border-primary-main !rounded-[7px] !w-[258px] !h-[35px] !self-end"
+            href="#"
+            download={true}
           >
             دانلود کاتالوگ معرفی گروه درمانی نیکان
-          </Button>
+          </a>
         </div>
         <Image
-          src={"/images/about-us-hero.png"}
+          src={"/images/aboutNikan.svg"}
           alt="about-us-hero"
           width={502}
           height={592}

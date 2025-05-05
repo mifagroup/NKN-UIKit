@@ -61,7 +61,7 @@ const AppSlider = () => {
             height={63.5}
           />
         </Button>
-        <div className="lg:h-[795px] lg:flex-row flex-col items-center lg:w-[700px] w-full lg:mt-0 mt-[70px]">
+        <div className="lg:h-[795px] md:flex items-center lg:w-[700px] w-full lg:mt-0 mt-[70px]">
           <Image
             src={"/images/nikan365-app.png"}
             alt="why-nikan"

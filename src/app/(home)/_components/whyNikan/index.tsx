@@ -32,7 +32,7 @@ const WhyNikan = ({
 
   return (
     <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 ">
-      <Typography className="!text-center !text-secondary-600 !font-extrabold !text-[25px] !text-xl lg:!block ">
+      <Typography className="!text-center !text-[#5B5B5B] !font-extrabold !text-[25px] !text-xl lg:!block self-start">
         {data.name}
       </Typography>
 

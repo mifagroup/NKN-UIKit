@@ -76,7 +76,7 @@ const SearchDoctors = ({
                   در حال جستجو...
                 </Typography>
               ) : searchResults.length > 0 ? (
-                searchResults.slice(0, 30).map((result) => (
+                searchResults.slice(0, 25).map((result) => (
                   <Link
                     href={result.url}
                     className="flex flex-col gap-y-5"

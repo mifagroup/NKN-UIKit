@@ -16,7 +16,7 @@ const Trophies = () => {
   const nextEl = useRef(null);
 
   return (
-    <div className="max-w-[1106px] container lg:pt-[118px]">
+    <div className="max-w-[1106px] container lg:pt-[118px] hidden">
       <div className="flex justify-between items-center">
         <Button
           className="!min-w-fit !p-0 lg:!block !hidden"

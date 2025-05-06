@@ -2,6 +2,7 @@ import { components } from "@/lib/api/v1";
 import { Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
+import ShareLink from "@/app/(home)/_components/branchesAddresses/share";
 
 const DoctorItem = ({
   doctor,
@@ -9,8 +10,8 @@ const DoctorItem = ({
   doctor: components["schemas"]["DoctorResource"];
 }) => {
   return (
-    <div className="flex md:flex-row flex-col gap-y-4 justify-between items-stretch py-5">
-      <div className="flex items-center gap-x-3.5">
+    <div className="flex md:flex-row flex-col gap-y-4 items-stretch py-5">
+      <div className="flex items-center gap-x-3.5 w-full">
         <Link href={`/doctor/${doctor.id}`}>
           <Image
             src={doctor.image.original_url ?? ""}
@@ -20,7 +21,7 @@ const DoctorItem = ({
             className="h-[188px] w-[144px] rounded-[17px]"
           />
         </Link>
-        <div className="flex flex-col">
+        <div className="flex flex-col w-full">
           <Link
             href={`/doctor/${doctor.id}`}
             className="text-base font-bold text-black"
@@ -36,15 +37,28 @@ const DoctorItem = ({
           <span className="text-base font-extralight text-black pt-4">
             {doctor.short_description}
           </span>
-          <div className="pt-[18px] flex items-center gap-x-1.5">
-            {doctor.terms?.slice(0, 3)?.map((term) => (
-              <span
-                className="px-3.5 py-1 text-black text-[12px] font-extralight bg-[#F3F3F3] rounded-[8px]"
-                key={term.id}
-              >
+          <div className="flex flex-row justify-between">
+            <div className={`pt-[18px] items-center gap-x-1.5`}>
+            <span className={`px-3.5 py-1 text-white text-[12px] font-medium  rounded-[8px]  ${
+                doctor.hospital?.id == 1 ? "bg-[#E43C7F]" :
+                    doctor.hospital?.id == 2  ? "bg-[#F4DE63]": 
+                    doctor.hospital?.id == 3 ? "bg-[#4CC5AC]": 
+                    doctor.hospital?.id == 4 ? "bg-[#4CB1DD]" : "" 
+                
+            }`}>
+              {doctor.hospital?.name}
+            </span>
+            </div>
+            <div className="pt-[18px] items-center ml-3 gap-x-1.5">
+              {doctor.terms?.slice(0, 3)?.map((term) => (
+                  <span
+                      className="px-3.5 py-1 text-black text-[12px] font-extralight bg-[#F3F3F3] rounded-[8px]"
+                      key={term.id}
+                  >
                 {term.title}
               </span>
-            ))}
+              ))}
+            </div>
           </div>
         </div>
       </div>
@@ -67,9 +81,15 @@ const DoctorItem = ({
             بازدید صفحه پزشک
           </Link>
           <Divider orientation="vertical" className="!bg-[#D9D9D9] !w-[1px]" />
-          <Link href={""} className="text-[12px] font-extralight text-black">
-            اشتراک گذاری
-          </Link>
+          <ShareLink
+              url=""
+              title={doctor?.full_name}
+              label={
+                <div className="text-[12px] font-extralight text-black">
+                  اشتراک گذاری
+                </div>
+              }
+          />
         </div>
       </div>
     </div>

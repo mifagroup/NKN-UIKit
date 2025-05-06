@@ -15,12 +15,12 @@ const page = () => {
     {
       title: "بیمه های طرف قرارداد با مرکز جراحی محدود نیکان",
       image: "/images/h3.png",
-      href: "/insurances/jarahi-mahdod-insurance.xlsx",
+      href: "/insurances/jarahi-mahdod-insurance.pdf",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان اقدسیه",
       image: "/images/h4.png",
-      href: "/insurances/aghdasieh-insurance.xlsx",
+      href: "/insurances/aghdasieh-insurance.pdf",
     },
   ];
   return (

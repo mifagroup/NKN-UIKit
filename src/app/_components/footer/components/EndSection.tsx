@@ -22,11 +22,6 @@ const EndSection = () => {
       href: "/social-responsibility",
     },
     {
-      id: "virtual-hospital",
-      label: "بیمارستان مجازی",
-      href: "/virtual-hospital",
-    },
-    {
       id: "nikan365",
       label: "نیکان 365",
       href: "/nikan365",

@@ -108,7 +108,7 @@ const SearchDoctors = ({
           </div>
           <Button
             LinkComponent={Link}
-            href="https://pa.nikan365.ir/online-turning?selectedTab=0&turnTypeId=1"
+            href="https://pa.nikan365.ir/main/expertise"
             className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!flex !hidden justify-center items-center"
             target="_blank"
           >

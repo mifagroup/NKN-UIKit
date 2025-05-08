@@ -9,11 +9,6 @@ export const links = [
     href: "/",
   },
   {
-    id: "nikan_structure",
-    label: "بیمارستان‌ها و مراکز درمانی",
-    href: "/contact-us",
-  },
-  {
     id: "international",
     label: "واحد بین‌الملل (IPD)",
     href: "/nikan-international",
@@ -32,6 +27,11 @@ export const links = [
     id: "about-us",
     label: "داستان نیکان",
     href: "/about-us",
+  },
+  {
+    id: "virtual-hospital",
+    label: "بیمارستان مجازی",
+    href: "/virtual-hospital",
   },
 ];
 

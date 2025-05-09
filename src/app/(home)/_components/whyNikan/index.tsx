@@ -32,9 +32,9 @@ const WhyNikan = ({
 
   return (
     <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 ">
-      <Typography className="!text-center !text-[#5B5B5B] !font-extrabold !text-[25px] !text-xl lg:!block self-start">
+      <div className="text-center lg:text-start !text-[#5B5B5B] !font-extrabold !text-[25px] !text-xl max-w-[1168px] mx-auto w-full lg:!block self-start">
         {data.name}
-      </Typography>
+      </div>
 
       {/* Desktop version - unchanged */}
       <div className="relative lg:block hidden">
@@ -137,56 +137,58 @@ const WhyNikan = ({
         </div>
       </div>
 
-        <div className="lg:hidden flex flex-col gap-y-8">
-            {data?.thumbnails &&
-                data?.slides &&
-                data?.thumbnails.length > 0 &&
-                data?.slides.length > 0 && (
-                    <>
-                        {chunkArray(data.slides, 3).map((chunk, chunkIndex) => (
-                            <Fragment key={chunkIndex}>
-                                <div className="flex flex-col gap-y-6 px-5">
-                                    {chunk.map((slide : components["schemas"]["SlideResource"], index : number) => (
-                                        <div key={index} className="flex gap-x-4 w-full mx-auto">
-                                            <div className="flex flex-col gap-y-3">
-                                                <Image
-                                                    src={slide.image.original_url ?? ""}
-                                                    alt={slide.title}
-                                                    width={60}
-                                                    height={65}
-                                                    className="w-[60px] h-[65px]"
-                                                />
-                                                <div className="flex flex-col gap-y-2">
-                                                    <Typography className="!text-[18px] !font-extrabold !text-secondary-600">
-                                                        {slide.title}
-                                                    </Typography>
-                                                    <Typography className="!text-[14px] !font-light !text-secondary-400 !text-justify">
-                                                        {slide.description}
-                                                    </Typography>
-                                                </div>
-                                            </div>
-                                        </div>
-                                    ))}
-                                </div>
-                               <Image
-                                   src={
-                                       data.thumbnails?.[chunkIndex]?.original_url ??
-                                       ""
-                                   }
-                                   alt={
-                                       data.thumbnails?.[chunkIndex]?.file_name ??
-                                       ""
-                                   }
-                                    width={758}
-                                    height={400}
-                                    quality={100}
-                                    className="w-full h-auto object-cover"
-                                />
-                            </Fragment>
-                        ))}
-                    </>
-                )}
-        </div>
+      <div className="lg:hidden flex flex-col gap-y-8">
+        {data?.thumbnails &&
+          data?.slides &&
+          data?.thumbnails.length > 0 &&
+          data?.slides.length > 0 && (
+            <>
+              {chunkArray(data.slides, 3).map((chunk, chunkIndex) => (
+                <Fragment key={chunkIndex}>
+                  <div className="flex flex-col gap-y-6 px-5">
+                    {chunk.map(
+                      (
+                        slide: components["schemas"]["SlideResource"],
+                        index: number
+                      ) => (
+                        <div
+                          key={index}
+                          className="flex gap-x-4 w-full mx-auto"
+                        >
+                          <div className="flex flex-col gap-y-3">
+                            <Image
+                              src={slide.image.original_url ?? ""}
+                              alt={slide.title}
+                              width={60}
+                              height={65}
+                              className="w-[60px] h-[65px]"
+                            />
+                            <div className="flex flex-col gap-y-2">
+                              <Typography className="!text-[18px] !font-extrabold !text-secondary-600">
+                                {slide.title}
+                              </Typography>
+                              <Typography className="!text-[14px] !font-light !text-secondary-400 !text-justify">
+                                {slide.description}
+                              </Typography>
+                            </div>
+                          </div>
+                        </div>
+                      )
+                    )}
+                  </div>
+                  <Image
+                    src={data.thumbnails?.[chunkIndex]?.original_url ?? ""}
+                    alt={data.thumbnails?.[chunkIndex]?.file_name ?? ""}
+                    width={758}
+                    height={400}
+                    quality={100}
+                    className="w-full h-auto object-cover"
+                  />
+                </Fragment>
+              ))}
+            </>
+          )}
+      </div>
     </div>
   );
 };

@@ -33,7 +33,7 @@ const items = [
     },
     {
         id: 6,
-        name: 'دکتر سعید تابش',
+        name: 'مهندس سعید تابش',
         pos: 'عضو هیئت مدیره',
         avatar: '/images/directors/06.jpg'
     },

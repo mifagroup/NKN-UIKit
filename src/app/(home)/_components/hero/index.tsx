@@ -63,10 +63,12 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                           autoPlay
                           loop
                           muted
+                          playsInline
                           className="lg:h-[83vh] h-[460px] w-full object-cover"
                       >
                         <source src={slide?.image?.original_url} type="video/mp4" />
                       </video>
+
                   )}
                   <div className="bg-[#00000060] absolute w-full h-full top-0"></div>
                   <div className="container max-w-[1216px]">

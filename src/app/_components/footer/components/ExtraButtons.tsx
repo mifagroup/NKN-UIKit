@@ -9,7 +9,7 @@ const ExtraButtons = () => {
     <div className="flex flex-col gap-y-3">
       <Link
         href={
-          "https://pa.nikan365.ir/online-turning?selectedTab=0&turnTypeId=1"
+          "https://pa.nikan365.ir/main/expertise"
         }
         target="_blank"
         className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]"

@@ -8,7 +8,7 @@ const Hero = () => {
       alt=""
       width={1920}
       height={600}
-      className="object-cover lg:object-center object-left lg:h-[600px] h-[412px]"
+      className="object-contain lg:object-center object-left lg:h-[600px] h-[412px]"
     />
   );
 };

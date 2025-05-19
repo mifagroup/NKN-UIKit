@@ -37,7 +37,7 @@ const Header = () => {
             <MenuDrawer />
             <div className="lg:block hidden border-r pr-4 mr-4">
               <a href="tel:02112129">
-                <img src="/images/ourTell.svg" alt="ourTell" />
+                <img src="/images/ourTell.png" alt="ourTell" />
               </a>
             </div>
           </div>

@@ -35,9 +35,9 @@ const Header = () => {
               <LoginButton />
             </div> */}
             <MenuDrawer />
-            <div className="lg:block hidden border-r pr-4 mr-4">
+            <div className="lg:block hidden border-r pr-4 mr-4 w-[180px]">
               <a href="tel:02112129">
-                <img src="/images/ourTell.png" alt="ourTell" />
+                <img src="/images/contact4.png" alt="ourTell" />
               </a>
             </div>
           </div>

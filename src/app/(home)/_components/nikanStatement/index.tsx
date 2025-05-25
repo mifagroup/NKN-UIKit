@@ -28,7 +28,7 @@ const NikanStatement = () => {
         </p>
       </div>
       <Image
-        src={"/images/statement-image.svg"}
+        src={"/images/statement-image.png"}
         alt=""
         width={1236}
         height={452}

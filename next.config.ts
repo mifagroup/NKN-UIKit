@@ -1,4 +1,28 @@
 import type { NextConfig } from "next";
+import type { Redirect } from "next/dist/lib/load-custom-routes";
+
+const redirects = async (): Promise<Redirect[]> => [
+  {
+    source: "/fa",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/fa/",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/en",
+    destination: "/",
+    permanent: true,
+  },
+  {
+    source: "/en/",
+    destination: "/",
+    permanent: true,
+  },
+];
 
 const nextConfig: NextConfig = {
   trailingSlash: true,
@@ -6,7 +30,6 @@ const nextConfig: NextConfig = {
     ignoreBuildErrors: true,
   },
 
-  /* config options here */
   images: {
     remotePatterns: [
       {
@@ -16,6 +39,8 @@ const nextConfig: NextConfig = {
       },
     ],
   },
+
+  redirects,
 };
 
 export default nextConfig;

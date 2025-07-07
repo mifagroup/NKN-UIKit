@@ -42,6 +42,8 @@ function getQueryClient() {
 const ReactQueryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
+  const [show, setShow] = useState(false);
+
   const queryClient = getQueryClient();
 
   return (

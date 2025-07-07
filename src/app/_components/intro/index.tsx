@@ -12,8 +12,7 @@ const Intro = ({
 }) => {
   const pathname = usePathname();
 
-  //const [show, setShow] = useState(pathname === "/");
-  const [show, setShow] = useState(false);
+  const [show, setShow] = useState(pathname === "/");
 
   const isMobile = useMediaQuery("(max-width: 768px)"); // lg breakpoint in Tailwind CSS
 

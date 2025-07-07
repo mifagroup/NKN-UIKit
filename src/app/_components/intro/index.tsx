@@ -1,9 +1,9 @@
 "use client";
-/*import Image from "next/image";
+import Image from "next/image";
 import React, { useState, useEffect } from "react";
 import { motion } from "framer-motion";
 import { useMediaQuery } from "@mui/material";
-import { usePathname } from "next/navigation";*/
+import { usePathname } from "next/navigation";
 
 // const Intro = ({
 //   setShow: setPageShow,

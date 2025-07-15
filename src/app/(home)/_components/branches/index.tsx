@@ -21,7 +21,7 @@ const Branches = ({
       <div className="max-w-[1236px] container">
         {" "}
         <h2 className="text-[#6D6D6D] lg:text-start text-center font-bold text-[24px] my-5">
-          شعب بیمارستان های نیکان
+          مراکز درمانی نیکان
         </h2>
         <div className="flex lg:grid lg:grid-cols-5 gap-4 overflow-x-auto pb-4 lg:pb-0 lg:overflow-visible">
           {hospitals?.map((hospital, index: number) => (
@@ -51,7 +51,7 @@ const Branches = ({
                     alt="icon"
                     width={78}
                     height={98}
-                    className="!h-[98px] w-[78px] "
+                    className="!h-[86px] !w-auto !max-w-32"
                   />
                   <span className="text-[#696969] text-xl">
                     {hospital.name}
@@ -59,7 +59,7 @@ const Branches = ({
                   <span className="text-[#B8B8B8] text-base tracking-[0.1em]">
                     {LATIN[index]}
                   </span>
-                </>{" "}
+                </>
               </Link>
               {/*     <Link
                 className="relative lg:hidden "
@@ -118,13 +118,13 @@ const Branches = ({
               className="w-full !h-[287px] !relative rounded-[14px] object-cover"
             />
             <>
-              {" "}
+
               <Image
                 src={"/images/niayesh2.png"}
                 alt="icon"
                 width={78}
                 height={98}
-                className="!h-[98px] w-[78px] "
+                className="!h-[86x] !w-[78px] "
               />
               <span className="text-[#696969] text-xl">نیکان نیایش</span>
               <span className="text-[#B8B8B8] text-base tracking-[0.1em]">

@@ -92,7 +92,8 @@ const Contact = () => {
           alt="contact-us-image"
           width={727}
           height={534}
-          className="xl:w-[727px] lg:w-[600px] w-full lg:h-auto h-[534px] lg:object-contain object-cover object-[63%_0px]"
+          className="xl:w-[727px]
+           lg:w-[600px] w-full lg:h-auto h-[534px] lg:object-contain object-left object-cover"
         />
         <div className="absolute lg:top-[50%] top-[65%] translate-y-[-50%] w-full text-center">
           <span className="lg:text-[96px] text-[50px] text-white font-black">

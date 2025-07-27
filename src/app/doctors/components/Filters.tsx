@@ -216,51 +216,55 @@ const Filters = (props: FilterProps) => {
           ))}
         </div>
       </div>
-      <span className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px]">
-        سطح تحصیلات
-      </span>
+
       {degrees?.terms?.length ? (
-        <div className="py-[30px]">
-          <div className="px-2 flex flex-col gap-y-[1.5px]">
-            {degrees?.terms?.map((degree) => (
-              <FormControlLabel
-                control={
-                  <Checkbox
-                    className="!p-0"
-                    sx={{
-                      "& .MuiSvgIcon-root": {
-                        width: "15px",
-                        height: "15px",
-                        marginX: "5px",
-                      },
-                    }}
-                    onChange={() => {
-                      // if (selectedDegrees?.includes(degree.id)) {
-                      //   setSelectedDegrees(
-                      //     selectedDegrees.filter((item) => item !== degree.id)
-                      //   );
-                      // } else {
-                      setSelectedDegrees([degree.id]);
-                      // }
-                    }}
-                    checked={selectedDegrees.includes(degree.id)}
+        <>
+           <span className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px]">
+            سطح تحصیلات
+          </span>
+          <div className="py-[30px]">
+            <div className="px-2 flex flex-col gap-y-[1.5px]">
+              {degrees?.terms?.map((degree) => (
+                  <FormControlLabel
+                      control={
+                        <Checkbox
+                            className="!p-0"
+                            sx={{
+                              "& .MuiSvgIcon-root": {
+                                width: "15px",
+                                height: "15px",
+                                marginX: "5px",
+                              },
+                            }}
+                            onChange={() => {
+                              // if (selectedDegrees?.includes(degree.id)) {
+                              //   setSelectedDegrees(
+                              //     selectedDegrees.filter((item) => item !== degree.id)
+                              //   );
+                              // } else {
+                              setSelectedDegrees([degree.id]);
+                              // }
+                            }}
+                            checked={selectedDegrees.includes(degree.id)}
+                        />
+                      }
+                      slotProps={{
+                        typography: {
+                          fontSize: "12px",
+                          fontWeight: selectedDegrees?.includes(degree.id)
+                              ? "500"
+                              : "200",
+                        },
+                      }}
+                      className="!m-0"
+                      label={degree.title}
+                      key={degree.id}
                   />
-                }
-                slotProps={{
-                  typography: {
-                    fontSize: "12px",
-                    fontWeight: selectedDegrees?.includes(degree.id)
-                      ? "500"
-                      : "200",
-                  },
-                }}
-                className="!m-0"
-                label={degree.title}
-                key={degree.id}
-              />
-            ))}
+              ))}
+            </div>
           </div>
-        </div>
+        </>
+
       ) : null}
     </div>
   );

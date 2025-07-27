@@ -95,7 +95,7 @@ const Contact = () => {
           className="xl:w-[727px]
            lg:w-[600px] w-full lg:h-auto h-[534px] lg:object-contain object-left object-cover"
         />
-        <div className="absolute lg:top-[50%] top-[65%] translate-y-[-50%] w-full text-center">
+        <div className="absolute lg:top-[50%] top-[6s5%] translate-y-[-50%] w-full text-center">
           <span className="lg:text-[96px] text-[50px] text-white font-black">
             Get in touch
           </span>

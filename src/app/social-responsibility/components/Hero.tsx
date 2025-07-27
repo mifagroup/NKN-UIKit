@@ -1,6 +1,7 @@
 import Image from "next/image";
 import React from "react";
 import { components } from "@/lib/api/v1";
+import Link from "next/link";
 
 interface HeroProps {
   slider: components["schemas"]["BlogResource"][];
@@ -13,9 +14,6 @@ const Hero = ({ slider = [] }: HeroProps) => {
         <h1 className="text-xl leading-[33px] font-semibold text-center">
           نیکان و مسئولیت اجتماعی
         </h1>
-        {/*<h2 className="text-sm font-light text-center">
-          محتوای مورد نیاز برای ساب تایتل محتوای مورد نیاز برای ساب تایتل
-        </h2>*/}
       </div>
       <div className="grid lg:grid-cols-7 grid-cols-1 lg:gap-3">
         {slider[0] && (
@@ -28,13 +26,18 @@ const Hero = ({ slider = [] }: HeroProps) => {
                 {slider[0].sub_title}
               </span>
             </div>
-            <Image
-              src={slider[0].main_image?.original_url || ""}
-              alt={slider[0].title || ""}
-              width={1107}
-              height={346}
-              className="lg:h-[346px] h-[456px] object-cover"
-            />
+              <Link
+                  href={`/social-responsibility/${slider[0].slug}`}
+              >
+                  <Image
+                      src={slider[0].main_image?.original_url || ""}
+                      alt={slider[0].title || ""}
+                      width={1107}
+                      height={346}
+                      className="lg:h-[346px] h-[456px] object-cover"
+                  />
+              </Link>
+
           </div>
         )}
         
@@ -48,12 +51,16 @@ const Hero = ({ slider = [] }: HeroProps) => {
                 {slider[1].sub_title}
               </span>
             </div>
-            <Image
-              src={slider[1].main_image?.original_url || ""}
-              alt={slider[1].title || ""}
-              fill
-              className="object-cover"
-            />
+              <Link
+                  href={`/social-responsibility/${slider[1].slug}`}
+              >
+                <Image
+                  src={slider[1].main_image?.original_url || ""}
+                  alt={slider[1].title || ""}
+                  fill
+                  className="object-cover"
+                />
+              </Link>
           </div>
         )}
         
@@ -67,12 +74,16 @@ const Hero = ({ slider = [] }: HeroProps) => {
                 {slider[2].sub_title}
               </span>
             </div>
-            <Image
-              src={slider[2].main_image?.original_url || ""}
-              alt={slider[2].title || ""}
-              fill
-              className="object-cover"
-            />
+              <Link
+                  href={`/social-responsibility/${slider[2].slug}`}
+              >
+                  <Image
+                      src={slider[2].main_image?.original_url || ""}
+                      alt={slider[2].title || ""}
+                      fill
+                      className="object-cover"
+                  />
+              </Link>
           </div>
         )}
       </div>

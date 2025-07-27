@@ -19,7 +19,7 @@ const page = async () => {
   const blogs: components["schemas"]["BlogResource"][] = data?.data;
 
   const slider: components["schemas"]["BlogResource"][] = data?.slider ?? [];
-  console.log(data, "data");
+ // console.log(data, "data");
   return (
     <div className="max-w-[1150px] container lg:pt-[87px] pt-10 lg:pb-[134px] pb-[60px]">
       <TopBlog slider={slider} />

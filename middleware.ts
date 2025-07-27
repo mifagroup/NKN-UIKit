@@ -32,7 +32,7 @@ export function middleware(request: NextRequest) {
   ) {
     return NextResponse.next();
   }
-  console.log("Incoming request:", pathname); // 🐛 Log it
+  //console.log("Incoming request:", pathname); // 🐛 Log it
 
   // 2. Apply your validation logic for page paths
   const isValidPagePath = validBasePaths.some(

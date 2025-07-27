@@ -45,7 +45,7 @@ const SocialResponsibilityPage = () => {
         setSlider(result.slider || []);
         setMeta(result.meta || null);
       } catch (error) {
-        console.error("Error fetching data:", error);
+        //console.error("Error fetching data:", error);
       } finally {
         setLoading(false);
       }

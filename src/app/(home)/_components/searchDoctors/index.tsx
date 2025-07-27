@@ -36,7 +36,7 @@ const SearchDoctors = ({
             setIsSearching(false);
           })
           .catch((error) => {
-            //console.error("Error fetching search results:", error);
+            console.error("Error fetching search results:", error);
             setIsSearching(false);
           });
       } else {

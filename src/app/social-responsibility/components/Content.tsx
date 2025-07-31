@@ -27,7 +27,7 @@ const Content = ({
             alt={item.title || ""}
             width={1103}
             height={310}
-            className="h-[310px] !important"
+            className="h-[310px] !important object-cover"
           />
           <div className="flex justify-between items-center lg:px-0 px-4">
             <div className="flex flex-col ggap-y-2">
@@ -44,6 +44,7 @@ const Content = ({
                 alt=""
                 width={20}
                 height={18}
+                className={"object-cover"}
               />
               <Link
                 href={`/social-responsibility/${item.slug}`}

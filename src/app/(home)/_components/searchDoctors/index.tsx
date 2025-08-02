@@ -66,6 +66,7 @@ const SearchDoctors = ({
               alt="search-icon"
               width={74}
               height={74}
+              quality={100}
               className="lg:w-[74px] lg:h-[74px] w-[36px] h-[36px]"
             />
           </div>

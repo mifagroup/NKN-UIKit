@@ -45,9 +45,13 @@ const ExtraButtons = () => {
           width={32}
           height={32}
         />
-        <span className="text-[15px] font-extralight text-white">
-          عضویت در نشریه نیکان
-        </span>
+        <Link
+          href={"/blogs"}
+          target="_self"
+          className="text-[15px] font-extralight text-white"
+        >
+          مجله نیکان
+        </Link>
       </button>
     </div>
   );

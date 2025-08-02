@@ -42,6 +42,7 @@ const BranchesAddresses = async () => {
                 alt={branches[0].title}
                 width={107}
                 height={90}
+                className="max-h-[86px]"
               />
             </Link>
             <div className="flex flex-col">

@@ -128,6 +128,7 @@ const Nikan365IntroSlider = ({
                     width={greaterThanLg ? 70 : 60}
                     height={greaterThanLg ? 79 : 65}
                     className="mx-auto xl:h-[79px] h-[65px] object-contain"
+                    quality={100}
                   />
                   <Typography className="!font-medium !text-secondary-400 !text-center whitespace-nowrap lg:!text-base !text-[10px]">
                     {item.title}

@@ -13,7 +13,7 @@ const Nikan365Intro = ({data}: {
       </div>*/}
             <div
                 className="max-w-[1236px] container pt-[44px] lg:pb-[27px] lg:px-0 px-10 w-full pb-[46px] flex lg:justify-between lg:items-center lg:flex-row flex-col">
-                <Image src="/images/slogen.svg" fill className="!relative max-w-[400px]" alt="slogen"/>
+                <Image src="/images/slogen.svg" fill quality={100} className="!relative max-w-[400px]" alt="slogen"/>
 
                 <div className="grid lg:grid-cols-4 grid-cols-2 lg:mt-0 mt-10">
                     {data.slides?.map((slide , index) => (
@@ -30,6 +30,7 @@ const Nikan365Intro = ({data}: {
                                     src={slide.image.original_url ?? ""}
                                     alt="slogen"
                                     fill
+                                    quality={100}
                                 />
                                 <p className="lg:text-base text-sm text-center font-light text-[#616161]">
                                     {slide.title}

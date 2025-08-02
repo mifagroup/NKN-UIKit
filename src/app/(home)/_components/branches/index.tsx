@@ -39,6 +39,7 @@ const Branches = ({
                   }
                   layout="fill"
                   alt={hospital.name}
+                  quality={100}
                   className="w-full !h-[287px] !relative rounded-[14px]"
                 />
                 <>
@@ -51,6 +52,7 @@ const Branches = ({
                     alt="icon"
                     width={78}
                     height={98}
+                    quality={100}
                     className="!h-[86px] !w-auto !max-w-32"
                   />
                   <span className="text-[#696969] text-xl">

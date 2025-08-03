@@ -43,7 +43,8 @@ const page = () => {
               <Image
                 src={card.image}
                 alt="icon"
-                className="!w-[91px] !h-[105px] mb-4 !relative"
+                className="!w-[122px] !h-[105px] mb-4 !relative"
+                quality={100}
                 fill
               />
               <h3 className="text-xl font-semibold text-black mb-2">

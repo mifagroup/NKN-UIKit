@@ -40,9 +40,9 @@ const BranchesAddresses = async () => {
               <Image
                 src={branches[0].image}
                 alt={branches[0].title}
-                width={107}
-                height={90}
-                className="max-h-[86px]"
+                width={122}
+                height={105}
+                className="max-h-[105px] max-w-[122px]"
               />
             </Link>
             <div className="flex flex-col">
@@ -88,14 +88,15 @@ const BranchesAddresses = async () => {
               </div>
             </div>
           </div>
-          <div className="lg:pt-[66px] lg:pb-[74px] pt-[38px] flex lg:flex-row flex-col lg:gap-y-2 items-center gap-x-[26px] lg:pr-[70px]">
+          <div className="lg:pt-[71px] lg:pb-[74px] pt-[60px] pb-[30px flex lg:flex-row flex-col lg:gap-y-2 items-center gap-x-[26px] lg:pr-[70px]">
             <Link href={branches[1].link} target="_blank">
               <Image
                 src={branches[1].image}
                 alt={branches[1].title}
-                width={91}
+                width={122}
                 height={105}
-                className="lg:w-[91px] w-[103px] lg:h-[105px] h-[119px]"
+                quality={100}
+                className="max-h-[105px] max-w-[122px]"
               />
             </Link>
             <div className="flex flex-col">
@@ -120,8 +121,8 @@ const BranchesAddresses = async () => {
                   مسیریابی
                 </a>
                 <ShareLink
-                    url={branches[0].link}
-                    title={branches[0]?.title}
+                    url={branches[1].link}
+                    title={branches[1]?.title}
                     label={
                       <div className="text-xs font-extralight mx-4 px-4 border-r-2 border-l-2 border-[#31D1B0]">
                         اشتراک گذاری
@@ -142,14 +143,14 @@ const BranchesAddresses = async () => {
         </div>
       </div>
       <div className="container grid grid-cols-2 max-w-[1092px]">
-        <div className="lg:pt-[50px] pt-[48px] lg:pb-[69px] pb-[46px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]">
+        <div className="lg:pt-[50px] pt-[48px] lg:pb-[74px] pb-[46px] border-l border-secondary-500 flex lg:flex-row flex-col gap-y-2 items-center gap-x-[23px]">
           <Link href={branches[2].link} target="_blank">
             <Image
               src={branches[2].image}
               alt={branches[2].title}
-              width={99}
-              height={116}
-              className="lg:w-[99px] w-[90px] lg:h-[116px] h-[105px]"
+              width={122}
+              height={105}
+              className="max-h-[105px] max-w-[122px]"
             />
           </Link>
           <div className="flex flex-col">
@@ -191,14 +192,14 @@ const BranchesAddresses = async () => {
             </div>
           </div>
         </div>
-        <div className="lg:pt-[64px] pt-[55px] lg:pb-[74px] pb-[46px] lg:pr-[55px] flex lg:flex-row flex-col lg:gap-y-2 gap-y-3.5 items-center gap-x-[16px]">
+        <div className="lg:pt-[50px] pt-[48px] lg:pb-[74px] pb-[46px] lg:pr-[55px] flex lg:flex-row flex-col lg:gap-y-2 gap-y-3.5 items-center gap-x-[16px]">
           <Link href={branches[3].link} target="_blank">
             <Image
               src={branches[3].image}
               alt={branches[3].title}
-              width={116}
-              height={97}
-              className="lg:w-[116px] w-[110px] lg:h-[97px] h-[92px]"
+              width={122}
+              height={1055}
+              className="max-h-[105px] max-w-[122px]"
             />
           </Link>
           <div className="flex flex-col">

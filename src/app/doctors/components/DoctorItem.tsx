@@ -12,13 +12,13 @@ const DoctorItem = ({
   return (
     <div className="flex md:flex-row flex-col gap-y-4 items-stretch py-5">
       <div className="flex items-center gap-x-3.5 w-full">
-        <Link href={`/doctor/${doctor.id}`}>
+        <Link href={`/doctor/${doctor.id}`} className={"!h-[188px] !w-[144px]"}>
           <Image
             src={doctor.image.original_url ?? ""}
             alt="doc"
             width={144}
             height={188}
-            className="h-[188px] w-[144px] rounded-[17px]"
+            className="!h-[188px] !w-[144px] rounded-[17px] max-w-[144px]"
           />
         </Link>
         <div className="flex flex-col w-full">

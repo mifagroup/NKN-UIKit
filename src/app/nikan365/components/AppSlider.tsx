@@ -1,126 +1,159 @@
 "use client";
 
-import { Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
-import { Navigation } from "swiper/modules";
+import "swiper/css/pagination";
+import {Autoplay, Pagination} from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types";
 
 const AppSlider = () => {
-  const swiperRef = useRef<SwiperType>();
-
-  const prevEl = useRef(null);
-  const nextEl = useRef(null);
-
   const items = [
-    [
-      {
-        id: 1,
-        image: "/images/why-nikan-1.png",
-        title: "خدمات در منزل",
-        desc: "انجام امور درمانی در منزل",
-      },
-      {
-        id: 2,
-        image: "/images/why-nikan-2.png",
-        title: "جواب آزمایش",
-        desc: "دریافت اینترنتی گزارشات",
-      },
-    ],
-    [
-      {
-        id: 1,
-        image: "/images/why-nikan-1.png",
-        title: "ویزیت مجازی",
-        desc: "مشاوره با متخصص در هرجا",
-      },
-      {
-        id: 2,
-        image: "/images/why-nikan-2.png",
-        title: "خدمات در منزل",
-        desc: "انجام امور درمانی در منزل",
-      },
-    ],
+    {
+      id: 1,
+      image: "/images/nikan365-swiper01.png",
+      title: "نیکان 365",
+    },
+    {
+      id: 2,
+      image: "/images/nikan365-swiper02.jpg",
+      title: "اپلیکشن نیکان",
+    },
+    {
+      id: 2,
+      image: "/images/nikan365-swiper03.jpg",
+      title: "اپلیکشن نیکان",
+    },
+    {
+      id: 2,
+      image: "/images/nikan365-swiper04.jpg",
+      title: "اپلیکشن نیکان",
+    },
+  ];
+  const rightItems = [
+    {
+      title: "دسترسی به پرونده پزشکی",
+      desc: "مشاهده و مدیریت سوابق پزشکی به صورت آنلاین",
+      image: "/images/nikan365-01.png",
+    },
+    {
+      title: "خدمات درمانی در منزل",
+      desc: "ارائه خدمات درمانی در منزل برای راحتی بیماران.",
+      image: "/images/nikan365-02.png",
+    },
+    {
+      title: "چکاپ سلامت انفرادی و گروهی",
+      desc: "مناسب پایش سلامت برای هر نفر یا سازمان ها و گروه های بزرگ",
+      image: "/images/nikan365-03.png",
+    },
+  ];
+  const leftItems = [
+    {
+      title: "نوبت‌دهی آنلاین",
+      desc: "رزرو وقت ملاقات با پزشکان متخصص به صورت آنلاین.",
+      image: "/images/nikan365-04.png",
+    },
+    {
+      title: "مشاوره پزشکی",
+      desc: "دریافت مشاوره پزشکی از طریق تماس تصویری یا متنی.",
+      image: "/images/nikan365-05.png",
+    },
+    {
+      title: "تفسیر آزمایش با هوش مصنوعی و بررسی پزشک",
+      desc: "تحلیل نتایج آزمایش‌ها با دقت بالا و سرعت بیشتر",
+      image: "/images/nikan365-06.png",
+    },
   ];
 
   return (
-    <div className="lg:h-[795px] relative lg:mb-0 mb-[60px]">
-      <div className="lg:w-[39%] w-full bg-primary-main lg:h-full h-[27%] absolute top-0" />
-      <div className="flex relative justify-center">
-        <Button
-          className="!absolute top-1/2 translate-y-[-50%] lg:left-[15%] left-0 z-10 lg:!block !hidden"
-          onClick={() => swiperRef.current?.slidePrev()}
-        >
-          <Image
-            src={"/images/arrow-left.png"}
-            alt="arrow-right"
-            width={23}
-            height={63.5}
-          />
-        </Button>
-        <div className="lg:h-[795px] md:flex items-center lg:w-[700px] w-full lg:mt-0 mt-[70px]">
-          <Image
-            src={"/images/nikan365-app.png"}
-            alt="why-nikan"
-            width={260}
-            height={502}
-            quality={100}
-            className="place-self-center"
-          />
+    <div className=" relative container mb-[60px]">
+      <div className="lg:flex hidden flex-col gap-y-5">
+        <span className="text-[#383838] text-2xl font-bold">
+           نیکان ۳۶۵؛ سلامت دیجیتال در دستان شما
+        </span>
+        <span className="text-base text-[#383838] font-light">
+          نیکان ۳۶۵ یک سوپراپلیکیشن سلامت دیجیتال است که با همکاری مجموعه
+          بیمارستان‌های نیکان توسعه یافته تا ارتباط بیمار با خدمات درمانی را به
+          ساده‌ترین شکل ممکن برقرار کند. این سامانه، خدماتی مثل نوبت‌گیری، ویزیت
+          آنلاین، پرونده سلامت دیجیتال، خدمات در منزل، تفسیر هوشمند آزمایش‌ها و
+          مدیریت سلامت خانواده را یکجا و با امنیت بالا ارائه می‌دهد.
+        </span>
+      </div>
+
+      <div className="lg:flex  items-center justify-center gap-6 mt-10">
+        <div className="lg:flex hidden flex-col gap-y-5">
+          {rightItems.map((item, index: number) => (
+            <div
+              className="flex gap-2 items-center self-end"
+              key={item.title + (index + 1 * 1000)}
+            >
+              <div className="flex flex-col gap-y-2 items-end">
+                <span className="text-[#323232] text-[13px] font-semibold">
+                  {item.title}
+                </span>
+                <span className="text-[#323232] text-[13px] font-light">
+                  {item.desc}
+                </span>
+              </div>
+              <Image
+                src={item.image}
+                alt={item.title}
+                quality={100}
+                width={92}
+                height={104}
+              />
+            </div>
+          ))}
+        </div>
+        <div className="md:w-[269px] nikan365_slider">
           <Swiper
-            onBeforeInit={(swiper) => {
-              swiperRef.current = swiper;
-            }}
             slidesPerView={1}
-            loop
-            modules={[Navigation]}
-            navigation={{
-              nextEl: nextEl.current,
-              prevEl: prevEl.current,
+            spaceBetween={10}
+            pagination={{
+              clickable: true,
             }}
+            loop={true}
+            modules={[Pagination , Autoplay]}
+            autoplay={{ delay: 5000 }}
+            className="md:w-[269px]"
           >
-            {[...Array(2)]?.map((_, index) => (
-              <SwiperSlide key={index}>
-                <div className="flex lg:flex-row flex-col items-center gap-x-[70px] gap-y-[50px] lg:w-fit w-full mx-auto">
-                  <div className="flex flex-col gap-y-[20px] lg:px-0 px-[50px]">
-                    {items[index]?.map((item) => (
-                      <div className="flex flex-col gap-y-3" key={item.id}>
-                        <Image
-                          src={item.image}
-                          alt={item.title}
-                          width={83}
-                          height={89}
-                        />
-                        <div className="flex flex-col gap-y-2">
-                          <Typography className="!text-[20px] !font-extrabold !text-secondary-600 max-w-[350px]">
-                            {item.title}
-                          </Typography>
-                          <Typography className="!text-[15px] !font-light !text-secondary-400 max-w-[350px] !text-justify">
-                            {item.desc}
-                          </Typography>
-                        </div>
-                      </div>
-                    ))}
-                  </div>
+            {items.map((item, index: number) => (
+              <SwiperSlide key={item.title + index}>
+                <div className="w-full  lg:block flex items-start justify-center h-[540px]">
+                  <Image
+                    src={item.image}
+                    alt={item.title}
+                    width={269}
+                    height={495}
+                    className=" h-[495px]"
+                  />
                 </div>
               </SwiperSlide>
             ))}
           </Swiper>
         </div>
-        <Button
-          className="!absolute top-1/2 translate-y-[-50%] lg:right-[15%] right-0 z-10 lg:!block !hidden"
-          onClick={() => swiperRef.current?.slideNext()}
-        >
-          <Image
-            src={"/images/arrow-right-light.svg"}
-            alt="arrow-right"
-            width={23}
-            height={63.5}
-          />
-        </Button>
+
+        <div className="lg:flex hidden flex-col gap-y-5">
+          {leftItems.map((item, index: number) => (
+            <div className="flex gap-2 items-center self-start" key={item.title + index}>
+              <Image
+                src={item.image}
+                alt={item.title}
+                quality={100}
+                width={92}
+                height={104}
+              />
+              <div className="flex flex-col gap-y-2 items-start">
+                <span className="text-[#323232] text-[13px] font-semibold">
+                  {item.title}
+                </span>
+                <span className="text-[#323232] text-[13px] font-light">
+                  {item.desc}
+                </span>
+              </div>
+            </div>
+          ))}
+        </div>
       </div>
     </div>
   );

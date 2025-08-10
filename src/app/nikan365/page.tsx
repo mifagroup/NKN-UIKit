@@ -1,13 +1,19 @@
+
 import React from "react";
-import { AppSlider, Hero, NikanOnline, WebsiteSlider } from "./components";
+import { Hero, NikanOnline, AppSlider, Video, Reason, Steps, Nikan, Comments } from "./components";
 import { BranchesAddresses } from "../(home)/_components";
+import "./style.css";
 
 const page = async () => {
   return (
-    <div>
+    <div className="overflow-x-hidden">
       <Hero />
       <AppSlider />
-      <WebsiteSlider />
+      <Video />
+      <Reason />
+      <Steps />
+      <Nikan />
+      <Comments />
       <NikanOnline />
       <BranchesAddresses />
     </div>

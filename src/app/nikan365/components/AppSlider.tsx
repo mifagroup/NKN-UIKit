@@ -66,8 +66,8 @@ const AppSlider = () => {
   ];
 
   return (
-    <div className=" relative container mb-[60px]">
-      <div className="lg:flex hidden flex-col gap-y-5">
+    <div className=" relative container mb-[60px] md:justify-items-center">
+      <div className="lg:flex hidden flex-col gap-y-5 max-w-[950px]">
         <span className="text-[#383838] text-2xl font-bold">
            نیکان ۳۶۵؛ سلامت دیجیتال در دستان شما
         </span>

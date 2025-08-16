@@ -8,6 +8,7 @@ import {
   Nikan365Intro,
   NikanStatement,
   SearchDoctors,
+  VirtualSlider,
   WhyNikan,
 } from "./_components";
 import News from "./_components/news";
@@ -43,6 +44,7 @@ const Page = async () => {
       {mainSlider && <Hero data={mainSlider} />}
       {nikan365Slider && <Nikan365Intro data={nikan365Slider} />}
       <Branches hospitals={hospitals ?? []} />
+      <VirtualSlider />
       <NikanStatement />
       {whyNikanSlider && <WhyNikan data={whyNikanSlider} />}
       {terms && <SearchDoctors terms={terms} />}

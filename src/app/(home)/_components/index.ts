@@ -7,3 +7,4 @@ export { default as SearchDoctors } from "./searchDoctors";
 export { default as Blogs } from "./blogs";
 export { default as NikanStatement } from "./nikanStatement";
 export { default as FAQ } from "./faq";
+export { default as VirtualSlider } from "./virtualSlider";

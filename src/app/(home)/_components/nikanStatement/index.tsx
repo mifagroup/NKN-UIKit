@@ -4,7 +4,7 @@ const NikanStatement = () => {
   return (
     <div className="max-w-[1236px] container mt-[100px] lg:mb-[80px] mb-5">
       <div className="flex flex-col md:flex-row md:items-center  gap-y-[15px] lg:px-0 px-5">
-        <div className="md:px-10 h-full lg:border-b-0 lg:pb-0 lg:mb-0 border-b-2 pb-4 mb-4 border-b-[#31D1B0]">
+        <div className="md:px-10 h-full md:border-b-0 lg:pb-0 lg:mb-0 border-b-2 pb-4 mb-4 border-b-[#31D1B0]">
           <h2 className="text-[25px] font-bold text-[#5b5b5b] text-center">
             بیانیه خانواده درمانی نیکان
           </h2>

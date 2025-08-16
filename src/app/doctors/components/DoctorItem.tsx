@@ -28,7 +28,7 @@ const DoctorItem = ({
           >
             {doctor.full_name}
           </Link>
-          <span className="text-base font-medium text-black">
+          <span className="text-base text-black">
             {doctor.sub_title}
           </span>
           <span className="pt-1.5 text-base font-extralight text-black">

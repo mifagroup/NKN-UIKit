@@ -50,7 +50,7 @@ const Filters = (props: FilterProps) => {
 
   const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>([]);
 
-  const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(true);
+  const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
   useEffect(() => {
     // Create a copy of the previous params and remove 'gender' if it exists
     const updatedParams = { ...prevSearchParams };

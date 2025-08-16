@@ -35,14 +35,16 @@ const EndSection = () => {
   return (
     <div className="lg:pt-[66px] lg:pb-[83px] pb-[40px] lg:border-t border-primary-main flex lg:flex-row flex-col gap-y-5 justify-between lg:items-start items-center">
       <div className="flex gap-x-3">
-        <Image
-          src={"/images/footer_link.png"}
-          alt="nikan365"
-          width={309}
-          height={125}
-          quality={100}
-          className="object-contain"
-        />
+        <Link href={"https://pa.nikan365.ir/auth/register"} target={"_blank"} >
+          <Image
+              src={"/images/footer_link.png"}
+              alt="nikan365"
+              width={309}
+              height={125}
+              quality={100}
+              className="object-contain"
+          />
+        </Link>
         {/*   <div className="flex flex-col">
           <span className="font-semibold text-white text-[15px]">
             سامانه جامع سلامت نیکان 365

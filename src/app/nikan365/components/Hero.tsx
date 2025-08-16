@@ -6,11 +6,12 @@ const Hero = () => {
   return (
     <div className="lg:h-[559px] md:h-[350px] sm:h-[350px] h-[408px] bg-primary-main flex items-end sm:mb-[245px] mb-[410px]">
       <div className="flex justify-center md:items-end items-center w-full sm:flex-row flex-col md:gap-40">
-        <div className=" flex flex-col md:mr-auto lg:pr-0 sm:pr-5 w-fit max-w-[390px] sm:mb-[-50px] sm:order-1 order-2 mb-[-350px]">
-          <span className="lg:text-[40px] sm:text-[24px] text-[20px] text-[#FFFFFF] font-light">
+
+        <div className="mt-20 flex flex-col md:mr-auto lg:pr-0 sm:pr-5 w-fit max-w-[390px] sm:mb-[-50px] sm:order-1 order-2 mb-[-350px]">
+          <span className="lg:text-[40px] sm:text-[24px] text-[20px]  text-[#5B5B5B] sm:text-[#FFFFFF] font-light">
             نیکان 365
           </span>
-          <span className="lg:text-[32px] sm:text-[15px] text-[14px]  text-[#FFFFFF] font-bold whitespace-nowrap">
+          <span className="lg:text-[32px] sm:text-[15px] text-[14px]  text-[#5B5B5B] sm:text-[#FFFFFF] font-bold whitespace-nowrap">
             بیمارستان، آنلاین تر از همیشه{" "}
           </span>
           <span className="lg:text-[20px] sm:text-[15px] text-[14px] mb-6 text-[#5B5B5B] font-light whitespace-nowrap">
@@ -24,7 +25,7 @@ const Hero = () => {
             ثبت‌نام رایگان
           </Link>
         </div>
-        <div className="md:mb-[-180px] sm:mb-[-100px] sm:order-2 order-1 sm:self-center self-end">
+        <div className="md:mb-[-180px] mb-[-100px] sm:order-2 order-1 sm:self-center self-end">
           <Image
             src={"/images/nikan365-hero.svg"}
             alt="hero"
@@ -42,6 +43,7 @@ const Hero = () => {
             quality={100}
           />
         </div>
+
       </div>
     </div>
   );

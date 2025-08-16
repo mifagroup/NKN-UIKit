@@ -71,7 +71,7 @@ const AppSlider = () => {
         <span className="text-[#383838] text-2xl font-bold">
            نیکان ۳۶۵؛ سلامت دیجیتال در دستان شما
         </span>
-        <span className="text-base text-[#383838] font-light">
+        <span className="text-base text-[#383838] font-light text-justify">
           نیکان ۳۶۵ یک سوپراپلیکیشن سلامت دیجیتال است که با همکاری مجموعه
           بیمارستان‌های نیکان توسعه یافته تا ارتباط بیمار با خدمات درمانی را به
           ساده‌ترین شکل ممکن برقرار کند. این سامانه، خدماتی مثل نوبت‌گیری، ویزیت

@@ -95,7 +95,7 @@ const Branches = async () => {
                   className="!w-[2px] !h-[18px] !bg-primary-main"
                 />
                 <Link
-                  href={`mailto:${branch.email}`}
+                  href={"/insurances"}
                   className="text-[12px] text-black font-extralight"
                 >
                   بیمه های طرف قرارداد

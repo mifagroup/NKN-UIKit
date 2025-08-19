@@ -5,7 +5,7 @@ const page = () => {
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان غرب",
       image: "/images/h1.png",
-      href: "/insurances/aghdasieh-insurance.xlsx",
+      href: "/insurances/west-insurance.pdf",
     },
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان سپید",

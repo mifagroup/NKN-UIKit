@@ -211,7 +211,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
         سلامت و کسب اطلاعات بیشتر با شماره ۰۹۹۲۱۵۸۲۲۳۸ تماس بگیرید.
       </div> */}
 
-          <div className="border-t-[#F56F95] border-t-[6px] bg-[#F1F1F1] lg:px-6 px-[19px] py-[15px] relative mt-20 ">
+          <div className="border-t-[#F56F95] border-t-[6px] bg-[#F1F1F1] lg:px-6 px-[19px] py-[15px] lg:py-0 relative mt-20 ">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-6">
                   <Image
                       src={"/images/magazine.png"}
@@ -220,18 +220,15 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                       height={201}
                       className="w-[138px] h-[156px] lg:w-[178px] lg:h-[201px] -top-16 -left-4 absolute lg:static lg:mt-[-45px]"
                   />
-                  <div className="flex flex-col gap-y-6">
+                  <div className="flex flex-col gap-y-6 mt-20 sm:mt-0">
                     <span
                         className="lg:text-[14px] text-[13px] font-black text-[#636363] lg:tracking-tight tracking-tighter">
                       عضویت در خبرنامه مجله ی علمی نیکان
                     </span>
                       <div className="flex flex-col gap-y-3">
-                          <div className="flex flex-col gap-y-2">
-                            <span className="text-[14px] font-light text-[#7c7c7c]">
-                              هرهفته دوشنبه ها صبح
-                            </span>
+                          <div className="flex flex-col ">
                               <span className="text-[14px] font-light text-[#7c7c7c]">
-                              خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
+                              هرهفته دوشنبه ها صبح خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
                             </span>
                           </div>
                           <MagazineForm/>

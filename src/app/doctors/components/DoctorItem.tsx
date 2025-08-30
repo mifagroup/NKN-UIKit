@@ -2,8 +2,6 @@ import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import Link from "next/link";
 import ShareLink from "@/app/(home)/_components/branchesAddresses/share";
-import {log} from "node:util";
-import {Divider} from "@mui/material";
 import React from "react";
 
 const DoctorItem = ({

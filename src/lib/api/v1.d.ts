@@ -716,6 +716,7 @@ export interface components {
             terms: components["schemas"]["TermResource"][];
             /** @description hospital of doctor */
             hospital?: components["schemas"]["HospitalResource"][];
+            hospitals?: components["schemas"]["TermResource"][];
         };
         /**
          * FileResource

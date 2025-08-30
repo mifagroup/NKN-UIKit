@@ -218,7 +218,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                       alt="magazine"
                       width={178}
                       height={201}
-                      className="w-[138px] h-[156px] lg:w-[178px] lg:h-[201px] -top-16 -left-4 absolute lg:static lg:mt-[-45px]"
+                      className="w-[138px] h-[156px] lg:w-[178px] lg:h-[201px] -top-16 -left-0 absolute lg:static lg:mt-[-45px]"
                   />
                   <div className="flex flex-col gap-y-6 mt-20 sm:mt-0">
                     <span

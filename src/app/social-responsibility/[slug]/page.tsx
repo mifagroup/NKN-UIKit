@@ -2,6 +2,8 @@ import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import qs from "qs";
 import { BlogsSlider, MagazineForm } from "./components";
+import Link from "next/link";
+import React from "react";
 
 const page = async (props: { params: Promise<{ slug: string }> }) => {
   const params = await props.params;
@@ -33,72 +35,79 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
   const blogsList: components["schemas"]["BlogResource"][] = blogs?.data ?? [];
 
   return (
-    <div className="max-w-[1106px] container mt-[88px]">
-      <div className="flex flex-col gap-y-[15px]">
-        <Image
-          src={blog?.main_image?.original_url ?? ""}
-          alt={blog?.title ?? ""}
-          width={1106}
-          height={489}
-          className="lg:!h-[489px] lg:!w-[1106px] object-cover"
-        />
-        <div className="flex justify-between items-center">
-          <div className="flex flex-col gap-y-1">
-            <span className="text-[25px] text-[#3F3F3F] font-bold">
-              {blog?.title}
-            </span>
-            <span className="text-[20px] text-[#3F3F3F]">
-              {blog?.sub_title}
-            </span>
-          </div>
-          <div className="flex items-center lg:gap-x-3 lg:justify-start justify-between gap-x-7">
-            <div className="flex gap-x-2 items-center">
+      <div className="max-w-[1106px] container mt-[88px]">
+          <div className="flex flex-col gap-y-[15px]">
+              {/* Main Image */}
               <Image
-                src={"/images/calendar-icon.png"}
-                alt="calendar"
-                width={21}
-                height={23}
-                className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
+                  src={blog?.main_image?.original_url ?? ""}
+                  alt={blog?.title ?? ""}
+                  width={1106}
+                  height={489}
+                  className="object-cover lg:!h-[489px] lg:!w-[1106px]"
               />
-              <span className="font-extralight lg:text-[15px] text-[11px]">
-                {new Date(blog?.published_at ?? Date.now()).toLocaleDateString(
-                  "fa-IR",
-                  {
-                    day: "2-digit",
-                    month: "long",
-                    year: "numeric",
-                  }
-                )}
-              </span>
-            </div>
-            <div className="flex gap-x-2 items-center">
-              <Image
-                src={"/images/clock-icon.png"}
-                alt="clock"
-                width={21}
-                height={23}
-                className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
-              />
-              <span className="font-extralight lg:text-[15px] text-[11px]">
-                {blog?.duration} دقیقه
-              </span>
-            </div>
-            {/* <Image
-              src={"/images/share-icon.png"}
-              alt="share"
-              width={21}
-              height={18}
-              className="lg:h-[21px] h-[13px] lg:w-[21px] w-[14px]"
-            /> */}
+
+              {/* Content Wrapper */}
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-y-4">
+
+                  {/* Title + Subtitle */}
+                  <div className="flex flex-col gap-y-1">
+                        <span className="text-[25px] text-[#3F3F3F] font-bold">
+                          {blog?.title}
+                        </span>
+                                        <span className="text-[20px] text-[#3F3F3F]">
+                          {blog?.sub_title}
+                        </span>
+                  </div>
+
+                  {/* Meta Info (Calendar + Clock) */}
+                  <div className="flex flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3">
+
+                      {/* Calendar */}
+                      <div className="flex gap-x-2 items-center">
+                          <Image
+                              src={"/images/calendar-icon.png"}
+                              alt="calendar"
+                              width={21}
+                              height={23}
+                              className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
+                          />
+                          <span className="font-extralight text-[11px] lg:text-[15px]">
+                             {new Date(blog?.published_at ?? Date.now()).toLocaleDateString(
+                                 "fa-IR",
+                                 {
+                                     day: "2-digit",
+                                     month: "long",
+                                     year: "numeric",
+                                 }
+                             )}
+                          </span>
+                      </div>
+                      {blog?.duration && (
+                          <div className="flex gap-x-2 items-center">
+                              <Image
+                                  src={"/images/clock-icon.png"}
+                                  alt="clock"
+                                  width={21}
+                                  height={23}
+                                  className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
+                              />
+                              <span className="font-extralight text-[11px] lg:text-[15px]">
+                                  {blog?.duration} دقیقه
+
+                              </span>
+                          </div>
+                      )}
+
+                  </div>
+              </div>
           </div>
-        </div>
-      </div>
-      <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]" />
-      <div
-        className="text-[18px] text-[#272727]"
-        dangerouslySetInnerHTML={{ __html: blog?.description ?? "" }}
-      />
-      {/* <div className="text-[18px] text-[#272727]">
+
+          <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]"/>
+          <div
+              className="text-[18px] text-[#272727]"
+              dangerouslySetInnerHTML={{__html: blog?.description ?? ""}}
+          />
+          {/* <div className="text-[18px] text-[#272727]">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده
         از طراحان گرافیک است، چاپگرها و متون بلکه روزنامه و مجله در ستون و
         سطرآنچنان که لازم است، و برای شرایط فعلی تکنولوژی مورد نیاز، و کاربردهای
@@ -202,47 +211,69 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
         سلامت و کسب اطلاعات بیشتر با شماره ۰۹۹۲۱۵۸۲۲۳۸ تماس بگیرید.
       </div> */}
 
-      <div className="w-full mt-10 mb-[91px] flex gap-x-9 pr-[47px] border-t-[6px] border-t-[#F56F95] bg-[#F1F1F1] max-h-[131px]">
-        <Image
-          src={"/images/magazine.png"}
-          alt=""
-          width={178}
-          height={201}
-          className="w-[178px] h-[201] mt-[-45px]"
-        />
-        <div className="max-w-[505px] pt-3.5 pb-[25px] flex flex-col gap-y-2.5">
-          <div className="flex flex-col">
-            <span className="text-[14px] text-[#636363] font-black">
-              عضویت در خبرنامه مجله ی علمی نیکان
-            </span>
-            <span className="text-[14px] font-light text-[#7c7c7c]">
-              هرهفته دوشنبه ها صبح خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
-            </span>
+          <div className="border-t-[#F56F95] border-t-[6px] bg-[#F1F1F1] lg:px-6 px-[19px] py-[15px] relative mt-20 ">
+              <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-6">
+                  <Image
+                      src={"/images/magazine.png"}
+                      alt="magazine"
+                      width={178}
+                      height={201}
+                      className="w-[138px] h-[156px] lg:w-[178px] lg:h-[201px] -top-16 -left-4 absolute lg:static lg:mt-[-45px]"
+                  />
+                  <div className="flex flex-col gap-y-6">
+                    <span
+                        className="lg:text-[14px] text-[13px] font-black text-[#636363] lg:tracking-tight tracking-tighter">
+                      عضویت در خبرنامه مجله ی علمی نیکان
+                    </span>
+                      <div className="flex flex-col gap-y-3">
+                          <div className="flex flex-col gap-y-2">
+                            <span className="text-[14px] font-light text-[#7c7c7c]">
+                              هرهفته دوشنبه ها صبح
+                            </span>
+                              <span className="text-[14px] font-light text-[#7c7c7c]">
+                              خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
+                            </span>
+                          </div>
+                          <MagazineForm/>
+                      </div>
+                  </div>
+              </div>
           </div>
-          <MagazineForm />
-        </div>
+
+          <div
+              className="border-t-primary-main border-t-[6px] bg-[#F1F1F1] lg:px-6 px-[19px] pb-[15px] pt-6 relative mt-32 lg:flex justify-between">
+
+              <div className="flex flex-col gap-y-8">
+                  {/* <div className="flex flex-col  ">
+
+                      <span className="leading-5 text-[#7c7c7c] text-[14px] font-light">
+                        سامانه جامع خدمات
+                          <br/>
+                        آنلاین بیمارستان های نیکان
+                      </span>
+                  </div>*/}
+                  <div className="flex flex-col lg:gap-y-3 lg:pr-[126px] mt-20 lg:mt-0">
+                      <span className="text-[14px] font-bold text-[#aaaaaa]">
+                          انجام کلیه خدمات درمانی نیکان به صورت آنلاین
+                      </span>
+                      <Link
+                          href={""}
+                          className="bg-primary-main rounded-[7px] w-full font-light text-white text-[14px] h-[33px] flex items-center justify-center"
+                      >
+                          ثبت نام در نیکان 365
+                      </Link>
+                  </div>
+              </div>
+              <Image
+                  src={"/images/nikan365-online.png"}
+                  alt="nikan365-online"
+                  width={177}
+                  height={131}
+                  className="absolute -top-5 left-3.5 lg:static lg:mt-[-125px]  lg:h-[237px] lg:w-[320px] lg:object-cover"
+              />
+          </div>
+          <BlogsSlider blogs={blogsList}/>
       </div>
-      <div className="border-t-[6px] border-t-[#31D1B0] pt-10 pb-8 bg-[#F1F1F1] flex justify-between max-h-[142px]">
-        <div className="flex flex-col gap-y-2.5 pr-[126px]">
-          <span className="text-[14px] text-[#aaaaaa] font-bold">
-            انجام کلیه خدمات درمانی نیکان به صورت آنلاین
-          </span>
-          <button className="text-center bg-[#31D1B0] text-white h-[33px] rounded-[7px] w-[281px]">
-            ثبت نام در نیکان 365
-          </button>
-        </div>
-        <div>
-          <Image
-            src={"/images/nikan365-online.png"}
-            alt=""
-            width={320}
-            height={237}
-            className="mt-[-125px] h-[237px] w-[320px] object-cover"
-          />
-        </div>
-      </div>
-      <BlogsSlider blogs={blogsList} />
-    </div>
   );
 };
 

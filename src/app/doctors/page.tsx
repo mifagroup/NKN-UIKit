@@ -35,7 +35,14 @@ const Page = async (props: {
 
   const doctors: components["schemas"]["DoctorResource"][] = data?.data ?? [];
 
-  const hospitals: { id: number; name: string }[] = data.hospitals ?? [];
+  const hospitalsTaxonomy: components["schemas"]["TaxonomyResource"] | undefined = data?.taxonomies?.find(
+    (tax: components["schemas"]["TaxonomyResource"]) => tax.key === "hospital"
+  );
+
+  const hospitals = hospitalsTaxonomy?.terms?.map(term => ({
+    id: term.id,
+    name: term.title || ''
+  })) ?? [];
 
   const expertises: components["schemas"]["TaxonomyResource"] =
     data?.taxonomies?.find(

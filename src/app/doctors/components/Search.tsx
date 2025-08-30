@@ -1,5 +1,5 @@
 "use client";
-import { Divider, MenuItem, Select } from "@mui/material";
+import {Checkbox, Divider, FormControlLabel} from "@mui/material";
 import Image from "next/image";
 import { useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
@@ -27,6 +27,10 @@ const Search = ({
   const [selectedHospital, setSelectedHospital] = useState<string>(
     searchParams.get("hospital") ?? ""
   );
+
+  const handleHospitalChange = (hospitalId: string) => {
+    setSelectedHospital(hospitalId);
+  };
 
   const [enableSearch, setEnableSearch] = useState<boolean>(false);
 
@@ -101,47 +105,51 @@ const Search = ({
         </div>
       </div>
       <Divider className="!bg-[#e3e3e3] w-full !my-5" />
-      <div className="flex justify-end gap-x-[15px] px-[26px]">
+      <div className="flex justify-start gap-x-[15px] px-[26px]">
         <div className="flex lg:flex-row flex-col gap-y-1.5 items-center gap-x-2.5">
-          <span className="text-[13px] text-black font-semibold">
-            شعبه درمانی
-          </span>
-          <Select
-            slotProps={{
-              input: {
-                style: {
-                  minWidth: "120px",
-                },
-              },
-              root: {
-                style: {
-                  minWidth: "111px",
-                  maxHeight: "26px",
-                  border: "none",
-                },
-              },
-            }}
-            sx={{
-              "& .MuiOutlinedInput-notchedOutline": {
-                border: "none",
-              },
-              "& .MuiSelect-select": {
-                maxHeight: "26px !important",
-                backgroundColor: "#F3F3F3",
-                paddingY: "4px",
-                borderRadius: "7px",
-                fontSize: "13px",
-              },
-            }}
-            value={selectedHospital}
-            onChange={(event) => setSelectedHospital(event.target.value)}
-          >
+          <div className="flex items-center gap-x-2">
+            <span className="text-[13px] text-black font-semibold">
+              شعبه درمانی
+            </span>
+            {selectedHospital && (
+              <button
+                onClick={() => setSelectedHospital("")}
+                className="text-[11px] text-red-500 hover:text-red-700 px-2 py-1 rounded border border-red-200 hover:border-red-300 transition-colors"
+              >
+                پاک کردن
+              </button>
+            )}
+          </div>
+          <div className="flex gap-2 flex-wrap justify-start">
             {hospitals?.map((hospital) => (
-              <MenuItem value={hospital.id} key={hospital.id}>
-                {hospital.name}
-              </MenuItem>
+              <FormControlLabel
+                key={hospital.id}
+                control={
+                  <Checkbox
+                    checked={selectedHospital === String(hospital.id)}
+                    onChange={() => handleHospitalChange(String(hospital.id))}
+                    size="small"
+                    sx={{
+                      '& .MuiSvgIcon-root': {
+                        fontSize: '18px',
+                      }
+                    }}
+                  />
+                }
+                label={
+                  <span style={{ fontSize: '13px' }}>
+                    {hospital.name}
+                  </span>
+                }
+                sx={{
+                  margin: '0',
+                  padding: '4px',
+                  backgroundColor: selectedHospital === String(hospital.id) ? "#F3F3F3" : "transparent",
+                  borderRadius: "7px",
+                }}
+              />
             ))}
-          </Select>
+          </div>
         </div>
       </div>
       <Divider className="!bg-[#E9E9E9] w-full !mt-[18px] !mb-0" />

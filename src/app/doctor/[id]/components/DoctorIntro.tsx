@@ -40,10 +40,10 @@ const DoctorIntro = ({
             {doctor.short_description}
           </span>
           <div className="pt-[18px] flex items-center gap-x-1.5">
-            {doctor.terms?.slice(0, 3)?.map((term) => (
+            {doctor.terms?.slice(0, 3)?.map((term , index) => (
               <span
                 className="lg:px-3.5 px-2.5 py-1 text-black lg:text-[12px] text-[10px] font-extralight bg-[#F3F3F3] rounded-[8px]"
-                key={term.id}
+                key={index}
               >
                 {term.title}
               </span>
@@ -55,18 +55,22 @@ const DoctorIntro = ({
         <span className="cursor-pointer lg:text-[12px] text-[9px] font-extralight text-black lg:block hidden">
           اشتراک گذاری پروفایل پزشک
         </span>
-        <div className="flex lg:flex-row flex-col gap-y-3.5 items-center gap-x-2.5">
-          <button className="text-[12px] font-extralight text-black lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#ECECEC]">
-            ویزیت و مشاوره آنلاین پزشک
-          </button>
-          <Link
-            className="text-base font-semibold text-white lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#14D9B0] flex justify-center items-center"
-            href={doctor.redirect}
-            target="_blank"
-          >
-            تعیین نوبت پزشک
-          </Link>
-        </div>
+        {doctor.redirect && (
+            <div className="flex lg:flex-row flex-col gap-y-3.5 items-center gap-x-2.5">
+              {/*<button
+                  className="text-[12px] font-extralight text-black lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#ECECEC]">
+                ویزیت و مشاوره آنلاین پزشک
+              </button>*/}
+              <Link
+                  className="text-base font-semibold text-white lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#14D9B0] flex justify-center items-center"
+                  href={doctor.redirect}
+                  target="_blank"
+              >
+                تعیین نوبت پزشک
+              </Link>
+            </div>
+        )}
+
       </div>
     </div>
   );

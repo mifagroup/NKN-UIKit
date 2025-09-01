@@ -38,13 +38,15 @@ const Booking = ({
               روزها و ساعات پذیرش: همه روزه از ساعت 08:00 الی 24:00
             </span>
           </div>
-          <Link
-            href={doctor?.redirect}
-            target="_blank"
-            className="bg-white w-full h-[56px] rounded-[14px] text-[20px] text-[#657975] font-semibold shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"
-          >
-            تعیین وقت و نوبت از {doctor?.full_name}
-          </Link>
+          {doctor.redirect && (
+               <Link
+                 href={doctor?.redirect}
+                 target="_blank"
+                 className="bg-white w-full h-[56px] rounded-[14px] text-[20px] text-[#657975] font-semibold shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"
+               >
+                 تعیین وقت و نوبت از {doctor?.full_name}
+               </Link>
+          )}
         </div>
       </div>
       <div className="relative">

@@ -36,6 +36,17 @@ const Search = ({
 
   const [debouncedSearchValue] = useDebounce(searchValue, 500);
 
+  // Helper function to update URL params and remove page parameter
+  const updateUrlParams = (updatedParams: any) => {
+    // Remove page parameter when filters change
+    if (updatedParams.page) {
+      delete updatedParams.page;
+    }
+    
+    const newUrl = `?${qs.stringify(updatedParams)}`;
+    router.push(newUrl);
+  };
+
   useEffect(() => {
     const updatedParams = { ...prevSearchParams };
     if (updatedParams.search) {
@@ -46,8 +57,8 @@ const Search = ({
       updatedParams.search = debouncedSearchValue;
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Update URL and remove page parameter
+    updateUrlParams(updatedParams);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [debouncedSearchValue, enableSearch]);
@@ -62,8 +73,8 @@ const Search = ({
       updatedParams.hospital = selectedHospital;
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Update URL and remove page parameter
+    updateUrlParams(updatedParams);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedHospital]);

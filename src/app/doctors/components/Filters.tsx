@@ -5,6 +5,7 @@ import { Checkbox, FormControlLabel } from "@mui/material";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "qs";
 import React, { useEffect, useState } from "react";
+
 const genders = [
   {
     id: 1,
@@ -42,6 +43,7 @@ const Filters = (props: FilterProps) => {
     // eslint-disable-next-line @typescript-eslint/no-unused-vars
     [...searchParams.entries()].filter(([key, value]) => value)
   );
+  
   const [gender, setGender] = useState<string>(
     searchParams.get("gender") ?? ""
   );
@@ -51,6 +53,18 @@ const Filters = (props: FilterProps) => {
   const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>([]);
 
   const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
+
+  // Helper function to update URL params and remove page parameter
+  const updateUrlParams = (updatedParams: any) => {
+    // Remove page parameter when filters change
+    if (updatedParams.page) {
+      delete updatedParams.page;
+    }
+    
+    const newUrl = `?${qs.stringify(updatedParams)}`;
+    router.push(newUrl);
+  };
+
   useEffect(() => {
     // Create a copy of the previous params and remove 'gender' if it exists
     const updatedParams = { ...prevSearchParams };
@@ -63,9 +77,8 @@ const Filters = (props: FilterProps) => {
       updatedParams.gender = gender;
     }
 
-    // Generate the query string and push it to the URL
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Update URL and remove page parameter
+    updateUrlParams(updatedParams);
   }, [gender]);
 
   useEffect(() => {
@@ -78,8 +91,8 @@ const Filters = (props: FilterProps) => {
       updatedParams.terms = selectedTerms.join(",");
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Update URL and remove page parameter
+    updateUrlParams(updatedParams);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedTerms]);
@@ -94,11 +107,12 @@ const Filters = (props: FilterProps) => {
       updatedParams.degrees = selectedDegrees.join(",");
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Update URL and remove page parameter
+    updateUrlParams(updatedParams);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDegrees]);
+
   useEffect(() => {
     if (prevSearchParams.degrees) {
       setSelectedDegrees(
@@ -111,6 +125,7 @@ const Filters = (props: FilterProps) => {
       );
     }
   }, []);
+
   return (
     <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">
       {expertises?.terms?.length && (
@@ -145,16 +160,15 @@ const Filters = (props: FilterProps) => {
                         },
                       }}
                       onChange={() => {
-                        // if (selectedTerms?.includes(term.id)) {
-                        //   setSelectedTerms(
-                        //     selectedTerms.filter((item) => item !== term.id)
-                        //   );
-                        // } else {
-                        // setSelectedTerms([term.id]);
-                        // }
+                        // Remove page parameter when changing expertise
+                        const paramsWithoutPage = { ...prevSearchParams };
+                        if (paramsWithoutPage.page) {
+                          delete paramsWithoutPage.page;
+                        }
+                        
                         router.push(
                           `/doctors/${term.slug}?${qs.stringify(
-                            prevSearchParams
+                            paramsWithoutPage
                           )}`
                         );
                       }}
@@ -197,7 +211,12 @@ const Filters = (props: FilterProps) => {
                   onChange={(event) => {
                     setGender(event.target.value);
                     if (!event.target.value) {
-                      router.push("?gender=");
+                      // Remove page parameter when clearing gender filter
+                      const paramsWithoutPage = { ...prevSearchParams };
+                      if (paramsWithoutPage.page) {
+                        delete paramsWithoutPage.page;
+                      }
+                      router.push(`?${qs.stringify(paramsWithoutPage)}`);
                     }
                   }}
                   checked={gender === gen.value}
@@ -237,13 +256,13 @@ const Filters = (props: FilterProps) => {
                               },
                             }}
                             onChange={() => {
-                              // if (selectedDegrees?.includes(degree.id)) {
-                              //   setSelectedDegrees(
-                              //     selectedDegrees.filter((item) => item !== degree.id)
-                              //   );
-                              // } else {
+                              // Remove page parameter when changing degree filter
+                              const paramsWithoutPage = { ...prevSearchParams };
+                              if (paramsWithoutPage.page) {
+                                delete paramsWithoutPage.page;
+                              }
+                              
                               setSelectedDegrees([degree.id]);
-                              // }
                             }}
                             checked={selectedDegrees.includes(degree.id)}
                         />

@@ -18,9 +18,20 @@ const Pagination = ({
   const searchParams = useSearchParams();
 
   const prevSearchParams = Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    // eslint-disable-next-line @typescript-eslint/no-unused-veps
     [...searchParams.entries()].filter(([key, value]) => value)
   );
+
+  // Reset to page 1 when filters change (search params change)
+  useEffect(() => {
+    const pageParam = searchParams.get("page");
+    if (pageParam) {
+      setCurrentPage(pageParam);
+    } else {
+      // If no page parameter, reset to page 1
+      setCurrentPage("1");
+    }
+  }, [searchParams]);
 
   useEffect(() => {
     const updatedParams = { ...prevSearchParams };
@@ -34,12 +45,6 @@ const Pagination = ({
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);
-
-  useEffect(() => {
-    if (prevSearchParams.page) {
-      setCurrentPage(prevSearchParams.page);
-    }
-  }, []);
 
   const handlePrevPage = () => {
     if (currentPage > "1") {

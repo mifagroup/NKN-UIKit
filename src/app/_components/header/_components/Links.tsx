@@ -53,7 +53,7 @@ export const links = [
   },
   {
     id: "nikan365",
-    label: "نیاکان 365",
+    label: "نیکان 365",
     href: "/nikan365",
   },
   {

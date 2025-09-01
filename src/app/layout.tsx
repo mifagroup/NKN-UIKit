@@ -71,7 +71,7 @@ export default function RootLayout({
         strategy="lazyOnload"
         dangerouslySetInnerHTML={{
           __html: `
-      window.RAYCHAT_TOKEN = "63e19f30-ba51-4b8f-b125-8b8eeb93f0f6";
+      window.RAYCHAT_TOKEN = "73da1de1-4b5a-404f-8e5d-c4c6510340e2";
       
         (function() {
           var d = document, s = d.createElement('script');

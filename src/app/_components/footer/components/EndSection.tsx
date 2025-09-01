@@ -70,24 +70,55 @@ const EndSection = () => {
             <span className="text-[14px] font-thin text-white">
               Organizational Health System
             </span>
-            <Image
-              src={"/images/social-media-icons.png"}
-              alt="social-media"
-              width={210}
-              height={40}
-              className="mx-auto"
-            />
+            <div className="flex gap-0.5 mt-3"> {/* Inline wrapper */}
+              <Link href="https://www.instagram.com/nikanhospitaliran?igsh=MTZjb3lid3hzazgzZQ==" target="_blank">
+                <Image
+                    src={"/images/social_media/instagram.png"}
+                    alt="instagram"
+                    width={35}
+                    height={35}
+                    className="mx-auto"
+                />
+              </Link>
+              <Link href="https://www.aparat.com/nikanhospital" target="_blank">
+                <Image
+                    src={"/images/social_media/aparat.png"}
+                    alt="aparat"
+                    width={35}
+                    height={35}
+                    className="mx-auto"
+                />
+              </Link>
+              <Link href="https://x.com/nikanhospital" target="_blank">
+                <Image
+                    src={"/images/social_media/x.png"}
+                    alt="x"
+                    width={35}
+                    height={35}
+                    className="mx-auto"
+                />
+              </Link>
+              <Link href="https://www.linkedin.com/in/nikanhospital-iran-1a8180317?utm_source=share&utm_campaign=share_via&utm_content=profile&utm_medium=android_app" target="_blank">
+                <Image
+                    src={"/images/social_media/linkedin.png"}
+                    alt="linkedin"
+                    width={35}
+                    height={35}
+                    className="mx-auto"
+                />
+              </Link>
+            </div>
           </div>
           <Divider
-            orientation="vertical"
-            className="!bg-primary-main !h-[90px]"
+              orientation="vertical"
+              className="!bg-primary-main !h-[90px]"
           />
           <Image
-            src={"/images/nikan-white-icon.png"}
-            alt="nikan"
-            width={112}
-            height={91}
-            className="mr-5"
+              src={"/images/nikan-white-icon.png"}
+              alt="nikan"
+              width={112}
+              height={91}
+              className="mr-5 max-w-[112px] max-h-[91px]"
           />
         </div>
         <div className="flex flex-col gap-y-4 lg:items-end items-center">

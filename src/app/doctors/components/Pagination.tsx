@@ -18,8 +18,8 @@ const Pagination = ({
   const searchParams = useSearchParams();
 
   const prevSearchParams = Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unused-veps
-    [...searchParams.entries()].filter(([key, value]) => value)
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    [...searchParams.entries()].filter(([, value]) => value)
   );
 
   // Reset to page 1 when filters change (search params change)

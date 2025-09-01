@@ -66,11 +66,20 @@ export default function RootLayout({
   return (
     <html lang="en" className={nikan.className}>
       <Script
-        id="goftino-widget"
-        strategy="afterInteractive"
-        dangerouslySetInnerHTML={{
-          __html: `!function(){var i="TNsgAN",a=window,d=document;function g(){var g=d.createElement("script"),s="https://www.goftino.com/widget/"+i,l=localStorage.getItem("goftino_"+i);g.async=!0,g.src=l?s+"?o="+l:s;d.getElementsByTagName("head")[0].appendChild(g);} "complete"===d.readyState?g():a.attachEvent?a.attachEvent("onload",g):a.addEventListener("load",g,!1);}();`,
-        }}
+          id="raychat-widget"
+          strategy="lazyOnload"
+          dangerouslySetInnerHTML={{
+            __html: `
+        window.RAYCHAT_TOKEN = "1d4cc4ab-a247-4f51-b3ff-3d3d2647f576";
+        
+          (function() {
+            var d = document, s = d.createElement('script');
+            s.src = 'https://widget-react.raychat.io/install/widget.js';
+            s.async = 1;
+            d.head.appendChild(s);
+          })();
+      `,
+          }}
       />
       <title>بیمارستان نیکان</title>
       <link rel="icon" href={"/images/logo.svg"} />

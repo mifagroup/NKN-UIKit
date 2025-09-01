@@ -96,7 +96,7 @@ const SearchDoctors = ({
             ) : (
               terms.map((cat) => (
                 <Link
-                  href={`/doctors?terms=${cat.id}`}
+                  href={`/doctors/${cat.slug}`}
                   className="flex flex-col gap-y-5"
                   key={cat.id}
                 >

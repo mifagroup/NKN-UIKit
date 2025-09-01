@@ -45,7 +45,7 @@ const Links = ({
           <div className="col-span-1 flex flex-col" key={term.id}>
             <div className="flex flex-col gap-y-3.5">
               <Link
-                href={`/doctors?terms=${term.id}`}
+                href={`/doctors/${term.slug}`}
                 className="font-thin text-white"
               >
                 {term.title}

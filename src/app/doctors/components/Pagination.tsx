@@ -24,9 +24,6 @@ const Pagination = ({
 
   useEffect(() => {
     const updatedParams = { ...prevSearchParams };
-    if (updatedParams.hospital) {
-      delete updatedParams.hospital;
-    }
 
     if (currentPage) {
       updatedParams.page = currentPage;

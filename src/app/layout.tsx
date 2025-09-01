@@ -3,11 +3,12 @@ import ReactQueryProvider from "@/providers/reactquery.provider";
 import ToasterProvider from "@/providers/toaster.provider";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import localFont from "next/font/local";
-import Script from "next/script";
 import NextTopLoader from "nextjs-toploader";
 import Footer from "./_components/footer";
 import Header from "./_components/header";
 import "./globals.css";
+import Script from "next/script";
+
 const nikan = localFont({
   src: [
     {
@@ -65,22 +66,22 @@ export default function RootLayout({
 }>) {
   return (
     <html lang="en" className={nikan.className}>
-      <Script
-          id="raychat-widget"
-          strategy="lazyOnload"
-          dangerouslySetInnerHTML={{
-            __html: `
-        window.RAYCHAT_TOKEN = "1d4cc4ab-a247-4f51-b3ff-3d3d2647f576";
-        
-          (function() {
-            var d = document, s = d.createElement('script');
-            s.src = 'https://widget-react.raychat.io/install/widget.js';
-            s.async = 1;
-            d.head.appendChild(s);
-          })();
-      `,
-          }}
-      />
+    <Script
+        id="raychat-widget"
+        strategy="lazyOnload"
+        dangerouslySetInnerHTML={{
+          __html: `
+      window.RAYCHAT_TOKEN = "63e19f30-ba51-4b8f-b125-8b8eeb93f0f6";
+      
+        (function() {
+          var d = document, s = d.createElement('script');
+          s.src = 'https://widget-react.raychat.io/install/widget.js';
+          s.async = 1;
+          d.head.appendChild(s);
+        })();
+    `,
+        }}
+    />
       <title>بیمارستان نیکان</title>
       <link rel="icon" href={"/images/logo.svg"} />
       <body dir="rtl">

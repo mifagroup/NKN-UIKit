@@ -97,8 +97,8 @@ const Search = ({
           </span>
           <input
             type="text"
-            placeholder=""
-            className="w-[171px] h-[26px] bg-[#F1F1F1] rounded-[7px] px-2"
+            placeholder="جستجوی پزشک و تخصص ..."
+            className="w-[171px] h-[26px] bg-[#F1F1F1] rounded-[7px] px-2 text-[9px]"
             onChange={(event) => {
               setSearchValue(event.target.value);
               setEnableSearch(true);

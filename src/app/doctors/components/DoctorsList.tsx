@@ -19,7 +19,7 @@ const DoctorsList = async ({
         <Search hospitals={hospitals} />
         {doctors?.length ? (
           doctors?.map((doctor, index) => (
-            <div key={doctor.id} className="px-[26px]">
+            <div key={index} className="px-[26px]">
               <DoctorItem doctor={doctor} />
               {index !== doctors.length - 1 && (
                 <Divider className="!bg-[#E9E9E9]" />

@@ -9,7 +9,6 @@ const DoctorItem = ({
 }: {
   doctor: components["schemas"]["DoctorResource"];
 }) => {
-  console.log(doctor)
   return (
     <div className="flex md:flex-row flex-col gap-y-4 items-stretch py-5">
       <div className="flex items-center gap-x-3.5 w-full">

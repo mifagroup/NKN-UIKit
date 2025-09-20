@@ -75,59 +75,67 @@ const Links = () => {
   };
 
   return (
-    <div className="flex items-center gap-x-5 relative">
-      {links?.map((link) => (
-        <div key={link.id} className="relative">
-          <div className="flex items-center gap-x-1">
-            <Link
-              href={link.href}
-              className="text-sm text-secondary-600 font-semibold hover:text-primary-main transition-colors"
-              onClick={link.children ? (e) => {
-                e.preventDefault();
-                handleDropdownToggle(link.id);
-              } : undefined}
-            >
-              {link.label}
-            </Link>
-            {link.children && (
-              <KeyboardArrowDownIcon 
-                className={`text-secondary-600 text-sm transition-transform duration-200 ${
-                  openDropdown === link.id ? 'rotate-180' : ''
-                }`}
-              />
-            )}
-          </div>
-          
-          {/* Dropdown Menu */}
-          {link.children && openDropdown === link.id && (
-            <div 
-              className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[220px] z-50"
-              onMouseLeave={handleDropdownClose}
-            >
-              {link.children.map((child) => (
+      <div className="flex items-center gap-x-5 relative">
+        {links?.map((link, index) => (
+            <div key={link.id} className="flex items-center relative">
+              <div className="flex items-center gap-x-1">
                 <Link
-                  key={child.id}
-                  href={child.href}
-                  className="block px-4 py-3 text-sm text-secondary-600 hover:bg-secondary-50 hover:text-primary-main transition-colors"
-                  onClick={handleDropdownClose}
+                    href={link.href}
+                    className="text-sm text-secondary-600 font-semibold hover:text-primary-main transition-colors"
+                    onClick={
+                      link.children
+                          ? (e) => {
+                            e.preventDefault();
+                            handleDropdownToggle(link.id);
+                          }
+                          : undefined
+                    }
                 >
-                  {child.label}
+                  {link.label}
                 </Link>
-              ))}
+                {link.children && (
+                    <KeyboardArrowDownIcon
+                        className={`text-secondary-600 text-sm transition-transform duration-200 ${
+                            openDropdown === link.id ? "rotate-180" : ""
+                        }`}
+                    />
+                )}
+              </div>
+
+              {/* Dropdown Menu */}
+              {link.children && openDropdown === link.id && (
+                  <div
+                      className="absolute top-full left-1/2 transform -translate-x-1/2 mt-2 bg-white rounded-lg shadow-xl border border-gray-100 py-2 min-w-[220px] z-50"
+                      onMouseLeave={handleDropdownClose}
+                  >
+                    {link.children.map((child) => (
+                        <Link
+                            key={child.id}
+                            href={child.href}
+                            className="block px-4 py-3 text-sm text-secondary-600 hover:bg-secondary-50 hover:text-primary-main transition-colors"
+                            onClick={handleDropdownClose}
+                        >
+                          {child.label}
+                        </Link>
+                    ))}
+                  </div>
+              )}
+
+              {/* Divider between items */}
+              {index < links.length - 1 && (
+                  <span className="mr-3 h-5 border-l border-gray-300"></span>
+              )}
             </div>
-          )}
-        </div>
-      ))}
-      
-      {/* Overlay to close dropdown when clicking outside */}
-      {openDropdown && (
-        <div 
-          className="fixed inset-0 z-40" 
-          onClick={handleDropdownClose}
-        />
-      )}
-    </div>
+        ))}
+
+        {/* Overlay to close dropdown when clicking outside */}
+        {openDropdown && (
+            <div className="fixed inset-0 z-40" onClick={handleDropdownClose} />
+        )}
+      </div>
   );
+
+
 };
 
 export default Links;

@@ -50,7 +50,7 @@ const SearchDoctors = ({
   return (
     <div className="bg-secondary-50 md:max-h-[416px] max-h-[333px]  lg:pt-0 pt-[30px] lg:px-0 px-5">
       <div className="relative flex lg:flex-row flex-col justify-between container max-w-[1108px] lg:items-start items-end">
-        <div className="lg:max-w-[790px] max-w-full flex flex-col gap-y-[30px] flex-1 lg:mt-[-100px] lg:w-auto w-full">
+        <div className="lg:max-w-[65vw] max-w-full flex flex-col gap-y-[30px] flex-1 lg:mt-[-100px] lg:w-auto w-full">
           <Typography className="!text-grey-800 !text-[20px] !font-extrabold lg:!block !hidden">
             جستجوی خدمات بر اساس تخصص، مشخصات پزشک و...
           </Typography>
@@ -121,7 +121,7 @@ const SearchDoctors = ({
           alt="search-nikan-mobile-image"
           width={355}
           height={594}
-          className="lg:mt-[-100px] lg:!h-[594px] lg:!w-[355px] !h-[335px] !w-[200px] mx-auto"
+          className="lg:mt-[-100px] lg:!h-[594px] lg:!w-[30vw] !h-[335px] !w-[200px] mx-auto"
         />
       </div>
     </div>

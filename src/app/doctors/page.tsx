@@ -26,6 +26,7 @@ const Page = async (props: {
     page: searchParams?.page,
     per_page: 6,
   });
+    console.log(formattedParams)
   const data = await fetch(
     `${process.env.NEXT_PUBLIC_API_URL}/doctors?${formattedParams}`,
     {

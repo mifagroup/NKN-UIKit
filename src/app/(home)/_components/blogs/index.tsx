@@ -25,15 +25,32 @@ const Blogs = ({
     <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">
       <div className="relative">
         <Button
-          className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] right-[-30px] z-10"
-          onClick={() => swiperRef.current?.slidePrev()}
+            className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
+            onClick={() => {
+              swiperRef.current?.slidePrev();
+              swiperRef2.current?.slidePrev();
+            }}
         >
           <Image
-            src={"/images/arrow-right.png"}
-            alt="arrow-right"
-            width={23}
-            height={63.5}
-            className="lg:!h-[63.5px] lg:!w-[23px] !h-[32px] !w-[11px]"
+              src={"/images/arrow-right.png"}
+              alt="arrow-right"
+              width={23}
+              height={63.5}
+          />
+        </Button>
+        <Button
+            className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10"
+            onClick={() => {
+              swiperRef.current?.slideNext();
+              swiperRef2.current?.slideNext();
+            }}
+        >
+          <Image
+              src={"/images/arrow-right.png"}
+              alt="arrow-left"
+              width={23}
+              height={63.5}
+              className="rotate-180"
           />
         </Button>
         <div className="flex gap-x-[54px] items-center justify-center max-w-[1106px] mx-auto">
@@ -137,18 +154,7 @@ const Blogs = ({
             ))}
           </Swiper>
         </div>
-        <Button
-          className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] left-[-30px] z-10"
-          onClick={() => swiperRef.current?.slideNext()}
-        >
-          <Image
-            src={"/images/arrow-right.png"}
-            alt="arrow-right"
-            width={23}
-            height={63.5}
-            className="lg:!h-[63.5px] lg:!w-[23px] !h-[32px] !w-[11px] rotate-180"
-          />
-        </Button>
+
       </div>
     </div>
   );

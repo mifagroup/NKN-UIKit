@@ -28,7 +28,6 @@ const Blogs = ({
             className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
             onClick={() => {
               swiperRef.current?.slidePrev();
-              swiperRef2.current?.slidePrev();
             }}
         >
           <Image
@@ -42,7 +41,6 @@ const Blogs = ({
             className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10"
             onClick={() => {
               swiperRef.current?.slideNext();
-              swiperRef2.current?.slideNext();
             }}
         >
           <Image
@@ -58,6 +56,7 @@ const Blogs = ({
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
+            loop
             slidesPerView={1}
             spaceBetween={10}
             modules={[Navigation]}

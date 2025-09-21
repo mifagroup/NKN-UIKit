@@ -51,7 +51,12 @@ const Branches = async () => {
               <div className="flex gap-x-3">
                 <Button
                   LinkComponent={Link}
-                  href={`/doctors?hospital=${branch.id}`}
+                  href={
+                      branch?.name == "نیکان اقدسیه" ? "/doctors?hospital=30" :
+                          branch?.name == 'نیکان سپید' ? "/doctors?hospital=1" :
+                              branch?.name == 'مرکز جراحی محدود نیکان' ? "/doctors?hospital=39" :
+                                  branch?.name == 'نیکان غرب' ? "/doctors?hospital=26" : ""
+                }
                   className="lg:!w-[200px] !w-[172px] lg:!h-[39px] !h-[33px] !bg-[#EBEBEB] !text-black !rounded-lg lg:!font-normal !font-light"
                 >
                   نوبت دهی آنلاین

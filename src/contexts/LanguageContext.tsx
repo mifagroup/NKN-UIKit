@@ -49,7 +49,9 @@ export const LanguageProvider: React.FC<{ children: React.ReactNode }> = ({ chil
     if (typeof document !== "undefined") {
       document.documentElement.lang = language;
       document.documentElement.dir = direction;
-      document.body && (document.body.dir = direction);
+      if (document.body) {
+        document.body.dir = direction;
+      }
     }
   }, [language, direction]);
 

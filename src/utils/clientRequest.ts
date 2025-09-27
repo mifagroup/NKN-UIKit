@@ -11,7 +11,7 @@ const myMiddleware: Middleware = {
           ? window.localStorage.getItem("app_language") || "fa"
           : "fa";
       request.headers.set("Accept-Language", lang);
-    } catch (_e) {
+    } catch {
       // no-op: default headers are fine
     }
 

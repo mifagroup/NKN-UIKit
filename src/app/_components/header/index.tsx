@@ -2,10 +2,12 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { Links, MenuDrawer } from "./_components";
+import { Links, MenuDrawer, LangSwicher } from "./_components";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const theme = useTheme();
+  const { direction } = useLanguage();
 
   const greaterThanLg = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -30,12 +32,16 @@ const Header = () => {
             {greaterThanLg && <Links />}
           </div>
           <div className="flex items-center gap-x-[22px]">
-            {/* <div className="flex items-center gap-x-1.5">
+            <div className="flex items-center gap-x-1.5">
               <LangSwicher />
-              <LoginButton />
-            </div> */}
+              {/* <LoginButton /> */}
+            </div>
             <MenuDrawer />
-            <div className="lg:block hidden border-r pr-4 mr-4 w-[180px]">
+            <div
+              className={`lg:block hidden px-2 mx-2 w-[180px] ${
+                direction === "rtl" ? "border-r" : "border-l"
+              }`}
+            >
               <a href="tel:02129129">
                 <img src="/images/contact4.png" alt="ourTell" />
               </a>

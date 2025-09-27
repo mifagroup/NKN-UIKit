@@ -4,6 +4,17 @@ import createClient from "openapi-react-query";
 
 const myMiddleware: Middleware = {
   async onRequest({ request }) {
+    // Ensure every request carries the current UI language
+    try {
+      const lang =
+        typeof window !== "undefined"
+          ? window.localStorage.getItem("app_language") || "fa"
+          : "fa";
+      request.headers.set("Accept-Language", lang);
+    } catch (_e) {
+      // no-op: default headers are fine
+    }
+
     if (
       (request.method === "PUT" || request.method === "PATCH") &&
       request.headers.get("content-type")?.includes("multipart/form-data")

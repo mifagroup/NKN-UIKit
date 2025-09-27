@@ -1,24 +1,24 @@
 {
   "keywords": {
-    "home": "خانه",
-    "care_and_cure": "مراقبت و درمان",
-    "nikan_structure": "ساختار نیکان",
-    "health_and_life": "سلامت و زندگی",
-    "education": "آموزش",
-    "about_nikan": "درباره نیکان",
+    "home": "Home",
+    "care_and_cure": "Care & Cure",
+    "nikan_structure": "Nikan Structure",
+    "health_and_life": "Health & Life",
+    "education": "Education",
+    "about_nikan": "About Nikan",
     "eng": "Eng",
-    "fa": "فارسی",
-    "login_and_register": "ورود/ثبت نام",
-    "online_reserve": "پذیرش آنلاین",
-    "phone_number": "تلفن تماس",
-    "get_token": "تعیین نوبت",
-    "search_doctors": "جستجو پزشکان",
-    "participate_in_nikan_blog": "عضویت در نشریه نیکان",
-    "chart": "چارت سازمانی",
-    "news": "اخبار",
-    "faq": "سوالات متداول",
-    "public_relations": "روابط عمومی",
-    "rules": "ضوابط و قوانین"
+    "fa": "Farsi",
+    "login_and_register": "Login / Register",
+    "online_reserve": "Online Admission",
+    "phone_number": "Phone Number",
+    "get_token": "Book Appointment",
+    "search_doctors": "Search Doctors",
+    "participate_in_nikan_blog": "Subscribe to Nikan Blog",
+    "chart": "Organization Chart",
+    "news": "News",
+    "faq": "FAQ",
+    "public_relations": "Public Relations",
+    "rules": "Terms & Policies"
   },
   "home_hero": {
     "title": "در ستایش زندگی...",
@@ -70,22 +70,105 @@
     }
   },
   "home_search": {
-    "title": "جستجوی خدمات بر اساس شرایط و بیماری، مشخصات پزشک و...",
-    "search_placeholder": "زخم پای دیابتی....",
-    "button_title": "تعیین نوبت"
+    "title": "Find Services by Specialty or Doctor’s Name…",
+    "search_placeholder": "Doctor’s name…",
+    "button_title": "Book Appointment",
+    "searching": "Searching...",
+    "no_results": "No results found"
+  },
+  "home": {
+    "hero": {
+      "button": "View"
+    },
+    "nikan365": {
+      "cta": "Learn more"
+    },
+    "branches": {
+      "title": "Nikan Medical Centers",
+      "niyayesh": "Nikan Niayesh",
+      "latin": [
+        "NIKAN AGHDASIYE",
+        "NIKAN SEPID",
+        "Limited Surgery Center",
+        "NIKAN WEST",
+        "NIKAN NIAYESH"
+      ]
+    },
+    "branches_addresses": {
+      "navigate": "Navigate",
+      "share": "Share",
+      "insurances": "Insurance partners",
+      "copy_success": "Link copied"
+    },
+    "statement": {
+      "title": "Nikan Family Statement",
+      "content": "Where Healing Meets Humanity At Nikan Hospitals, true care begins with a simple promise—to see every patient not just as a case, but as a precious life deserving of love, dignity and warmth. We believe that life remains endlessly beautiful, and every moment of healing is an opportunity to honor that beauty. Guided by expertise, elevated by compassion, and inspired by a relentless pursuit of excellence, we provide world-class medical services across specialized and advanced fields. Our commitment is unwavering: safe, effective, and exceptional care, delivered with respect for every individual—no matter their age, gender, faith, or background. Because at Nikan, wellbeing is not just a treatment—it’s an experience of love, kindness, comfort, and hope."
+    },
+    "faq": {
+      "title": "FAQ",
+      "subtitle": "What are the visiting hours?",
+      "ward_visiting": "General wards",
+      "special_visiting": "ICU wards",
+      "everyday": "Daily",
+      "time_slot_1": "3:00 PM – 5:00 PM",
+      "time_slot_2": "11:00 AM – 11:30 AM",
+      "time_slot_3": "3:30 PM – 4:00 PM",
+      "children_warning": "Kindly respect these hours to help us maintain a peaceful and healing environment. Please note that visiting children below the age of 7 is prohibited. For special circumstances or exceptions, please contact the hospital security and reception. Thank you for your understanding and cooperation.",
+      "items": [
+        {
+          "title": "How can I book an appointment?",
+          "content": "Click here to book an appointment",
+          "href": "/"
+        },
+        {
+          "title": "Which supplementary insurances work with Nikan Hospital?",
+          "content": "Click here to view insurance partners.",
+          "href": "/insurances"
+        },
+        {
+          "title": "How do I arrange home care services?",
+          "content": "Click here to learn about home care arrangements.",
+          "href": "/"
+        }
+      ]
+    },
+    "blogs": {
+      "read_more": "Read more",
+      "duration_suffix": "minute"
+    },
+    "news": {
+      "more_news": "More Nikan news"
+    }
   },
   "footer": {
     "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است"
   },
   "contact_us": {
     "contact_section": {
-      "title": "Always answer you",
-      "subtitle": "seven days a week and twenty-four hours a day",
+      "title": "Always here for you",
+      "subtitle": "Seven days a week, 24 hours a day",
       "name": "Name",
-      "lastname": "Lastname",
-      "content": "Message content",
+      "lastname": "Last name",
+      "content": "Message",
       "title_category": "Title category",
       "submit": "Submit"
     }
+  },
+  "header": {
+    "contact_nikan": "Contact Nikan",
+    "home_care_services": "Home Care Services"
+  },
+  "menu": {
+    "home": "Home",
+    "international": "International Unit (IPD)",
+    "doctors": "Doctors",
+    "about_us": "Nikan Story",
+    "social_responsibility": "Social Responsibility",
+    "about_nikan": "About Nikan",
+    "news": "News",
+    "blogs": "Articles",
+    "contact_us": "Contact Us",
+    "nikan365": "Nikan 365",
+    "cooperation": "Cooperation"
   }
 }

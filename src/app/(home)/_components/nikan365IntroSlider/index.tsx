@@ -22,60 +22,9 @@ const Nikan365IntroSlider = ({
 
   const greaterThanLg = useMediaQuery(theme.breakpoints.up("lg"));
 
-  const sliderItems = [
-    {
-      id: 1,
-      title: "پرونده الکترونیک",
-      image: "/images/electric-document.png",
-      width: 75,
-    },
-    {
-      id: 2,
-      title: "خدمات در منزل",
-      image: "/images/work-in-home.png",
-      width: 59,
-    },
-    {
-      id: 3,
-      title: "نتایج آزمایشات",
-      image: "/images/experiment-result.png",
-      width: 99,
-    },
-    {
-      id: 4,
-      title: "فیزیوتراپی",
-      image: "/images/phisyotherapy.png",
-      width: 71,
-    },
-    {
-      id: 5,
-      title: "پرونده الکترونیک",
-      image: "/images/electric-document.png",
-      width: 75,
-    },
-    {
-      id: 6,
-      title: "خدمات در منزل",
-      image: "/images/work-in-home.png",
-      width: 59,
-    },
-    {
-      id: 7,
-      title: "نتایج آزمایشات",
-      image: "/images/experiment-result.png",
-      width: 99,
-    },
-    {
-      id: 8,
-      title: "فیزیوتراپی",
-      image: "/images/phisyotherapy.png",
-      width: 71,
-    },
-  ];
-
   return (
     <div className="flex items-center lg:gap-x-[60px] gap-x-10">
-      {sliderItems?.length > 4 ? (
+      {data?.length > 4 ? (
         <Button ref={prevEl} className="!min-w-fit !p-0">
           <Image
             src={"/images/arrow-right.png"}

@@ -2,69 +2,71 @@
 import Link from "next/link";
 import React from "react";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 export const links = [
-   {
+  {
     id: "home",
-    label: "خانه",
+    tKey: "menu.home",
     href: "/",
   },
   {
     id: "international",
-    label: "واحد بین‌الملل (IPD)",
+    tKey: "menu.international",
     href: "/nikan-international",
   },
   {
     id: "doctors",
-    label: "پزشکان",
+    tKey: "menu.doctors",
     href: "/doctors",
   },
   {
     id: "about-us",
-    label: "داستان نیکان",
+    tKey: "menu.about_us",
     href: "/about-us",
     children: [
       {
         id: "social-responsibility",
-        label: "مسئولیت اجتماعی",
+        tKey: "menu.social_responsibility",
         href: "/social-responsibility",
       },
       {
         id: "about-us",
-        label: "معرفی نیکان",
+        tKey: "menu.about_nikan",
         href: "/about-us",
       },
       {
         id: "news",
-        label: "اخبار",
+        tKey: "menu.news",
         href: "/news",
       },
       {
         id: "blogs",
-        label: "مقالات",
+        tKey: "menu.blogs",
         href: "/blogs",
       },
-    ]
+    ],
   },
   {
     id: "contact-us",
-    label: "تماس با ما",
+    tKey: "menu.contact_us",
     href: "/contact-us",
   },
   {
     id: "nikan365",
-    label: "نیکان 365",
+    tKey: "menu.nikan365",
     href: "/nikan365",
   },
   {
     id: "cooperation",
-    label: "فرصت همکاری",
+    tKey: "menu.cooperation",
     href: "/cooperation",
   },
 ];
 
 const Links = () => {
   const [openDropdown, setOpenDropdown] = React.useState<string | null>(null);
+  const { t } = useLanguage();
 
   const handleDropdownToggle = (linkId: string) => {
     setOpenDropdown(openDropdown === linkId ? null : linkId);
@@ -91,7 +93,7 @@ const Links = () => {
                           : undefined
                     }
                 >
-                  {link.label}
+                  {t(link.tKey)}
                 </Link>
                 {link.children && (
                     <KeyboardArrowDownIcon
@@ -115,7 +117,7 @@ const Links = () => {
                             className="block px-4 py-3 text-sm text-secondary-600 hover:bg-secondary-50 hover:text-primary-main transition-colors"
                             onClick={handleDropdownClose}
                         >
-                          {child.label}
+                          {t(child.tKey)}
                         </Link>
                     ))}
                   </div>
@@ -123,7 +125,7 @@ const Links = () => {
 
               {/* Divider between items */}
               {index < links.length - 1 && (
-                  <span className="mr-3 h-5 border-l border-gray-300"></span>
+                  <span className="mx-2 h-5 border-l border-gray-300"></span>
               )}
             </div>
         ))}

@@ -6,10 +6,13 @@ import Link from "next/link";
 import Links, { links } from "./Links";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
+import { useLanguage } from "@/contexts/LanguageContext";
+import LangSwicher from "./LangSwicher";
 
 const MenuDrawer = () => {
   const [open, setOpen] = React.useState(false);
   const [expandedItems, setExpandedItems] = React.useState<string[]>([]);
+  const { t } = useLanguage();
 
   const toggleDrawer = (newOpen: boolean) => () => {
     setOpen(newOpen);
@@ -71,11 +74,8 @@ const MenuDrawer = () => {
                 </Link>
                 {greaterThanLg && <Links />}
               </div>
-              <div className="flex items-center gap-x-[22px]">
-                {/* <div className="flex items-center gap-x-1.5">
-                  <LangSwicher />
-                  <LoginButton />
-                </div> */}
+              <div className="flex items-center gap-x-[12px]">
+                <LangSwicher />
                 <CloseIcon onClick={toggleDrawer(false)} />
               </div>
             </div>
@@ -95,7 +95,7 @@ const MenuDrawer = () => {
                 height={40}
               />
               <span className="text-[15px] text-[#686868] font-medium">
-                جستجوی پزشکان
+                {t("keywords.search_doctors")}
               </span>
             </Link>
             <Link
@@ -111,7 +111,7 @@ const MenuDrawer = () => {
                 quality={100}
               />
               <span className="text-[15px] text-[#686868] font-medium">
-                تعیین نوبت
+                {t("home_search.button_title")}
               </span>
             </Link>
           </div>
@@ -128,7 +128,7 @@ const MenuDrawer = () => {
                         toggleExpanded(link.id);
                       } : () => toggleDrawer(false)}
                     >
-                      {link.label}
+                      {t(link.tKey)}
                     </Link>
                     {link.children && (
                       <button
@@ -154,7 +154,7 @@ const MenuDrawer = () => {
                           className="block text-[14px] text-[#666666] font-medium py-3 px-[50px] border-b border-b-[#DBDBDB]"
                           onClick={toggleDrawer(false)}
                         >
-                          {child.label}
+                          {t(child.tKey)}
                         </Link>
                       ))}
                     </div>
@@ -168,14 +168,14 @@ const MenuDrawer = () => {
                 className="text-[20px] text-white font-extrabold bg-primary-main w-[310px] h-[58px] rounded-[13px] flex justify-center items-center"
                 onClick={toggleDrawer(false)}
               >
-                تماس با نیکان
+                {t("header.contact_nikan")}
               </Link>
               <Link
                 href={""}
                 className="w-[310px] h-[58px] bg-[#D1D1D1] rounded-[13px] text-[20px] text-[#777777] font-medium flex justify-center items-center"
                 onClick={toggleDrawer(false)}
               >
-                خدمات درمانی در منزل
+                {t("header.home_care_services")}
               </Link>
             </div>
           </div>

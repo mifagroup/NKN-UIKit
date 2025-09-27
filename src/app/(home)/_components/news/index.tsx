@@ -11,10 +11,26 @@ import { Swiper as SwiperType } from "swiper/types";
 import { useMediaQuery } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
   const swiperRef = useRef<SwiperType>();
+  const { t } = useLanguage();
+
+  const getImageUrl = (
+    image:
+      | components["schemas"]["FileResource"]
+      | components["schemas"]["FileResource"][]
+      | null
+      | undefined
+  ) => {
+    if (!image) return "";
+    if (Array.isArray(image)) {
+      return image[0]?.original_url ?? "";
+    }
+    return image.original_url ?? "";
+  };
 
   return (
     <>
@@ -58,7 +74,7 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
                 >
                   <div className="relative w-full h-48">
                     <Image
-                      src={item.main_image?.original_url ?? ""}
+                      src={getImageUrl(item.main_image)}
                       alt={item.title || ""}
                       fill
                       className="object-cover"
@@ -98,7 +114,7 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
             href={"/news"}
             className="bg-gray-100 cursor-pointer hidden md:flex items-center justify-center md:w-1/4 md:h-[274px] text-center font-bold text-gray-700 rounded-md"
           >
-            اخبار بیشتر نیکان
+            {t("home.news.more_news")}
           </Link>
         </div>
       </section>

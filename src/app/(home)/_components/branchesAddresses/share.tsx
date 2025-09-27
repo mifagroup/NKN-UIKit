@@ -17,12 +17,14 @@ import {
   WhatsappShareButton,
 } from "next-share";
 import React, { useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ShareLink = ({ url, title, label }: any) => {
   const [anchorEl, setAnchorEl] = React.useState<HTMLButtonElement | null>(
     null
   );
   const [showSuccessMessage, setShowSuccessMessage] = useState(false);
+  const { t } = useLanguage();
 
   const handleClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     setAnchorEl(event.currentTarget);
@@ -120,7 +122,7 @@ const ShareLink = ({ url, title, label }: any) => {
             transition={{ duration: 0.3 }}
             className="fixed top-5 right-5 bg-green-500 text-white px-4 py-2 rounded-md shadow-lg z-50"
           >
-            لینک  مورد نظر کپی شد
+            {t("home.branches_addresses.copy_success")}
           </motion.div>
         )}
       </AnimatePresence>

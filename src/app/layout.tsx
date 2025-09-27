@@ -1,5 +1,7 @@
 import MuiProvider from "@/providers/mui.provider";
 import ReactQueryProvider from "@/providers/reactquery.provider";
+import { LanguageProvider } from "@/contexts/LanguageContext";
+import LanguageRefresher from "@/app/_components/LanguageRefresher";
 import ToasterProvider from "@/providers/toaster.provider";
 import { AppRouterCacheProvider } from "@mui/material-nextjs/v15-appRouter";
 import localFont from "next/font/local";
@@ -65,7 +67,7 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={nikan.className}>
+    <html lang="fa" className={nikan.className}>
     <Script
         id="raychat-widget"
         strategy="lazyOnload"
@@ -88,16 +90,19 @@ export default function RootLayout({
         {" "}
         <NextTopLoader showSpinner={false} color="#31D1B0" height={7} />
         <ReactQueryProvider>
-          <AppRouterCacheProvider>
-            <MuiProvider>
-              <ToasterProvider>
-                <Header />
+          <LanguageProvider>
+            <AppRouterCacheProvider>
+              <MuiProvider>
+                <ToasterProvider>
+                  <LanguageRefresher />
+                  <Header />
 
-                {children}
-              </ToasterProvider>
-              <Footer />
-            </MuiProvider>
-          </AppRouterCacheProvider>
+                  {children}
+                </ToasterProvider>
+                <Footer />
+              </MuiProvider>
+            </AppRouterCacheProvider>
+          </LanguageProvider>
         </ReactQueryProvider>
       </body>
     </html>

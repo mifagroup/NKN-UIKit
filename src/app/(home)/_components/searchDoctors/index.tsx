@@ -4,6 +4,7 @@ import { Button, Typography } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 interface SearchResult {
   id: number;
@@ -17,6 +18,7 @@ const SearchDoctors = ({
 }: {
   terms: components["schemas"]["TermResource"][];
 }) => {
+  const { t, language } = useLanguage();
   const [search, setSearch] = useState("");
   const [searchResults, setSearchResults] = useState<SearchResult[]>([]);
   const [isSearching, setIsSearching] = useState(false);
@@ -28,7 +30,12 @@ const SearchDoctors = ({
         fetch(
           `${
             process.env.NEXT_PUBLIC_API_URL
-          }/search?search=${encodeURIComponent(search)}`
+          }/search?search=${encodeURIComponent(search)}`,
+          {
+            headers: {
+              "Accept-Language": language,
+            },
+          }
         )
           .then((response) => response.json())
           .then((data) => {
@@ -45,20 +52,20 @@ const SearchDoctors = ({
     }, 200);
 
     return () => clearTimeout(timer);
-  }, [search]);
+  }, [search, language]);
 
   return (
     <div className="bg-secondary-50 md:max-h-[416px] max-h-[333px]  lg:pt-0 pt-[30px] lg:px-0 px-5">
       <div className="relative flex lg:flex-row flex-col justify-between container max-w-[1108px] lg:items-start items-end">
         <div className="lg:max-w-[65vw] max-w-full flex flex-col gap-y-[30px] flex-1 lg:mt-[-100px] lg:w-auto w-full">
           <Typography className="!text-grey-800 !text-[20px] !font-extrabold lg:!block !hidden">
-            جستجوی خدمات بر اساس تخصص، مشخصات پزشک و...
+            {t("home_search.title")}
           </Typography>
           <div className="border border-primary-main flex gap-x-5 justify-between items-center lg:rounded-[60px] rounded-[18px] bg-white pr-[36px] pl-[14px] py-2.5">
             <input
               type="text"
               className="w-full lg:!text-[32px] !text-[14px] lg:placeholder:!text-[32px] placeholder:!text-[14px] placeholder:!font-light font-light !text-primary-main placeholder:!text-primary-main focus-visible:outline-none"
-              placeholder={"اسامی پزشکان ..."}
+              placeholder={t("home_search.search_placeholder")}
               onChange={(e) => setSearch(e.target.value)}
             />
             <Image
@@ -74,7 +81,7 @@ const SearchDoctors = ({
             {search.trim().length > 0 ? (
               isSearching ? (
                 <Typography className="!text-base !text-secondary-800 !font-light">
-                  در حال جستجو...
+                  {t("home_search.searching")}
                 </Typography>
               ) : searchResults.length > 0 ? (
                 searchResults.slice(0, 25).map((result) => (
@@ -90,7 +97,7 @@ const SearchDoctors = ({
                 ))
               ) : (
                 <Typography className="!text-base !text-secondary-800 !font-light">
-                  نتیجه‌ای یافت نشد
+                  {t("home_search.no_results")}
                 </Typography>
               )
             ) : (
@@ -113,7 +120,7 @@ const SearchDoctors = ({
             className="!bg-primary-main !text-[24px] !text-grey-800 !font-medium !w-[346px] !h-[57px] !rounded-[15px] lg:!flex !hidden justify-center items-center"
             target="_blank"
           >
-            تعیین نوبت
+            {t("home_search.button_title")}
           </Button>
         </div>
         <Image

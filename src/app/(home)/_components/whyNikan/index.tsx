@@ -3,9 +3,10 @@
 import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { Fragment, useRef } from "react";
+import { Fragment, useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 import "swiper/css";
 import "swiper/css/autoplay";
@@ -17,6 +18,20 @@ const WhyNikan = ({
 }) => {
   const swiperRef = useRef<SwiperType>();
   const swiperRef2 = useRef<SwiperType>();
+  const { direction } = useLanguage();
+  const isRTL = direction === "rtl";
+  const { prevButtonClasses, nextButtonClasses, prevIconClasses, nextIconClasses } = useMemo(
+    () => {
+      const baseButton = "!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10";
+      return {
+        prevButtonClasses: `${baseButton} ${isRTL ? "right-0" : "left-0"}`,
+        nextButtonClasses: `${baseButton} ${isRTL ? "left-0" : "right-0"}`,
+        prevIconClasses: isRTL ? "" : "rotate-180",
+        nextIconClasses: isRTL ? "rotate-180" : "",
+      };
+    },
+    [isRTL]
+  );
 
   // Function to chunk the slides array into groups of 3
   //@ts-expect-error - TS is not recognizing the chunkArray function
@@ -36,10 +51,10 @@ const WhyNikan = ({
         {data.name}
       </div>
 
-      {/* Desktop version - unchanged */}
+      {/* Desktop version */}
       <div className="relative lg:block hidden">
         <Button
-          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
+          className={prevButtonClasses}
           onClick={() => {
             swiperRef.current?.slidePrev();
             swiperRef2.current?.slidePrev();
@@ -50,10 +65,11 @@ const WhyNikan = ({
             alt="arrow-right"
             width={23}
             height={63.5}
+            className={prevIconClasses}
           />
         </Button>
         <Button
-          className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10"
+          className={nextButtonClasses}
           onClick={() => {
             swiperRef.current?.slideNext();
             swiperRef2.current?.slideNext();
@@ -64,7 +80,7 @@ const WhyNikan = ({
             alt="arrow-left"
             width={23}
             height={63.5}
-            className="rotate-180"
+            className={nextIconClasses}
           />
         </Button>
         <div className="flex gap-x-[54px] items-center justify-center max-w-[1168px] mx-auto">

@@ -4,12 +4,13 @@ import { components } from "@/lib/api/v1";
 import { Button, Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import { useMemo, useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Blogs = ({
   blogs,
@@ -20,35 +21,80 @@ const Blogs = ({
 
   const prevEl = useRef(null);
   const nextEl = useRef(null);
+  const { language, t, direction } = useLanguage();
+
+  const formatDate = (dateString?: string | null) => {
+    const locale = language === "en" ? "en-US" : "fa-IR";
+    const date = new Date(dateString ?? Date.now());
+    return new Intl.DateTimeFormat(locale, {
+      day: "2-digit",
+      month: "long",
+      year: "numeric",
+    }).format(date);
+  };
+
+  const getImageUrl = (
+    image:
+      | components["schemas"]["FileResource"]
+      | components["schemas"]["FileResource"][]
+      | null
+      | undefined
+  ) => {
+    if (!image) return "";
+    if (Array.isArray(image)) {
+      return image[0]?.original_url ?? "";
+    }
+    return image.original_url ?? "";
+  };
+
+  const isRTL = direction === "rtl";
+  const {
+    prevButtonClasses,
+    nextButtonClasses,
+    prevIconClasses,
+    nextIconClasses,
+  } = useMemo(() => {
+    const baseButton =
+      "!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10";
+    return {
+      prevButtonClasses: `${baseButton} ${isRTL ? "right-0" : "left-0"}`,
+      nextButtonClasses: `${baseButton} ${isRTL ? "left-0" : "right-0"}`,
+      prevIconClasses: isRTL ? "" : "rotate-180",
+      nextIconClasses: isRTL ? "rotate-180" : "",
+    };
+  }, [isRTL]);
 
   return (
     <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">
       <div className="relative">
         <Button
-            className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] z-10"
-            onClick={() => {
-              swiperRef.current?.slidePrev();
-            }}
+          ref={prevEl}
+          className={prevButtonClasses}
+          onClick={() => {
+            swiperRef.current?.slidePrev();
+          }}
         >
           <Image
-              src={"/images/arrow-right.png"}
-              alt="arrow-right"
-              width={23}
-              height={63.5}
+            src={"/images/arrow-right.png"}
+            alt="arrow-right"
+            width={23}
+            height={63.5}
+            className={prevIconClasses}
           />
         </Button>
         <Button
-            className="!min-w-fit !p-0 !absolute top-1/2 translate-y-[-50%] left-0 z-10"
-            onClick={() => {
-              swiperRef.current?.slideNext();
-            }}
+          ref={nextEl}
+          className={nextButtonClasses}
+          onClick={() => {
+            swiperRef.current?.slideNext();
+          }}
         >
           <Image
-              src={"/images/arrow-right.png"}
-              alt="arrow-left"
-              width={23}
-              height={63.5}
-              className="rotate-180"
+            src={"/images/arrow-right.png"}
+            alt="arrow-left"
+            width={23}
+            height={63.5}
+            className={nextIconClasses}
           />
         </Button>
         <div className="flex gap-x-[54px] items-center justify-center max-w-[1106px] mx-auto">
@@ -69,7 +115,7 @@ const Blogs = ({
               <SwiperSlide key={blog.id}>
                 <div className="lg:border border-primary-main flex lg:flex-row flex-col">
                   <Image
-                    src={blog?.main_image?.original_url ?? ""}
+                    src={getImageUrl(blog?.main_image)}
                     alt={blog.title ?? ""}
                     width={553}
                     height={489}
@@ -87,13 +133,7 @@ const Blogs = ({
                             className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
                           />
                           <span className="font-extralight lg:text-[15px] text-[11px]">
-                            {new Date(
-                              blog?.published_at ?? Date.now()
-                            ).toLocaleDateString("fa-IR", {
-                              day: "2-digit",
-                              month: "long",
-                              year: "numeric",
-                            })}
+                            {formatDate(blog?.published_at)}
                           </span>
                         </div>
                         <div className="flex gap-x-2 items-center">
@@ -105,7 +145,7 @@ const Blogs = ({
                             className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
                           />
                           <span className="font-extralight lg:text-[15px] text-[11px]">
-                            {blog.duration} دقیقه
+                            {blog.duration} {t("home.blogs.duration_suffix")}
                           </span>
                         </div>
                         {/* <Image
@@ -143,7 +183,7 @@ const Blogs = ({
                         href={`/blogs/${blog.slug}`}
                         className="lg:absolute left-0 bottom-0 lg:text-[18px] text-[11px] text-black font-thin w-full text-left"
                       >
-                        مطالعه بیشتر
+                        {t("home.blogs.read_more")}
                       </Link>
                     </div>
                   </div>

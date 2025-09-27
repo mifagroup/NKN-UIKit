@@ -8,9 +8,11 @@ import { components } from "@/lib/api/v1";
 import Link from "next/link";
 import "swiper/css";
 import { Autoplay } from "swiper/modules";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
   const slides = data?.slides ?? [];
+  const { t } = useLanguage();
 
   return (
     <Swiper
@@ -50,7 +52,7 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                               href={slide?.button?.link ?? ""}
                               target="_blank"
                           >
-                            {slide?.button?.title}
+                            {slide?.button?.title || t("home.hero.button")}
                           </Link>
                       )}
                     </div>
@@ -87,7 +89,7 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                               href={slide?.button?.link ?? ""}
                               target="_blank"
                           >
-                            {slide?.button?.title}
+                            {slide?.button?.title || t("home.hero.button")}
                           </Link>
                       )}
                     </div>

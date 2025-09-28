@@ -2,7 +2,7 @@
 import { useMediaQuery, useTheme } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { Links, MenuDrawer, LangSwicher } from "./_components";
+import { Links, MenuDrawer } from "./_components";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {

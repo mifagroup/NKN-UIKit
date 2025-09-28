@@ -15,37 +15,78 @@ const Search = ({
 
   const searchParams = useSearchParams();
 
-  const prevSearchParams = Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    [...searchParams.entries()].filter(([key, value]) => value)
+  const prevSearchParams = React.useMemo(
+    () =>
+      Object.fromEntries(
+        // eslint-disable-next-line @typescript-eslint/no-unused-vars
+        [...searchParams.entries()].filter(([key, value]) => value)
+      ),
+    [searchParams]
   );
 
   const [searchValue, setSearchValue] = useState<string>(
     searchParams.get("search") ?? ""
   );
 
-  const [selectedHospital, setSelectedHospital] = useState<string>(
-    searchParams.get("hospital") ?? ""
+  const hospitalIdsSet = React.useMemo(
+    () => new Set(hospitals.map((hospital) => String(hospital.id))),
+    [hospitals]
   );
 
+  const [selectedHospitals, setSelectedHospitals] = useState<string[]>([]);
+
   const handleHospitalChange = (hospitalId: string) => {
-    setSelectedHospital(hospitalId);
+    setSelectedHospitals((prev) =>
+      prev.includes(hospitalId)
+        ? prev.filter((id) => id !== hospitalId)
+        : [...prev, hospitalId]
+    );
   };
 
   const [enableSearch, setEnableSearch] = useState<boolean>(false);
 
   const [debouncedSearchValue] = useDebounce(searchValue, 500);
 
+  const sanitizeParams = React.useCallback(
+    (params: Record<string, string>) => {
+      const sanitized: Record<string, string> = { ...params };
+
+      if (sanitized.page) {
+        delete sanitized.page;
+      }
+
+      return sanitized;
+    },
+    []
+  );
+
+  const stringifyForCompare = React.useCallback(
+    (params: Record<string, string>) =>
+      qs.stringify(params, {
+        encode: false,
+        sort: (a, b) => a.localeCompare(b),
+      }),
+    []
+  );
+
   // Helper function to update URL params and remove page parameter
-  const updateUrlParams = (updatedParams: any) => {
-    // Remove page parameter when filters change
-    if (updatedParams.page) {
-      delete updatedParams.page;
-    }
-    
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
-  };
+  const updateUrlParams = React.useCallback(
+    (updatedParams: Record<string, string>) => {
+      const sanitizedNext = sanitizeParams(updatedParams);
+      const sanitizedPrev = sanitizeParams(prevSearchParams);
+
+      const nextComparable = stringifyForCompare(sanitizedNext);
+      const prevComparable = stringifyForCompare(sanitizedPrev);
+
+      if (nextComparable === prevComparable) {
+        return;
+      }
+
+      const encodedQuery = qs.stringify(sanitizedNext);
+      router.push(encodedQuery ? `?${encodedQuery}` : "?");
+    },
+    [prevSearchParams, router, sanitizeParams, stringifyForCompare]
+  );
 
   useEffect(() => {
     const updatedParams = { ...prevSearchParams };
@@ -69,21 +110,57 @@ const Search = ({
       delete updatedParams.hospital;
     }
 
-    if (selectedHospital) {
-      updatedParams.hospital = selectedHospital;
+    const existingTerms = updatedParams.terms
+      ? updatedParams.terms.split(",").filter(Boolean)
+      : [];
+
+    const nonHospitalTerms = existingTerms.filter(
+      (termId) => !hospitalIdsSet.has(termId)
+    );
+
+    if (selectedHospitals.length) {
+      const mergedTerms = [...new Set([...nonHospitalTerms, ...selectedHospitals])];
+      updatedParams.terms = mergedTerms.join(",");
+    } else if (nonHospitalTerms.length) {
+      updatedParams.terms = nonHospitalTerms.join(",");
+    } else {
+      delete updatedParams.terms;
     }
 
     // Update URL and remove page parameter
     updateUrlParams(updatedParams);
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedHospital]);
+  }, [selectedHospitals, hospitalIdsSet]);
 
   useEffect(() => {
-    if (prevSearchParams.hospital) {
-      setSelectedHospital(prevSearchParams.hospital);
+    const hospitalParam = prevSearchParams.hospital;
+
+    const termParams = prevSearchParams.terms;
+    const termIds = termParams ? termParams.split(",").filter(Boolean) : [];
+    const hospitalTermIds = termIds.filter((termId) => hospitalIdsSet.has(termId));
+
+    if (hospitalParam && hospitalIdsSet.has(hospitalParam)) {
+      hospitalTermIds.push(hospitalParam);
     }
-  }, []);
+
+    const uniqueHospitals = Array.from(new Set(hospitalTermIds));
+
+    setSelectedHospitals((prev) => {
+      if (prev.length !== uniqueHospitals.length) {
+        return uniqueHospitals;
+      }
+
+      const prevSorted = [...prev].sort();
+      const nextSorted = [...uniqueHospitals].sort();
+
+      if (prevSorted.every((value, index) => value === nextSorted[index])) {
+        return prev;
+      }
+
+      return uniqueHospitals;
+    });
+  }, [prevSearchParams, hospitalIdsSet]);
 
   return (
     <div className="flex flex-col">
@@ -122,9 +199,9 @@ const Search = ({
             <span className="text-[13px] text-black font-semibold">
               شعبه درمانی
             </span>
-            {selectedHospital && (
+            {selectedHospitals.length > 0 && (
               <button
-                onClick={() => setSelectedHospital("")}
+                onClick={() => setSelectedHospitals([])}
                 className="text-[11px] text-red-500 hover:text-red-700 px-2 py-1 rounded border border-red-200 hover:border-red-300 transition-colors"
               >
                 پاک کردن
@@ -137,7 +214,7 @@ const Search = ({
                 key={hospital.id}
                 control={
                   <Checkbox
-                    checked={selectedHospital === String(hospital.id)}
+                    checked={selectedHospitals.includes(String(hospital.id))}
                     onChange={() => handleHospitalChange(String(hospital.id))}
                     size="small"
                     sx={{
@@ -155,7 +232,7 @@ const Search = ({
                 sx={{
                   margin: '0',
                   padding: '4px',
-                  backgroundColor: selectedHospital === String(hospital.id) ? "#F3F3F3" : "transparent",
+                  backgroundColor: selectedHospitals.includes(String(hospital.id)) ? "#F3F3F3" : "transparent",
                   borderRadius: "7px",
                 }}
               />

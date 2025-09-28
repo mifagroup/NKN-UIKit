@@ -3,12 +3,15 @@ import { components } from "@/lib/api/v1";
 import Link from "next/link";
 import React from "react";
 import { links } from "../../header/_components/Links";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const Links = ({
   footerTerms,
 }: {
   footerTerms: components["schemas"]["TermResource"][];
 }) => {
+  const { t } = useLanguage();
+  
   return (
     <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
       <div className="flex items-center gap-x-3 pb-[18px] border-b border-[#626262] justify-between">
@@ -19,7 +22,7 @@ const Links = ({
               key={link.id}
               className="text-[#F0F0F0] font-semibold text-[15px]"
             >
-              {link.label}
+              {t(link.tKey)}
             </Link>
           ))}
         </div>

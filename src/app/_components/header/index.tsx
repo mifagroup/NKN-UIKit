@@ -33,8 +33,8 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-x-[22px]">
             <div className="flex items-center gap-x-1.5">
-              <LangSwicher />
-              {/* <LoginButton /> */}
+              {/*<LangSwicher />
+               <LoginButton /> */}
             </div>
             <MenuDrawer />
             <div

@@ -2,7 +2,7 @@ import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
-
+import ShareLink from "./../../../(home)/_components/branchesAddresses/share";
 const DoctorIntro = ({
   doctor,
 }: {
@@ -23,12 +23,12 @@ const DoctorIntro = ({
             <span className="text-base font-bold text-black">
               {doctor.full_name}
             </span>
-            <span
+       {/*     <span
               className="cursor-pointer lg:text-[12px] text-[9px] font-extralight text-black lg:hidden block
             "
             >
               اشتراک گذاری پروفایل پزشک
-            </span>
+            </span>*/}
           </div>
           <span className="lg:text-base text-[12px] font-medium text-black">
             {doctor.sub_title}
@@ -52,15 +52,27 @@ const DoctorIntro = ({
         </div>
       </div>
       <div className="flex flex-col lg:justify-between justify-end items-end">
-        <span className="cursor-pointer lg:text-[12px] text-[9px] font-extralight text-black lg:block hidden">
+        <ShareLink
+            url={`${process.env.NEXT_PUBLIC_APP_URL}/doctor/${doctor.id}`}
+            title={doctor.full_name}
+            label={
+              <span className="cursor-pointer lg:text-[12px] text-[9px] font-extralight text-black lg:block hidden">
           اشتراک گذاری پروفایل پزشک
         </span>
+            }
+        />
         {doctor.redirect && (
             <div className="flex lg:flex-row flex-col gap-y-3.5 items-center gap-x-2.5">
-              {/*<button
-                  className="text-[12px] font-extralight text-black lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#ECECEC]">
-                ویزیت و مشاوره آنلاین پزشک
-              </button>*/}
+              <ShareLink
+                  url={`${process.env.NEXT_PUBLIC_APP_URL}/doctor/${doctor.id}`}
+                  title={doctor.full_name}
+                  label={
+                    <button
+                        className="text-[12px] font-extralight text-black lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#ECECEC] lg:hidden block">
+                      اشتراک گذاری پروفایل پزشک
+                    </button>
+                  }
+                />
               <Link
                   className="text-base font-semibold text-white lg:w-[200px] w-[350px] h-[40px] rounded-[8px] bg-[#14D9B0] flex justify-center items-center"
                   href={doctor.redirect}

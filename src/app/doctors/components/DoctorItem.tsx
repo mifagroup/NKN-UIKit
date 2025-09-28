@@ -97,7 +97,7 @@ const DoctorItem = ({
           </Link>
           <Divider orientation="vertical" className="!bg-[#D9D9D9] !w-[1px]" />*/}
               <ShareLink
-                  url=""
+                  url={`${process.env.NEXT_PUBLIC_APP_URL}/doctor/${doctor.id}`}
                   title={doctor?.full_name}
                   label={
                     <div className="text-[12px] font-extralight text-black">

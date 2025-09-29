@@ -3,8 +3,11 @@
 import Image from "next/image";
 import Link from "next/link";
 import React from "react";
+import { useLanguage } from "@/contexts/LanguageContext";
 
 const ExtraButtons = () => {
+  const { t } = useLanguage();
+
   return (
     <div className="flex flex-col gap-y-3">
       <Link
@@ -21,7 +24,7 @@ const ExtraButtons = () => {
           height={32}
         />
         <span className="text-[15px] font-extralight text-white">
-          تعیین نوبت
+          {t("footer.cta.book_appointment")}
         </span>
       </Link>
       <Link
@@ -35,7 +38,7 @@ const ExtraButtons = () => {
           height={32}
         />
         <span className="text-[15px] font-extralight text-white">
-          جستجو پزشکان
+          {t("footer.cta.search_doctors")}
         </span>
       </Link>
       <button className="flex items-center gap-x-4 px-[30px] py-3.5 w-[253px] border border-[#274556] rounded-[15px]">
@@ -50,7 +53,7 @@ const ExtraButtons = () => {
           target="_self"
           className="text-[15px] font-extralight text-white"
         >
-          مجله نیکان
+          {t("footer.cta.blog")}
         </Link>
       </button>
     </div>

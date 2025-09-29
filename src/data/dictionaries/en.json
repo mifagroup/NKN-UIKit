@@ -141,7 +141,27 @@
     }
   },
   "footer": {
-    "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است"
+    "policy": "All rights reserved for Nikan Hospital",
+    "cta": {
+      "book_appointment": "Book Appointment",
+      "search_doctors": "Search Doctors",
+      "blog": "Nikan Magazine"
+    },
+    "buttons": {
+      "insurance_list": "Insurance Partners",
+      "cooperation_request": "Apply for Cooperation"
+    },
+    "social": {
+      "title": "Nikan Health Family",
+      "subtitle": "Organizational Health System"
+    },
+    "nav": {
+      "doctors": "Doctors",
+      "insurances": "Insurances",
+      "social_responsibility": "Social Responsibility",
+      "nikan365": "Nikan 365",
+      "news": "News"
+    }
   },
   "contact_us": {
     "contact_section": {

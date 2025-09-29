@@ -11,7 +11,7 @@ const Links = ({
   footerTerms: components["schemas"]["TermResource"][];
 }) => {
   const { t } = useLanguage();
-  
+
   return (
     <div className="flex-col gap-y-6 flex-1 lg:flex hidden">
       <div className="flex items-center gap-x-3 pb-[18px] border-b border-[#626262] justify-between">
@@ -26,22 +26,20 @@ const Links = ({
             </Link>
           ))}
         </div>
-          <div>
-
-              <Link
-                  href={"/insurances"}
-                  className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] text-white font-medium flex justify-center items-center"
-              >
-                  لیست بیمه های طرف قرارداد
-              </Link>
-              <Link
-                  href={"/cooperation"}
-                  className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] mt-3 text-white font-medium flex justify-center items-center"
-              >
-
-                  درخواست همکاری
-              </Link>
-          </div>
+        <div>
+          <Link
+            href={"/insurances"}
+            className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] text-white font-medium flex justify-center items-center"
+          >
+            {t("footer.buttons.insurance_list")}
+          </Link>
+          <Link
+            href={"/cooperation"}
+            className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] mt-3 text-white font-medium flex justify-center items-center"
+          >
+            {t("footer.buttons.cooperation_request")}
+          </Link>
+        </div>
       </div>
       <div className="grid grid-cols-5 gap-x-5 gap-y-4">
         {footerTerms.map((term) => (

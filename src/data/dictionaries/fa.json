@@ -141,7 +141,27 @@
     }
   },
   "footer": {
-    "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است"
+    "policy": "تمامی حقوق برای بیمارستان نیکان محفوظ است",
+    "cta": {
+      "book_appointment": "تعیین نوبت",
+      "search_doctors": "جستجو پزشکان",
+      "blog": "مجله نیکان"
+    },
+    "buttons": {
+      "insurance_list": "لیست بیمه های طرف قرارداد",
+      "cooperation_request": "درخواست همکاری"
+    },
+    "social": {
+      "title": "خانواده سلامت نیکان",
+      "subtitle": "سامانه سلامت سازمانی"
+    },
+    "nav": {
+      "doctors": "پزشکان",
+      "insurances": "بیمه‌ها",
+      "social_responsibility": "مسئولیت اجتماعی",
+      "nikan365": "نیکان 365",
+      "news": "اخبار"
+    }
   },
   "contact_us": {
     "contact_section": {

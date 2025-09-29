@@ -10,7 +10,7 @@ const page = () => {
     {
       title: "بیمه های طرف قرارداد با بیمارستان نیکان سپید",
       image: "/images/h2.png",
-      href: "/insurances/sepid-insurance.jpg",
+      href: "/insurances/sepid-insurance.pdf",
     },
     {
       title: "بیمه های طرف قرارداد با مرکز جراحی محدود نیکان",

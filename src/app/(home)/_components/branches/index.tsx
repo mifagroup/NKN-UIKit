@@ -15,7 +15,7 @@ const Branches = ({
   const defaultLatin = [
     "NIKAN AGHDASIYE",
     "NIKAN SEPID",
-    "Limited Surgery Center",
+    "Ambulatory Surgery Center",
     "NIKAN WEST",
     "NIKAN NIAYESH",
   ];
@@ -65,7 +65,7 @@ const Branches = ({
                   <span className="text-[#696969] text-xl">
                     {hospital.name}
                   </span>
-                  <span className="text-[#B8B8B8] text-base tracking-[0.1em]">
+                  <span className="text-[#B8B8B8] text-[13px] text-center tracking-[0.1em]">
                     {latinNames[index] ?? defaultLatin[index]}
                   </span>
                 </>
@@ -136,7 +136,7 @@ const Branches = ({
                 className="!h-[86x] !w-[78px] "
               />
               <span className="text-[#696969] text-xl">{t("home.branches.niyayesh")}</span>
-              <span className="text-[#B8B8B8] text-base tracking-[0.1em]">
+              <span className="text-[#B8B8B8] text-[13px] text-center tracking-[0.1em]">
                 {latinNames[4] ?? defaultLatin[4]}
               </span>
             </>{" "}

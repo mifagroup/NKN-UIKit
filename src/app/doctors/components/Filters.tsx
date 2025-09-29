@@ -127,165 +127,173 @@ const Filters = (props: FilterProps) => {
   }, []);
 
   return (
-    <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">
-      {expertises?.terms?.length && (
-        <>
+      <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">
+        {expertises?.terms?.length && (
+            <>
           <span
-            className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px] cursor-pointer lg:cursor-default flex justify-between items-center"
-            onClick={() => setIsExpertisesOpen(!isExpertisesOpen)}
+              className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px] cursor-pointer lg:cursor-default flex justify-between items-center"
+              onClick={() => setIsExpertisesOpen(!isExpertisesOpen)}
           >
             تخصص ها
             {isExpertisesOpen ? (
-              <ArrowBackIosNewIcon className="lg:!hidden rotate-90 !text-sm" />
+                <ArrowBackIosNewIcon className="lg:!hidden rotate-90 !text-sm"/>
             ) : (
-              <ArrowBackIosNewIcon className="lg:!hidden rotate-[270deg] !text-sm" />
+                <ArrowBackIosNewIcon className="lg:!hidden rotate-[270deg] !text-sm"/>
             )}
           </span>
-          <div
-            className={`py-[30px] ${
-              isExpertisesOpen ? "block" : "hidden"
-            } lg:block`}
-          >
-            <div className="px-2 max-h-[345px] overflow-y-scroll flex flex-col gap-y-[1.5px]">
-              {expertises?.terms?.map((term) => (
-                <FormControlLabel
-                  control={
-                    <Checkbox
-                      className="!p-0"
-                      sx={{
-                        "& .MuiSvgIcon-root": {
-                          width: "15px",
-                          height: "15px",
-                          marginX: "5px",
-                        },
-                      }}
-                      onChange={() => {
-                        // Remove page parameter when changing expertise
-                        const paramsWithoutPage = { ...prevSearchParams };
-                        if (paramsWithoutPage.page) {
-                          delete paramsWithoutPage.page;
-                        }
-                        
-                        router.push(
-                          `/doctors/${term.slug}?${qs.stringify(
-                            paramsWithoutPage
-                          )}`
-                        );
-                      }}
-                      checked={term.slug === currentSlug}
-                    />
-                  }
-                  slotProps={{
-                    typography: {
-                      fontSize: "12px",
-                      fontWeight: selectedTerms?.includes(term.id)
-                        ? "500"
-                        : "200",
-                    },
-                  }}
-                  className="!m-0"
-                  label={term.title}
-                  key={term.id}
-                />
-              ))}
-            </div>
-          </div>
-        </>
-      )}
-      <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
-        <span className="text-[14px] font-semibold text-black">جنسیت</span>
-        <div className="flex items-center">
-          {genders?.map((gen) => (
-            <FormControlLabel
-              control={
-                <Checkbox
-                  className="!p-0"
-                  sx={{
-                    "& .MuiSvgIcon-root": {
-                      width: "15px",
-                      height: "15px",
-                      marginX: "5px",
-                    },
-                  }}
-                  value={gen.value}
-                  onChange={(event) => {
-                    setGender(event.target.value);
-                    if (!event.target.value) {
-                      // Remove page parameter when clearing gender filter
-                      const paramsWithoutPage = { ...prevSearchParams };
-                      if (paramsWithoutPage.page) {
-                        delete paramsWithoutPage.page;
-                      }
-                      router.push(`?${qs.stringify(paramsWithoutPage)}`);
-                    }
-                  }}
-                  checked={gender === gen.value}
-                />
-              }
-              slotProps={{
-                typography: {
-                  fontSize: "12px",
-                  fontWeight: "300",
-                },
-              }}
-              className="!m-0"
-              label={gen.name}
-              key={gen.id}
-            />
-          ))}
-        </div>
-      </div>
+              <div
+                  className={`py-[30px] ${
+                      isExpertisesOpen ? "block" : "hidden"
+                  } lg:block`}
+              >
+                <div className="px-2 max-h-[345px] overflow-y-scroll flex flex-col gap-y-[1.5px]">
+                  {expertises?.terms?.map((term) => (
+                      <FormControlLabel
+                          control={
+                            <Checkbox
+                                className="!p-0"
+                                sx={{
+                                  "& .MuiSvgIcon-root": {
+                                    width: "15px",
+                                    height: "15px",
+                                    marginX: "5px",
+                                  },
+                                }}
+                                onChange={() => {
+                                  // Remove page parameter when changing expertise
+                                  const paramsWithoutPage = {...prevSearchParams};
+                                  if (paramsWithoutPage.page) {
+                                    delete paramsWithoutPage.page;
+                                  }
 
-      {degrees?.terms?.length ? (
-        <>
-           <span className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px]">
-            سطح تحصیلات
-          </span>
-          <div className="py-[30px]">
-            <div className="px-2 flex flex-col gap-y-[1.5px]">
-              {degrees?.terms?.map((degree) => (
-                  <FormControlLabel
-                      control={
-                        <Checkbox
-                            className="!p-0"
-                            sx={{
-                              "& .MuiSvgIcon-root": {
-                                width: "15px",
-                                height: "15px",
-                                marginX: "5px",
-                              },
-                            }}
-                            onChange={() => {
-                              // Remove page parameter when changing degree filter
-                              const paramsWithoutPage = { ...prevSearchParams };
+                                  router.push(
+                                      `/doctors/${term.slug}?${qs.stringify(
+                                          paramsWithoutPage
+                                      )}`
+                                  );
+                                }}
+                                checked={term.slug === currentSlug}
+                            />
+                          }
+                          slotProps={{
+                            typography: {
+                              fontSize: "12px",
+                              fontWeight: selectedTerms?.includes(term.id)
+                                  ? "500"
+                                  : "200",
+                            },
+                          }}
+                          className="!m-0"
+                          label={term.title}
+                          key={term.id}
+                      />
+                  ))}
+                </div>
+              </div>
+            </>
+        )}
+        <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
+          <span className="text-[14px] font-semibold text-black">جنسیت</span>
+          <div className="flex items-center">
+            {genders?.map((gen) => (
+                <FormControlLabel
+                    control={
+                      <Checkbox
+                          className="!p-0"
+                          sx={{
+                            "& .MuiSvgIcon-root": {
+                              width: "15px",
+                              height: "15px",
+                              marginX: "5px",
+                            },
+                          }}
+                          value={gen.value}
+                          onChange={(event) => {
+                            setGender(event.target.value);
+                            if (!event.target.value) {
+                              // Remove page parameter when clearing gender filter
+                              const paramsWithoutPage = {...prevSearchParams};
                               if (paramsWithoutPage.page) {
                                 delete paramsWithoutPage.page;
                               }
-                              
-                              setSelectedDegrees([degree.id]);
-                            }}
-                            checked={selectedDegrees.includes(degree.id)}
-                        />
-                      }
-                      slotProps={{
-                        typography: {
-                          fontSize: "12px",
-                          fontWeight: selectedDegrees?.includes(degree.id)
-                              ? "500"
-                              : "200",
-                        },
-                      }}
-                      className="!m-0"
-                      label={degree.title}
-                      key={degree.id}
-                  />
-              ))}
-            </div>
+                              router.push(`?${qs.stringify(paramsWithoutPage)}`);
+                            }
+                          }}
+                          checked={gender === gen.value}
+                      />
+                    }
+                    slotProps={{
+                      typography: {
+                        fontSize: "12px",
+                        fontWeight: "300",
+                      },
+                    }}
+                    className="!m-0"
+                    label={gen.name}
+                    key={gen.id}
+                />
+            ))}
           </div>
-        </>
+        </div>
 
-      ) : null}
-    </div>
+        {degrees?.terms?.length ? (
+            <>
+           <span className="border-b border-b-[#D9D9D9] text-[14px] font-semibold text-black p-[22px]">
+            سطح تحصیلات
+          </span>
+              <div className="py-[30px]">
+                <div className="px-2 flex flex-col gap-y-[1.5px]">
+                  {degrees?.terms?.map((degree) => (
+                      <FormControlLabel
+                          control={
+                            <Checkbox
+                                className="!p-0"
+                                sx={{
+                                  "& .MuiSvgIcon-root": {
+                                    width: "15px",
+                                    height: "15px",
+                                    marginX: "5px",
+                                  },
+                                }}
+                                onChange={() => {
+                                  // Remove page parameter when changing degree filter
+                                  const paramsWithoutPage = {...prevSearchParams};
+                                  if (paramsWithoutPage.page) {
+                                    delete paramsWithoutPage.page;
+                                  }
+
+                                  setSelectedDegrees([degree.id]);
+                                }}
+                                checked={selectedDegrees.includes(degree.id)}
+                            />
+                          }
+                          slotProps={{
+                            typography: {
+                              fontSize: "12px",
+                              fontWeight: selectedDegrees?.includes(degree.id)
+                                  ? "500"
+                                  : "200",
+                            },
+                          }}
+                          className="!m-0"
+                          label={degree.title}
+                          key={degree.id}
+                      />
+                  ))}
+                </div>
+              </div>
+            </>
+
+        ) : null}
+
+        <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
+          <a href={'/doctors'} //TODO: remove filters
+            className="border border-[#31D1B0] text-[#31D1B0] text-[10px] bg-[#fffff] rounded-[4px] p-1"
+          >
+            حذف همه فیلترها
+          </a>
+        </div>
+      </div>
   );
 };
 

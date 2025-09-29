@@ -7,7 +7,6 @@ import Links, { links } from "./Links";
 import CloseIcon from "@mui/icons-material/Close";
 import KeyboardArrowDownIcon from "@mui/icons-material/KeyboardArrowDown";
 import { useLanguage } from "@/contexts/LanguageContext";
-import LangSwicher from "./LangSwicher";
 
 const MenuDrawer = () => {
   const [open, setOpen] = React.useState(false);
@@ -75,7 +74,7 @@ const MenuDrawer = () => {
                 {greaterThanLg && <Links />}
               </div>
               <div className="flex items-center gap-x-[12px]">
-                <LangSwicher />
+                {/*<LangSwicher />*/}
                 <CloseIcon onClick={toggleDrawer(false)} />
               </div>
             </div>

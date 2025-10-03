@@ -129,6 +129,7 @@ const Blogs = ({
             loop={blogSlides.length > 1}
             slidesPerView={1}
             spaceBetween={0}
+            autoHeight
             modules={[Navigation]}
             navigation={{
               nextEl: nextEl.current,
@@ -137,7 +138,7 @@ const Blogs = ({
             className="!overflow-hidden w-full h-full"
           >
             {blogSlides.map((blog) => (
-              <SwiperSlide key={blog.id}>
+              <SwiperSlide key={blog.id} className="!h-auto">
                 <div className="lg:border border-primary-main flex lg:flex-row flex-col">
                   <Image
                     src={getImageUrl(blog?.main_image)}

@@ -73,11 +73,38 @@ const WhyNikan = ({
   );
 
   useEffect(() => {
-    swiperRef.current?.updateSlides();
-    swiperRef.current?.update();
-    swiperRef2.current?.updateSlides();
-    swiperRef2.current?.update();
-  }, [imageSliderKey, contentSliderKey]);
+    const primary = swiperRef.current;
+    const secondary = swiperRef2.current;
+
+    const refreshSwiper = (swiper?: SwiperType) => {
+      if (!swiper) return;
+      if (swiper.el && direction) {
+        swiper.el.dir = direction;
+        const directionalSwiper = swiper as SwiperType & {
+          rtlTranslate?: boolean;
+          rtl?: boolean;
+        };
+        directionalSwiper.rtlTranslate = direction === "rtl";
+        directionalSwiper.rtl = direction === "rtl";
+      }
+      swiper.updateSlides();
+      swiper.update();
+      if (swiper.params.loop) {
+        try {
+          swiper.loopDestroy();
+          swiper.loopCreate();
+        } catch {}
+      }
+      if (typeof swiper.slideToLoop === "function") {
+        swiper.slideToLoop(0, 0, false);
+      } else {
+        swiper.slideTo(0, 0, false);
+      }
+    };
+
+    refreshSwiper(primary);
+    refreshSwiper(secondary);
+  }, [imageSliderKey, contentSliderKey, direction]);
 
   return (
     <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 ">

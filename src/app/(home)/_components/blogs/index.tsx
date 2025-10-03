@@ -86,6 +86,16 @@ const Blogs = ({
     const next = nextEl.current;
     if (!swiper || !prev || !next) return;
 
+    if (swiper.el && direction) {
+      swiper.el.dir = direction;
+      const directionalSwiper = swiper as SwiperType & {
+        rtlTranslate?: boolean;
+        rtl?: boolean;
+      };
+      directionalSwiper.rtlTranslate = direction === "rtl";
+      directionalSwiper.rtl = direction === "rtl";
+    }
+
     const navigationParams = (swiper.params.navigation ?? {}) as NavigationOptions;
     navigationParams.prevEl = prev;
     navigationParams.nextEl = next;
@@ -96,7 +106,21 @@ const Blogs = ({
       swiper.navigation.init();
       swiper.navigation.update();
     }
-  }, [sliderKey]);
+
+    swiper.updateSlides();
+    swiper.update();
+    if (swiper.params.loop) {
+      try {
+        swiper.loopDestroy();
+        swiper.loopCreate();
+      } catch {}
+    }
+    if (typeof swiper.slideToLoop === "function") {
+      swiper.slideToLoop(0, 0, false);
+    } else {
+      swiper.slideTo(0, 0, false);
+    }
+  }, [sliderKey, direction]);
 
   return (
     <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">

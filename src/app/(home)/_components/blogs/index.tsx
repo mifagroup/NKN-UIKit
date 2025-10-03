@@ -4,12 +4,12 @@ import { components } from "@/lib/api/v1";
 import { Button, Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef } from "react";
+import { useEffect, useMemo, useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
-import { Swiper as SwiperType } from "swiper/types";
+import { NavigationOptions, Swiper as SwiperType } from "swiper/types";
 import { useLanguage } from "@/contexts/LanguageContext";
 
 const Blogs = ({
@@ -18,10 +18,10 @@ const Blogs = ({
   blogs: components["schemas"]["BlogResource"][];
 }) => {
   const swiperRef = useRef<SwiperType>();
-
   const prevEl = useRef(null);
   const nextEl = useRef(null);
   const { language, t, direction } = useLanguage();
+  const blogSlides = blogs ?? [];
 
   const formatDate = (dateString?: string | null) => {
     const locale = language === "en" ? "en-US" : "fa-IR";
@@ -64,6 +64,29 @@ const Blogs = ({
     };
   }, [isRTL]);
 
+  const sliderKey = useMemo(
+    () => `${direction}-${blogSlides.length}`,
+    [direction, blogSlides.length]
+  );
+
+  useEffect(() => {
+    const swiper = swiperRef.current;
+    const prev = prevEl.current;
+    const next = nextEl.current;
+    if (!swiper || !prev || !next) return;
+
+    const navigationParams = (swiper.params.navigation ?? {}) as NavigationOptions;
+    navigationParams.prevEl = prev;
+    navigationParams.nextEl = next;
+    swiper.params.navigation = navigationParams;
+
+    if (swiper.navigation) {
+      swiper.navigation.destroy();
+      swiper.navigation.init();
+      swiper.navigation.update();
+    }
+  }, [direction, blogSlides.length]);
+
   return (
     <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">
       <div className="relative">
@@ -99,19 +122,21 @@ const Blogs = ({
         </Button>
         <div className="flex gap-x-[54px] items-center justify-center max-w-[1106px] mx-auto">
           <Swiper
+            key={sliderKey}
             onBeforeInit={(swiper) => {
               swiperRef.current = swiper;
             }}
-            loop
+            loop={blogSlides.length > 1}
             slidesPerView={1}
-            spaceBetween={10}
+            spaceBetween={0}
             modules={[Navigation]}
             navigation={{
               nextEl: nextEl.current,
               prevEl: prevEl.current,
             }}
+            className="!overflow-hidden w-full h-full"
           >
-            {blogs?.map((blog) => (
+            {blogSlides.map((blog) => (
               <SwiperSlide key={blog.id}>
                 <div className="lg:border border-primary-main flex lg:flex-row flex-col">
                   <Image

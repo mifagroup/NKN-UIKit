@@ -64,9 +64,20 @@ const Blogs = ({
     };
   }, [isRTL]);
 
+  const blogSignature = useMemo(
+    () =>
+      blogSlides
+        .map(
+          (blog, index) =>
+            blog?.id ?? `${index}-${blog?.slug ?? ""}-${blog?.title ?? ""}`
+        )
+        .join("|"),
+    [blogSlides]
+  );
+
   const sliderKey = useMemo(
-    () => `${direction}-${blogSlides.length}`,
-    [direction, blogSlides.length]
+    () => `${language}-${direction}-${blogSlides.length}-${blogSignature}`,
+    [language, direction, blogSlides.length, blogSignature]
   );
 
   useEffect(() => {
@@ -85,7 +96,7 @@ const Blogs = ({
       swiper.navigation.init();
       swiper.navigation.update();
     }
-  }, [direction, blogSlides.length]);
+  }, [sliderKey]);
 
   return (
     <div className="pt-[150px] lg:pb-[30px] pb-10 container lg:px-0 px-12">

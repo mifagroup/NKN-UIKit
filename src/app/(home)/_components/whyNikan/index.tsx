@@ -3,7 +3,7 @@
 import { components } from "@/lib/api/v1";
 import { Button, Typography } from "@mui/material";
 import Image from "next/image";
-import { Fragment, useMemo, useRef } from "react";
+import { Fragment, useEffect, useMemo, useRef } from "react";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import { useLanguage } from "@/contexts/LanguageContext";
@@ -18,7 +18,7 @@ const WhyNikan = ({
 }) => {
   const swiperRef = useRef<SwiperType>();
   const swiperRef2 = useRef<SwiperType>();
-  const { direction } = useLanguage();
+  const { direction, language } = useLanguage();
   const isRTL = direction === "rtl";
   const { prevButtonClasses, nextButtonClasses, prevIconClasses, nextIconClasses } = useMemo(
     () => {
@@ -45,14 +45,39 @@ const WhyNikan = ({
   const thumbnails = data?.thumbnails ?? [];
   const slides = data?.slides ?? [];
   const chunkedSlides = useMemo(() => chunkArray(slides, 3), [slides]);
+  const thumbnailsSignature = useMemo(
+    () =>
+      thumbnails
+        .map((thumb, index) => thumb?.id ?? thumb?.original_url ?? thumb?.file_name ?? index)
+        .join("|"),
+    [thumbnails]
+  );
+  const slidesSignature = useMemo(
+    () =>
+      slides
+        .map((slide, index) => slide?.id ?? slide?.title ?? `${index}-${slide?.description?.length ?? 0}`)
+        .join("|"),
+    [slides]
+  );
+  const chunkedSignature = useMemo(
+    () => chunkedSlides.map((chunk) => chunk.map((item) => item?.id ?? item?.title).join("~")).join("|").trim(),
+    [chunkedSlides]
+  );
   const imageSliderKey = useMemo(
-    () => `${direction}-${thumbnails.length}`,
-    [direction, thumbnails.length]
+    () => `${language}-${direction}-${thumbnailsSignature}`,
+    [language, direction, thumbnailsSignature]
   );
   const contentSliderKey = useMemo(
-    () => `${direction}-${chunkedSlides.length}-${slides.length}`,
-    [direction, chunkedSlides.length, slides.length]
+    () => `${language}-${direction}-${chunkedSignature}-${slidesSignature}`,
+    [language, direction, chunkedSignature, slidesSignature]
   );
+
+  useEffect(() => {
+    swiperRef.current?.updateSlides();
+    swiperRef.current?.update();
+    swiperRef2.current?.updateSlides();
+    swiperRef2.current?.update();
+  }, [imageSliderKey, contentSliderKey]);
 
   return (
     <div className="lg:pt-20 pt-[15px] lg:pb-[240px] pb-[34px] flex flex-col gap-y-[70px] container lg:px-0 ">

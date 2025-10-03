@@ -124,7 +124,7 @@ const SearchDoctors = ({
           </Button>
         </div>
         <Image
-          src={"/images/search-nikan.png"}
+          src={`/images/search-nikan-${language}.png`}
           alt="search-nikan-mobile-image"
           width={355}
           height={594}

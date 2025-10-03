@@ -9,7 +9,7 @@ const Nikan365Intro = ({
 }: {
   data: components["schemas"]["SliderResource"];
 }) => {
-  const { direction } = useLanguage();
+  const { direction , language } = useLanguage();
   const isRTL = direction === "rtl";
 
   const sideBorder = isRTL ? "border-l" : "border-r";
@@ -37,10 +37,10 @@ const Nikan365Intro = ({
   return (
     <div className="max-w-[1236px] container pt-[44px] lg:pb-[27px] lg:px-0 px-10 w-full pb-[46px] flex lg:justify-between lg:items-center lg:flex-row flex-col">
       <Image
-        src="/images/slogen.svg"
+        src={`/images/slogen-${language}.png`}
         fill
         quality={100}
-        className="!relative max-w-[400px]"
+        className="!relative max-w-[417px]"
         alt="slogan"
       />
 

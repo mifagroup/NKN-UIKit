@@ -7,7 +7,7 @@ import { useLanguage } from "@/contexts/LanguageContext";
 
 const Header = () => {
   const theme = useTheme();
-  const { direction } = useLanguage();
+  const { direction , language } = useLanguage();
 
   const greaterThanLg = useMediaQuery(theme.breakpoints.up("lg"));
 
@@ -43,7 +43,7 @@ const Header = () => {
               }`}
             >
               <a href="tel:02129129">
-                <img src="/images/contact4.png" alt="ourTell" />
+                <img src={`/images/contact_phone-${language}.png`} alt="ourTell" />
               </a>
             </div>
           </div>

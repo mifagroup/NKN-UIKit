@@ -211,6 +211,21 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
         سلامت و کسب اطلاعات بیشتر با شماره ۰۹۹۲۱۵۸۲۲۳۸ تماس بگیرید.
       </div> */}
 
+          {blog?.gallery&& (
+              <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-4 mt-10">
+                  {blog.gallery.map((item, index) => (
+                      <div key={index} className="w-full">
+                          <Image
+                              src={item?.original_url ?? ""}
+                              alt={`blog-gallery-${index}`}
+                              width={500}
+                              height={500}
+                              className="w-full h-full object-cover"
+                          />
+                      </div>
+                  ))}
+              </div>
+          )}
           <div className="border-t-[#F56F95] border-t-[6px] bg-[#F1F1F1] lg:px-6 px-[19px] py-[15px] lg:py-0 relative mt-20 ">
               <div className="flex flex-col lg:flex-row lg:items-center lg:gap-x-6">
                   <Image

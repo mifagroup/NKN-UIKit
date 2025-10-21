@@ -225,58 +225,6 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
-    "/insurances": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Retrieve a list of insurances
-         * @description get all insurances from the database as insurance resource
-         */
-        get: operations["19bdcb6d521cf184ae8e7474b694ed22"];
-        put?: never;
-        /**
-         * Store new Insurance
-         * @description Returns created Insurance data
-         */
-        post: operations["ee04ef757010cfd685fccee8dc3f35ae"];
-        delete?: never;
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
-    "/insurances/{id}": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        /**
-         * Get insurance information
-         * @description Returns insurance data
-         */
-        get: operations["9e8d73e26b6aff1c41cebd12a2921203"];
-        /**
-         * Update existing insurance
-         * @description Returns updated insurance data
-         */
-        put: operations["c55be752328ef156625569b588c79126"];
-        post?: never;
-        /**
-         * Delete insurance record
-         * @description Returns delete status
-         */
-        delete: operations["be85854b0623ebc862078e57de2208c7"];
-        options?: never;
-        head?: never;
-        patch?: never;
-        trace?: never;
-    };
     "/roles": {
         parameters: {
             query?: never;
@@ -673,31 +621,6 @@ export interface components {
              * @description thumbnail file for the hospital
              */
             thumbnail: string;
-            /**
-             * Format: binary
-             * @description main insurances file file for the hospital
-             */
-            insurances_file: string;
-            /**
-             * Format: binary
-             * @description main cover image file for the hospital
-             */
-            cover_image: string;
-        };
-        StoreInsuranceResourceRequest: {
-            /** @description The title of the insurance */
-            title: string;
-            /**
-             * Format: binary
-             * @description A logo file for the insurance
-             */
-            logo: string;
-            /** @description Whether the insurance covers outpatient services */
-            is_outpatient?: boolean;
-            /** @description Whether the insurance covers inpatient services */
-            is_inpatient?: boolean;
-            /** @description Array of hospital IDs to associate with this insurance */
-            hospital_ids?: number[];
         };
         StoreSlideResourceRequest: {
             /** @description The title of the slide */
@@ -707,7 +630,7 @@ export interface components {
             /** @description A description of the slide */
             description?: string;
             /** @description The ordering number for the slide */
-            ordering?: number;
+            ordering: number;
             /**
              * Format: uri
              * @description The link related to the slide
@@ -865,31 +788,6 @@ export interface components {
              * @description main thumbnail file for the hospital
              */
             main_thumbnail?: string;
-            /**
-             * Format: binary
-             * @description main insurances file file for the hospital
-             */
-            insurances_file?: string;
-            /**
-             * Format: binary
-             * @description main cover image file for the hospital
-             */
-            cover_image?: string;
-        };
-        UpdateInsuranceResourceRequest: {
-            /** @description The title of the insurance */
-            title: string;
-            /**
-             * Format: binary
-             * @description A logo file for the insurance
-             */
-            logo?: string;
-            /** @description Whether the insurance covers outpatient services */
-            is_outpatient?: boolean;
-            /** @description Whether the insurance covers inpatient services */
-            is_inpatient?: boolean;
-            /** @description Array of hospital IDs to associate with this insurance */
-            hospital_ids?: number[];
         };
         UpdateSlideResourceRequest: {
             /** @description The title of the slide */
@@ -1004,8 +902,6 @@ export interface components {
             /** @description The main image of the blog */
             main_image?: components["schemas"]["FileResource"][];
             user?: components["schemas"]["UserResource"];
-            /** @description The gallery of the blog */
-            gallery?: components["schemas"]["FileResource"][];
         };
         /**
          * DoctorResource
@@ -1037,8 +933,8 @@ export interface components {
             portfolio?: components["schemas"]["FileResource"][];
             /** @description categories item of doctor */
             terms: components["schemas"]["TermResource"][];
-            /** @description hospitals of doctor */
-            hospitals?: components["schemas"]["TermResource"][];
+            /** @description hospital of doctor */
+            hospital?: components["schemas"]["HospitalResource"][];
         };
         /**
          * FileResource
@@ -1094,22 +990,7 @@ export interface components {
             /** Format: uri */
             email: string;
             image: components["schemas"]["FileResource"];
-            insurances?: components["schemas"]["InsuranceResource"];
             thumbnail: components["schemas"]["FileResource"];
-            insurances_file?: components["schemas"]["FileResource"];
-            cover_image?: components["schemas"]["FileResource"];
-        };
-        InsuranceResource: {
-            id: number;
-            /** @description The title of the insurance */
-            title: string;
-            logo: components["schemas"]["FileResource"];
-            /** @description Whether the insurance covers outpatient services */
-            is_outpatient: boolean;
-            /** @description Whether the insurance covers inpatient services */
-            is_inpatient: boolean;
-            /** @description The hospitals associated with the insurance */
-            hospitals?: components["schemas"]["HospitalResource"][];
         };
         /**
          * RoleResource
@@ -2015,232 +1896,6 @@ export interface operations {
             header?: never;
             path: {
                 /** @description hospital id */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Unauthenticated */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Resource Not Found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    "19bdcb6d521cf184ae8e7474b694ed22": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description List of insurances retrieved successfully */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["InsuranceResource"];
-                };
-            };
-            /** @description Unauthenticated */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    ee04ef757010cfd685fccee8dc3f35ae: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path?: never;
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": components["schemas"]["StoreInsuranceResourceRequest"];
-            };
-        };
-        responses: {
-            /** @description Successful operation */
-            201: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["InsuranceResource"];
-                };
-            };
-            /** @description Unauthenticated */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ValidationErrorResponse"];
-                };
-            };
-        };
-    };
-    "9e8d73e26b6aff1c41cebd12a2921203": {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description insurance id */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody?: never;
-        responses: {
-            /** @description Successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["InsuranceResource"];
-                };
-            };
-            /** @description Unauthenticated */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Resource Not Found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-        };
-    };
-    c55be752328ef156625569b588c79126: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description insurance id */
-                id: number;
-            };
-            cookie?: never;
-        };
-        requestBody: {
-            content: {
-                "multipart/form-data": components["schemas"]["UpdateInsuranceResourceRequest"];
-                "application/x-www-form-urlencoded": components["schemas"]["UpdateInsuranceResourceRequest"];
-                "application/json": components["schemas"]["UpdateInsuranceResourceRequest"];
-            };
-        };
-        responses: {
-            /** @description Successful operation */
-            200: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["UpdateInsuranceResourceRequest"];
-                };
-            };
-            /** @description Unauthenticated */
-            401: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Forbidden */
-            403: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Resource Not Found */
-            404: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content?: never;
-            };
-            /** @description Validation error */
-            422: {
-                headers: {
-                    [name: string]: unknown;
-                };
-                content: {
-                    "application/json": components["schemas"]["ValidationErrorResponse"];
-                };
-            };
-        };
-    };
-    be85854b0623ebc862078e57de2208c7: {
-        parameters: {
-            query?: never;
-            header?: never;
-            path: {
-                /** @description insurance id */
                 id: number;
             };
             cookie?: never;

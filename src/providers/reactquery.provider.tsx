@@ -1,7 +1,7 @@
 // In Next.js, this file would be called: app/providers.jsx
 "use client";
 
-import Intro from "@/app/_components/intro";
+//import Intro from "@/app/_components/intro";
 import {
   isServer,
   QueryClient,
@@ -43,15 +43,15 @@ function getQueryClient() {
 const ReactQueryProvider: React.FC<{ children: React.ReactNode }> = ({
   children,
 }) => {
-  const [show, setShow] = useState(false);
+  //const [show, setShow] = useState(false);
 
   const queryClient = getQueryClient();
 
   return (
     <QueryClientProvider client={queryClient}>
       {/* <ReactQueryDevtools initialIsOpen={false} /> */}
-      <Intro setShow={setShow} />
-      {show && children}
+      {/*<Intro setShow={setShow} />*/}
+      {children}
     </QueryClientProvider>
   );
 };

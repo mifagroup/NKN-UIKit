@@ -10,6 +10,11 @@ import Footer from "./_components/footer";
 import Header from "./_components/header";
 import "./globals.css";
 import Script from "next/script";
+import { Metadata } from "next";
+
+export const metadata: Metadata = {
+  title: "بیمارستان نیکان",
+};
 
 const nikan = localFont({
   src: [
@@ -84,7 +89,6 @@ export default function RootLayout({
     `,
         }}
     />
-      <title>بیمارستان نیکان</title>
       <link rel="icon" href={"/images/logo.svg"} />
       <body dir="rtl">
         {" "}

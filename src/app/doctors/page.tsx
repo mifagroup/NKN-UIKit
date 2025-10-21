@@ -1,6 +1,6 @@
 import { components } from "@/lib/api/v1";
 import qs from "qs";
-import { DoctorsList, Filters } from "./components";
+import { DoctorsList, Filters, DescriptionSection } from "./components";
 
 const Page = async (props: {
     searchParams?: Promise<{ [key: string]: string | string[] | undefined }>;
@@ -72,6 +72,7 @@ const Page = async (props: {
                         meta={data?.meta}
                     />
                 </div>
+                <DescriptionSection description={data?.description}  slug={data?.slug ?? ""}/>
             </div>
         </div>
     );

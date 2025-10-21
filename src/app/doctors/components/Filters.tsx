@@ -2,6 +2,7 @@
 import { components } from "@/lib/api/v1";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import { Checkbox, FormControlLabel } from "@mui/material";
+import Link from "next/link";
 import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "qs";
 import React, { useEffect, useState } from "react";
@@ -40,12 +41,12 @@ const Filters = (props: FilterProps) => {
   const searchParams = useSearchParams();
 
   const prevSearchParams = Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    [...searchParams.entries()].filter(([key, value]) => value)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      [...searchParams.entries()].filter(([key, value]) => value)
   );
-  
+
   const [gender, setGender] = useState<string>(
-    searchParams.get("gender") ?? ""
+      searchParams.get("gender") ?? ""
   );
 
   const [selectedTerms, setSelectedTerms] = React.useState<number[]>([]);
@@ -60,7 +61,7 @@ const Filters = (props: FilterProps) => {
     if (updatedParams.page) {
       delete updatedParams.page;
     }
-    
+
     const newUrl = `?${qs.stringify(updatedParams)}`;
     router.push(newUrl);
   };
@@ -116,12 +117,12 @@ const Filters = (props: FilterProps) => {
   useEffect(() => {
     if (prevSearchParams.degrees) {
       setSelectedDegrees(
-        prevSearchParams.degrees.split(",").map((degree) => parseInt(degree))
+          prevSearchParams.degrees.split(",").map((degree) => parseInt(degree))
       );
     }
     if (prevSearchParams.terms) {
       setSelectedTerms(
-        prevSearchParams.terms.split(",").map((term) => parseInt(term))
+          prevSearchParams.terms.split(",").map((term) => parseInt(term))
       );
     }
   }, []);
@@ -287,11 +288,11 @@ const Filters = (props: FilterProps) => {
         ) : null}
 
         <div className="flex items-center gap-x-2.5 p-[22px] border-y border-y-[#ECECEC]">
-          <a href={'/doctors'} //TODO: remove filters
-            className="border border-[#31D1B0] text-[#31D1B0] text-[10px] bg-[#fffff] rounded-[4px] p-1"
+          <Link href={'/doctors'} //TODO: remove filters
+                className="border border-[#31D1B0] text-[#31D1B0] text-[10px] bg-[#fffff] rounded-[4px] p-1"
           >
             حذف همه فیلترها
-          </a>
+          </Link>
         </div>
       </div>
   );

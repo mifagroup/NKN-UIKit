@@ -7,8 +7,8 @@ import qs from "qs";
 import { components } from "@/lib/api/v1";
 
 const Pagination = ({
-  meta,
-}: {
+                      meta,
+                    }: {
   meta: components["schemas"]["MetaPaginationResource"];
 }) => {
   const [currentPage, setCurrentPage] = useState<string>("1");
@@ -18,8 +18,8 @@ const Pagination = ({
   const searchParams = useSearchParams();
 
   const prevSearchParams = Object.fromEntries(
-    // eslint-disable-next-line @typescript-eslint/no-unused-vars
-    [...searchParams.entries()].filter(([, value]) => value)
+      // eslint-disable-next-line @typescript-eslint/no-unused-vars
+      [...searchParams.entries()].filter(([, value]) => value)
   );
 
   // Reset to page 1 when filters change (search params change)
@@ -75,45 +75,45 @@ const Pagination = ({
     const pageButtons = [];
     for (let i = startPage; i <= endPage; i++) {
       pageButtons.push(
-        <button
-          key={i}
-          onClick={() => handlePageClick(i)}
-          className={`flex items-center justify-center h-[40px] w-[40px] rounded-[6px] ${
-            currentPageNumber === i ? "bg-[#31D1B0] text-black" : "text-black"
-          }`}
-        >
-          {i}
-        </button>
+          <button
+              key={i}
+              onClick={() => handlePageClick(i)}
+              className={`flex items-center justify-center h-[40px] w-[40px] rounded-[6px] ${
+                  currentPageNumber === i ? "bg-[#31D1B0] text-black" : "text-black"
+              }`}
+          >
+            {i}
+          </button>
       );
     }
     return pageButtons;
   };
 
   return (
-    <div className="flex justify-center items-center mt-5 gap-x-2">
-      <button
-        onClick={handlePrevPage}
-        disabled={currentPage === "1"}
-        className=""
-      >
-        <ArrowForwardIosIcon
-          className={`${
-            currentPage === "1" ? "opacity-50" : ""
-          } text-[#DFDFDF]`}
-        />
-      </button>
-      <div className="flex gap-x-2">{renderPageButtons()}</div>
-      <button
-        onClick={handleNextPage}
-        disabled={+currentPage === meta.last_page}
-      >
-        <ArrowBackIosNewIcon
-          className={`${
-            +currentPage === meta.last_page ? "opacity-50" : ""
-          } text-[#DFDFDF]`}
-        />
-      </button>
-    </div>
+      <div className="flex justify-center items-center mt-5 gap-x-2">
+        <button
+            onClick={handlePrevPage}
+            disabled={currentPage === "1"}
+            className=""
+        >
+          <ArrowForwardIosIcon
+              className={`${
+                  currentPage === "1" ? "opacity-50" : ""
+              } text-[#DFDFDF]`}
+          />
+        </button>
+        <div className="flex gap-x-2">{renderPageButtons()}</div>
+        <button
+            onClick={handleNextPage}
+            disabled={+currentPage === meta.last_page}
+        >
+          <ArrowBackIosNewIcon
+              className={`${
+                  +currentPage === meta.last_page ? "opacity-50" : ""
+              } text-[#DFDFDF]`}
+          />
+        </button>
+      </div>
   );
 };
 

@@ -2,7 +2,13 @@ import React from "react";
 import { ContactInfo, Hero, Info, Services } from "./components";
 import { Connect } from "../branches/[id]/components";
 import { BranchesAddresses } from "../(home)/_components";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+    title: "واحد بین‌الملل بیمارستان نیکان / خدمات درمانی برای بیماران خارجی",
+    description:
+        "خدمات درمانی توریست سلامت در بیمارستان نیکان؛ مشاوره، اقامت و برنامه‌ریزی درمانی ویژه بیماران خارجی. تماس بگیرید.",
+};
 const page = () => {
   return (
     <>

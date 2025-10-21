@@ -15,7 +15,12 @@ import News from "./_components/news";
 import { cookies } from "next/headers";
 import { i18n } from "@/configs/i18n";
 import { resolveLocale } from "@/utils/dictionary";
+import type { Metadata } from "next";
 
+export const metadata: Metadata = {
+  title: "بیمارستان نیکان /  مرجع خدمات درمانی تخصصی در تهران | Nikan Hospital",
+  description: "پیشرو در سلامت و درمان کشور؛ دسترسی به متخصصین فوق حرفه‌ای، نوبت‌دهی آنلاین و مراقبت‌های ۲۴ ساعته؛ بفرمایید داخل...",
+};
 const Page = async () => {
   const cookieStore = await cookies();
   const locale = resolveLocale(cookieStore.get("lang")?.value);

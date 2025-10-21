@@ -1,6 +1,12 @@
 import { components } from "@/lib/api/v1";
 import qs from "qs";
 import { BlogsList, TopBlog } from "./components";
+import type { Metadata } from "next";
+
+export const metadata: Metadata = ({
+  title: "آخرین اخبار و اطلاعیه‌های رسمی بیمارستان نیکان تهران",
+  description: "مهمترین اطلاعیه‌ها، رویدادها و اخبار حوزه سلامت از بیمارستان نیکان. برای به‌روزترین اطلاعات کلیک کنید.",
+});
 const page = async () => {
   const formattedParams = qs.stringify({
     with_slider: true,

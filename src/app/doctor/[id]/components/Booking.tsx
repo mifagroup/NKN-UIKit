@@ -30,7 +30,7 @@ const Booking = ({
                 height={44}
               />
               <span className="text-[15px] font-semibold text-white">
-                ۰۲۱۲۹۱۲۳۱۷۷
+                ۰۲۱۲۹۱۲۹
               </span>
             </div>
             <Divider orientation="vertical" className="!w-[2px] !bg-white" />

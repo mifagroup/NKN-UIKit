@@ -178,7 +178,7 @@ const Filters = (props: FilterProps) => {
                           }
                           slotProps={{
                             typography: {
-                              fontSize: "12px",
+                              fontSize: "14px",
                               fontWeight: selectedTerms?.includes(term.id)
                                   ? "500"
                                   : "200",

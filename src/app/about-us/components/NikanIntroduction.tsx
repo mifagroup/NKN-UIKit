@@ -14,13 +14,13 @@ const NikanIntroduction = () => {
 تجربه ما در مجموعه بیمارستا‌ن‌های نیکان همواره به ما این جمله را یادآور می‌شود که &#34;زندگی هنوز زیباست و زیبایی انتها ندارد&#34; و تلاش همیشگی و باور قلبی ما اشاعه همین زیبایی‌هاست. ما در مجموعه نیکان با هم عهد بسته‌ایم که با تعهد و تخصصِ آمیتخه با عشق میزبان خوبی برای مهمانان عزیزمان باشیم.
             </span>
           </div>
-          <a
+     {/*     <a
             className="!text-[#626262] !p-0 lg:!text-[15px] flex items-center justify-center !text-[14px] !font-medium !bg-transparent !border !border-primary-main !rounded-[7px] !w-[258px] !h-[35px] !self-end"
             href="/images/B_Nikan_Hospital_Catalogue.pdf"
             download
           >
             دانلود کاتالوگ معرفی گروه درمانی نیکان
-          </a>
+          </a>*/}
         </div>
         <Image
           src={"/images/aboutNikan.svg"}

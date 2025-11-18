@@ -169,7 +169,7 @@ const Search = ({
       <div className="flex flex-col">
         <div className="flex lg:flex-row flex-col gap-y-5 justify-between items-center px-[26px] pt-5">
           <h1 className="lg:text-base text-sm font-semibold text-black">
-            {h1Tag || " فهرست پزشکان و متخصصان مجموعه درمانی نیکان"}
+            {h1Tag || " فهرست پزشکان مجموعه درمانی نیکان"}
           </h1>
           <div className="flex items-center gap-x-2.5">
           <span className="text-base text-black font-semibold">
@@ -200,7 +200,7 @@ const Search = ({
           <div className="flex lg:flex-row flex-col gap-y-1.5 items-center gap-x-2.5">
             <div className="flex items-center gap-x-2">
             <span className="text-[13px] text-black font-semibold">
-              شعبه درمانی
+              مرکز درمانی
             </span>
               {selectedHospitals.length > 0 && (
                   <button

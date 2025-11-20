@@ -85,13 +85,13 @@
     },
     "branches": {
       "title": "مراکز درمانی نیکان",
-      "niyayesh": "نیکان نیایش",
+      "niyayesh": "نگین نیکان",
       "latin": [
         "NIKAN AGHDASIYE",
         "NIKAN SEPID",
         "Ambulatory Surgery Center",
         "NIKAN WEST",
-        "NIKAN NIAYESH"
+        "NEGIN NIKAN"
       ]
     },
     "branches_addresses": {

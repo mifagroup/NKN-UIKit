@@ -36,7 +36,7 @@ const Header = () => {
               {/*<LangSwicher />*/}
                {/*<LoginButton /> */}
               <Link href={"https://ipd.nikan.hospital"} target={'_blank'}>
-                <Image src={"/images/flags/en.svg"} alt={"english"} width={44} height={26}></Image>
+                <Image src={"/images/flags/en.svg"} alt={"english"} width={30} height={26}></Image>
               </Link>
             </div>
             <MenuDrawer />

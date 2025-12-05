@@ -33,8 +33,11 @@ const Header = () => {
           </div>
           <div className="flex items-center gap-x-[22px]">
             <div className="flex items-center gap-x-1.5">
-              {/*<LangSwicher />
-               <LoginButton /> */}
+              {/*<LangSwicher />*/}
+               {/*<LoginButton /> */}
+              <Link href={"https://ipd.nikan.hospital"} target={'_blank'}>
+                <Image src={"/images/flags/en.svg"} alt={"english"} width={44} height={26}></Image>
+              </Link>
             </div>
             <MenuDrawer />
             <div

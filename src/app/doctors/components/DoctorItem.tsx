@@ -60,7 +60,6 @@ const DoctorItem = ({
               <div className={`flex flex-wrap pt-[18px] items-center gap-x-1.5`}>
                 {doctor.hospitals?.length ? (
                     doctor.hospitals?.map((hospital: any, index: number) => {
-                        console.log('Hospital title:', hospital?.title);
                         return (
                           <span 
                             key={index} 

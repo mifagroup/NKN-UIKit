@@ -35,7 +35,7 @@ const Links = ({
                   لیست بیمه های طرف قرارداد
               </Link>
               <Link
-                  href={"/cooperation"}
+                  href={"https://hr.nikanhospital.com/Request/Create"}
                   className="w-[160px] h-[33px] text-xs rounded-[6px] bg-[#31D1B087] mt-3 text-white font-medium flex justify-center items-center"
               >
 

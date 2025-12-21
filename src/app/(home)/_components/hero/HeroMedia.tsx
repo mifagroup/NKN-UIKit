@@ -68,7 +68,7 @@ const HeroMedia = ({
         sizes="(max-width: 768px) 100vw, 100vw"
         alt={title}
         loading={priority ? "eager" : "lazy"}
-        className="lg:h-[83vh] h-[460px] w-full object-contain"
+        className="lg:h-[83vh] w-full object-cover"
       />
     </picture>
   );

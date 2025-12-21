@@ -13,7 +13,7 @@ export const links = [
   {
     id: "international",
     tKey: "menu.international",
-    href: "/nikan-international",
+    href: "https://ipd.nikan.hospital",
   },
   {
     id: "doctors",
@@ -60,7 +60,7 @@ export const links = [
   {
     id: "cooperation",
     tKey: "menu.cooperation",
-    href: "/cooperation",
+    href: "https://hr.nikanhospital.com/Request/Create",
   },
 ];
 

@@ -8,7 +8,26 @@ const DoctorItem = ({
                       doctor,
                     }: {
   doctor: components["schemas"]["DoctorResource"];
+  
 }) => {
+
+  const getHospitalBgColor = (title: string) => {
+    switch (title) {
+      case "اقدسیه":
+        return "bg-[#E43C7F]";
+      case "سپید":
+        return "bg-[#F4DE63]";
+      case "مرکز جراحی محدود نیکان":
+        return "bg-[#4CC5AC]";
+      case "غرب":
+        return "bg-[#4CB1DD]";
+      case "ویزیت آنلاین":
+        return "bg-[#42aad6]";
+      default:
+        return "bg-gray-500";
+    }
+  };
+
   return (
       <div className="flex md:flex-row flex-col gap-y-4 items-stretch py-5">
         <div className="flex items-center gap-x-3.5 w-full">
@@ -40,19 +59,16 @@ const DoctorItem = ({
             <div className="flex flex-col sm:flex-row justify-between">
               <div className={`flex flex-wrap pt-[18px] items-center gap-x-1.5`}>
                 {doctor.hospitals?.length ? (
-                    doctor.hospitals?.map((hospital, index) => (
-
-                        <span key={index} className={` mt-1 px-3.5 py-1 text-white text-[12px] font-medium  rounded-[8px]  ${
-                            hospital?.title == "اقدسیه" ? "bg-[#E43C7F]" :
-                                hospital?.title == 'سپید' ? "bg-[#F4DE63]" :
-                                    hospital?.title == 'مرکز جراحی محدود نیکان' ? "bg-[#4CC5AC]" :
-                                        hospital?.title == 'غرب' ? "bg-[#4CB1DD]" : ""
-
-                        }`}>
-                             {hospital?.title}
-                           </span>
-
-                    ))
+                    doctor.hospitals?.map((hospital: any, index: number) => {
+                        return (
+                          <span 
+                            key={index} 
+                            className={`mt-1 px-3.5 py-1 text-white text-[12px] font-medium rounded-[8px] ${getHospitalBgColor(hospital?.title)}`}
+                          >
+                            {hospital?.title}
+                          </span>
+                        );
+                    })
                 ) : null}
               </div>
             </div>

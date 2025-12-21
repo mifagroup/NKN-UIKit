@@ -54,7 +54,7 @@ const Hero = ({ data }: { data: components["schemas"]["SliderResource"] }) => {
                     title={slide.title}
                 />
 
-                <div className="bg-[#00000060] absolute w-full h-full top-0" />
+                {/*<div className="bg-[#00000060] absolute w-full h-full top-0" />*/}
 
                 <div className="container max-w-[1216px]">
                   <div className="absolute bottom-[60px] lg:top-[184px] flex flex-col gap-y-[20px] lg:gap-y-[26px] left-5 right-5 max-w-[450px]">

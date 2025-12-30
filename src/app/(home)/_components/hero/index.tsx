@@ -7,6 +7,7 @@ import { Autoplay } from "swiper/modules";
 import type { Swiper as SwiperType } from "swiper";
 import Link from "next/link";
 import "swiper/css";
+import { isVideo } from "./utils";
 
 import { useLanguage } from "@/contexts/LanguageContext";
 import HeroMedia from "./HeroMedia";
@@ -61,7 +62,10 @@ const Hero = ({ data }: HeroProps) => {
               priority={index === 0}
             />
 
-            {<div className="bg-[#00000060] absolute w-full h-full top-0" />}
+            { isVideo(slide.image?.original_ur) && (
+              <div className="bg-[#00000060] absolute w-full h-full top-0" />
+
+            )}
 
             <div className="container max-w-[1216px]">
               <div className="self-end absolute bottom-[60px] lg:top-[184px] flex flex-col gap-y-[20px] lg:gap-y-[26px] left-5 right-5 max-w-[450px]">

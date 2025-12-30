@@ -1,6 +1,7 @@
 "use client";
 
 import { useEffect, useRef, useState } from "react";
+import { isVideo } from "./utils";
 
 export interface HeroMediaProps {
   image: string;
@@ -10,7 +11,6 @@ export interface HeroMediaProps {
   priority?: boolean;
 }
 
-const isVideo = (url: string) => /\.(mp4|webm|ogg)$/i.test(url);
 
 const HeroMedia = ({
   image,

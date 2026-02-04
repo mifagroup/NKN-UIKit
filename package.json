@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack --port 9630",
+    "dev": "next dev --turbopack",
     "build": "next build",
-    "start": "next start --port 9630",
+    "start": "next start",
     "lint": "next lint",
     "generate-openapi": "npx openapi-typescript https://api.mifadev.ir/docs/api-docs.json -o ./src/lib/api/v1.d.ts"
   },
@@ -25,9 +25,9 @@
     "openapi-fetch": "^0.13.3",
     "openapi-react-query": "^0.2.8",
     "qs": "^6.13.1",
-    "react": "19.0.0-rc-66855b96-20241106",
+    "react": "^18.3.1",
+    "react-dom": "^18.3.1",
     "react-countup": "^6.5.3",
-    "react-dom": "19.0.0-rc-66855b96-20241106",
     "react-hot-toast": "^2.5.2",
     "swiper": "^11.1.14",
     "use-debounce": "^10.0.4"

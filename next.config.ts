@@ -33,11 +33,6 @@ const nextConfig: NextConfig = {
   images: {
     remotePatterns: [
       {
-        protocol: "http",
-        hostname: "api.nikan.hospital",
-        pathname: "/**",
-      },
-      {
         protocol: "https",
         hostname: "api.nikan.hospital",
         pathname: "/**",

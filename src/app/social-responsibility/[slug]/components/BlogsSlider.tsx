@@ -33,6 +33,7 @@ const BlogsSlider = (props: BlogsSliderProps) => {
                 className="flex flex-col gap-y-[5px] border border-[#31D1B0]"
               >
                 <Image
+                    unoptimized
                   src={blog?.main_image?.original_url ?? ""}
                   alt={blog.title ?? ""}
                   width={353}

@@ -30,6 +30,7 @@ const Hero = ({ slider = [] }: HeroProps) => {
                   href={`/social-responsibility/${slider[0].slug}`}
               >
                   <Image
+                      unoptimized
                       src={slider[0].main_image?.original_url || ""}
                       alt={slider[0].title || ""}
                       width={1107}
@@ -55,6 +56,7 @@ const Hero = ({ slider = [] }: HeroProps) => {
                   href={`/social-responsibility/${slider[1].slug}`}
               >
                 <Image
+                    unoptimized
                   src={slider[1].main_image?.original_url || ""}
                   alt={slider[1].title || ""}
                   fill
@@ -78,6 +80,7 @@ const Hero = ({ slider = [] }: HeroProps) => {
                   href={`/social-responsibility/${slider[2].slug}`}
               >
                   <Image
+                      unoptimized
                       src={slider[2].main_image?.original_url || ""}
                       alt={slider[2].title || ""}
                       fill

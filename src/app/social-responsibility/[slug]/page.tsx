@@ -217,6 +217,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                   {blog.gallery.map((item, index) => (
                       <div key={index} className="w-full">
                           <Image
+                              unoptimized
                               src={item?.original_url ?? ""}
                               alt={`blog-gallery-${index}`}
                               width={500}

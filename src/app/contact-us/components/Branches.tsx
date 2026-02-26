@@ -28,6 +28,7 @@ const Branches = async () => {
           >
             <div className="flex lg:flex-row flex-col lg:items-end gap-x-[15px] gap-y-2.5">
               <Image
+                  unoptimized
                 src={
                   branch.thumbnail?.original_url ??
                   "/images/nikan-aghdasieh-icon.png"

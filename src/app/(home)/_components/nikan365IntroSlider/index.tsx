@@ -72,6 +72,7 @@ const Nikan365IntroSlider = ({
                   target="_blank"
                 >
                   <Image
+                      unoptimized
                     src={item.image.original_url ?? ""}
                     alt={item.title}
                     width={greaterThanLg ? 70 : 60}

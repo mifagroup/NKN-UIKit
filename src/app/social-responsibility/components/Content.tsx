@@ -23,6 +23,7 @@ const Content = ({
           key={item.id || index}
         >
           <Image
+              unoptimized
             src={item.main_image?.original_url}
             alt={item.title || ""}
             width={1103}

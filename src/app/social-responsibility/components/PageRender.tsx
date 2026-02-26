@@ -4,6 +4,7 @@ import { components } from "@/lib/api/v1";
 import qs from "qs";
 import { useEffect, useState } from "react";
 import { Content, Hero } from "./";
+import { env } from "@/configs/env";
 
 const SocialResponsibilityPage = () => {
   const [data, setData] = useState<components["schemas"]["BlogResource"][]>([]);
@@ -28,7 +29,7 @@ const SocialResponsibilityPage = () => {
 
       try {
         const response = await fetch(
-          `${process.env.NEXT_PUBLIC_API_URL}/blogs?${formattedParams}`,
+          `${env.API_URL}/blogs?${formattedParams}`,
           {
             cache: "no-cache",
           }

@@ -1,6 +1,7 @@
 import { paths } from "@/lib/api/v1";
 import createFetchClient, { type Middleware } from "openapi-fetch";
 import createClient from "openapi-react-query";
+import { env } from "@/configs/env";
 
 const myMiddleware: Middleware = {
   async onRequest({ request }) {
@@ -63,7 +64,7 @@ const myMiddleware: Middleware = {
 
 export const useFetch = () => {
   const fetchClient = createFetchClient<paths>({
-    baseUrl: process.env.NEXT_PUBLIC_API_URL,
+    baseUrl: env.API_URL,
     headers: {
       Accept: "application/json",
     },

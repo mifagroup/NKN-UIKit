@@ -5,6 +5,7 @@ import Image from "next/image";
 import Link from "next/link";
 import { useEffect, useState } from "react";
 import { useLanguage } from "@/contexts/LanguageContext";
+import { env } from "@/configs/env";
 
 interface SearchResult {
   id: number;
@@ -28,9 +29,7 @@ const SearchDoctors = ({
       if (search.trim().length > 0) {
         setIsSearching(true);
         fetch(
-          `${
-            process.env.NEXT_PUBLIC_API_URL
-          }/search?search=${encodeURIComponent(search)}`,
+          `${env.API_URL}/search?search=${encodeURIComponent(search)}`,
           {
             headers: {
               "Accept-Language": language,

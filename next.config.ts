@@ -35,12 +35,12 @@ const nextConfig: NextConfig = {
       {
         protocol: "http",
         hostname: "api.nikan.hospital",
-        pathname: "storage/**",
+        pathname: "/storage/**",
       },
       {
         protocol: "https",
         hostname: "api.nikan.hospital",
-        pathname: "storage/**",
+        pathname: "/storage/**",
       },
     ],
   },

@@ -19,6 +19,7 @@ const Patients = ({
           {doctor.portfolio?.map((portfolio, index) => (
             <div key={index} className="md:col-span-1 col-span-2">
               <Image
+                  unoptimized
                 src={portfolio.original_url ?? ""}
                 alt="patients"
                 width={246}

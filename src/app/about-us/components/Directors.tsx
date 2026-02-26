@@ -74,6 +74,7 @@ const Directors = () => {
                     {items.map((item) => (
                         <div className="flex flex-col w-[163px] gap-y-[25px]" key={item.id}>
                             <Image
+                                unoptimized
                                 src={item.avatar}
                                 alt={item.name}
                                 width={163}

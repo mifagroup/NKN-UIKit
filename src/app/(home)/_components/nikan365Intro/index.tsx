@@ -49,6 +49,7 @@ const Nikan365Intro = ({
           <a key={slide.id} target="_blank" href={slide.link ?? "#"}>
             <div className={itemClass(index)}>
               <Image
+                  unoptimized
                 className="w-full max-w-[66px] max-h-[60px] !relative"
                 src={slide.image.original_url ?? ""}
                 alt={slide.title ?? "nikan-365"}

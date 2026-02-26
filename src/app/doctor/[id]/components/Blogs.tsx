@@ -46,6 +46,7 @@ const Blogs = () => {
               className="flex lg:flex-row flex-col items-center gap-x-7"
             >
               <Image
+                  unoptimized
                 src={blog.image}
                 alt={blog.title}
                 width={214}

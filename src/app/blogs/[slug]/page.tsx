@@ -38,6 +38,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
         <div className="flex flex-col gap-y-[15px]">
           {/* Main Image */}
           <Image
+              unoptimized
               src={blog?.main_image?.original_url ?? ""}
               alt={blog?.title ?? ""}
               width={1106}

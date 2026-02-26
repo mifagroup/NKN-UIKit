@@ -115,6 +115,7 @@ const Blogs = ({
               <SwiperSlide key={blog.id}>
                 <div className="lg:border border-primary-main flex lg:flex-row flex-col">
                   <Image
+                      unoptimized
                     src={getImageUrl(blog?.main_image)}
                     alt={blog.title ?? ""}
                     width={553}

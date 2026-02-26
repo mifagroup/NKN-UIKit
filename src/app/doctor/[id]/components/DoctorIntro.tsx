@@ -12,6 +12,7 @@ const DoctorIntro = ({
     <div className="flex lg:justify-between lg:flex-row flex-col gap-y-4 lg:items-stretch items-center lg:px-0 px-5 relative">
       <div className="flex items-center lg:gap-x-3.5 gap-x-2.5">
         <Image
+            unoptimized
           src={doctor.image.original_url ?? ""}
           alt="doc"
           width={144}

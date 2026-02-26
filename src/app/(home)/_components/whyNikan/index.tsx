@@ -95,6 +95,7 @@ const WhyNikan = ({
             {data?.thumbnails?.concat(data?.thumbnails)?.map((image, index) => (
               <SwiperSlide key={index}>
                 <Image
+                    unoptimized
                   src={image.original_url ?? ""}
                   alt={image.file_name ?? ""}
                   width={758}
@@ -129,6 +130,7 @@ const WhyNikan = ({
                       >
                         <div className="flex flex-col gap-y-3">
                           <Image
+                              unoptimized
                             src={item.image.original_url ?? ""}
                             alt={item.title}
                             width={83}
@@ -173,6 +175,7 @@ const WhyNikan = ({
                         >
                           <div className="flex flex-col gap-y-3">
                             <Image
+                                unoptimized
                               src={slide.image.original_url ?? ""}
                               alt={slide.title}
                               width={60}
@@ -193,6 +196,7 @@ const WhyNikan = ({
                     )}
                   </div>
                   <Image
+                      unoptimized
                     src={data.thumbnails?.[chunkIndex]?.original_url ?? ""}
                     alt={data.thumbnails?.[chunkIndex]?.file_name ?? ""}
                     width={758}

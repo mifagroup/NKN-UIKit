@@ -40,6 +40,7 @@ const Branches = ({
                 target="_blank"
               >
                 <Image
+                    unoptimized
                   src={
                     hospital?.image?.original_url ??
                     "/images/aghdasieh-branch.png"
@@ -52,6 +53,7 @@ const Branches = ({
                 <>
 
                   <Image
+                      unoptimized
                     src={
                       hospital?.thumbnail?.original_url ??
                       "/images/aghdasieh-branch-name-and-icon.png"

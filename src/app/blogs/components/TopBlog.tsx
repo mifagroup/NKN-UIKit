@@ -27,6 +27,7 @@ const TopBlog = (props: TopBlogProps) => {
         <SwiperSlide key={blog.id}>
           <div className="lg:border border-primary-main flex lg:flex-row flex-col">
             <Image
+                unoptimized
               src={blog?.main_image?.original_url ?? ""}
               alt={blog.title ?? ""}
               width={553}

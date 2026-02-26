@@ -74,6 +74,7 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
                 >
                   <div className="relative w-full h-48">
                     <Image
+                        unoptimized
                       src={getImageUrl(item.main_image)}
                       alt={item.title || ""}
                       fill

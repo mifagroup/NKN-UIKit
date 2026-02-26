@@ -70,6 +70,7 @@ const LangSwicher: React.FC = () => {
               })}
             >
               <Image
+                  unoptimized
                 src={selectedOption.flagSrc}
                 alt={selectedOption.alt}
                 width={18}
@@ -93,6 +94,7 @@ const LangSwicher: React.FC = () => {
               })}
             >
               <Image
+                  unoptimized
                 src={option.flagSrc}
                 alt={option.alt}
                 width={20}

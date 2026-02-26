@@ -65,6 +65,7 @@ const BranchesAddresses = async () => {
               rel="noopener noreferrer"
             >
               <Image
+                  unoptimized
                 src={branches[0].image}
                 alt={branches[0].title}
                 width={122}
@@ -120,6 +121,7 @@ const BranchesAddresses = async () => {
           >
             <Link href={branches[1].link} target="_blank">
               <Image
+                  unoptimized
                 src={branches[1].image}
                 alt={branches[1].title}
                 width={122}
@@ -177,6 +179,7 @@ const BranchesAddresses = async () => {
         >
           <Link href={branches[2].link} target="_blank">
             <Image
+                unoptimized
               src={branches[2].image}
               alt={branches[2].title}
               width={122}
@@ -228,6 +231,7 @@ const BranchesAddresses = async () => {
         >
           <Link href={branches[3].link} target="_blank">
             <Image
+                unoptimized
               src={branches[3].image}
               alt={branches[3].title}
               width={122}

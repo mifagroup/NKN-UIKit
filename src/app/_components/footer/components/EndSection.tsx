@@ -37,6 +37,7 @@ const EndSection = () => {
       <div className="flex gap-x-3">
         <Link href={"https://pa.nikan365.ir/auth/register"} target={"_blank"} >
           <Image
+              unoptimized
               src={"/images/footer_link.png"}
               alt="nikan365"
               width={309}

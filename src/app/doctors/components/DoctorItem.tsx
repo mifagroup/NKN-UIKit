@@ -33,6 +33,7 @@ const DoctorItem = ({
         <div className="flex items-center gap-x-3.5 w-full">
           <Link href={`/doctor/${doctor.id}`} className={"!h-[188px] !w-[144px]"}>
             <Image
+                unoptimized
                 src={doctor.image.original_url ?? ""}
                 alt="doc"
                 width={144}

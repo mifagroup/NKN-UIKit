@@ -34,12 +34,12 @@ const nextConfig: NextConfig = {
     remotePatterns: [
       {
         protocol: "http",
-        hostname: "api.mifadev.ir",
+        hostname: "api.nikan.hospital",
         port: "",
       },
       {
         protocol: "https",
-        hostname: "api.mifadev.ir",
+        hostname: "api.nikan.hospital",
         port: "",
       },
       {

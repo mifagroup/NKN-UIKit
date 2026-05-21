@@ -3,9 +3,9 @@
   "version": "0.1.0",
   "private": true,
   "scripts": {
-    "dev": "next dev --turbopack",
+    "dev": "next dev --turbopack -p 6709",
     "build": "next build",
-    "start": "next start",
+    "start": "next start -p 6709",
     "lint": "next lint",
     "generate-openapi": "npx openapi-typescript https://api.mifadev.ir/docs/api-docs.json -o ./src/lib/api/v1.d.ts"
   },

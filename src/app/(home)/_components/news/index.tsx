@@ -2,7 +2,7 @@
 import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import Link from "next/link";
-import { useRef } from "react";
+import React, { useRef } from "react";
 import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
@@ -12,6 +12,7 @@ import { useMediaQuery } from "@mui/material";
 import "swiper/css";
 import "swiper/css/navigation";
 import { useLanguage } from "@/contexts/LanguageContext";
+import TermBadge from "@/components/ui/TermBadge";
 
 const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
   const isMobile = useMediaQuery("(max-width: 768px)");
@@ -69,25 +70,32 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
             {news.map((item, idx) => (
               <SwiperSlide key={idx}>
                 <Link
-                  href={`/news/${item.slug}`}
-                  className="border cursor-pointer border-[#31D1B0] overflow-hidden flex flex-col h-full"
+                    href={`/news/${item.slug}`}
+                    className="border cursor-pointer border-[#31D1B0] overflow-hidden flex flex-col h-full"
                 >
                   <div className="relative w-full h-48">
                     <Image
                         unoptimized
-                      src={getImageUrl(item.main_image)}
-                      alt={item.title || ""}
-                      fill
-                      className="object-cover"
+                        src={getImageUrl(item.main_image)}
+                        alt={item.title || ""}
+                        fill
+                        className="object-cover"
                     />
                   </div>
-                  <div className="px-2 py-4 flex flex-col flex-grow h-[80px]">
+                  <div className="px-2 py-3 flex flex-col flex-grow">
                     <h3 className="font-bold text-xs text-[#3F3F3F] leading-tight mb-1 ellipsis-2">
                       {item.title}
                     </h3>
-                    <p className="text-[11px] text-[#3F3F3F] leading-snug ellipsis-2">
+                    <p className="text-[11px] text-[#3F3F3F] leading-snug ellipsis-2 mb-1">
                       {item.sub_title}
                     </p>
+
+
+                  </div>
+                  <div className={'flex justify-end px-2 py-1'}>
+                    {item.terms?.map((term) => (
+                        <TermBadge key={term.id} term={term} size={"sm"} className={"flex"}/>
+                    ))}
                   </div>
                 </Link>
               </SwiperSlide>
@@ -95,9 +103,9 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
           </Swiper>
 
           {isMobile && (
-            <button
-              className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] left-[-30px] z-10"
-              onClick={() => swiperRef.current?.slideNext()}
+              <button
+                  className="!min-w-fit !p-0 !absolute lg:top-1/2 lg:translate-y-[-50%] top-[25%] left-[-30px] z-10"
+                  onClick={() => swiperRef.current?.slideNext()}
             >
               <Image
                 src={"/images/arrow-right.png"}
@@ -113,7 +121,7 @@ const News = ({ news }: { news: components["schemas"]["BlogResource"][] }) => {
 
           <Link
             href={"/news"}
-            className="bg-gray-100 cursor-pointer hidden md:flex items-center justify-center md:w-1/4 md:h-[274px] text-center font-bold text-gray-700 rounded-md"
+            className="bg-gray-100 cursor-pointer hidden md:flex items-center justify-center md:w-1/4 md:h-[300px] text-center font-bold text-gray-700 rounded-md"
           >
             {t("home.news.more_news")}
           </Link>

@@ -11,6 +11,7 @@ import { Navigation } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
 import { Swiper as SwiperType } from "swiper/types";
 import { useLanguage } from "@/contexts/LanguageContext";
+import TermBadge from "@/components/ui/TermBadge";
 
 const Blogs = ({
   blogs,
@@ -33,22 +34,6 @@ const Blogs = ({
     }).format(date);
   };
 
-  const getHospitalBgColor = (title: string) => {
-    switch (title) {
-      case "اقدسیه":
-        return "bg-[#E43C7F]";
-      case "سپید":
-        return "bg-[#F4DE63]";
-      case "مرکز جراحی محدود نیکان":
-        return "bg-[#4CC5AC]";
-      case "غرب":
-        return "bg-[#4CB1DD]";
-      case "ویزیت آنلاین":
-        return "bg-[#42aad6]";
-      default:
-        return "bg-gray-500";
-    }
-  };
   const getImageUrl = (
     image:
       | components["schemas"]["FileResource"]
@@ -167,22 +152,9 @@ const Blogs = ({
                         </div>
                         <div className="flex gap-x-2 items-center">
 
-                          {blog.terms?.length ? (
-                              blog.terms?.map((hospital: any, index: number) => {
-                                return (
-                                    <span
-                                        key={index}
-                                        className={`mt-1 px-6 py-0.5 text-white text-[10px] font-light rounded-[4px] ${getHospitalBgColor(hospital?.title)}`}
-                                    >
-                                {
-                                  hospital?.title
-                                }
-                              </span>
-
-                              )
-                                ;
-                              })
-                          ) : null}
+                          {blog.terms?.map((term) => (
+                            <TermBadge key={term.id} term={term} size={"sm"}/>
+                          ))}
                         </div>
                         {/* <Image
                     src={"/images/share-icon.png"}
@@ -205,9 +177,6 @@ const Blogs = ({
                         <span className="lg:text-[25px] text-[13px] font-bold text-secondary-600">
                           {blog.title}
                         </span>
-                        {/* <span className="lg:text-[20px] text-[13px] text-secondary-600 lg:pt-0 pt-1">
-                    گفتگو با دکتر محرابی در خصوص پراکندگی زن و مرد
-                  </span> */}
                         <span
                           className="font-extralight lg:text-[18px] text-[11px] text-[#272727] lg:pt-[70px] pt-[15px]"
                           title={blog.sub_title}

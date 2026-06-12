@@ -4,7 +4,7 @@ import { components } from "@/lib/api/v1";
 import { Button, Divider } from "@mui/material";
 import Image from "next/image";
 import Link from "next/link";
-import { useMemo, useRef } from "react";
+import React, { useMemo, useRef } from "react";
 import "swiper/css";
 import "swiper/css/navigation";
 import { Navigation } from "swiper/modules";
@@ -33,6 +33,22 @@ const Blogs = ({
     }).format(date);
   };
 
+  const getHospitalBgColor = (title: string) => {
+    switch (title) {
+      case "اقدسیه":
+        return "bg-[#E43C7F]";
+      case "سپید":
+        return "bg-[#F4DE63]";
+      case "مرکز جراحی محدود نیکان":
+        return "bg-[#4CC5AC]";
+      case "غرب":
+        return "bg-[#4CB1DD]";
+      case "ویزیت آنلاین":
+        return "bg-[#42aad6]";
+      default:
+        return "bg-gray-500";
+    }
+  };
   const getImageUrl = (
     image:
       | components["schemas"]["FileResource"]
@@ -148,6 +164,25 @@ const Blogs = ({
                           <span className="font-extralight lg:text-[15px] text-[11px]">
                             {blog.duration} {t("home.blogs.duration_suffix")}
                           </span>
+                        </div>
+                        <div className="flex gap-x-2 items-center">
+
+                          {blog.terms?.length ? (
+                              blog.terms?.map((hospital: any, index: number) => {
+                                return (
+                                    <span
+                                        key={index}
+                                        className={`mt-1 px-6 py-0.5 text-white text-[10px] font-light rounded-[4px] ${getHospitalBgColor(hospital?.title)}`}
+                                    >
+                                {
+                                  hospital?.title
+                                }
+                              </span>
+
+                              )
+                                ;
+                              })
+                          ) : null}
                         </div>
                         {/* <Image
                     src={"/images/share-icon.png"}

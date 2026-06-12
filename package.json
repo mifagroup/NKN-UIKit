@@ -7,7 +7,7 @@
     "build": "next build",
     "start": "next start -p 6709",
     "lint": "next lint",
-    "generate-openapi": "npx openapi-typescript https://api.mifadev.ir/docs/api-docs.json -o ./src/lib/api/v1.d.ts"
+    "generate-openapi": "npx openapi-typescript https://api.nikan.hospital/docs/api-docs.json -o ./src/lib/api/v1.d.ts"
   },
   "dependencies": {
     "@emotion/cache": "^11.13.1",

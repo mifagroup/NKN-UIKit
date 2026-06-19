@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import TermBadge from "@/components/ui/TermBadge";
 
 type TopBlogProps = {
   slider: components["schemas"]["BlogResource"][];
@@ -39,15 +40,15 @@ const TopBlog = (props: TopBlogProps) => {
                 <div className="flex items-center lg:gap-x-3 lg:justify-start justify-between lg:w-full gap-x-7">
                   <div className="flex gap-x-2 items-center">
                     <Image
-                      src={"/images/calendar-icon.png"}
-                      alt="calendar"
-                      width={21}
-                      height={23}
-                      className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
+                        src={"/images/calendar-icon.png"}
+                        alt="calendar"
+                        width={21}
+                        height={23}
+                        className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
                     />
                     <span className="font-extralight lg:text-[15px] text-[11px]">
                       {new Date(
-                        blog?.published_at ?? Date.now()
+                          blog?.published_at ?? Date.now()
                       ).toLocaleDateString("fa-IR", {
                         day: "2-digit",
                         month: "long",
@@ -57,56 +58,45 @@ const TopBlog = (props: TopBlogProps) => {
                   </div>
                   <div className="flex gap-x-2 items-center">
                     <Image
-                      src={"/images/clock-icon.png"}
-                      alt="clock"
-                      width={21}
-                      height={23}
-                      className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
+                        src={"/images/clock-icon.png"}
+                        alt="clock"
+                        width={21}
+                        height={23}
+                        className="lg:h-[23px] h-[12px] lg:w-[21px] w-[12px]"
                     />
                     <span className="font-extralight lg:text-[15px] text-[11px]">
                       {blog.duration} دقیقه
                     </span>
                   </div>
-                  {/* <Image
-                    src={"/images/share-icon.png"}
-                    alt="share"
-                    width={21}
-                    height={18}
-                    className="lg:h-[21px] h-[13px] lg:w-[21px] w-[14px]"
-                  /> */}
+
                 </div>
-                {/* <Image
-                  src={"/images/bookmark-icon.png"}
-                  alt="bookmark"
-                  width={21}
-                  height={23}
-                  className=""
-                /> */}
               </div>
               <div className="lg:order-2 order-1">
                 <div className="flex flex-col">
                   <span className="lg:text-[25px] text-[13px] font-bold text-secondary-600">
                     {blog.title}
                   </span>
-                  {/* <span className="lg:text-[20px] text-[13px] text-secondary-600 lg:pt-0 pt-1">
-                    گفتگو با دکتر محرابی در خصوص پراکندگی زن و مرد
-                  </span> */}
                   <span
-                    className="font-extralight lg:text-[18px] text-[11px] text-[#272727] lg:pt-[70px] pt-[15px]"
-                    title={blog.sub_title}
+                      className="font-extralight lg:text-[18px] text-[11px] text-[#272727] lg:pt-[70px] pt-[15px]"
+                      title={blog.sub_title}
                   >
                     {blog.sub_title?.substring(0, 200)}...
                   </span>
                 </div>
                 <Link
-                  href={`/blogs/${blog.slug}`}
-                  className="lg:absolute left-0 bottom-0 lg:text-[18px] text-[11px] text-black font-thin w-full text-left"
+                    href={`/news/${blog.slug}`}
+                    className="lg:absolute left-0 bottom-0 lg:text-[18px] text-[11px] text-black font-thin w-full text-left"
                 >
                   مطالعه بیشتر
                 </Link>
+                <div className="lg:absolute right-0 bottom-0">
+                  {blog.terms?.map((term) => (
+                      <TermBadge key={term.id} term={term} size={"sm"}/>
+                  ))}
+                </div>
               </div>
             </div>
-            <Divider className="!mx-5 mt-7 lg:!hidden block" />
+            <Divider className="!mx-5 mt-7 lg:!hidden block"/>
           </div>
         </SwiperSlide>
       ))}

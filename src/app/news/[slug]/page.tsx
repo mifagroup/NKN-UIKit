@@ -4,6 +4,7 @@ import qs from "qs";
 import { BlogsSlider, MagazineForm } from "./components";
 import Link from "next/link";
 import React from "react";
+import TermBadge from "@/components/ui/TermBadge";
 
 const page = async (props: { params: Promise<{ slug: string }> }) => {
   const params = await props.params;
@@ -61,51 +62,54 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
             </div>
 
             {/* Meta Info (Calendar + Clock) */}
-            <div className="flex flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3">
+              <div className="flex flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3">
 
-              {/* Calendar */}
-              <div className="flex gap-x-2 items-center">
-                <Image
-                    src={"/images/calendar-icon.png"}
-                    alt="calendar"
-                    width={21}
-                    height={23}
-                    className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
-                />
-                <span className="font-extralight text-[11px] lg:text-[15px]">
+                  {/* Calendar */}
+                  <div className="flex gap-x-2 items-center">
+                      <Image
+                          src={"/images/calendar-icon.png"}
+                          alt="calendar"
+                          width={21}
+                          height={23}
+                          className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
+                      />
+                      <span className="font-extralight text-[11px] lg:text-[15px]">
                              {new Date(blog?.published_at ?? Date.now()).toLocaleDateString(
                                  "fa-IR",
                                  {
-                                   day: "2-digit",
-                                   month: "long",
-                                   year: "numeric",
+                                     day: "2-digit",
+                                     month: "long",
+                                     year: "numeric",
                                  }
                              )}
                           </span>
-              </div>
-              {blog?.duration && (
-                  <div className="flex gap-x-2 items-center">
-                    <Image
-                        src={"/images/clock-icon.png"}
-                        alt="clock"
-                        width={21}
-                        height={23}
-                        className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
-                    />
-                    <span className="font-extralight text-[11px] lg:text-[15px]">
-                                  {blog?.duration} دقیقه
-
-                              </span>
                   </div>
-              )}
-
-            </div>
+                  {blog?.duration && (
+                      <div className="flex gap-x-2 items-center">
+                          <Image
+                              src={"/images/clock-icon.png"}
+                              alt="clock"
+                              width={21}
+                              height={23}
+                              className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
+                          />
+                          <span className="font-extralight text-[11px] lg:text-[15px]">
+                                  {blog?.duration} دقیقه
+                    </span>
+                      </div>
+                  )}
+                  <div className="flex gap-x-2 items-center">
+                      {blog.terms?.map((term) => (
+                          <TermBadge key={term.id} term={term} size={"sm"}/>
+                      ))}
+                  </div>
+              </div>
           </div>
         </div>
-        <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]"/>
-        <div
-            className="text-[18px] text-[#272727]"
-            dangerouslySetInnerHTML={{__html: blog?.description ?? ""}}
+          <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]"/>
+          <div
+              className="text-[18px] text-[#272727]"
+              dangerouslySetInnerHTML={{__html: blog?.description ?? ""}}
         />
         {/* <div className="text-[18px] text-[#272727]">
         لورم ایپسوم متن ساختگی با تولید سادگی نامفهوم از صنعت چاپ، و با استفاده

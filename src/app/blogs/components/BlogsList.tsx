@@ -82,7 +82,7 @@ const BlogsList = (props: BlogsListProps) => {
                 انجام کلیه خدمات درمانی نیکان به صورت آنلاین
               </span>
               <Link
-                href={""}
+                  href={`/nikan365`}
                 className="bg-primary-main rounded-[7px] w-full font-light text-white text-[14px] h-[33px] flex items-center justify-center"
               >
                 ثبت نام در نیکان 365

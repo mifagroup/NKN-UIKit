@@ -49,10 +49,10 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
           />
 
           {/* Content Wrapper */}
-          <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-y-4">
+            <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-y-4">
 
-            {/* Title + Subtitle */}
-            <div className="flex flex-col gap-y-1">
+                {/* Title + Subtitle */}
+                <div className="flex flex-col gap-y-1 min-w-0">
                         <span className="text-[25px] text-[#3F3F3F] font-bold">
                           {blog?.title}
                         </span>
@@ -62,11 +62,11 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
             </div>
 
             {/* Meta Info (Calendar + Clock) */}
-              <div className="flex flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3">
+                <div className="flex flex-wrap lg:flex-nowrap items-center gap-x-6 gap-y-2 flex-shrink-0">
 
-                  {/* Calendar */}
-                  <div className="flex gap-x-2 items-center">
-                      <Image
+                    {/* Calendar */}
+                    <div className="flex gap-x-2 items-center">
+                    <Image
                           src={"/images/calendar-icon.png"}
                           alt="calendar"
                           width={21}

@@ -5,6 +5,7 @@ import Link from "next/link";
 import React, { useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
+import TermBadge from "@/components/ui/TermBadge";
 const Blogs = ({
   blogs,
 }: {
@@ -64,19 +65,18 @@ const Blogs = ({
                 {blog.sub_title?.substring(0, 100)}...
               </span>
             </div>
-            <div
-              className={`flex items-center justify-between border-b pb-5 border-b-[#BABABA]`}
-            >
+            <div className="flex flex-wrap items-center justify-between border-b pb-5 border-b-[#BABABA]">
+
               <div className="flex items-center gap-x-3">
                 <div className="flex items-center gap-x-2 lg:text-[15px] text-[13px] font-light text-gray-400">
                   <Image
-                    src={"/images/calendar-icon.png"}
-                    alt="cal"
-                    width={21}
-                    height={23}
+                      src={"/images/calendar-icon.png"}
+                      alt="cal"
+                      width={21}
+                      height={23}
                   />
                   {new Date(
-                    blog?.published_at ?? Date.now()
+                      blog?.published_at ?? Date.now()
                   ).toLocaleDateString("fa-IR", {
                     day: "2-digit",
                     month: "long",
@@ -85,17 +85,22 @@ const Blogs = ({
                 </div>
                 <div className="flex items-center gap-x-2 lg:text-[15px] text-[13px] font-light text-gray-400">
                   <Image
-                    src={"/images/clock-icon.png"}
-                    alt="clock"
-                    width={21}
-                    height={23}
+                      src={"/images/clock-icon.png"}
+                      alt="clock"
+                      width={21}
+                      height={23}
                   />
                   {blog.duration} دقیقه
                 </div>
+                <div className="flex gap-x-2 items-center">
+                  {blog.terms?.map((term) => (
+                      <TermBadge key={term.id} term={term} size={"sm"}/>
+                  ))}
+                </div>
               </div>
               <Link
-                href={`/blogs/${blog.slug}`}
-                className="text-[18px] font-thin text-black"
+                  href={`/blogs/${blog.slug}`}
+                  className="w-full mt-3 text-left md:w-auto md:mt-0 text-[18px] font-thin text-black"
               >
                 مطالعه بیشتر
               </Link>

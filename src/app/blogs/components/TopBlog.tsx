@@ -7,6 +7,7 @@ import "swiper/css";
 import "swiper/css/autoplay";
 import { Autoplay } from "swiper/modules";
 import { Swiper, SwiperSlide } from "swiper/react";
+import TermBadge from "@/components/ui/TermBadge";
 
 type TopBlogProps = {
   slider: components["schemas"]["BlogResource"][];
@@ -92,21 +93,26 @@ const TopBlog = (props: TopBlogProps) => {
                     گفتگو با دکتر محرابی در خصوص پراکندگی زن و مرد
                   </span> */}
                   <span
-                    className="font-extralight lg:text-[18px] text-[11px] text-[#272727] lg:pt-[70px] pt-[15px]"
-                    title={blog.sub_title}
+                      className="font-extralight lg:text-[18px] text-[11px] text-[#272727] lg:pt-[70px] pt-[15px]"
+                      title={blog.sub_title}
                   >
                     {blog.sub_title?.substring(0, 200)}...
                   </span>
                 </div>
+                <div className="lg:absolute right-0 bottom-0">
+                  {blog.terms?.map((term) => (
+                      <TermBadge key={term.id} term={term} size={"sm"}/>
+                  ))}
+                </div>
                 <Link
-                  href={`/blogs/${blog.slug}`}
-                  className="lg:absolute left-0 bottom-0 lg:text-[18px] text-[11px] text-black font-thin w-full text-left"
+                    href={`/blogs/${blog.slug}`}
+                    className="lg:absolute left-0 bottom-0 lg:text-[18px] text-[11px] text-black font-thin w-full text-left"
                 >
                   مطالعه بیشتر
                 </Link>
               </div>
             </div>
-            <Divider className="!mx-5 mt-7 lg:!hidden block" />
+            <Divider className="!mx-5 mt-7 lg:!hidden block"/>
           </div>
         </SwiperSlide>
       ))}

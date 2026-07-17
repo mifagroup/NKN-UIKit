@@ -4,7 +4,7 @@ import Link from "next/link";
 const virtualSlider = () => {
   return (
       <Link href={"https://nikanvirtual.com/"} target={"_blank"}>
-          <div className="max-w-[1236px] container lg:mb-[150px]">
+          <div className="max-w-[1236px] container lg:mb-[80px]">
               <Image
                   src={"/images/virtual_slider.png"}
                   alt=""

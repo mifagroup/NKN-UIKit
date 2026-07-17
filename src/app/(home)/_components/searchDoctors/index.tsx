@@ -76,7 +76,7 @@ const SearchDoctors = ({
               className="lg:w-[74px] lg:h-[74px] w-[36px] h-[36px]"
             />
           </div>
-          <div className="gap-x-7 lg:grid hidden w-[790px] gap-y-5 grid-cols-5">
+          <div className="gap-x-7 lg:grid hidden w-[790px] gap-y-5 grid-cols-4">
             {search.trim().length > 0 ? (
               isSearching ? (
                 <Typography className="!text-base !text-secondary-800 !font-light">

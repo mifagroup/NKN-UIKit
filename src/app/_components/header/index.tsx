@@ -35,8 +35,11 @@ const Header = () => {
             <div className="flex items-center gap-x-1.5">
               {/*<LangSwicher />*/}
                {/*<LoginButton /> */}
-              <Link href={"https://ipd.nikan.hospital"} target={'_blank'}>
+              {/*<Link href={"https://ipd.nikan.hospital"} target={'_blank'}>
                 <Image src={"/images/flags/en.svg"} alt={"english"} width={30} height={26}></Image>
+              </Link>*/}
+              <Link href={"https://ipd.nikan.hospital"} target={'_blank'}>
+                <span className={'bg-[#C3F5EB] px-5 py-0.5 font-semibold rounded text-[#545454]'}>Eng</span>
               </Link>
             </div>
             <MenuDrawer />

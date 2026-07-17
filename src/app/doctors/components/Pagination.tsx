@@ -2,7 +2,7 @@
 import React, { useEffect, useState } from "react";
 import ArrowBackIosNewIcon from "@mui/icons-material/ArrowBackIosNew";
 import ArrowForwardIosIcon from "@mui/icons-material/ArrowForwardIos";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import qs from "qs";
 import { components } from "@/lib/api/v1";
 
@@ -14,6 +14,8 @@ const Pagination = ({
   const [currentPage, setCurrentPage] = useState<string>("1");
 
   const router = useRouter();
+
+  const pathname = usePathname();
 
   const searchParams = useSearchParams();
 
@@ -36,12 +38,17 @@ const Pagination = ({
   useEffect(() => {
     const updatedParams = { ...prevSearchParams };
 
-    if (currentPage) {
+    // Keep page out of the URL for page 1 so the canonical list URL stays clean
+    if (currentPage && currentPage !== "1") {
       updatedParams.page = currentPage;
+    } else {
+      delete updatedParams.page;
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    const newQuery = qs.stringify(updatedParams);
+    if (newQuery !== qs.stringify(prevSearchParams)) {
+      router.push(newQuery ? `?${newQuery}` : pathname);
+    }
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [currentPage]);

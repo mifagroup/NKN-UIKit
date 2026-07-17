@@ -55,15 +55,25 @@ const Filters = (props: FilterProps) => {
 
   const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
 
+  // Stable stringify so key order doesn't cause false "changed" detections
+  const queryOf = (params: object) =>
+      qs.stringify(params, { sort: (a: string, b: string) => a.localeCompare(b) });
+
   // Helper function to update URL params and remove page parameter
   const updateUrlParams = (updatedParams: any) => {
-    // Remove page parameter when filters change
-    if (updatedParams.page) {
-      delete updatedParams.page;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { page: prevPage, ...prevRest } = prevSearchParams;
+    // eslint-disable-next-line @typescript-eslint/no-unused-vars
+    const { page: nextPage, ...nextRest } = updatedParams;
+
+    // No filter actually changed — keep the URL (and current page) as is
+    if (queryOf(nextRest) === queryOf(prevRest)) {
+      return;
     }
 
-    const newUrl = `?${qs.stringify(updatedParams)}`;
-    router.push(newUrl);
+    // Filters changed: reset pagination and keep the URL clean when empty
+    const newQuery = queryOf(nextRest);
+    router.push(newQuery ? `?${newQuery}` : pathname);
   };
 
   useEffect(() => {
@@ -88,7 +98,7 @@ const Filters = (props: FilterProps) => {
       delete updatedParams.terms;
     }
 
-    if (selectedTerms) {
+    if (selectedTerms.length) {
       updatedParams.terms = selectedTerms.join(",");
     }
 
@@ -104,7 +114,7 @@ const Filters = (props: FilterProps) => {
       delete updatedParams.degrees;
     }
 
-    if (selectedDegrees) {
+    if (selectedDegrees.length) {
       updatedParams.degrees = selectedDegrees.join(",");
     }
 
@@ -167,10 +177,9 @@ const Filters = (props: FilterProps) => {
                                     delete paramsWithoutPage.page;
                                   }
 
+                                  const query = qs.stringify(paramsWithoutPage);
                                   router.push(
-                                      `/doctors/${term.slug}?${qs.stringify(
-                                          paramsWithoutPage
-                                      )}`
+                                      `/doctors/${term.slug}${query ? `?${query}` : ""}`
                                   );
                                 }}
                                 checked={term.slug === currentSlug}
@@ -211,14 +220,6 @@ const Filters = (props: FilterProps) => {
                           value={gen.value}
                           onChange={(event) => {
                             setGender(event.target.value);
-                            if (!event.target.value) {
-                              // Remove page parameter when clearing gender filter
-                              const paramsWithoutPage = {...prevSearchParams};
-                              if (paramsWithoutPage.page) {
-                                delete paramsWithoutPage.page;
-                              }
-                              router.push(`?${qs.stringify(paramsWithoutPage)}`);
-                            }
                           }}
                           checked={gender === gen.value}
                       />

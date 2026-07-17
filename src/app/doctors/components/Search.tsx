@@ -1,7 +1,7 @@
 "use client";
 import { Checkbox, Divider, FormControlLabel } from "@mui/material";
 import Image from "next/image";
-import { useRouter, useSearchParams } from "next/navigation";
+import { usePathname, useRouter, useSearchParams } from "next/navigation";
 import React, { useEffect, useState } from "react";
 import { useDebounce } from "use-debounce";
 import qs from "qs";
@@ -14,6 +14,8 @@ const Search = ({
   h1Tag?: string;
 }) => {
   const router = useRouter();
+
+  const pathname = usePathname();
 
   const searchParams = useSearchParams();
 
@@ -82,9 +84,9 @@ const Search = ({
         }
 
         const encodedQuery = qs.stringify(sanitizedNext);
-        router.push(encodedQuery ? `?${encodedQuery}` : "?");
+        router.push(encodedQuery ? `?${encodedQuery}` : pathname);
       },
-      [prevSearchParams, router, sanitizeParams, stringifyForCompare]
+      [pathname, prevSearchParams, router, sanitizeParams, stringifyForCompare]
   );
 
   useEffect(() => {

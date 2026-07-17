@@ -19,16 +19,23 @@ const BlogsList = (props: BlogsListProps) => {
 
   const { blogs } = props;
 
-  const { data } = useFetch().useQuery("get", "/terms", {
-    params: {
-      query: {
-        per_page: 10,
-        "filter[search]": value,
+  const { data } = useFetch().useQuery(
+    "get",
+    "/blogs",
+    {
+      params: {
+        query: {
+          "filter[search]": value,
+          "filter[type]": "news",
+        },
       },
     },
-  });
+    {
+      enabled: value.trim().length > 0,
+    }
+  );
 
-  const terms = data?.data;
+  const searchResults = data?.data;
 
   return (
     <div className="flex lg:flex-row flex-col gap-x-[60px] lg:pt-[88px] pt-10 gap-y-20 lg:px-0 px-5">
@@ -94,7 +101,7 @@ const BlogsList = (props: BlogsListProps) => {
           <div className="w-full flex items-center justify-between border rounded-[61px] border-primary-main pr-[30px] pl-3 py-1.5">
             <input
               type="text"
-              placeholder="زخم پای دیابتی...."
+              placeholder="جستجو...."
               className="text-[20px] text-primary-main placeholder:text-primary-main focus-visible:outline-none"
               onChange={(e) => setSearchValue(e.target.value)}
             />
@@ -105,14 +112,14 @@ const BlogsList = (props: BlogsListProps) => {
               height={47}
             />
           </div>
-          <div className="grid grid-cols-2 gap-y-2">
-            {terms?.map((term) => (
+          <div className="flex flex-col gap-y-2">
+            {searchResults?.map((blog) => (
               <Link
-                href={`/doctors?terms=${term.id}`}
-                key={term.id}
+                href={`/news/${blog.slug}`}
+                key={blog.id}
                 className="text-[#5b5b5b] font-light"
               >
-                {term.title}
+                {blog.title}
               </Link>
             ))}
           </div>

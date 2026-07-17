@@ -9,7 +9,7 @@ const Footer = async () => {
 
   const homeResponse: components["schemas"]["HomeResource"] = data?.data;
 
-  const footerTerms = homeResponse.footer_terms;
+  const footerTerms = homeResponse?.footer_terms;
 
   return (
     <div className="">

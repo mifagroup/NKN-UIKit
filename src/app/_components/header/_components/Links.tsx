@@ -77,7 +77,7 @@ const Links = () => {
   };
 
   return (
-      <div className="flex items-center gap-x-5 relative">
+      <div className="flex items-center relative">
         {links?.map((link, index) => (
             <div key={link.id} className="flex items-center relative">
               <div className="flex items-center gap-x-1">
@@ -125,7 +125,7 @@ const Links = () => {
 
               {/* Divider between items */}
               {index < links.length - 1 && (
-                  <span className="mx-2 h-5 border-l border-gray-300"></span>
+                  <span className="mx-3.5 h-5 border-l border-gray-300"></span>
               )}
             </div>
         ))}

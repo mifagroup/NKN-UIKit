@@ -16,6 +16,7 @@ const validBasePaths = [
   "/news",
   "/nikan-international",
   "/nikan365",
+  "/Nikancatering",
   "/social-responsibility",
   "/virtual-hospital",
 ];

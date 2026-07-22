@@ -49,9 +49,17 @@ const Filters = (props: FilterProps) => {
       searchParams.get("gender") ?? ""
   );
 
-  const [selectedTerms, setSelectedTerms] = React.useState<number[]>([]);
+  const [selectedTerms, setSelectedTerms] = React.useState<number[]>(() =>
+      prevSearchParams.terms
+          ? prevSearchParams.terms.split(",").map((term) => parseInt(term))
+          : []
+  );
 
-  const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>([]);
+  const [selectedDegrees, setSelectedDegrees] = React.useState<number[]>(() =>
+      prevSearchParams.degrees
+          ? prevSearchParams.degrees.split(",").map((degree) => parseInt(degree))
+          : []
+  );
 
   const [isExpertisesOpen, setIsExpertisesOpen] = useState<boolean>(false);
 
@@ -123,19 +131,6 @@ const Filters = (props: FilterProps) => {
 
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, [selectedDegrees]);
-
-  useEffect(() => {
-    if (prevSearchParams.degrees) {
-      setSelectedDegrees(
-          prevSearchParams.degrees.split(",").map((degree) => parseInt(degree))
-      );
-    }
-    if (prevSearchParams.terms) {
-      setSelectedTerms(
-          prevSearchParams.terms.split(",").map((term) => parseInt(term))
-      );
-    }
-  }, []);
 
   return (
       <div className="bg-white flex flex-col lg:w-[252px] w-full rounded-[16px] h-fit lg:sticky lg:top-5">

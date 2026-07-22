@@ -37,7 +37,20 @@ const Search = ({
       [hospitals]
   );
 
-  const [selectedHospitals, setSelectedHospitals] = useState<string[]>([]);
+  const [selectedHospitals, setSelectedHospitals] = useState<string[]>(() => {
+    const termIds = prevSearchParams.terms
+        ? prevSearchParams.terms.split(",").filter(Boolean)
+        : [];
+    const hospitalTermIds = termIds.filter((termId) =>
+        hospitalIdsSet.has(termId)
+    );
+
+    if (prevSearchParams.hospital && hospitalIdsSet.has(prevSearchParams.hospital)) {
+      hospitalTermIds.push(prevSearchParams.hospital);
+    }
+
+    return Array.from(new Set(hospitalTermIds));
+  });
 
   const handleHospitalChange = (hospitalId: string) => {
     setSelectedHospitals((prev) =>

@@ -41,12 +41,12 @@ const DoctorIntro = ({
             {doctor.short_description}
           </span>
           <div className="pt-[18px] flex items-center gap-x-1.5">
-            {doctor.terms?.slice(0, 3)?.map((term , index) => (
+            {doctor.hospitals?.slice(0, 3)?.map((hospital , index) => (
               <span
                 className="lg:px-3.5 px-2.5 py-1 text-black lg:text-[12px] text-[10px] font-extralight bg-[#F3F3F3] rounded-[8px]"
                 key={index}
               >
-                {term.title}
+                {hospital.title}
               </span>
             ))}
           </div>

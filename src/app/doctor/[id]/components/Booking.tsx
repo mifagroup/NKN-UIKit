@@ -1,67 +1,143 @@
 import { components } from "@/lib/api/v1";
-import { Divider } from "@mui/material";
-import Image from "next/image";
-import Link from "next/link";
+
+type HospitalDetail = Pick<
+  components["schemas"]["HospitalResource"],
+  | "id"
+  | "name"
+  | "full_name"
+  | "address"
+  | "fax"
+  | "address_link"
+  | "website_link"
+  | "thumbnail"
+>;
+
+type DoctorHospital = components["schemas"]["TermResource"] & {
+  hospital_details?: HospitalDetail[];
+};
+
+const HOSPITAL_THEMES = [
+  {
+    keywords: ["سپید"],
+    background: "#FBF8F0",
+    accent: "#F4DE63",
+  },
+  {
+    keywords: ["اقدسیه"],
+    background: "#FFF5F9",
+    accent: "#E43C7F",
+  },
+  {
+    keywords: ["غرب"],
+    background: "#E7F4FA",
+    accent: "#4CB1DD",
+  },
+  {
+    keywords: ["جراحی محدود"],
+    background: "#EFFBF9",
+    accent: "#31D1B0",
+  },
+] as const;
+
+const DEFAULT_THEME = {
+  background: "#F0FBF9",
+  accent: "#22CDA8",
+};
+
+const getHospitalTheme = (hospitalName: string) =>
+  HOSPITAL_THEMES.find(({ keywords }) =>
+    keywords.some((keyword) => hospitalName.includes(keyword))
+  ) ?? DEFAULT_THEME;
 
 const Booking = ({
   doctor,
 }: {
   doctor: components["schemas"]["DoctorResource"];
 }) => {
+  const hospitals = (doctor.hospitals ?? []) as DoctorHospital[];
+  const bookingLocations = hospitals.flatMap((hospital) =>
+    (hospital.hospital_details ?? []).map((details) => ({
+      details,
+      termTitle: hospital.title ?? "",
+    }))
+  );
+
+  if (!bookingLocations.length) return null;
+
   return (
-    <div className="mb-[109px] bg-[#19B796] justify-between lg:flex hidden">
-      <div className="pr-[140px] pl-[102px] pt-[56px] pb-[68px] flex flex-col gap-y-10">
-        <div className="flex flex-col gap-y-1.5">
-          <span className="text-[20px] text-white font-black">
-            نوبت حضوری {doctor?.full_name} در بیمارستان نیکان
-          </span>
-          <span className="text-[15px] font-light text-white">
-            تهران، اقدسیه ، ابتدای بلوار ارتش، ورودی اراج ، خیابان ۲۲ بهمن ،روبه
-            روی بیمارستان نیکان
-          </span>
-        </div>
-        <div className="flex flex-col gap-y-7">
-          <div className="flex items-center gap-x-[33px]">
-            <div className="flex items-center gap-x-[15px]">
-              <Image
-                src={"/images/phone-icon.png"}
-                alt="phone-icon"
-                width={47}
-                height={44}
-              />
-              <span className="text-[15px] font-semibold text-white">
-                ۰۲۱۲۹۱۲۹
-              </span>
-            </div>
-            <Divider orientation="vertical" className="!w-[2px] !bg-white" />
-            <span className="text-[15px] text-white font-semibold">
-              روزها و ساعات پذیرش: همه روزه از ساعت 08:00 الی 24:00
-            </span>
-          </div>
-          {doctor.redirect && (
-               <Link
-                 href={doctor?.redirect}
-                 target="_blank"
-                 className="bg-white w-full h-[56px] rounded-[14px] text-[20px] text-[#657975] font-semibold shadow-[0px_4px_4px_0px_rgba(0,0,0,0.25)] flex justify-center items-center"
-               >
-                 تعیین وقت و نوبت از {doctor?.full_name}
-               </Link>
-          )}
-        </div>
+    <section
+      className="container mb-[109px] max-w-[990px] px-4 lg:px-0"
+      aria-label={`مراکز نوبت‌دهی حضوری ${doctor.full_name}`}
+    >
+      <div className="flex flex-col gap-5">
+        {bookingLocations.map(({ details, termTitle }) => {
+          const hospitalName = details.name || termTitle;
+          const hospitalFullName = details.full_name || hospitalName;
+          const theme = getHospitalTheme(`${hospitalName} ${termTitle}`);
+          const thumbnailUrl = details.thumbnail?.original_url;
+
+          return (
+            <article
+              key={`${termTitle}-${details.id}`}
+              className="flex min-h-[156px] overflow-hidden rounded-[14px] lg:min-h-[200px]"
+              style={{ backgroundColor: theme.background }}
+            >
+              <div
+                className="flex min-w-0 flex-1 flex-col justify-center border-l-2  px-4 py-5 sm:px-7 lg:px-9 lg:py-7"
+                style={{ borderColor: theme.accent }}
+              >
+                <h2 className="text-[15px] font-bold leading-7 text-[#545454] sm:text-[17px] lg:text-[20px]">
+                  نوبت حضوری {doctor.full_name} در {hospitalFullName}
+                </h2>
+
+                {details.address && (
+                  <p className="mt-1 text-[11px] font-light leading-6 text-[#7D7D7D] sm:text-[12px] lg:text-[13px]">
+                    {details.address}
+                  </p>
+                )}
+
+                <div
+                  className="my-3 h-px w-full opacity-15 lg:my-4"
+                  style={{ backgroundColor: theme.accent }}
+                />
+
+                {details.fax && (
+                  <div className="flex items-center gap-3 text-[11px] font-medium text-[#5B5B5B] sm:text-[12px] lg:text-[13px]">
+                    <span
+                      aria-hidden="true"
+                      className="h-1.5 w-1.5 shrink-0 rounded-full"
+                      style={{ backgroundColor: theme.accent }}
+                    />
+                    <span>شماره‌های تماس: {details.fax}</span>
+                  </div>
+                )}
+              </div>
+
+              <div className="flex w-[105px] shrink-0 flex-col items-center justify-center gap-2.5 px-3 sm:w-[145px] lg:w-[193px]">
+                {thumbnailUrl && (
+                  // The API can return the local backend host in development, so a
+                  // native image keeps this runtime URL independent of Next image config.
+                  // eslint-disable-next-line @next/next/no-img-element
+                  <img
+                    src={thumbnailUrl}
+                    alt={`نشان ${hospitalName}`}
+                    width={112}
+                    height={92}
+                    className="h-[62px] w-auto object-contain brightness-0 opacity-40 sm:h-[74px] lg:h-[92px]"
+                  />
+                )}
+                <span
+                  className="max-w-full rounded-[4px] px-3 py-1 text-center text-[9px] font-medium leading-4 text-white lg:text-[11px]"
+                  style={{ backgroundColor: theme.accent }}
+                >
+                  {hospitalName}
+                </span>
+              </div>
+            </article>
+          );
+        })}
       </div>
-      <div className="relative">
-        <Image
-          src={"/images/map.png"}
-          alt="map-image"
-          width={596}
-          height={349}
-          className="h-full"
-        />
-        <button className="w-[219px] h-[52px] bg-primary-main rounded-[9px] text-white font-semibold text-[20px] absolute top-1/2 right-[50%] translate-x-[50%]">
-          مسیریابی
-        </button>
-      </div>
-    </div>
+    </section>
   );
 };
 

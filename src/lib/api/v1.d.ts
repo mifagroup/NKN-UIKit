@@ -225,6 +225,98 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/insurances": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Retrieve a list of insurances
+         * @description get all insurances from the database as insurance resource
+         */
+        get: operations["19bdcb6d521cf184ae8e7474b694ed22"];
+        put?: never;
+        /**
+         * Store new Insurance
+         * @description Returns created Insurance data
+         */
+        post: operations["ee04ef757010cfd685fccee8dc3f35ae"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/insurances/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get insurance information
+         * @description Returns insurance data
+         */
+        get: operations["9e8d73e26b6aff1c41cebd12a2921203"];
+        /**
+         * Update existing insurance
+         * @description Returns updated insurance data
+         */
+        put: operations["c55be752328ef156625569b588c79126"];
+        post?: never;
+        /**
+         * Delete insurance record
+         * @description Returns delete status
+         */
+        delete: operations["be85854b0623ebc862078e57de2208c7"];
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/media": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get all media files
+         * @description Retrieve a paginated list of all media files from the media library
+         */
+        get: operations["getMedia"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/media/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Update a media file
+         * @description Update file name and custom properties (alt text) of a media file
+         */
+        put: operations["updateMedia"];
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/roles": {
         parameters: {
             query?: never;
@@ -257,6 +349,74 @@ export interface paths {
         put?: never;
         post?: never;
         delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/seos": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a paginated list of SEO records
+         * @description Retrieve a paginated list of SEO resources.
+         */
+        get: operations["getSeos"];
+        put?: never;
+        /**
+         * Create a new SEO record
+         * @description Store a new SEO record in the database
+         */
+        post: operations["b20f3d6c50d4bb3ad74a8328de08d870"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/seos/{id}/{type}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        /**
+         * Get a specific SEO record by model ID and type
+         * @description Retrieve a specific SEO resource by its seoable ID and type (blog/term).
+         */
+        get: operations["getSeoByIdAndType"];
+        put?: never;
+        post?: never;
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
+    "/seos/{id}": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        /**
+         * Update an existing SEO record
+         * @description Update the details of an existing SEO resource.
+         */
+        put: operations["updateSeo"];
+        post?: never;
+        /**
+         * Delete a specific SEO record
+         * @description Remove a specific SEO resource by its ID.
+         */
+        delete: operations["deleteSeo"];
         options?: never;
         head?: never;
         patch?: never;
@@ -564,13 +724,17 @@ export interface components {
             duration?: number | null;
             /** @description type of blog. values: blog,news,social_responsibilty . default: blog */
             type?: string | null;
-            /** @description publish status of the blog  */
+            /** @description publish status of the blog */
             published?: boolean | null;
+            /** @description Ordering position of the blog */
+            ordering?: number | null;
             /**
              * Format: binary
              * @description Main image of the blog
              */
             main_image: string;
+            /** @description Array of term IDs (hospital taxonomy) to associate with the blog */
+            term_ids?: number[] | null;
         };
         StoreDoctorRequest: {
             /** @example John */
@@ -621,6 +785,47 @@ export interface components {
              * @description thumbnail file for the hospital
              */
             thumbnail: string;
+            /**
+             * Format: binary
+             * @description main insurances file file for the hospital
+             */
+            insurances_file: string;
+            /**
+             * Format: binary
+             * @description main cover image file for the hospital
+             */
+            cover_image: string;
+        };
+        StoreInsuranceResourceRequest: {
+            /** @description The title of the insurance */
+            title: string;
+            /**
+             * Format: binary
+             * @description A logo file for the insurance
+             */
+            logo: string;
+            /** @description Whether the insurance covers outpatient services */
+            is_outpatient?: boolean;
+            /** @description Whether the insurance covers inpatient services */
+            is_inpatient?: boolean;
+            /** @description Array of hospital IDs to associate with this insurance */
+            hospital_ids?: number[];
+        };
+        /**
+         * Store Seo Request
+         * @description Schema for storing SEO metadata
+         */
+        StoreSeoRequest: {
+            /** @description SEO title of the resource */
+            title: string;
+            /** @description H1 heading of the resource */
+            h1?: string;
+            /** @description SEO description/meta description of the resource */
+            description: string;
+            /** @description ID of the resource (Term or Blog) */
+            seoable_id: number;
+            /** @description Type of the resource. Values: 'term', 'blog' */
+            seoable_type: string;
         };
         StoreSlideResourceRequest: {
             /** @description The title of the slide */
@@ -630,7 +835,7 @@ export interface components {
             /** @description A description of the slide */
             description?: string;
             /** @description The ordering number for the slide */
-            ordering: number;
+            ordering?: number;
             /**
              * Format: uri
              * @description The link related to the slide
@@ -638,9 +843,14 @@ export interface components {
             link?: string;
             /**
              * Format: binary
-             * @description An image file for the slide
+             * @description Desktop image file for the slide (optional)
              */
-            image: string;
+            desktop_image?: string;
+            /**
+             * Format: binary
+             * @description Mobile image file for the slide (optional)
+             */
+            mobile_image?: string;
             /** @description An array of buttons for the slide */
             button?: {
                 /** @description The title of the button */
@@ -659,6 +869,8 @@ export interface components {
             taxonomy_id: number;
             /** @description slug of category item */
             slug?: string;
+            /** @description description of category item */
+            description?: string;
         };
         /**
          * Store User Request
@@ -728,11 +940,15 @@ export interface components {
             duration?: number | null;
             /** @description publish status of the blog default is false */
             published?: boolean | null;
+            /** @description Ordering position of the blog */
+            ordering?: number | null;
             /**
              * Format: binary
              * @description Main image of the blog
              */
             main_image?: string | null;
+            /** @description Array of term IDs (hospital taxonomy) to associate with the blog */
+            term_ids?: number[] | null;
         };
         UpdateDoctorRequest: {
             /** @example John */
@@ -788,6 +1004,43 @@ export interface components {
              * @description main thumbnail file for the hospital
              */
             main_thumbnail?: string;
+            /**
+             * Format: binary
+             * @description main insurances file file for the hospital
+             */
+            insurances_file?: string;
+            /**
+             * Format: binary
+             * @description main cover image file for the hospital
+             */
+            cover_image?: string;
+        };
+        UpdateInsuranceResourceRequest: {
+            /** @description The title of the insurance */
+            title: string;
+            /**
+             * Format: binary
+             * @description A logo file for the insurance
+             */
+            logo?: string;
+            /** @description Whether the insurance covers outpatient services */
+            is_outpatient?: boolean;
+            /** @description Whether the insurance covers inpatient services */
+            is_inpatient?: boolean;
+            /** @description Array of hospital IDs to associate with this insurance */
+            hospital_ids?: number[];
+        };
+        /**
+         * Update Seo Request
+         * @description Schema for updating SEO metadata
+         */
+        UpdateSeoRequest: {
+            /** @description SEO title of the resource */
+            title?: string;
+            /** @description H1 heading of the resource */
+            h1?: string;
+            /** @description SEO description/meta description of the resource */
+            description?: string;
         };
         UpdateSlideResourceRequest: {
             /** @description The title of the slide */
@@ -803,9 +1056,14 @@ export interface components {
             link?: string;
             /**
              * Format: binary
-             * @description An image file for the slide
+             * @description Desktop image file for the slide (optional)
              */
-            image: string;
+            desktop_image?: string;
+            /**
+             * Format: binary
+             * @description Mobile image file for the slide (optional)
+             */
+            mobile_image?: string;
             /** @description An array of buttons for the slide */
             button?: {
                 /** @description The title of the button */
@@ -832,6 +1090,8 @@ export interface components {
             is_filter?: boolean;
             /** @description category item show on client footer */
             is_footer?: boolean;
+            /** @description description of category item */
+            description?: string;
         };
         /**
          * Update User Request
@@ -887,6 +1147,8 @@ export interface components {
             slug?: string;
             /** @description The duration of the blog */
             duration?: number;
+            /** @description The ordering position of the blog */
+            ordering?: number;
             /**
              * Format: date-time
              * @description The creation date of the blog
@@ -902,6 +1164,10 @@ export interface components {
             /** @description The main image of the blog */
             main_image?: components["schemas"]["FileResource"][];
             user?: components["schemas"]["UserResource"];
+            /** @description The gallery of the blog */
+            gallery?: components["schemas"]["FileResource"][];
+            /** @description The terms (hospital taxonomy) associated with the blog */
+            terms?: components["schemas"]["TermResource"][];
         };
         /**
          * DoctorResource
@@ -933,8 +1199,8 @@ export interface components {
             portfolio?: components["schemas"]["FileResource"][];
             /** @description categories item of doctor */
             terms: components["schemas"]["TermResource"][];
-            /** @description hospital of doctor */
-            hospital?: components["schemas"]["HospitalResource"][];
+            /** @description hospitals of doctor */
+            hospitals?: components["schemas"]["TermResource"][];
         };
         /**
          * FileResource
@@ -945,6 +1211,8 @@ export interface components {
             id: number;
             /** @description name of the file */
             file_name?: string;
+            /** @description name of the file without extension */
+            title?: string;
             /**
              * Format: uri
              * @description preview url of the File
@@ -959,6 +1227,8 @@ export interface components {
             extension?: string;
             /** @description size of extension */
             size?: number;
+            /** @description Alt text for the file */
+            alt?: string | null;
         };
         /**
          * HomeResource
@@ -990,7 +1260,22 @@ export interface components {
             /** Format: uri */
             email: string;
             image: components["schemas"]["FileResource"];
+            insurances?: components["schemas"]["InsuranceResource"];
             thumbnail: components["schemas"]["FileResource"];
+            insurances_file?: components["schemas"]["FileResource"];
+            cover_image?: components["schemas"]["FileResource"];
+        };
+        InsuranceResource: {
+            id: number;
+            /** @description The title of the insurance */
+            title: string;
+            logo: components["schemas"]["FileResource"];
+            /** @description Whether the insurance covers outpatient services */
+            is_outpatient: boolean;
+            /** @description Whether the insurance covers inpatient services */
+            is_inpatient: boolean;
+            /** @description The hospitals associated with the insurance */
+            hospitals?: components["schemas"]["HospitalResource"][];
         };
         /**
          * RoleResource
@@ -1014,6 +1299,20 @@ export interface components {
              */
             updated_at?: string;
         };
+        /**
+         * SEO Resource
+         * @description SEO resource representation
+         */
+        SeoResource: {
+            /** @description The id of the SEO record */
+            id?: number;
+            /** @description The SEO title */
+            title?: string;
+            /** @description The H1 heading */
+            h1?: string;
+            /** @description The SEO description/meta description */
+            description?: string;
+        };
         SlideResource: {
             /** @description The title of the slide */
             id?: number;
@@ -1026,7 +1325,10 @@ export interface components {
              * @description The link associated with the slide
              */
             link: string;
-            image: components["schemas"]["FileResource"];
+            /** @description The desktop image for the slide */
+            image: components["schemas"]["FileResource"] | null;
+            /** @description The mobile image for the slide */
+            mobile_image?: components["schemas"]["FileResource"] | null;
             /** @description The button data for the slide, if available */
             button?: {
                 /** @description The title of the button */
@@ -1081,6 +1383,8 @@ export interface components {
             title?: string;
             /** @description slug of the category item */
             slug?: string;
+            /** @description description of the category item */
+            description?: string;
             taxonomy?: components["schemas"]["TaxonomyResource"];
         };
         /**
@@ -1268,7 +1572,7 @@ export interface operations {
                 "filter[user_id]"?: number;
                 /** @description 'news', 'blog' , social_responsibility */
                 "filter[type]"?: string;
-                /** @description Sort blogs by title : 'title', 'duration', 'sub_title', 'created_at', 'published_at' */
+                /** @description Sort blogs by title : 'title', 'duration', 'sub_title', 'created_at', 'published_at', 'ordering' */
                 sort?: string;
             };
             header?: never;
@@ -1932,6 +2236,328 @@ export interface operations {
             };
         };
     };
+    "19bdcb6d521cf184ae8e7474b694ed22": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description List of insurances retrieved successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InsuranceResource"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    ee04ef757010cfd685fccee8dc3f35ae: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["StoreInsuranceResourceRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful operation */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InsuranceResource"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    "9e8d73e26b6aff1c41cebd12a2921203": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description insurance id */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["InsuranceResource"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resource Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    c55be752328ef156625569b588c79126: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description insurance id */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "multipart/form-data": components["schemas"]["UpdateInsuranceResourceRequest"];
+                "application/x-www-form-urlencoded": components["schemas"]["UpdateInsuranceResourceRequest"];
+                "application/json": components["schemas"]["UpdateInsuranceResourceRequest"];
+            };
+        };
+        responses: {
+            /** @description Successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["UpdateInsuranceResourceRequest"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resource Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    be85854b0623ebc862078e57de2208c7: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description insurance id */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful operation */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Resource Not Found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getMedia: {
+        parameters: {
+            query?: {
+                /** @description Page number for pagination */
+                page?: number;
+                /** @description Number of items per page */
+                per_page?: number;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["FileResource"][];
+                        meta?: Record<string, never>;
+                        links?: Record<string, never>;
+                    };
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    updateMedia: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description Media ID */
+                id: number;
+            };
+            cookie?: never;
+        };
+        /** @description Media update data */
+        requestBody: {
+            content: {
+                "application/json": {
+                    /**
+                     * @description New name for the file
+                     * @example new-file-name.jpg
+                     */
+                    file_name: string;
+                    /**
+                     * @description Alt text for the image
+                     * @example Image alt text
+                     */
+                    alt?: string;
+                };
+            };
+        };
+        responses: {
+            /** @description Media updated successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["FileResource"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Media not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
     "6e28bdec08d7292bde33180ca5928718": {
         parameters: {
             query?: never;
@@ -1988,6 +2614,228 @@ export interface operations {
             };
             /** @description کلمه‌ای برای جستجو وارد نشده است. */
             400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    getSeos: {
+        parameters: {
+            query?: {
+                /** @description Page number for pagination */
+                page?: number;
+                /** @description Search term to filter SEO by title or description */
+                "filter[search]"?: string;
+                "filter[seoable_type]"?: string;
+                /** @description Sort SEO records by field */
+                sort?: string;
+            };
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        data?: components["schemas"]["SeoResource"][];
+                        links?: components["schemas"]["LinksPaginationResource"];
+                        meta?: components["schemas"]["MetaPaginationResource"];
+                    };
+                };
+            };
+        };
+    };
+    b20f3d6c50d4bb3ad74a8328de08d870: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StoreSeoRequest"];
+            };
+        };
+        responses: {
+            /** @description SEO record created successfully */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SeoResource"];
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    getSeoByIdAndType: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description ID of the seoable model (Blog or Term) */
+                id: number;
+                /** @description Type of the seoable model (blog or term) */
+                type: string;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description Successful response */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SeoResource"];
+                };
+            };
+            /** @description SEO record not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+        };
+    };
+    updateSeo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description ID of the SEO record to update */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["UpdateSeoRequest"];
+            };
+        };
+        responses: {
+            /** @description SEO record updated successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["SeoResource"];
+                };
+            };
+            /** @description Bad request */
+            400: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description SEO record not found */
+            404: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+        };
+    };
+    deleteSeo: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path: {
+                /** @description ID of the SEO record to delete */
+                id: number;
+            };
+            cookie?: never;
+        };
+        requestBody?: never;
+        responses: {
+            /** @description SEO record deleted successfully */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": {
+                        /** @example true */
+                        success?: boolean;
+                    };
+                };
+            };
+            /** @description Unauthenticated */
+            401: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description Forbidden */
+            403: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content?: never;
+            };
+            /** @description SEO record not found */
+            404: {
                 headers: {
                     [name: string]: unknown;
                 };

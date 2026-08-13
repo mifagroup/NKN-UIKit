@@ -42,6 +42,11 @@ const nextConfig: NextConfig = {
         hostname: "api.nikan.hospital",
         pathname: "/storage/**",
       },
+      {
+        protocol: "http",
+        hostname: "127.0.0.1",
+        pathname: "/storage/**",
+      },
     ],
   },
 

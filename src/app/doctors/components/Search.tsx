@@ -200,14 +200,14 @@ const Search = ({
                 }}
                 value={searchValue}
             />
-            <Image
+           {/* <Image
                 src={"/images/search-icon-small.png"}
                 alt="search-icon"
                 width={16}
                 height={16}
                 quality={100}
                 className="cursor-pointer"
-            />
+            />*/}
           </div>
         </div>
         <Divider className="!bg-[#e3e3e3] w-full !my-5" />

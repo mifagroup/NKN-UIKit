@@ -83,13 +83,13 @@ const SearchDoctors = ({
                   {t("home_search.searching")}
                 </Typography>
               ) : searchResults.length > 0 ? (
-                searchResults.slice(0, 25).map((result) => (
+                searchResults.slice(0, 16).map((result) => (
                   <Link
                     href={result.url}
                     className="flex flex-col gap-y-5"
                     key={result.id}
                   >
-                    <Typography className="!text-base !text-secondary-800 !font-light whitespace-nowrap">
+                    <Typography className="!text-base !text-secondary-800 !font-light">
                       {result.name}
                     </Typography>
                   </Link>

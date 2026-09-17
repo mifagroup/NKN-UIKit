@@ -18,7 +18,7 @@ const Hero = () => {
             نیکان ۳۶۵، پلتفرم جامع سلامت دیجیتال بیمارستان‌های نیکان
           </span>
           <Link
-            href={"https://pa.nikan365.ir/auth/login"}
+            href={"https://pa.nikan365.ir/"}
             className="mb-[100px] w-[346px] h-[57px] md:-mb-4 bg-primary-main rounded-[15px] text-[24px] font-medium  text-white flex items-center justify-center mt-5"
             target="_blank"
           >

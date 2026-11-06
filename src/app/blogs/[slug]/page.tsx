@@ -110,7 +110,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
 
           <div className="h-[1px] bg-[#D9D9D9] mt-[32px] mb-[28px]"/>
           <div
-              className="text-[18px] text-[#272727]"
+              className="prose prose-neutral max-w-none text-[18px] text-[#272727] [&_a]:break-words [&_a]:text-primary-600 [&_a]:underline [&_a]:decoration-primary-600"
               dangerouslySetInnerHTML={{__html: blog?.description ?? ""}}
         />
         {/* <div className="text-[18px] text-[#272727]">

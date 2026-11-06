@@ -2,6 +2,7 @@ import Image from "next/image";
 import React from "react";
 import { components } from "@/lib/api/v1";
 import Link from "next/link";
+import { PageTitle } from "./States";
 
 interface HeroProps {
   slider: components["schemas"]["BlogResource"][];
@@ -10,11 +11,7 @@ interface HeroProps {
 const Hero = ({ slider = [] }: HeroProps) => {
   return (
     <div className="lg:mt-[57px] flex flex-col gap-y-8 lg:pb-[57px] pb-[46px] lg:border-b border-b-[#ACACAC]">
-      <div className="flex-col items-center gap-y-1 lg:flex hidden">
-        <h1 className="text-xl leading-[33px] font-semibold text-center">
-          نیکان و مسئولیت اجتماعی
-        </h1>
-      </div>
+      <PageTitle />
       <div className="grid lg:grid-cols-7 grid-cols-1 lg:gap-3">
         {slider[0] && (
           <div className="relative lg:col-span-7">

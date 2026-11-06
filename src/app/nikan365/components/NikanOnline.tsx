@@ -13,7 +13,7 @@ const NikanOnline = () => {
           <span className="max-w-[530px] lg:text-[15px] text-[14px] font-light text-[#7D7D7D]">
           همین حالا به نیکان ۳۶۵ بپیوندید و سلامت خانواده‌تان را با یک اپ هوشمند مدیریت کنید. نوبت بگیرید، ویزیت شوید، مشاوره بگیرید… از هر جا، در هر زمان.   </span>
           <Link
-            href={"https://pa.nikan365.ir/auth/login"}
+            href={"https://pa.nikan365.ir/"}
             className="md:w-[267px] w-full h-[44px] rounded-[15px] bg-primary-main text-white text-[15px] font-medium flex justify-center items-center mt-5"
             target="_blank"
           >

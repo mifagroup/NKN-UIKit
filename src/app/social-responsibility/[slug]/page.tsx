@@ -21,6 +21,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
     filter: {
       user_id: blog.user?.id,
       type: "social_responsibility",
+      published_at: true,
     },
     sort: "created_at",
   });

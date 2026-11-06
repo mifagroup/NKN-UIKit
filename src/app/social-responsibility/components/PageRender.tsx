@@ -23,6 +23,7 @@ const SocialResponsibilityPage = () => {
         with_slider: true,
         filter: {
           type: "social_responsibility",
+          published_at: true,
         },
         page: currentPage,
       });

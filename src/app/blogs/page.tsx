@@ -12,6 +12,10 @@ export const metadata: Metadata = {
 const page = async () => {
   const formattedParams = qs.stringify({
     with_slider: true,
+    filter: {
+      type: "blog",
+      published_at: true,
+    },
   });
 
   const data = await fetch(

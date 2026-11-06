@@ -12,6 +12,7 @@ const page = async () => {
     with_slider: true,
     filter: {
       type: "news",
+      published_at: true,
     },
   });
 

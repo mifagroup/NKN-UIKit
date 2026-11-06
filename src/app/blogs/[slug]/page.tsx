@@ -21,6 +21,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
   const formattedParams = qs.stringify({
     filter: {
       user_id: blog.user?.id,
+      published_at: true,
     },
     sort: "created_at",
   });

@@ -36,8 +36,8 @@ const BlogsSlider = (props: BlogsSliderProps) => {
                 href={`/social-responsibility/${blog.slug}`}
                 className="flex h-full flex-col gap-y-[5px] border border-[#31D1B0]"
               >
-                {/* Fixed frame so every card's image has the same size, whatever the source ratio. */}
-                <div className="relative aspect-[353/263] w-full overflow-hidden bg-[#f2f2f2]">
+                {/* Fixed landscape frame (16:9) to match the wide photos used across this section. */}
+                <div className="relative aspect-video w-full overflow-hidden bg-[#f2f2f2]">
                   <Image
                     unoptimized
                     src={blog?.main_image?.original_url ?? ""}

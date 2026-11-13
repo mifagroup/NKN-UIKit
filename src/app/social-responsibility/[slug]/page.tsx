@@ -1,7 +1,8 @@
 import { components } from "@/lib/api/v1";
 import Image from "next/image";
 import qs from "qs";
-import { BlogsSlider, MagazineForm } from "./components";
+import { BlogsSlider } from "./components";
+import NewsletterForm from "@/components/NewsletterForm";
 import Link from "next/link";
 import React from "react";
 
@@ -252,7 +253,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                               هرهفته دوشنبه ها صبح خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
                             </span>
                           </div>
-                          <MagazineForm/>
+                          <NewsletterForm variant="inline" />
                       </div>
                   </div>
               </div>

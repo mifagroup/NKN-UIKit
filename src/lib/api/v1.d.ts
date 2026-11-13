@@ -317,6 +317,26 @@ export interface paths {
         patch?: never;
         trace?: never;
     };
+    "/newsletter": {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        get?: never;
+        put?: never;
+        /**
+         * Subscribe an email to the newsletter
+         * @description Public endpoint (no auth). Returns 201 for a new (or re-activated) subscription and 200 if the email is already subscribed; the body is identical in both cases. Rate limited to 5 requests per minute per IP.
+         */
+        post: operations["subscribeNewsletter"];
+        delete?: never;
+        options?: never;
+        head?: never;
+        patch?: never;
+        trace?: never;
+    };
     "/roles": {
         parameters: {
             query?: never;
@@ -703,6 +723,10 @@ export interface components {
              */
             errors: Record<string, never>;
         };
+        NewsletterSubscribeResponse: {
+            /** @example عضویت شما در خبرنامه با موفقیت ثبت شد. */
+            message: string;
+        };
         StoreAuthResourceRequest: {
             /** @description email of user */
             email: string;
@@ -810,6 +834,14 @@ export interface components {
             is_inpatient?: boolean;
             /** @description Array of hospital IDs to associate with this insurance */
             hospital_ids?: number[];
+        };
+        StoreNewsletterSubscriberRequest: {
+            /**
+             * Format: email
+             * @description Subscriber email. Stored trimmed and lower-cased.
+             * @example user@example.com
+             */
+            email: string;
         };
         /**
          * Store Seo Request
@@ -1386,6 +1418,8 @@ export interface components {
             /** @description description of the category item */
             description?: string;
             taxonomy?: components["schemas"]["TaxonomyResource"];
+            /** @description Hospital records linked to this hospital term */
+            hospital_details?: components["schemas"]["HospitalResource"][];
         };
         /**
          * UserResource
@@ -2555,6 +2589,59 @@ export interface operations {
                     [name: string]: unknown;
                 };
                 content?: never;
+            };
+        };
+    };
+    subscribeNewsletter: {
+        parameters: {
+            query?: never;
+            header?: never;
+            path?: never;
+            cookie?: never;
+        };
+        requestBody: {
+            content: {
+                "application/json": components["schemas"]["StoreNewsletterSubscriberRequest"];
+            };
+        };
+        responses: {
+            /** @description Email was already subscribed */
+            200: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NewsletterSubscribeResponse"];
+                };
+            };
+            /** @description Subscribed */
+            201: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NewsletterSubscribeResponse"];
+                };
+            };
+            /** @description Validation error */
+            422: {
+                headers: {
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["ValidationErrorResponse"];
+                };
+            };
+            /** @description Too many requests */
+            429: {
+                headers: {
+                    /** @description Seconds until the limit resets */
+                    "Retry-After"?: number;
+                    [name: string]: unknown;
+                };
+                content: {
+                    "application/json": components["schemas"]["NewsletterSubscribeResponse"];
+                };
             };
         };
     };

@@ -6,7 +6,7 @@ import React from "react";
 import Blogs from "./Blogs";
 import { useFetch } from "@/utils/clientRequest";
 import { useDebounce } from "use-debounce";
-import MagazineForm from "./MagazineForm";
+import NewsletterForm from "@/components/NewsletterForm";
 
 type BlogsListProps = {
   blogs: components["schemas"]["BlogResource"][];
@@ -61,7 +61,7 @@ const BlogsList = (props: BlogsListProps) => {
                   خبرنامه تخصصی نیکان را در ایمیل خود بخوانید
                 </span>
               </div>
-              <MagazineForm />
+              <NewsletterForm />
             </div>
           </div>
         </div>

@@ -233,7 +233,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                 height={201}
                 className="w-[138px] h-[156px] lg:w-[178px] lg:h-[201px] -top-16 -left-0 absolute lg:static lg:mt-[-45px]"
             />
-            <div className="flex flex-col gap-y-6 mt-20 sm:mt-0">
+            <div className="flex flex-col gap-y-6 mt-20 lg:mt-0">
                     <span
                         className="lg:text-[14px] text-[13px] font-black text-[#636363] lg:tracking-tight tracking-tighter">
                       عضویت در خبرنامه مجله ی علمی نیکان

@@ -49,7 +49,9 @@ const BlogsList = (props: BlogsListProps) => {
             className="absolute -top-16 lg:-left-6 -left-4"
           />
           <div className="flex flex-col gap-y-6">
-            <span className="lg:text-[14px] text-[13px] font-black text-[#636363] lg:tracking-tight tracking-tighter">
+            {/* The magazine image is absolutely positioned over the card's
+                top-left corner; keep the title clear of it so it wraps instead. */}
+            <span className="lg:text-[14px] text-[13px] font-black text-[#636363] lg:tracking-tight tracking-tighter pl-[112px] lg:pl-[100px] leading-6">
               عضویت در خبرنامه مجله ی علمی نیکان
             </span>
             <div className="flex flex-col gap-y-3">

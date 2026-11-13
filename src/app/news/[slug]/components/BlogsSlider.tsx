@@ -22,25 +22,33 @@ const BlogsSlider = (props: BlogsSliderProps) => {
         <Swiper
           modules={[Autoplay]}
           autoplay={{ delay: 5000 }}
-          slidesPerView={3}
-          spaceBetween={24}
+          slidesPerView={1.2}
+          spaceBetween={16}
+          breakpoints={{
+            640: { slidesPerView: 2, spaceBetween: 20 },
+            1024: { slidesPerView: 3, spaceBetween: 24 },
+          }}
           className="w-full"
         >
           {blogs.map((blog) => (
-            <SwiperSlide key={blog.id}>
+            <SwiperSlide key={blog.id} className="!h-auto">
               <Link
-                href={`/blogs/${blog.slug}`}
-                className="flex flex-col gap-y-[5px] border border-[#31D1B0]"
+                href={`/news/${blog.slug}`}
+                className="flex h-full flex-col gap-y-[5px] border border-[#31D1B0]"
               >
-                <Image
+                {/* Fixed frame so every card's image has the same size, whatever the source ratio. */}
+                <div className="relative aspect-[353/263] w-full overflow-hidden bg-[#f2f2f2]">
+                  <Image
                     unoptimized
-                  src={blog?.main_image?.original_url ?? ""}
-                  alt={blog.title ?? ""}
-                  width={353}
-                  height={263}
-                />
-                <div className="flex flex-col gap-y-2 pr-2.5 pb-10">
-                  <span className="text-[12px] font-bold text-[#3f3f3f]">
+                    src={blog?.main_image?.original_url ?? ""}
+                    alt={blog.title ?? ""}
+                    fill
+                    sizes="353px"
+                    className="object-cover"
+                  />
+                </div>
+                <div className="flex flex-col gap-y-2 px-2.5 pb-10">
+                  <span className="line-clamp-1 text-[12px] font-bold text-[#3f3f3f]">
                     {blog.title}
                   </span>
                   {/* <span className="text-[11px] text-[#3f3f3f]">

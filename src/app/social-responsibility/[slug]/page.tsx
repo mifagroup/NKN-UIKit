@@ -33,7 +33,10 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
     }
   ).then((res) => res.json());
 
-  const blogsList: components["schemas"]["BlogResource"][] = blogs?.data ?? [];
+  // Related posts: leave out the one being read.
+  const blogsList: components["schemas"]["BlogResource"][] = (
+    blogs?.data ?? []
+  ).filter((item: components["schemas"]["BlogResource"]) => item.slug !== blog.slug);
 
   return (
       <div className="max-w-[1106px] container mt-[88px]">
@@ -49,10 +52,10 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
               />
 
               {/* Content Wrapper */}
-              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-center gap-y-4">
+              <div className="flex flex-col lg:flex-row lg:justify-between lg:items-start gap-y-4 lg:gap-x-8">
 
                   {/* Title + Subtitle */}
-                  <div className="flex flex-col gap-y-1">
+                  <div className="flex flex-col gap-y-1 min-w-0 flex-1">
                         <span className="text-[25px] text-[#3F3F3F] font-bold">
                           {blog?.title}
                         </span>
@@ -62,7 +65,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                   </div>
 
                   {/* Meta Info (Calendar + Clock) */}
-                  <div className="flex flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3">
+                  <div className="flex shrink-0 flex-col xs:flex-row items-start lg:items-center gap-y-2 gap-x-7 lg:gap-x-3 lg:pt-2">
 
                       {/* Calendar */}
                       <div className="flex gap-x-2 items-center">
@@ -73,7 +76,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                               height={23}
                               className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
                           />
-                          <span className="font-extralight text-[11px] lg:text-[15px]">
+                          <span className="whitespace-nowrap font-extralight text-[11px] lg:text-[15px]">
                              {new Date(blog?.published_at ?? Date.now()).toLocaleDateString(
                                  "fa-IR",
                                  {
@@ -93,7 +96,7 @@ const page = async (props: { params: Promise<{ slug: string }> }) => {
                                   height={23}
                                   className="h-[12px] w-[12px] lg:h-[23px] lg:w-[21px]"
                               />
-                              <span className="font-extralight text-[11px] lg:text-[15px]">
+                              <span className="whitespace-nowrap font-extralight text-[11px] lg:text-[15px]">
                                   {blog?.duration} دقیقه
 
                               </span>
